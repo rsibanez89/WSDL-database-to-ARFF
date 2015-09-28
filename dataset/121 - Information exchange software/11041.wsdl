@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="EmailSignup">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="name" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="emailAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="occupation" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="businessName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="zipcode" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="signupPage" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EmailSignupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="EmailSignupResult" type="tns:Result"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Status" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ErrorMessage" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EmailSignupSoapIn">
+    <wsdl:part name="parameters" element="tns:EmailSignup"/>
+  </wsdl:message>
+  <wsdl:message name="EmailSignupSoapOut">
+    <wsdl:part name="parameters" element="tns:EmailSignupResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="EmailSignupServiceSoap">
+    <wsdl:operation name="EmailSignup">
+      <wsdl:input message="tns:EmailSignupSoapIn"/>
+      <wsdl:output message="tns:EmailSignupSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmailSignupServiceSoap" type="tns:EmailSignupServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="EmailSignup">
+      <soap:operation soapAction="http://tempuri.org/EmailSignup" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EmailSignupServiceSoap12" type="tns:EmailSignupServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="EmailSignup">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/EmailSignup" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmailSignupService">
+    <wsdl:port name="EmailSignupServiceSoap" binding="tns:EmailSignupServiceSoap">
+      <soap:address location="http://www.selectrucks.com/EmailSignupService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="EmailSignupServiceSoap12" binding="tns:EmailSignupServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.selectrucks.com/EmailSignupService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

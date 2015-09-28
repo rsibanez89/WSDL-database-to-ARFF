@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetMalls">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="prefixText" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="count" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMallsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetMallsResult" type="tns:ArrayOfString"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetMallsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMallsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetMallsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMalls"/>
+  </wsdl:message>
+  <wsdl:portType name="SearchSoap">
+    <wsdl:operation name="GetMalls">
+      <wsdl:input message="tns:GetMallsSoapIn"/>
+      <wsdl:output message="tns:GetMallsSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SearchSoap" type="tns:SearchSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetMalls">
+      <soap:operation soapAction="http://tempuri.org/GetMalls" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SearchSoap12" type="tns:SearchSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetMalls">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetMalls" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Search">
+    <wsdl:port name="SearchSoap" binding="tns:SearchSoap">
+      <soap:address location="http://www.simon.com/about_simon/leasing/Search.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SearchSoap12" binding="tns:SearchSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.simon.com/about_simon/leasing/Search.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

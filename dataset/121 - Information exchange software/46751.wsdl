@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://api.onlyfordemo.net/services/rpcrouter" xmlns:tns1="http://error.logicboxes.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="http://api.onlyfordemo.net/services/rpcrouter" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://api.onlyfordemo.net/services/rpcrouter">
+  <types>
+    <schema targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://error.logicboxes.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Vector">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema targetNamespace="http://error.logicboxes.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="LogicBoxesException">
+    <sequence>
+     <element name="className" nillable="true" type="xsd:string"/>
+     <element name="exceptionClassType" nillable="true" type="xsd:string"/>
+     <element name="logLevel" nillable="true" type="xsd:string"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="errorClassType" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  </types>
+  <message name="LogicBoxesException">
+    <part name="fault" type="tns1:LogicBoxesException"/>
+  </message>
+  <message name="invokeResponse">
+    <part name="invokeReturn" type="xsd:anyType"/>
+  </message>
+  <message name="invokeRequest">
+    <part name="className" type="xsd:string"/>
+    <part name="methodName" type="xsd:string"/>
+    <part name="params" type="apachesoap:Vector"/>
+  </message>
+  <portType name="MessengerServer">
+    <operation name="invoke" parameterOrder="className methodName params">
+      <input name="invokeRequest" message="impl:invokeRequest"/>
+      <output name="invokeResponse" message="impl:invokeResponse"/>
+      <fault name="LogicBoxesException" message="impl:LogicBoxesException"/>
+    </operation>
+  </portType>
+  <binding name="rpcrouterSoapBinding" type="impl:MessengerServer">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="invoke">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="invokeRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://messenger.logicboxes.com"/>
+      </input>
+      <output name="invokeResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://api.onlyfordemo.net/services/rpcrouter"/>
+      </output>
+      <fault name="LogicBoxesException">
+        <wsdlsoap:fault name="LogicBoxesException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://api.onlyfordemo.net/services/rpcrouter"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="MessengerServerService">
+    <port name="rpcrouter" binding="impl:rpcrouterSoapBinding">
+      <wsdlsoap:address location="http://api.onlyfordemo.net/services/rpcrouter"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,2754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Enables users to perform standard XMPP/Jabber instant messaging over a web service.  This service maintains state for the user based on the SessionID provided in the SOAP Header.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService">
+      <s:import namespace="http://www.winfessor.com/SoapBoxWebService/MessageDataSet.xsd" schemaLocation="http://www.pascocountyhouses.com/chat/ws/SoapBoxWebService.asmx?schema=MessageDataSet"/>
+      <s:import namespace="http://www.winfessor.com/SoapBoxWebService/ContactsDataSet.xsd" schemaLocation="http://www.pascocountyhouses.com/chat/ws/SoapBoxWebService.asmx?schema=ContactsDataSet"/>
+      <s:import namespace="http://www.winfessor.com/SoapBoxWebService/ExceptionDataSet.xsd" schemaLocation="http://www.pascocountyhouses.com/chat/ws/SoapBoxWebService.asmx?schema=ExceptionDataSet"/>
+      <s:element name="SettingsSetAutoAwayPresenceValues">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="autoAwayStatus" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="autoAwayShowValue" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SettingsSetAutoAwayPresenceValuesResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="SoapBoxHeader" type="tns:SoapBoxHeader"/>
+      <s:complexType name="SoapBoxHeader">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="SessionID" type="s:string"/>
+        </s:sequence>
+        <s:anyAttribute/>
+      </s:complexType>
+      <s:element name="SettingsSetSessionTimeouts">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="autoAwayTimeoutSeconds" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="autoBlockMessagesTimeoutSeconds" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="autoLogoutTimeoutSeconds" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SettingsSetSessionTimeoutsResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="SessionLogout">
+        <s:complexType/>
+      </s:element>
+      <s:element name="SessionLogoutResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="SessionLogoutEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="remove" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionLogoutExResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="MessageSend">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="text" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="toUser" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="thread" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MessageSendResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="MessageSendEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="text" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="toUser" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="thread" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="payload">
+              <s:complexType>
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MessageSendExResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="MessageSendEx2">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="text" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="toUser" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="thread" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="subject" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MessageSendEx2Response">
+        <s:complexType/>
+      </s:element>
+      <s:element name="MessageSendEx3">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="text" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="toUser" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="thread" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="subject" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="payload">
+              <s:complexType>
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MessageSendEx3Response">
+        <s:complexType/>
+      </s:element>
+      <s:element name="MessageDequeue">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="bGetWebChatMsgs" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="bGetWebChatCmds" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MessageDequeueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="MessageDequeueResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.winfessor.com/SoapBoxWebService/MessageDataSet.xsd"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelMessageWaitForIncoming">
+        <s:complexType/>
+      </s:element>
+      <s:element name="CancelMessageWaitForIncomingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="CancelMessageWaitForIncomingResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactsGet">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ContactsGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactsGetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.winfessor.com/SoapBoxWebService/ContactsDataSet.xsd"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactsGetDelta">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ContactsGetDeltaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactsGetDeltaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.winfessor.com/SoapBoxWebService/ContactsDataSet.xsd"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactsAddUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="friendlyName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="group" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="jid" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactsAddUserResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ContactsRemoveUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="jid" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactsRemoveUserResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ContactsUpdateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="friendlyName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="group" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="jid" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactsUpdateUserResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="PresenceSendAvailable">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="showValue" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="longText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PresenceSendAvailableResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="PresenceSendAvailableEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="showValue" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="longText" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="priority" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PresenceSendAvailableExResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="PresenceSendCurrent">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="toUserJID" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PresenceSendCurrentResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="PresenceSendUnavailable">
+        <s:complexType/>
+      </s:element>
+      <s:element name="PresenceSendUnavailableResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="PresenceSendUnavailableEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="toUserJID" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PresenceSendUnavailableExResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="RegisterUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hostname" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterUserResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="RegisterUserEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hostname" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterUserExResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="RegisterUserWithGateway">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="gatewayJID" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterUserWithGatewayResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AsyncExceptionsDequeue">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AsyncExceptionsDequeueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AsyncExceptionsDequeueResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.winfessor.com/SoapBoxWebService/ExceptionDataSet.xsd"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionLoginEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="resource" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hostname" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionLoginExResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="SessionLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="autocreate" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hostname" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionLoginResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="MessageWaitForIncoming">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="bGetWebChatMsgs" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="bGetWebChatCmds" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="waitMilliseconds" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MessageWaitForIncomingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="MessageWaitForIncomingResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.winfessor.com/SoapBoxWebService/MessageDataSet.xsd"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactsRequestFromServerAndWait">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="waitMilliseconds" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactsRequestFromServerAndWaitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactsRequestFromServerAndWaitResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.winfessor.com/SoapBoxWebService/ContactsDataSet.xsd"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactsWaitForDelta">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="waitMilliseconds" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContactsWaitForDeltaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactsWaitForDeltaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.winfessor.com/SoapBoxWebService/ContactsDataSet.xsd"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterRemoveUser">
+        <s:complexType/>
+      </s:element>
+      <s:element name="RegisterRemoveUserResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="RegisterRemoveUserFromGateway">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="gatewayJID" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterRemoveUserFromGatewayResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="MessageDataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any namespace="http://www.winfessor.com/SoapBoxWebService/MessageDataSet.xsd"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean"/>
+      <s:element name="ContactsDataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any namespace="http://www.winfessor.com/SoapBoxWebService/ContactsDataSet.xsd"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExceptionDataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any namespace="http://www.winfessor.com/SoapBoxWebService/ExceptionDataSet.xsd"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegisterUserHttpPostIn">
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="hostname" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="SessionLoginExHttpGetIn">
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="resource" type="s:string"/>
+    <wsdl:part name="hostname" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserExHttpPostIn">
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="hostname" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserExSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterUserExResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutExSoapIn">
+    <wsdl:part name="parameters" element="tns:SessionLogoutEx"/>
+  </wsdl:message>
+  <wsdl:message name="MessageDequeueHttpPostIn">
+    <wsdl:part name="bGetWebChatMsgs" type="s:string"/>
+    <wsdl:part name="bGetWebChatCmds" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="MessageDequeueSoapOut">
+    <wsdl:part name="parameters" element="tns:MessageDequeueResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetDeltaHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="CancelMessageWaitForIncomingHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="MessageWaitForIncomingSoapIn">
+    <wsdl:part name="parameters" element="tns:MessageWaitForIncoming"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="ContactsAddUserHttpPostIn">
+    <wsdl:part name="friendlyName" type="s:string"/>
+    <wsdl:part name="group" type="s:string"/>
+    <wsdl:part name="jid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="SettingsSetAutoAwayPresenceValuesSoapIn">
+    <wsdl:part name="parameters" element="tns:SettingsSetAutoAwayPresenceValues"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsAddUserSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="MessageWaitForIncomingHttpPostIn">
+    <wsdl:part name="bGetWebChatMsgs" type="s:string"/>
+    <wsdl:part name="bGetWebChatCmds" type="s:string"/>
+    <wsdl:part name="waitMilliseconds" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsWaitForDeltaSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableExHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="SessionLoginExSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsWaitForDeltaHttpGetOut">
+    <wsdl:part name="Body" element="tns:ContactsDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserWithGatewayHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="RegisterUserWithGatewaySoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterUserWithGatewayResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetHttpPostOut">
+    <wsdl:part name="Body" element="tns:ContactsDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsUpdateUserHttpPostIn">
+    <wsdl:part name="friendlyName" type="s:string"/>
+    <wsdl:part name="group" type="s:string"/>
+    <wsdl:part name="jid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserFromGatewaySoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterRemoveUserFromGateway"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLoginHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="MessageSendExSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="AsyncExceptionsDequeueHttpGetOut">
+    <wsdl:part name="Body" element="tns:ExceptionDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsRemoveUserHttpGetIn">
+    <wsdl:part name="jid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserWithGatewayHttpGetIn">
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="gatewayJID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsRequestFromServerAndWaitHttpGetOut">
+    <wsdl:part name="Body" element="tns:ContactsDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="MessageWaitForIncomingSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsRequestFromServerAndWaitHttpPostIn">
+    <wsdl:part name="waitMilliseconds" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableExHttpPostIn">
+    <wsdl:part name="showValue" type="s:string"/>
+    <wsdl:part name="longText" type="s:string"/>
+    <wsdl:part name="priority" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendEx2HttpGetIn">
+    <wsdl:part name="text" type="s:string"/>
+    <wsdl:part name="toUser" type="s:string"/>
+    <wsdl:part name="thread" type="s:string"/>
+    <wsdl:part name="subject" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SettingsSetSessionTimeoutsSoapOut">
+    <wsdl:part name="parameters" element="tns:SettingsSetSessionTimeoutsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutExHttpGetIn">
+    <wsdl:part name="remove" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsRequestFromServerAndWaitSoapOut">
+    <wsdl:part name="parameters" element="tns:ContactsRequestFromServerAndWaitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendCurrentSoapIn">
+    <wsdl:part name="parameters" element="tns:PresenceSendCurrent"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLoginExHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableExSoapOut">
+    <wsdl:part name="parameters" element="tns:PresenceSendUnavailableExResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsAddUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ContactsAddUser"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetSoapOut">
+    <wsdl:part name="parameters" element="tns:ContactsGetResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="ContactsRemoveUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ContactsRemoveUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendEx2HttpPostIn">
+    <wsdl:part name="text" type="s:string"/>
+    <wsdl:part name="toUser" type="s:string"/>
+    <wsdl:part name="thread" type="s:string"/>
+    <wsdl:part name="subject" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CancelMessageWaitForIncomingSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelMessageWaitForIncoming"/>
+  </wsdl:message>
+  <wsdl:message name="MessageDequeueSoapIn">
+    <wsdl:part name="parameters" element="tns:MessageDequeue"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterRemoveUser"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserFromGatewayHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutExSoapOut">
+    <wsdl:part name="parameters" element="tns:SessionLogoutExResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SettingsSetSessionTimeoutsHttpGetIn">
+    <wsdl:part name="autoAwayTimeoutSeconds" type="s:string"/>
+    <wsdl:part name="autoBlockMessagesTimeoutSeconds" type="s:string"/>
+    <wsdl:part name="autoLogoutTimeoutSeconds" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableSoapOut">
+    <wsdl:part name="parameters" element="tns:PresenceSendUnavailableResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserHttpGetIn">
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="hostname" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableExSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="MessageWaitForIncomingHttpGetOut">
+    <wsdl:part name="Body" element="tns:MessageDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableExSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendEx2SoapOut">
+    <wsdl:part name="parameters" element="tns:MessageSendEx2Response"/>
+  </wsdl:message>
+  <wsdl:message name="AsyncExceptionsDequeueHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserFromGatewayHttpGetIn">
+    <wsdl:part name="gatewayJID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserWithGatewaySoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterUserWithGateway"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="ContactsGetSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsRequestFromServerAndWaitSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendCurrentHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="ContactsUpdateUserHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="RegisterUserExHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="SettingsSetAutoAwayPresenceValuesHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableHttpGetIn">
+    <wsdl:part name="showValue" type="s:string"/>
+    <wsdl:part name="longText" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetDeltaSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsWaitForDeltaHttpGetIn">
+    <wsdl:part name="waitMilliseconds" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetDeltaSoapOut">
+    <wsdl:part name="parameters" element="tns:ContactsGetDeltaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsRemoveUserSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="SessionLoginHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableHttpPostIn">
+    <wsdl:part name="showValue" type="s:string"/>
+    <wsdl:part name="longText" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLoginExSoapOut">
+    <wsdl:part name="parameters" element="tns:SessionLoginExResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:SessionLoginResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutExHttpPostIn">
+    <wsdl:part name="remove" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetDeltaHttpPostOut">
+    <wsdl:part name="Body" element="tns:ContactsDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableExHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="SettingsSetAutoAwayPresenceValuesHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutExHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="ContactsWaitForDeltaSoapIn">
+    <wsdl:part name="parameters" element="tns:ContactsWaitForDelta"/>
+  </wsdl:message>
+  <wsdl:message name="SettingsSetAutoAwayPresenceValuesSoapOut">
+    <wsdl:part name="parameters" element="tns:SettingsSetAutoAwayPresenceValuesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableExHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="SessionLoginExSoapIn">
+    <wsdl:part name="parameters" element="tns:SessionLoginEx"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetDeltaHttpGetOut">
+    <wsdl:part name="Body" element="tns:ContactsDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserExHttpGetIn">
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="hostname" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterRemoveUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsWaitForDeltaHttpPostOut">
+    <wsdl:part name="Body" element="tns:ContactsDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:SessionLogin"/>
+  </wsdl:message>
+  <wsdl:message name="SettingsSetAutoAwayPresenceValuesSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableSoapIn">
+    <wsdl:part name="parameters" element="tns:PresenceSendUnavailable"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterUser"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLoginExHttpPostIn">
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="resource" type="s:string"/>
+    <wsdl:part name="hostname" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendEx3SoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendCurrentSoapOut">
+    <wsdl:part name="parameters" element="tns:PresenceSendCurrentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetDeltaSoapIn">
+    <wsdl:part name="parameters" element="tns:ContactsGetDelta"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendExSoapIn">
+    <wsdl:part name="parameters" element="tns:MessageSendEx"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserWithGatewayHttpPostIn">
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="gatewayJID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="ContactsRequestFromServerAndWaitHttpGetIn">
+    <wsdl:part name="waitMilliseconds" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsUpdateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ContactsUpdateUser"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="CancelMessageWaitForIncomingHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="ContactsWaitForDeltaSoapOut">
+    <wsdl:part name="parameters" element="tns:ContactsWaitForDeltaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsRequestFromServerAndWaitSoapIn">
+    <wsdl:part name="parameters" element="tns:ContactsRequestFromServerAndWait"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsUpdateUserHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="MessageSendSoapOut">
+    <wsdl:part name="parameters" element="tns:MessageSendResponse"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableExSoapOut">
+    <wsdl:part name="parameters" element="tns:PresenceSendAvailableExResponse"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableExHttpGetIn">
+    <wsdl:part name="toUserJID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLoginExHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="ContactsUpdateUserHttpGetIn">
+    <wsdl:part name="friendlyName" type="s:string"/>
+    <wsdl:part name="group" type="s:string"/>
+    <wsdl:part name="jid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableExSoapIn">
+    <wsdl:part name="parameters" element="tns:PresenceSendUnavailableEx"/>
+  </wsdl:message>
+  <wsdl:message name="MessageDequeueSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="CancelMessageWaitForIncomingHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserWithGatewayHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="SettingsSetAutoAwayPresenceValuesHttpPostIn">
+    <wsdl:part name="autoAwayStatus" type="s:string"/>
+    <wsdl:part name="autoAwayShowValue" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendEx2HttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="MessageSendEx2SoapIn">
+    <wsdl:part name="parameters" element="tns:MessageSendEx2"/>
+  </wsdl:message>
+  <wsdl:message name="AsyncExceptionsDequeueHttpPostOut">
+    <wsdl:part name="Body" element="tns:ExceptionDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendHttpPostIn">
+    <wsdl:part name="text" type="s:string"/>
+    <wsdl:part name="toUser" type="s:string"/>
+    <wsdl:part name="thread" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendCurrentHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutSoapOut">
+    <wsdl:part name="parameters" element="tns:SessionLogoutResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserWithGatewaySoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="ContactsRequestFromServerAndWaitHttpPostOut">
+    <wsdl:part name="Body" element="tns:ContactsDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="AsyncExceptionsDequeueSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendEx2SoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableSoapIn">
+    <wsdl:part name="parameters" element="tns:PresenceSendAvailable"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="MessageWaitForIncomingHttpPostOut">
+    <wsdl:part name="Body" element="tns:MessageDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableExHttpGetIn">
+    <wsdl:part name="showValue" type="s:string"/>
+    <wsdl:part name="longText" type="s:string"/>
+    <wsdl:part name="priority" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsWaitForDeltaHttpPostIn">
+    <wsdl:part name="waitMilliseconds" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserFromGatewayHttpPostIn">
+    <wsdl:part name="gatewayJID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserExSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterUserEx"/>
+  </wsdl:message>
+  <wsdl:message name="MessageDequeueHttpGetIn">
+    <wsdl:part name="bGetWebChatMsgs" type="s:string"/>
+    <wsdl:part name="bGetWebChatCmds" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetHttpGetOut">
+    <wsdl:part name="Body" element="tns:ContactsDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsAddUserHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AsyncExceptionsDequeueSoapIn">
+    <wsdl:part name="parameters" element="tns:AsyncExceptionsDequeue"/>
+  </wsdl:message>
+  <wsdl:message name="SettingsSetSessionTimeoutsHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableExHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutExHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="ContactsRemoveUserHttpPostIn">
+    <wsdl:part name="jid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CancelMessageWaitForIncomingSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendCurrentSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserFromGatewayHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="SettingsSetSessionTimeoutsSoapIn">
+    <wsdl:part name="parameters" element="tns:SettingsSetSessionTimeouts"/>
+  </wsdl:message>
+  <wsdl:message name="MessageWaitForIncomingHttpGetIn">
+    <wsdl:part name="bGetWebChatMsgs" type="s:string"/>
+    <wsdl:part name="bGetWebChatCmds" type="s:string"/>
+    <wsdl:part name="waitMilliseconds" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="SettingsSetSessionTimeoutsHttpPostIn">
+    <wsdl:part name="autoAwayTimeoutSeconds" type="s:string"/>
+    <wsdl:part name="autoBlockMessagesTimeoutSeconds" type="s:string"/>
+    <wsdl:part name="autoLogoutTimeoutSeconds" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="MessageDequeueHttpGetOut">
+    <wsdl:part name="Body" element="tns:MessageDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterUserExHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableSoapOut">
+    <wsdl:part name="parameters" element="tns:PresenceSendAvailableResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsUpdateUserSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserFromGatewaySoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendEx3SoapIn">
+    <wsdl:part name="parameters" element="tns:MessageSendEx3"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsAddUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ContactsAddUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendCurrentHttpGetIn">
+    <wsdl:part name="toUserJID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AsyncExceptionsDequeueHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="SettingsSetAutoAwayPresenceValuesHttpGetIn">
+    <wsdl:part name="autoAwayStatus" type="s:string"/>
+    <wsdl:part name="autoAwayShowValue" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SettingsSetSessionTimeoutsSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="CancelMessageWaitForIncomingSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelMessageWaitForIncomingResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserFromGatewaySoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterRemoveUserFromGatewayResponse"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendSoapIn">
+    <wsdl:part name="parameters" element="tns:MessageSend"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendCurrentHttpPostIn">
+    <wsdl:part name="toUserJID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLoginSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="CancelMessageWaitForIncomingHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutSoapIn">
+    <wsdl:part name="parameters" element="tns:SessionLogout"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendEx3SoapOut">
+    <wsdl:part name="parameters" element="tns:MessageSendEx3Response"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLoginHttpGetIn">
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="autocreate" type="s:string"/>
+    <wsdl:part name="hostname" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsAddUserHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="SettingsSetSessionTimeoutsHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="SessionLoginHttpPostIn">
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="autocreate" type="s:string"/>
+    <wsdl:part name="hostname" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetSoapIn">
+    <wsdl:part name="parameters" element="tns:ContactsGet"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsAddUserHttpGetIn">
+    <wsdl:part name="friendlyName" type="s:string"/>
+    <wsdl:part name="group" type="s:string"/>
+    <wsdl:part name="jid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="PresenceSendAvailableExSoapIn">
+    <wsdl:part name="parameters" element="tns:PresenceSendAvailableEx"/>
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutExSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="PresenceSendUnavailableExHttpPostIn">
+    <wsdl:part name="toUserJID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetDeltaHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="ContactsRemoveUserHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="ContactsRemoveUserHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="MessageSendExSoapOut">
+    <wsdl:part name="parameters" element="tns:MessageSendExResponse"/>
+  </wsdl:message>
+  <wsdl:message name="MessageWaitForIncomingSoapOut">
+    <wsdl:part name="parameters" element="tns:MessageWaitForIncomingResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsRemoveUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ContactsRemoveUser"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="MessageSendEx2HttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="ContactsUpdateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ContactsUpdateUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRemoveUserHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="MessageDequeueHttpPostOut">
+    <wsdl:part name="Body" element="tns:MessageDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendHttpGetIn">
+    <wsdl:part name="text" type="s:string"/>
+    <wsdl:part name="toUser" type="s:string"/>
+    <wsdl:part name="thread" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="MessageSendSoapBoxHeader">
+    <wsdl:part name="SoapBoxHeader" element="tns:SoapBoxHeader"/>
+  </wsdl:message>
+  <wsdl:message name="AsyncExceptionsDequeueSoapOut">
+    <wsdl:part name="parameters" element="tns:AsyncExceptionsDequeueResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ContactsGetHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="SessionLogoutHttpPostIn">
+  </wsdl:message>
+  <wsdl:portType name="SoapBoxWebServiceHttpPost">
+    <wsdl:operation name="SettingsSetAutoAwayPresenceValues">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets the values that will be used for your presence when you go idle.  The timeout defaults to ten minutes but you can set it using the SetSessionTimeouts method.  Idle time is calculated based on the last time you accessed the web service.</wsdl:documentation>
+      <wsdl:input message="tns:SettingsSetAutoAwayPresenceValuesHttpPostIn"/>
+      <wsdl:output message="tns:SettingsSetAutoAwayPresenceValuesHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SettingsSetSessionTimeouts">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Specifies the timeout in seconds, for AutoAway, AutoBlockMessages and AutoLogout.  These default to 600, 10, and 3600 respectively.  Each timeout action is performed based on the last time you accessed the web service.</wsdl:documentation>
+      <wsdl:input message="tns:SettingsSetSessionTimeoutsHttpPostIn"/>
+      <wsdl:output message="tns:SettingsSetSessionTimeoutsHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogout">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs PresenceSendUnavailable and SessionClose.  Closes your session to the Jabber server.  Removes your session on the Web Service server.  Your SessionID will no longer be valid.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLogoutHttpPostIn"/>
+      <wsdl:output message="tns:SessionLogoutHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogoutEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs PresenceSendUnavailable and SessionClose.  Closes your session to the Jabber server.  Removes your session on the Web Service server.  Your SessionID will no longer be valid.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLogoutExHttpPostIn"/>
+      <wsdl:output message="tns:SessionLogoutExHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSend">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a message of type 'chat' to the specified user with the message text.</wsdl:documentation>
+      <wsdl:input message="tns:MessageSendHttpPostIn"/>
+      <wsdl:output message="tns:MessageSendHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx2">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a message of type 'chat' to the specified user with the message text and a subject.</wsdl:documentation>
+      <wsdl:input message="tns:MessageSendEx2HttpPostIn"/>
+      <wsdl:output message="tns:MessageSendEx2HttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageDequeue">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Dequeues all unread messages from your incoming message queue and returns them to you in a MessageDataSet.  Returns messages as a separate DataTable for each user.  The name of the DataTable is the Bare JID (JID with no resource) of the user the messages are from.</wsdl:documentation>
+      <wsdl:input message="tns:MessageDequeueHttpPostIn"/>
+      <wsdl:output message="tns:MessageDequeueHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWaitForIncoming">
+      <wsdl:input message="tns:CancelMessageWaitForIncomingHttpPostIn"/>
+      <wsdl:output message="tns:CancelMessageWaitForIncomingHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a cached copy of the ContactsDataSet populated with all your contacts and their availability.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsGetHttpPostIn"/>
+      <wsdl:output message="tns:ContactsGetHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGetDelta">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns any changes to the cached copy of the ContactsDataSet since you last requested it.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsGetDeltaHttpPostIn"/>
+      <wsdl:output message="tns:ContactsGetDeltaHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsAddUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds a user to your list of Contacts.  Adds the user to your Jabber roster and also subscribes to their presence.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsAddUserHttpPostIn"/>
+      <wsdl:output message="tns:ContactsAddUserHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRemoveUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes a user from your list of Contacts.  Removes the user from your Jabber roster and also unsubscribes from their presence.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsRemoveUserHttpPostIn"/>
+      <wsdl:output message="tns:ContactsRemoveUserHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsUpdateUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates the specified jid with a new friendlyname and group.  You should specify a value for both friendlyname and group.  A blank username will be defaulted to the jid and a blank group will be defaulted to Unspecified.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsUpdateUserHttpPostIn"/>
+      <wsdl:output message="tns:ContactsUpdateUserHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailable">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as available with the specified showValue and longText.  Valid values for showValue are: 'dnd', 'xa', 'chat', 'normal', and 'away'.  These stand for 'Do Not Disturb', 'Extended Away', 'I Want to Chat', 'Available', and 'Away', respectively.  You can specify more detailed messages with longText such as: 'I am in a quick meeting.  Be back soon.'</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendAvailableHttpPostIn"/>
+      <wsdl:output message="tns:PresenceSendAvailableHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailableEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as available with the specified showValue, longText, and priority.  Valid values for showValue are: 'dnd', 'xa', 'chat', 'normal', and 'away'.  These stand for 'Do Not Disturb', 'Extended Away', 'I Want to Chat', 'Available', and 'Away', respectively.  You can specify more detailed messages with longText such as: 'I am in a quick meeting.  Be back soon.'  Priority is used by the Jabber server when making message routing decisoins for messages sent to 'username@host' without a resource (username@host/resource).  The logged in resource with the highest priority will receive the message.  Any resource with a negative priority will never receive any messages.</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendAvailableExHttpPostIn"/>
+      <wsdl:output message="tns:PresenceSendAvailableExHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendCurrent">
+      <wsdl:input message="tns:PresenceSendCurrentHttpPostIn"/>
+      <wsdl:output message="tns:PresenceSendCurrentHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailable">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as unavailable.  This is done automatically when you call SessionLogout.</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendUnavailableHttpPostIn"/>
+      <wsdl:output message="tns:PresenceSendUnavailableHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailableEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as unavailable to the specified user.  This allows you to temporarily hide from users you do not wish to know you are online.</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendUnavailableExHttpPostIn"/>
+      <wsdl:output message="tns:PresenceSendUnavailableExHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers the specified user with the specified Jabber server.  This does not return you a SessionID.  If the method succeeds and you wish to log in to the server, you must call SessionLogin with your new user's information.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterUserHttpPostIn"/>
+      <wsdl:output message="tns:RegisterUserHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers the specified user with the specified Jabber server on the specified port.  It will use SSL to the Jabber server if you set UseSSL to true.  This does not return you a SessionID.  If the method succeeds and you wish to log in to the server, you must call SessionLogin with your new user's information.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterUserExHttpPostIn"/>
+      <wsdl:output message="tns:RegisterUserExHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserWithGateway">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers with a gateway on a Jabber server.  This is useful for communicating with outside networks such as AIM, MSN, or Yahoo!.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterUserWithGatewayHttpPostIn"/>
+      <wsdl:output message="tns:RegisterUserWithGatewayHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncExceptionsDequeue">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns an ExceptionDataSet containing all of the exceptions that have occurred in background threads.  If no exceptions have occurred, returns an empty ExceptionDataSet.</wsdl:documentation>
+      <wsdl:input message="tns:AsyncExceptionsDequeueHttpPostIn"/>
+      <wsdl:output message="tns:AsyncExceptionsDequeueHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLoginEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs SessionOpen, SessionAuthenticate, PresenceSendAvailable, and ContactsRequestFromServer with one method call.  Returns your unique SessionID on the SoapBoxHeader SessionID property.  This SessionID must be passed on the header in all subsequent calls.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLoginExHttpPostIn"/>
+      <wsdl:output message="tns:SessionLoginExHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogin">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs SessionOpen, SessionAuthenticate, PresenceSendAvailable, and ContactsRequestFromServer with one method call.  Uses the web service defaults for resource, port number, and SSL.  Returns your unique SessionID on the SoapBoxHeader SessionID property.  This SessionID must be passed on the header in all subsequent calls.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLoginHttpPostIn"/>
+      <wsdl:output message="tns:SessionLoginHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageWaitForIncoming">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Waits for the specified amount of time (in milliseconds) for incoming messages.  As soon as an incoming message is received, or the timeout period has elapsed, a MessageDataSet is returned.  Returns an emtpy MessageDataSet if the timeout period elapsed.  Returns messages as a separate DataTable for each user.  The name of the DataTable is the Bare JID (JID with no resource) of the user the messages are from.</wsdl:documentation>
+      <wsdl:input message="tns:MessageWaitForIncomingHttpPostIn"/>
+      <wsdl:output message="tns:MessageWaitForIncomingHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRequestFromServerAndWait">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a request to your Jabber server for a copy of your roster.  Returns the updated copy of the ContactsDataSet after the server responds with your roster, or the timeout period (in milliseconds) elapses.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsRequestFromServerAndWaitHttpPostIn"/>
+      <wsdl:output message="tns:ContactsRequestFromServerAndWaitHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsWaitForDelta">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Waits for the specified amount of time (in milliseconds) for any change to the cached ContactsDataSet.  As soon as any change is made to the ContactsDataSet -- whether it be a presence update or adding/updating/removing a contact -- or the timout period elapses, you will get a ContactsDataSet in return.  This dataset contains only the changes that have occurred.  If no changes were made by the time the timeout period is reached, an empty ContactsDataSet is returned.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsWaitForDeltaHttpPostIn"/>
+      <wsdl:output message="tns:ContactsWaitForDeltaHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes the currently logged in user from the Jabber server.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterRemoveUserHttpPostIn"/>
+      <wsdl:output message="tns:RegisterRemoveUserHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUserFromGateway">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes the currently logged in user from a gateway you had previously registered with.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterRemoveUserFromGatewayHttpPostIn"/>
+      <wsdl:output message="tns:RegisterRemoveUserFromGatewayHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SoapBoxWebServiceSoap">
+    <wsdl:operation name="SettingsSetAutoAwayPresenceValues">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets the values that will be used for your presence when you go idle.  The timeout defaults to ten minutes but you can set it using the SetSessionTimeouts method.  Idle time is calculated based on the last time you accessed the web service.</wsdl:documentation>
+      <wsdl:input message="tns:SettingsSetAutoAwayPresenceValuesSoapIn"/>
+      <wsdl:output message="tns:SettingsSetAutoAwayPresenceValuesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SettingsSetSessionTimeouts">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Specifies the timeout in seconds, for AutoAway, AutoBlockMessages and AutoLogout.  These default to 600, 10, and 3600 respectively.  Each timeout action is performed based on the last time you accessed the web service.</wsdl:documentation>
+      <wsdl:input message="tns:SettingsSetSessionTimeoutsSoapIn"/>
+      <wsdl:output message="tns:SettingsSetSessionTimeoutsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogout">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs PresenceSendUnavailable and SessionClose.  Closes your session to the Jabber server.  Removes your session on the Web Service server.  Your SessionID will no longer be valid.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLogoutSoapIn"/>
+      <wsdl:output message="tns:SessionLogoutSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogoutEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs PresenceSendUnavailable and SessionClose.  Closes your session to the Jabber server.  Removes your session on the Web Service server.  Your SessionID will no longer be valid.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLogoutExSoapIn"/>
+      <wsdl:output message="tns:SessionLogoutExSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSend">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a message of type 'chat' to the specified user with the message text.</wsdl:documentation>
+      <wsdl:input message="tns:MessageSendSoapIn"/>
+      <wsdl:output message="tns:MessageSendSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a message of type 'chat' to the specified user with the message text and the payload.  The payload must be an element with its own default namespace.</wsdl:documentation>
+      <wsdl:input message="tns:MessageSendExSoapIn"/>
+      <wsdl:output message="tns:MessageSendExSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx2">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a message of type 'chat' to the specified user with the message text and a subject.</wsdl:documentation>
+      <wsdl:input message="tns:MessageSendEx2SoapIn"/>
+      <wsdl:output message="tns:MessageSendEx2SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx3">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a message of type 'chat' to the specified user with the message text, payload, and a subject.  The payload must be an element with its own default namespace.</wsdl:documentation>
+      <wsdl:input message="tns:MessageSendEx3SoapIn"/>
+      <wsdl:output message="tns:MessageSendEx3SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageDequeue">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Dequeues all unread messages from your incoming message queue and returns them to you in a MessageDataSet.  Returns messages as a separate DataTable for each user.  The name of the DataTable is the Bare JID (JID with no resource) of the user the messages are from.</wsdl:documentation>
+      <wsdl:input message="tns:MessageDequeueSoapIn"/>
+      <wsdl:output message="tns:MessageDequeueSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWaitForIncoming">
+      <wsdl:input message="tns:CancelMessageWaitForIncomingSoapIn"/>
+      <wsdl:output message="tns:CancelMessageWaitForIncomingSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a cached copy of the ContactsDataSet populated with all your contacts and their availability.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsGetSoapIn"/>
+      <wsdl:output message="tns:ContactsGetSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGetDelta">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns any changes to the cached copy of the ContactsDataSet since you last requested it.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsGetDeltaSoapIn"/>
+      <wsdl:output message="tns:ContactsGetDeltaSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsAddUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds a user to your list of Contacts.  Adds the user to your Jabber roster and also subscribes to their presence.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsAddUserSoapIn"/>
+      <wsdl:output message="tns:ContactsAddUserSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRemoveUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes a user from your list of Contacts.  Removes the user from your Jabber roster and also unsubscribes from their presence.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsRemoveUserSoapIn"/>
+      <wsdl:output message="tns:ContactsRemoveUserSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsUpdateUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates the specified jid with a new friendlyname and group.  You should specify a value for both friendlyname and group.  A blank username will be defaulted to the jid and a blank group will be defaulted to Unspecified.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsUpdateUserSoapIn"/>
+      <wsdl:output message="tns:ContactsUpdateUserSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailable">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as available with the specified showValue and longText.  Valid values for showValue are: 'dnd', 'xa', 'chat', 'normal', and 'away'.  These stand for 'Do Not Disturb', 'Extended Away', 'I Want to Chat', 'Available', and 'Away', respectively.  You can specify more detailed messages with longText such as: 'I am in a quick meeting.  Be back soon.'</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendAvailableSoapIn"/>
+      <wsdl:output message="tns:PresenceSendAvailableSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailableEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as available with the specified showValue, longText, and priority.  Valid values for showValue are: 'dnd', 'xa', 'chat', 'normal', and 'away'.  These stand for 'Do Not Disturb', 'Extended Away', 'I Want to Chat', 'Available', and 'Away', respectively.  You can specify more detailed messages with longText such as: 'I am in a quick meeting.  Be back soon.'  Priority is used by the Jabber server when making message routing decisoins for messages sent to 'username@host' without a resource (username@host/resource).  The logged in resource with the highest priority will receive the message.  Any resource with a negative priority will never receive any messages.</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendAvailableExSoapIn"/>
+      <wsdl:output message="tns:PresenceSendAvailableExSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendCurrent">
+      <wsdl:input message="tns:PresenceSendCurrentSoapIn"/>
+      <wsdl:output message="tns:PresenceSendCurrentSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailable">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as unavailable.  This is done automatically when you call SessionLogout.</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendUnavailableSoapIn"/>
+      <wsdl:output message="tns:PresenceSendUnavailableSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailableEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as unavailable to the specified user.  This allows you to temporarily hide from users you do not wish to know you are online.</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendUnavailableExSoapIn"/>
+      <wsdl:output message="tns:PresenceSendUnavailableExSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers the specified user with the specified Jabber server.  This does not return you a SessionID.  If the method succeeds and you wish to log in to the server, you must call SessionLogin with your new user's information.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterUserSoapIn"/>
+      <wsdl:output message="tns:RegisterUserSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers the specified user with the specified Jabber server on the specified port.  It will use SSL to the Jabber server if you set UseSSL to true.  This does not return you a SessionID.  If the method succeeds and you wish to log in to the server, you must call SessionLogin with your new user's information.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterUserExSoapIn"/>
+      <wsdl:output message="tns:RegisterUserExSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserWithGateway">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers with a gateway on a Jabber server.  This is useful for communicating with outside networks such as AIM, MSN, or Yahoo!.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterUserWithGatewaySoapIn"/>
+      <wsdl:output message="tns:RegisterUserWithGatewaySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncExceptionsDequeue">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns an ExceptionDataSet containing all of the exceptions that have occurred in background threads.  If no exceptions have occurred, returns an empty ExceptionDataSet.</wsdl:documentation>
+      <wsdl:input message="tns:AsyncExceptionsDequeueSoapIn"/>
+      <wsdl:output message="tns:AsyncExceptionsDequeueSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLoginEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs SessionOpen, SessionAuthenticate, PresenceSendAvailable, and ContactsRequestFromServer with one method call.  Returns your unique SessionID on the SoapBoxHeader SessionID property.  This SessionID must be passed on the header in all subsequent calls.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLoginExSoapIn"/>
+      <wsdl:output message="tns:SessionLoginExSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogin">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs SessionOpen, SessionAuthenticate, PresenceSendAvailable, and ContactsRequestFromServer with one method call.  Uses the web service defaults for resource, port number, and SSL.  Returns your unique SessionID on the SoapBoxHeader SessionID property.  This SessionID must be passed on the header in all subsequent calls.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLoginSoapIn"/>
+      <wsdl:output message="tns:SessionLoginSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageWaitForIncoming">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Waits for the specified amount of time (in milliseconds) for incoming messages.  As soon as an incoming message is received, or the timeout period has elapsed, a MessageDataSet is returned.  Returns an emtpy MessageDataSet if the timeout period elapsed.  Returns messages as a separate DataTable for each user.  The name of the DataTable is the Bare JID (JID with no resource) of the user the messages are from.</wsdl:documentation>
+      <wsdl:input message="tns:MessageWaitForIncomingSoapIn"/>
+      <wsdl:output message="tns:MessageWaitForIncomingSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRequestFromServerAndWait">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a request to your Jabber server for a copy of your roster.  Returns the updated copy of the ContactsDataSet after the server responds with your roster, or the timeout period (in milliseconds) elapses.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsRequestFromServerAndWaitSoapIn"/>
+      <wsdl:output message="tns:ContactsRequestFromServerAndWaitSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsWaitForDelta">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Waits for the specified amount of time (in milliseconds) for any change to the cached ContactsDataSet.  As soon as any change is made to the ContactsDataSet -- whether it be a presence update or adding/updating/removing a contact -- or the timout period elapses, you will get a ContactsDataSet in return.  This dataset contains only the changes that have occurred.  If no changes were made by the time the timeout period is reached, an empty ContactsDataSet is returned.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsWaitForDeltaSoapIn"/>
+      <wsdl:output message="tns:ContactsWaitForDeltaSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes the currently logged in user from the Jabber server.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterRemoveUserSoapIn"/>
+      <wsdl:output message="tns:RegisterRemoveUserSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUserFromGateway">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes the currently logged in user from a gateway you had previously registered with.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterRemoveUserFromGatewaySoapIn"/>
+      <wsdl:output message="tns:RegisterRemoveUserFromGatewaySoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SoapBoxWebServiceHttpGet">
+    <wsdl:operation name="SettingsSetAutoAwayPresenceValues">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets the values that will be used for your presence when you go idle.  The timeout defaults to ten minutes but you can set it using the SetSessionTimeouts method.  Idle time is calculated based on the last time you accessed the web service.</wsdl:documentation>
+      <wsdl:input message="tns:SettingsSetAutoAwayPresenceValuesHttpGetIn"/>
+      <wsdl:output message="tns:SettingsSetAutoAwayPresenceValuesHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SettingsSetSessionTimeouts">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Specifies the timeout in seconds, for AutoAway, AutoBlockMessages and AutoLogout.  These default to 600, 10, and 3600 respectively.  Each timeout action is performed based on the last time you accessed the web service.</wsdl:documentation>
+      <wsdl:input message="tns:SettingsSetSessionTimeoutsHttpGetIn"/>
+      <wsdl:output message="tns:SettingsSetSessionTimeoutsHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogout">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs PresenceSendUnavailable and SessionClose.  Closes your session to the Jabber server.  Removes your session on the Web Service server.  Your SessionID will no longer be valid.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLogoutHttpGetIn"/>
+      <wsdl:output message="tns:SessionLogoutHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogoutEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs PresenceSendUnavailable and SessionClose.  Closes your session to the Jabber server.  Removes your session on the Web Service server.  Your SessionID will no longer be valid.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLogoutExHttpGetIn"/>
+      <wsdl:output message="tns:SessionLogoutExHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSend">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a message of type 'chat' to the specified user with the message text.</wsdl:documentation>
+      <wsdl:input message="tns:MessageSendHttpGetIn"/>
+      <wsdl:output message="tns:MessageSendHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx2">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a message of type 'chat' to the specified user with the message text and a subject.</wsdl:documentation>
+      <wsdl:input message="tns:MessageSendEx2HttpGetIn"/>
+      <wsdl:output message="tns:MessageSendEx2HttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageDequeue">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Dequeues all unread messages from your incoming message queue and returns them to you in a MessageDataSet.  Returns messages as a separate DataTable for each user.  The name of the DataTable is the Bare JID (JID with no resource) of the user the messages are from.</wsdl:documentation>
+      <wsdl:input message="tns:MessageDequeueHttpGetIn"/>
+      <wsdl:output message="tns:MessageDequeueHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWaitForIncoming">
+      <wsdl:input message="tns:CancelMessageWaitForIncomingHttpGetIn"/>
+      <wsdl:output message="tns:CancelMessageWaitForIncomingHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a cached copy of the ContactsDataSet populated with all your contacts and their availability.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsGetHttpGetIn"/>
+      <wsdl:output message="tns:ContactsGetHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGetDelta">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns any changes to the cached copy of the ContactsDataSet since you last requested it.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsGetDeltaHttpGetIn"/>
+      <wsdl:output message="tns:ContactsGetDeltaHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsAddUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds a user to your list of Contacts.  Adds the user to your Jabber roster and also subscribes to their presence.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsAddUserHttpGetIn"/>
+      <wsdl:output message="tns:ContactsAddUserHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRemoveUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes a user from your list of Contacts.  Removes the user from your Jabber roster and also unsubscribes from their presence.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsRemoveUserHttpGetIn"/>
+      <wsdl:output message="tns:ContactsRemoveUserHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsUpdateUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates the specified jid with a new friendlyname and group.  You should specify a value for both friendlyname and group.  A blank username will be defaulted to the jid and a blank group will be defaulted to Unspecified.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsUpdateUserHttpGetIn"/>
+      <wsdl:output message="tns:ContactsUpdateUserHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailable">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as available with the specified showValue and longText.  Valid values for showValue are: 'dnd', 'xa', 'chat', 'normal', and 'away'.  These stand for 'Do Not Disturb', 'Extended Away', 'I Want to Chat', 'Available', and 'Away', respectively.  You can specify more detailed messages with longText such as: 'I am in a quick meeting.  Be back soon.'</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendAvailableHttpGetIn"/>
+      <wsdl:output message="tns:PresenceSendAvailableHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailableEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as available with the specified showValue, longText, and priority.  Valid values for showValue are: 'dnd', 'xa', 'chat', 'normal', and 'away'.  These stand for 'Do Not Disturb', 'Extended Away', 'I Want to Chat', 'Available', and 'Away', respectively.  You can specify more detailed messages with longText such as: 'I am in a quick meeting.  Be back soon.'  Priority is used by the Jabber server when making message routing decisoins for messages sent to 'username@host' without a resource (username@host/resource).  The logged in resource with the highest priority will receive the message.  Any resource with a negative priority will never receive any messages.</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendAvailableExHttpGetIn"/>
+      <wsdl:output message="tns:PresenceSendAvailableExHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendCurrent">
+      <wsdl:input message="tns:PresenceSendCurrentHttpGetIn"/>
+      <wsdl:output message="tns:PresenceSendCurrentHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailable">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as unavailable.  This is done automatically when you call SessionLogout.</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendUnavailableHttpGetIn"/>
+      <wsdl:output message="tns:PresenceSendUnavailableHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailableEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Announces your presence as unavailable to the specified user.  This allows you to temporarily hide from users you do not wish to know you are online.</wsdl:documentation>
+      <wsdl:input message="tns:PresenceSendUnavailableExHttpGetIn"/>
+      <wsdl:output message="tns:PresenceSendUnavailableExHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers the specified user with the specified Jabber server.  This does not return you a SessionID.  If the method succeeds and you wish to log in to the server, you must call SessionLogin with your new user's information.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterUserHttpGetIn"/>
+      <wsdl:output message="tns:RegisterUserHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers the specified user with the specified Jabber server on the specified port.  It will use SSL to the Jabber server if you set UseSSL to true.  This does not return you a SessionID.  If the method succeeds and you wish to log in to the server, you must call SessionLogin with your new user's information.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterUserExHttpGetIn"/>
+      <wsdl:output message="tns:RegisterUserExHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserWithGateway">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registers with a gateway on a Jabber server.  This is useful for communicating with outside networks such as AIM, MSN, or Yahoo!.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterUserWithGatewayHttpGetIn"/>
+      <wsdl:output message="tns:RegisterUserWithGatewayHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncExceptionsDequeue">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns an ExceptionDataSet containing all of the exceptions that have occurred in background threads.  If no exceptions have occurred, returns an empty ExceptionDataSet.</wsdl:documentation>
+      <wsdl:input message="tns:AsyncExceptionsDequeueHttpGetIn"/>
+      <wsdl:output message="tns:AsyncExceptionsDequeueHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLoginEx">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs SessionOpen, SessionAuthenticate, PresenceSendAvailable, and ContactsRequestFromServer with one method call.  Returns your unique SessionID on the SoapBoxHeader SessionID property.  This SessionID must be passed on the header in all subsequent calls.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLoginExHttpGetIn"/>
+      <wsdl:output message="tns:SessionLoginExHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogin">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs SessionOpen, SessionAuthenticate, PresenceSendAvailable, and ContactsRequestFromServer with one method call.  Uses the web service defaults for resource, port number, and SSL.  Returns your unique SessionID on the SoapBoxHeader SessionID property.  This SessionID must be passed on the header in all subsequent calls.</wsdl:documentation>
+      <wsdl:input message="tns:SessionLoginHttpGetIn"/>
+      <wsdl:output message="tns:SessionLoginHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="MessageWaitForIncoming">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Waits for the specified amount of time (in milliseconds) for incoming messages.  As soon as an incoming message is received, or the timeout period has elapsed, a MessageDataSet is returned.  Returns an emtpy MessageDataSet if the timeout period elapsed.  Returns messages as a separate DataTable for each user.  The name of the DataTable is the Bare JID (JID with no resource) of the user the messages are from.</wsdl:documentation>
+      <wsdl:input message="tns:MessageWaitForIncomingHttpGetIn"/>
+      <wsdl:output message="tns:MessageWaitForIncomingHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRequestFromServerAndWait">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a request to your Jabber server for a copy of your roster.  Returns the updated copy of the ContactsDataSet after the server responds with your roster, or the timeout period (in milliseconds) elapses.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsRequestFromServerAndWaitHttpGetIn"/>
+      <wsdl:output message="tns:ContactsRequestFromServerAndWaitHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsWaitForDelta">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Waits for the specified amount of time (in milliseconds) for any change to the cached ContactsDataSet.  As soon as any change is made to the ContactsDataSet -- whether it be a presence update or adding/updating/removing a contact -- or the timout period elapses, you will get a ContactsDataSet in return.  This dataset contains only the changes that have occurred.  If no changes were made by the time the timeout period is reached, an empty ContactsDataSet is returned.</wsdl:documentation>
+      <wsdl:input message="tns:ContactsWaitForDeltaHttpGetIn"/>
+      <wsdl:output message="tns:ContactsWaitForDeltaHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUser">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes the currently logged in user from the Jabber server.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterRemoveUserHttpGetIn"/>
+      <wsdl:output message="tns:RegisterRemoveUserHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUserFromGateway">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes the currently logged in user from a gateway you had previously registered with.</wsdl:documentation>
+      <wsdl:input message="tns:RegisterRemoveUserFromGatewayHttpGetIn"/>
+      <wsdl:output message="tns:RegisterRemoveUserFromGatewayHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SoapBoxWebServiceHttpPost" type="tns:SoapBoxWebServiceHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="SettingsSetAutoAwayPresenceValues">
+      <http:operation location="/SettingsSetAutoAwayPresenceValues"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SettingsSetSessionTimeouts">
+      <http:operation location="/SettingsSetSessionTimeouts"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogout">
+      <http:operation location="/SessionLogout"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogoutEx">
+      <http:operation location="/SessionLogoutEx"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSend">
+      <http:operation location="/MessageSend"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx2">
+      <http:operation location="/MessageSendEx2"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageDequeue">
+      <http:operation location="/MessageDequeue"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWaitForIncoming">
+      <http:operation location="/CancelMessageWaitForIncoming"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGet">
+      <http:operation location="/ContactsGet"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGetDelta">
+      <http:operation location="/ContactsGetDelta"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsAddUser">
+      <http:operation location="/ContactsAddUser"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRemoveUser">
+      <http:operation location="/ContactsRemoveUser"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsUpdateUser">
+      <http:operation location="/ContactsUpdateUser"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailable">
+      <http:operation location="/PresenceSendAvailable"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailableEx">
+      <http:operation location="/PresenceSendAvailableEx"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendCurrent">
+      <http:operation location="/PresenceSendCurrent"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailable">
+      <http:operation location="/PresenceSendUnavailable"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailableEx">
+      <http:operation location="/PresenceSendUnavailableEx"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <http:operation location="/RegisterUser"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserEx">
+      <http:operation location="/RegisterUserEx"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserWithGateway">
+      <http:operation location="/RegisterUserWithGateway"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncExceptionsDequeue">
+      <http:operation location="/AsyncExceptionsDequeue"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLoginEx">
+      <http:operation location="/SessionLoginEx"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogin">
+      <http:operation location="/SessionLogin"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageWaitForIncoming">
+      <http:operation location="/MessageWaitForIncoming"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRequestFromServerAndWait">
+      <http:operation location="/ContactsRequestFromServerAndWait"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsWaitForDelta">
+      <http:operation location="/ContactsWaitForDelta"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUser">
+      <http:operation location="/RegisterRemoveUser"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUserFromGateway">
+      <http:operation location="/RegisterRemoveUserFromGateway"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SoapBoxWebServiceSoap" type="tns:SoapBoxWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SettingsSetAutoAwayPresenceValues">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SettingsSetAutoAwayPresenceValues" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SettingsSetAutoAwayPresenceValuesSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SettingsSetAutoAwayPresenceValuesSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SettingsSetSessionTimeouts">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SettingsSetSessionTimeouts" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SettingsSetSessionTimeoutsSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SettingsSetSessionTimeoutsSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogout">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SessionLogout" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SessionLogoutSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SessionLogoutSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogoutEx">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SessionLogoutEx" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SessionLogoutExSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SessionLogoutExSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSend">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageSend" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageSendSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageSendSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageSendEx" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageSendExSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageSendExSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx2">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageSendEx2" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageSendEx2SoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageSendEx2SoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx3">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageSendEx3" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageSendEx3SoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageSendEx3SoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageDequeue">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageDequeue" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageDequeueSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageDequeueSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWaitForIncoming">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/CancelMessageWaitForIncoming" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:CancelMessageWaitForIncomingSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:CancelMessageWaitForIncomingSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGet">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsGet" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsGetSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsGetSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGetDelta">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsGetDelta" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsGetDeltaSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsGetDeltaSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsAddUser">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsAddUser" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsAddUserSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsAddUserSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRemoveUser">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsRemoveUser" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsRemoveUserSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsRemoveUserSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsUpdateUser">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsUpdateUser" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsUpdateUserSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsUpdateUserSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailable">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/PresenceSendAvailable" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:PresenceSendAvailableSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:PresenceSendAvailableSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailableEx">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/PresenceSendAvailableEx" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:PresenceSendAvailableExSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:PresenceSendAvailableExSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendCurrent">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/PresenceSendCurrent" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:PresenceSendCurrentSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:PresenceSendCurrentSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailable">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/PresenceSendUnavailable" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:PresenceSendUnavailableSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:PresenceSendUnavailableSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailableEx">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/PresenceSendUnavailableEx" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:PresenceSendUnavailableExSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:PresenceSendUnavailableExSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/RegisterUser" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserEx">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/RegisterUserEx" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserWithGateway">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/RegisterUserWithGateway" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:RegisterUserWithGatewaySoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:RegisterUserWithGatewaySoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncExceptionsDequeue">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/AsyncExceptionsDequeue" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:AsyncExceptionsDequeueSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:AsyncExceptionsDequeueSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLoginEx">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SessionLoginEx" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SessionLoginExSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SessionLoginExSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogin">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SessionLogin" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SessionLoginSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SessionLoginSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageWaitForIncoming">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageWaitForIncoming" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageWaitForIncomingSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:MessageWaitForIncomingSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRequestFromServerAndWait">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsRequestFromServerAndWait" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsRequestFromServerAndWaitSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsRequestFromServerAndWaitSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsWaitForDelta">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsWaitForDelta" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsWaitForDeltaSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ContactsWaitForDeltaSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUser">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/RegisterRemoveUser" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:RegisterRemoveUserSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:RegisterRemoveUserSoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUserFromGateway">
+      <soap:operation soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/RegisterRemoveUserFromGateway" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:RegisterRemoveUserFromGatewaySoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:RegisterRemoveUserFromGatewaySoapBoxHeader" part="SoapBoxHeader" use="literal">
+        </soap:header>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SoapBoxWebServiceSoap12" type="tns:SoapBoxWebServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SettingsSetAutoAwayPresenceValues">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SettingsSetAutoAwayPresenceValues" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SettingsSetAutoAwayPresenceValuesSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SettingsSetAutoAwayPresenceValuesSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SettingsSetSessionTimeouts">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SettingsSetSessionTimeouts" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SettingsSetSessionTimeoutsSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SettingsSetSessionTimeoutsSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogout">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SessionLogout" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SessionLogoutSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SessionLogoutSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogoutEx">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SessionLogoutEx" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SessionLogoutExSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SessionLogoutExSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSend">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageSend" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageSendSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageSendSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageSendEx" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageSendExSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageSendExSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx2">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageSendEx2" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageSendEx2SoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageSendEx2SoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx3">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageSendEx3" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageSendEx3SoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageSendEx3SoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageDequeue">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageDequeue" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageDequeueSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageDequeueSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWaitForIncoming">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/CancelMessageWaitForIncoming" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:CancelMessageWaitForIncomingSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:CancelMessageWaitForIncomingSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGet">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsGet" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsGetSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsGetSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGetDelta">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsGetDelta" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsGetDeltaSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsGetDeltaSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsAddUser">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsAddUser" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsAddUserSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsAddUserSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRemoveUser">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsRemoveUser" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsRemoveUserSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsRemoveUserSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsUpdateUser">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsUpdateUser" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsUpdateUserSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsUpdateUserSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailable">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/PresenceSendAvailable" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:PresenceSendAvailableSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:PresenceSendAvailableSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailableEx">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/PresenceSendAvailableEx" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:PresenceSendAvailableExSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:PresenceSendAvailableExSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendCurrent">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/PresenceSendCurrent" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:PresenceSendCurrentSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:PresenceSendCurrentSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailable">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/PresenceSendUnavailable" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:PresenceSendUnavailableSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:PresenceSendUnavailableSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailableEx">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/PresenceSendUnavailableEx" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:PresenceSendUnavailableExSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:PresenceSendUnavailableExSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/RegisterUser" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserEx">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/RegisterUserEx" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserWithGateway">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/RegisterUserWithGateway" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:RegisterUserWithGatewaySoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:RegisterUserWithGatewaySoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncExceptionsDequeue">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/AsyncExceptionsDequeue" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:AsyncExceptionsDequeueSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:AsyncExceptionsDequeueSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLoginEx">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SessionLoginEx" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SessionLoginExSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SessionLoginExSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogin">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/SessionLogin" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SessionLoginSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SessionLoginSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageWaitForIncoming">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/MessageWaitForIncoming" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageWaitForIncomingSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:MessageWaitForIncomingSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRequestFromServerAndWait">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsRequestFromServerAndWait" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsRequestFromServerAndWaitSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsRequestFromServerAndWaitSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsWaitForDelta">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/ContactsWaitForDelta" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsWaitForDeltaSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ContactsWaitForDeltaSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUser">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/RegisterRemoveUser" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:RegisterRemoveUserSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:RegisterRemoveUserSoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUserFromGateway">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.winfessor.com/SoapBoxWebService/SoapBoxWebService/RegisterRemoveUserFromGateway" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:RegisterRemoveUserFromGatewaySoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:RegisterRemoveUserFromGatewaySoapBoxHeader" part="SoapBoxHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SoapBoxWebServiceHttpGet" type="tns:SoapBoxWebServiceHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="SettingsSetAutoAwayPresenceValues">
+      <http:operation location="/SettingsSetAutoAwayPresenceValues"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SettingsSetSessionTimeouts">
+      <http:operation location="/SettingsSetSessionTimeouts"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogout">
+      <http:operation location="/SessionLogout"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogoutEx">
+      <http:operation location="/SessionLogoutEx"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSend">
+      <http:operation location="/MessageSend"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageSendEx2">
+      <http:operation location="/MessageSendEx2"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageDequeue">
+      <http:operation location="/MessageDequeue"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWaitForIncoming">
+      <http:operation location="/CancelMessageWaitForIncoming"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGet">
+      <http:operation location="/ContactsGet"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsGetDelta">
+      <http:operation location="/ContactsGetDelta"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsAddUser">
+      <http:operation location="/ContactsAddUser"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRemoveUser">
+      <http:operation location="/ContactsRemoveUser"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsUpdateUser">
+      <http:operation location="/ContactsUpdateUser"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailable">
+      <http:operation location="/PresenceSendAvailable"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendAvailableEx">
+      <http:operation location="/PresenceSendAvailableEx"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendCurrent">
+      <http:operation location="/PresenceSendCurrent"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailable">
+      <http:operation location="/PresenceSendUnavailable"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresenceSendUnavailableEx">
+      <http:operation location="/PresenceSendUnavailableEx"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <http:operation location="/RegisterUser"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserEx">
+      <http:operation location="/RegisterUserEx"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserWithGateway">
+      <http:operation location="/RegisterUserWithGateway"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncExceptionsDequeue">
+      <http:operation location="/AsyncExceptionsDequeue"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLoginEx">
+      <http:operation location="/SessionLoginEx"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionLogin">
+      <http:operation location="/SessionLogin"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MessageWaitForIncoming">
+      <http:operation location="/MessageWaitForIncoming"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsRequestFromServerAndWait">
+      <http:operation location="/ContactsRequestFromServerAndWait"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContactsWaitForDelta">
+      <http:operation location="/ContactsWaitForDelta"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUser">
+      <http:operation location="/RegisterRemoveUser"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterRemoveUserFromGateway">
+      <http:operation location="/RegisterRemoveUserFromGateway"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SoapBoxWebService">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Enables users to perform standard XMPP/Jabber instant messaging over a web service.  This service maintains state for the user based on the SessionID provided in the SOAP Header.</wsdl:documentation>
+    <wsdl:port name="SoapBoxWebServiceSoap12" binding="tns:SoapBoxWebServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.pascocountyhouses.com/chat/ws/SoapBoxWebService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SoapBoxWebServiceHttpGet" binding="tns:SoapBoxWebServiceHttpGet">
+      <http:address location="http://www.pascocountyhouses.com/chat/ws/SoapBoxWebService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SoapBoxWebServiceSoap" binding="tns:SoapBoxWebServiceSoap">
+      <soap:address location="http://www.pascocountyhouses.com/chat/ws/SoapBoxWebService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SoapBoxWebServiceHttpPost" binding="tns:SoapBoxWebServiceHttpPost">
+      <http:address location="http://www.pascocountyhouses.com/chat/ws/SoapBoxWebService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

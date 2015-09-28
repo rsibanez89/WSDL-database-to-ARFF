@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://employireland.ie/WebServices" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://employireland.ie/WebServices" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://employireland.ie/WebServices">
+ <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+ <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+ <xsd:complexType name="ArrayOfInt">
+  <xsd:complexContent>
+   <xsd:restriction base="SOAP-ENC:Array">
+    <xsd:attribute maxOccurs="unbounded" minOccurs="0" ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:int[]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+   </xsd:restriction>
+  </xsd:complexContent>
+ </xsd:complexType>
+ <xsd:complexType name="JobDetailStruct">
+  <xsd:sequence>
+   <xsd:element maxOccurs="1" minOccurs="1" name="JobEmploymentTypeId" type="xsd:int"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="RefNo" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="JobTitle" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="1" name="JobExperienceId" type="xsd:int"/>
+   <xsd:element maxOccurs="1" minOccurs="1" name="JobEducationLevelId" type="xsd:int"/>
+   <xsd:element maxOccurs="1" minOccurs="1" name="JobSalaryRangeId" type="xsd:int"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="ShortDescription" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="Description" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="ContactInfo" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="ContactEmail" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="UserName" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="Password" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="1" name="DateOfExpiry" type="xsd:dateTime"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="Question1" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="Question2" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="Question3" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="JobDetailBenefits" type="tns:ArrayOfInt"/>
+   <xsd:element maxOccurs="1" minOccurs="1" name="JobCategories" type="tns:ArrayOfInt"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="JobCategoryRoles" type="tns:ArrayOfInt"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="JobDetailLocations" type="tns:ArrayOfInt"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="JobDetailKeywords" type="xsd:string"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="JobPostStatusStruct">
+  <xsd:sequence>
+   <xsd:element maxOccurs="1" minOccurs="1" name="JobId" type="xsd:int"/>
+   <xsd:element maxOccurs="1" minOccurs="1" name="SuccessFlag" type="xsd:boolean"/>
+   <xsd:element maxOccurs="1" minOccurs="0" name="ErrorMsg" type="xsd:string"/>
+   <xsd:element maxOccurs="1" minOccurs="1" name="Code" type="tns:ResponseCode"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="PostJob">
+  <xsd:sequence>
+   <xsd:element maxOccurs="1" minOccurs="1" name="jobStruct" type="tns:JobDetailStruct"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="PostJobResponse">
+  <xsd:sequence>
+   <xsd:element maxOccurs="1" minOccurs="1" name="PostJobResult" type="tns:JobPostStatusStruct"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="DeleteJob">
+  <xsd:sequence>
+   <xsd:element maxOccurs="1" minOccurs="1" name="jobStruct" type="tns:JobDetailStruct"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:complexType name="DeleteJobResponse">
+  <xsd:sequence>
+   <xsd:element maxOccurs="1" minOccurs="1" name="DeleteJobResult" type="tns:JobPostStatusStruct"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:simpleType name="ResponseCode">
+  <xsd:restriction base="xsd:string">
+  <xsd:enumeration value="Success"/>
+  <xsd:enumeration value="WrongUsernameOrPassword"/>
+  <xsd:enumeration value="NotAnEmployer"/>
+  <xsd:enumeration value="NoJobSlots"/>
+  <xsd:enumeration value="DatabaseError"/>
+  <xsd:enumeration value="NoSuchJob"/>
+  </xsd:restriction>
+ </xsd:simpleType></xsd:schema>
+  </types>
+  <message name="DeleteJobResponse">
+    <part name="DeleteJobSoapOut" type="tns:DeleteJobResponse"/>
+  </message>
+  <message name="PostJobRequest">
+    <part name="PostJobSoapIn" type="tns:PostJob"/>
+  </message>
+  <message name="PostJobResponse">
+    <part name="PostJobSoapOut" type="tns:PostJobResponse"/>
+  </message>
+  <message name="DeleteJobRequest">
+    <part name="DeleteJobSoapIn" type="tns:DeleteJob"/>
+  </message>
+  <portType name="ArcherJobFeedWsdlPortType">
+    <operation name="PostJob">
+<documentation>Post a new job</documentation>
+      <input message="tns:PostJobRequest"/>
+      <output message="tns:PostJobResponse"/>
+    </operation>
+    <operation name="DeleteJob">
+<documentation>Delete existing job</documentation>
+      <input message="tns:DeleteJobRequest"/>
+      <output message="tns:DeleteJobResponse"/>
+    </operation>
+  </portType>
+  <binding name="ArcherJobFeedWsdlBinding" type="tns:ArcherJobFeedWsdlPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="PostJob">
+      <soap:operation soapAction="http://employireland.ie/WebServices#PostJob" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://employireland.ie/WebServices"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://employireland.ie/WebServices"/>
+      </output>
+    </operation>
+    <operation name="DeleteJob">
+      <soap:operation soapAction="http://employireland.ie/WebServices#DeleteJob" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://employireland.ie/WebServices"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://employireland.ie/WebServices"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ArcherJobFeedWsdl">
+    <port name="ArcherJobFeedWsdlPort" binding="tns:ArcherJobFeedWsdlBinding">
+      <soap:address location="http://jobs-it.ie/erecruit.php"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:topten" xmlns:tns1="http://prodmgr.distribution.jamdat.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="urn:topten" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="urn:topten">
+  <types>
+    <schema targetNamespace="http://prodmgr.distribution.jamdat.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="urn:topten"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="TopTenData">
+    <sequence>
+     <element name="assetTypeId" type="xsd:int"/>
+     <element name="carrierId" type="xsd:int"/>
+     <element name="countryId" type="xsd:string"/>
+     <element name="dateId" type="xsd:int"/>
+     <element name="hardwareId" type="xsd:int"/>
+     <element name="nbrQtySold" type="xsd:int"/>
+     <element name="platformGroupId" type="xsd:int"/>
+     <element name="productId" type="xsd:int"/>
+     <element name="sellId" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema targetNamespace="urn:topten" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://prodmgr.distribution.jamdat.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns2_TopTenData">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:TopTenData[]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  </types>
+  <message name="getTopTenByDateRangeAndPageRequest">
+    <part name="in0" type="xsd:long"/>
+    <part name="in1" type="xsd:long"/>
+    <part name="in2" type="xsd:int"/>
+  </message>
+  <message name="getTopTenByDateAndPageResponse">
+    <part name="getTopTenByDateAndPageReturn" type="impl:ArrayOf_tns2_TopTenData"/>
+  </message>
+  <message name="getTopTenByDateRangeResponse">
+    <part name="getTopTenByDateRangeReturn" type="impl:ArrayOf_tns2_TopTenData"/>
+  </message>
+  <message name="getNumberOfRowsInTopTenResponse">
+    <part name="getNumberOfRowsInTopTenReturn" type="xsd:int"/>
+  </message>
+  <message name="getTopTenByDateRequest">
+    <part name="in0" type="xsd:long"/>
+  </message>
+  <message name="getTopTenRequest">
+  </message>
+  <message name="getTopTenByPageRequest">
+    <part name="in0" type="xsd:int"/>
+  </message>
+  <message name="getNumberOfRowsInTopTenByDateRequest">
+    <part name="in0" type="xsd:long"/>
+  </message>
+  <message name="getTopTenByDateResponse">
+    <part name="getTopTenByDateReturn" type="impl:ArrayOf_tns2_TopTenData"/>
+  </message>
+  <message name="getNumberOfRowsInTopTenByDateResponse">
+    <part name="getNumberOfRowsInTopTenByDateReturn" type="xsd:int"/>
+  </message>
+  <message name="getTopTenByDateAndPageRequest">
+    <part name="in0" type="xsd:long"/>
+    <part name="in1" type="xsd:int"/>
+  </message>
+  <message name="getTopTenResponse">
+    <part name="getTopTenReturn" type="impl:ArrayOf_tns2_TopTenData"/>
+  </message>
+  <message name="getNumberOfRowsInTopTenByDateRangeRequest">
+    <part name="in0" type="xsd:long"/>
+    <part name="in1" type="xsd:long"/>
+  </message>
+  <message name="getTopTenByDateRangeAndPageResponse">
+    <part name="getTopTenByDateRangeAndPageReturn" type="impl:ArrayOf_tns2_TopTenData"/>
+  </message>
+  <message name="getNumberOfRowsInTopTenRequest">
+  </message>
+  <message name="getNumberOfRowsInTopTenByDateRangeResponse">
+    <part name="getNumberOfRowsInTopTenByDateRangeReturn" type="xsd:int"/>
+  </message>
+  <message name="getTopTenPageSizeResponse">
+    <part name="getTopTenPageSizeReturn" type="xsd:int"/>
+  </message>
+  <message name="getTopTenPageSizeRequest">
+  </message>
+  <message name="getTopTenByDateRangeRequest">
+    <part name="in0" type="xsd:long"/>
+    <part name="in1" type="xsd:long"/>
+  </message>
+  <message name="getTopTenByPageResponse">
+    <part name="getTopTenByPageReturn" type="impl:ArrayOf_tns2_TopTenData"/>
+  </message>
+  <portType name="WsTopTen">
+    <operation name="getTopTen">
+      <input name="getTopTenRequest" message="impl:getTopTenRequest"/>
+      <output name="getTopTenResponse" message="impl:getTopTenResponse"/>
+    </operation>
+    <operation name="getTopTenByDate" parameterOrder="in0">
+      <input name="getTopTenByDateRequest" message="impl:getTopTenByDateRequest"/>
+      <output name="getTopTenByDateResponse" message="impl:getTopTenByDateResponse"/>
+    </operation>
+    <operation name="getTopTenByDateRange" parameterOrder="in0 in1">
+      <input name="getTopTenByDateRangeRequest" message="impl:getTopTenByDateRangeRequest"/>
+      <output name="getTopTenByDateRangeResponse" message="impl:getTopTenByDateRangeResponse"/>
+    </operation>
+    <operation name="getNumberOfRowsInTopTen">
+      <input name="getNumberOfRowsInTopTenRequest" message="impl:getNumberOfRowsInTopTenRequest"/>
+      <output name="getNumberOfRowsInTopTenResponse" message="impl:getNumberOfRowsInTopTenResponse"/>
+    </operation>
+    <operation name="getNumberOfRowsInTopTenByDate" parameterOrder="in0">
+      <input name="getNumberOfRowsInTopTenByDateRequest" message="impl:getNumberOfRowsInTopTenByDateRequest"/>
+      <output name="getNumberOfRowsInTopTenByDateResponse" message="impl:getNumberOfRowsInTopTenByDateResponse"/>
+    </operation>
+    <operation name="getNumberOfRowsInTopTenByDateRange" parameterOrder="in0 in1">
+      <input name="getNumberOfRowsInTopTenByDateRangeRequest" message="impl:getNumberOfRowsInTopTenByDateRangeRequest"/>
+      <output name="getNumberOfRowsInTopTenByDateRangeResponse" message="impl:getNumberOfRowsInTopTenByDateRangeResponse"/>
+    </operation>
+    <operation name="getTopTenPageSize">
+      <input name="getTopTenPageSizeRequest" message="impl:getTopTenPageSizeRequest"/>
+      <output name="getTopTenPageSizeResponse" message="impl:getTopTenPageSizeResponse"/>
+    </operation>
+    <operation name="getTopTenByPage" parameterOrder="in0">
+      <input name="getTopTenByPageRequest" message="impl:getTopTenByPageRequest"/>
+      <output name="getTopTenByPageResponse" message="impl:getTopTenByPageResponse"/>
+    </operation>
+    <operation name="getTopTenByDateAndPage" parameterOrder="in0 in1">
+      <input name="getTopTenByDateAndPageRequest" message="impl:getTopTenByDateAndPageRequest"/>
+      <output name="getTopTenByDateAndPageResponse" message="impl:getTopTenByDateAndPageResponse"/>
+    </operation>
+    <operation name="getTopTenByDateRangeAndPage" parameterOrder="in0 in1 in2">
+      <input name="getTopTenByDateRangeAndPageRequest" message="impl:getTopTenByDateRangeAndPageRequest"/>
+      <output name="getTopTenByDateRangeAndPageResponse" message="impl:getTopTenByDateRangeAndPageResponse"/>
+    </operation>
+  </portType>
+  <binding name="toptenSoapBinding" type="impl:WsTopTen">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getTopTen">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getTopTenRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </input>
+      <output name="getTopTenResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </output>
+    </operation>
+    <operation name="getTopTenByDate">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getTopTenByDateRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </input>
+      <output name="getTopTenByDateResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </output>
+    </operation>
+    <operation name="getTopTenByDateRange">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getTopTenByDateRangeRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </input>
+      <output name="getTopTenByDateRangeResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </output>
+    </operation>
+    <operation name="getNumberOfRowsInTopTen">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getNumberOfRowsInTopTenRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </input>
+      <output name="getNumberOfRowsInTopTenResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </output>
+    </operation>
+    <operation name="getNumberOfRowsInTopTenByDate">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getNumberOfRowsInTopTenByDateRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </input>
+      <output name="getNumberOfRowsInTopTenByDateResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </output>
+    </operation>
+    <operation name="getNumberOfRowsInTopTenByDateRange">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getNumberOfRowsInTopTenByDateRangeRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </input>
+      <output name="getNumberOfRowsInTopTenByDateRangeResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </output>
+    </operation>
+    <operation name="getTopTenPageSize">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getTopTenPageSizeRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </input>
+      <output name="getTopTenPageSizeResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </output>
+    </operation>
+    <operation name="getTopTenByPage">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getTopTenByPageRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </input>
+      <output name="getTopTenByPageResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </output>
+    </operation>
+    <operation name="getTopTenByDateAndPage">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getTopTenByDateAndPageRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </input>
+      <output name="getTopTenByDateAndPageResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </output>
+    </operation>
+    <operation name="getTopTenByDateRangeAndPage">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getTopTenByDateRangeAndPageRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </input>
+      <output name="getTopTenByDateRangeAndPageResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:topten"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="WsTopTenService">
+    <port name="topten" binding="impl:toptenSoapBinding">
+      <wsdlsoap:address location="http://athena.jamdat.com/axis/services/topten"/>
+    </port>
+  </service>
+</definitions>

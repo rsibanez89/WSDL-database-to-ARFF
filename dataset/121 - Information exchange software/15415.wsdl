@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://webservices" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="http://webservices" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://webservices">
+  <types>
+    <schema targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://rpc.xml.coldfusion"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="mapItem">
+    <sequence>
+     <element name="key" nillable="true" type="xsd:anyType"/>
+     <element name="value" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <complexType name="Map">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="apachesoap:mapItem"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema targetNamespace="http://rpc.xml.coldfusion" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="CFCInvocationException">
+    <sequence/>
+   </complexType>
+  </schema>
+  </types>
+  <message name="MailerRequest">
+    <part name="username" type="soapenc:string"/>
+    <part name="password" type="soapenc:string"/>
+    <part name="role" type="soapenc:string"/>
+    <part name="merch_id" type="soapenc:string"/>
+    <part name="mode" type="soapenc:string"/>
+    <part name="mail_email" type="soapenc:string"/>
+    <part name="mail_email_repeat" type="soapenc:string"/>
+    <part name="mail_html" type="soapenc:string"/>
+    <part name="mail_fname" type="soapenc:string"/>
+    <part name="bday_month" type="soapenc:string"/>
+    <part name="bday_day" type="soapenc:string"/>
+    <part name="bday_year" type="soapenc:string"/>
+    <part name="mlist_id" type="soapenc:string"/>
+  </message>
+  <message name="MailerResponse">
+    <part name="MailerReturn" type="apachesoap:Map"/>
+  </message>
+  <message name="CFCInvocationException">
+    <part name="fault" type="tns1:CFCInvocationException"/>
+  </message>
+  <portType name="dhd_mailer_ws">
+    <operation name="Mailer" parameterOrder="username password role merch_id mode mail_email mail_email_repeat mail_html mail_fname bday_month bday_day bday_year mlist_id">
+      <input name="MailerRequest" message="impl:MailerRequest"/>
+      <output name="MailerResponse" message="impl:MailerResponse"/>
+      <fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </operation>
+  </portType>
+  <binding name="dhd_mailer_ws.cfcSoapBinding" type="impl:dhd_mailer_ws">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Mailer">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="MailerRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </input>
+      <output name="MailerResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </output>
+      <fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="Mailer">
+    <port name="dhd_mailer_ws.cfc" binding="impl:dhd_mailer_ws.cfcSoapBinding">
+      <wsdlsoap:address location="https://secure.dhdmedia.com/webservices/dhd_mailer_ws.cfc"/>
+    </port>
+  </service>
+</definitions>

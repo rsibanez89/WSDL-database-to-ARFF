@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://api.hi5.com/message" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns5="http://api.hi5.com/message" xmlns:hi5="http://api.hi5.com/">
+  <types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://api.hi5.com/message">
+      <xs:import namespace="http://api.hi5.com/" schemaLocation="hi5.xsd"/>
+    </xs:schema>
+  </types>
+  <message name="UnauthorizedException">
+<documentation>
+      <![CDATA[Thrown when an attempt is made to do something that violates internal API constraints.]]>
+    </documentation>
+    <part name="UnauthorizedException" element="hi5:UnauthorizedException"/>
+  </message>
+  <message name="MessageApi.sendEmailsResponse">
+<documentation>
+      <![CDATA[Output message for operation "sendEmails". (Sends an email with the specified text title and body to a set of users.
+Users to be sent to are specified as a list of userids, passed in via the toIds parameter.
+<p>
+The number of emails sent is limited by quotas. See the Platform
+<a href="http://www.hi5networks.com/platform/wiki">Wiki</a> for more information.)]]>
+    </documentation>
+    <part name="return" type="hi5:emailResponse">
+<documentation/>
+      </part>
+  </message>
+  <message name="MessageApi.sendEmails">
+<documentation>
+      <![CDATA[Input message for operation "sendEmails". (Sends an email with the specified text title and body to a set of users.
+Users to be sent to are specified as a list of userids, passed in via the toIds parameter.
+<p>
+The number of emails sent is limited by quotas. See the Platform
+<a href="http://www.hi5networks.com/platform/wiki">Wiki</a> for more information.)]]>
+    </documentation>
+    <part name="title" type="xs:string">
+<documentation>
+        <![CDATA[the subject for the email. No html is allowed.]]>
+      </documentation>
+      </part>
+    <part name="body" type="xs:string">
+<documentation>
+        <![CDATA[the body of the email message. Only a and br tags are allowed, any other html is filtered.]]>
+      </documentation>
+      </part>
+    <part name="toIds" type="xs:string">
+<documentation>
+        <![CDATA[List of hi5 userids to attempt to send the email to. This should be passed in as multiple params (i.e. toIds=1000&toIds=2000&toIds=3000...) A maximum of 200 ids are allowed or the request will fail with an error. Only users who have the sending application installed will receive the email. A list of ids for users to whom the email was successfully sent is set in the response.]]>
+      </documentation>
+      </part>
+  </message>
+  <message name="PermissionDeniedException">
+<documentation>
+      <![CDATA[Thrown when an attempt is made to do something without the correct permissions.]]>
+    </documentation>
+    <part name="PermissionDeniedException" element="hi5:PermissionDeniedException"/>
+  </message>
+  <portType name="MessageApi">
+<documentation>
+      <![CDATA[This service enables messaging to the user. Currently the only supported message type is email.]]>
+    </documentation>
+    <operation name="sendEmails">
+<documentation>
+        <![CDATA[Sends an email with the specified text title and body to a set of users.
+Users to be sent to are specified as a list of userids, passed in via the toIds parameter.
+<p>
+The number of emails sent is limited by quotas. See the Platform
+<a href="http://www.hi5networks.com/platform/wiki">Wiki</a> for more information.]]>
+      </documentation>
+      <input message="ns5:MessageApi.sendEmails"/>
+      <output message="ns5:MessageApi.sendEmailsResponse"/>
+      <fault name="UnauthorizedException" message="ns5:UnauthorizedException"/>
+      <fault name="PermissionDeniedException" message="ns5:PermissionDeniedException"/>
+    </operation>
+  </portType>
+  <binding name="MessageApiSOAPBinding" type="ns5:MessageApi">
+<documentation>
+      <![CDATA[SOAP Binding for MessageApi]]>
+    </documentation>
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="sendEmails">
+      <soap:operation soapAction="" style="rpc"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="UnauthorizedException">
+        <soap:fault name="UnauthorizedException" use="literal"/>
+      </fault>
+      <fault name="PermissionDeniedException">
+        <soap:fault name="PermissionDeniedException" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="MessageApiService">
+    <port name="MessageApiSOAPPort" binding="ns5:MessageApiSOAPBinding">
+      <soap:address location="http://api.hi5.com/soap/MessageApiService"/>
+    </port>
+  </service>
+</definitions>

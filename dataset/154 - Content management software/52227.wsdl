@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount" xmlns:tns1="http://share.soaplab.org" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:impl="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount">
+  <wsdl:types>
+    <schema targetNamespace="http://share.soaplab.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="SoaplabExceptionBean">
+    <sequence>
+     <element name="message" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SoaplabException">
+    <sequence>
+     <element name="faultInfo" nillable="true" type="tns1:SoaplabExceptionBean"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://share.soaplab.org"/>
+   <import namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="mapItem">
+    <sequence>
+     <element name="key" nillable="true" type="xsd:anyType"/>
+     <element name="value" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <complexType name="Map">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="apachesoap:mapItem"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema targetNamespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://share.soaplab.org"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_apachesoap_Map">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="apachesoap:Map[]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_xsd_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  </wsdl:types>
+  <wsdl:message name="createAndRunRequest">
+    <wsdl:part name="inputs" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="getEndedRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getInputSpecResponse">
+    <wsdl:part name="getInputSpecReturn" type="impl:ArrayOf_apachesoap_Map"/>
+  </wsdl:message>
+  <wsdl:message name="getSomeResultsResponse">
+    <wsdl:part name="getSomeResultsReturn" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="getSomeResultsRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+    <wsdl:part name="resultNames" type="impl:ArrayOf_xsd_string"/>
+  </wsdl:message>
+  <wsdl:message name="SoaplabException">
+    <wsdl:part name="fault" type="tns1:SoaplabException"/>
+  </wsdl:message>
+  <wsdl:message name="getAnalysisTypeRequest">
+  </wsdl:message>
+  <wsdl:message name="getInputSpecRequest">
+  </wsdl:message>
+  <wsdl:message name="getCreatedRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="describeResponse">
+    <wsdl:part name="describeReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="runRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="destroyResponse">
+  </wsdl:message>
+  <wsdl:message name="waitForResponse">
+  </wsdl:message>
+  <wsdl:message name="destroyRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="describeRequest">
+  </wsdl:message>
+  <wsdl:message name="getEndedResponse">
+    <wsdl:part name="getEndedReturn" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="getAnalysisTypeResponse">
+    <wsdl:part name="getAnalysisTypeReturn" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="runNotifiableRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+    <wsdl:part name="notificationDescriptor" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getResultSpecResponse">
+    <wsdl:part name="getResultSpecReturn" type="impl:ArrayOf_apachesoap_Map"/>
+  </wsdl:message>
+  <wsdl:message name="getElapsedResponse">
+    <wsdl:part name="getElapsedReturn" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="getStatusResponse">
+    <wsdl:part name="getStatusReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="runAndWaitForResponse">
+    <wsdl:part name="runAndWaitForReturn" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="getResultsRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="createJobResponse">
+    <wsdl:part name="createJobReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="runNotifiableResponse">
+  </wsdl:message>
+  <wsdl:message name="createAndRunNotifiableResponse">
+    <wsdl:part name="createAndRunNotifiableReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getCreatedResponse">
+    <wsdl:part name="getCreatedReturn" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:message name="getLastEventResponse">
+    <wsdl:part name="getLastEventReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getElapsedRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getResultsResponse">
+    <wsdl:part name="getResultsReturn" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="createAndRunResponse">
+    <wsdl:part name="createAndRunReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getStartedRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getLastEventRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getNotificationDescriptorResponse">
+    <wsdl:part name="getNotificationDescriptorReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="createAndRunNotifiableRequest">
+    <wsdl:part name="inputs" type="apachesoap:Map"/>
+    <wsdl:part name="notificationDescriptor" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="terminateResponse">
+  </wsdl:message>
+  <wsdl:message name="runAndWaitForRequest">
+    <wsdl:part name="inputs" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="getNotificationDescriptorRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="terminateRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="runResponse">
+  </wsdl:message>
+  <wsdl:message name="getCharacteristicsRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getCharacteristicsResponse">
+    <wsdl:part name="getCharacteristicsReturn" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="waitForRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getResultSpecRequest">
+  </wsdl:message>
+  <wsdl:message name="createJobRequest">
+    <wsdl:part name="inputs" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="getStatusRequest">
+    <wsdl:part name="jobId" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getStartedResponse">
+    <wsdl:part name="getStartedReturn" type="xsd:long"/>
+  </wsdl:message>
+  <wsdl:portType name="AnalysisService">
+    <wsdl:operation name="run" parameterOrder="jobId">
+      <wsdl:input name="runRequest" message="impl:runRequest"/>
+      <wsdl:output name="runResponse" message="impl:runResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="destroy" parameterOrder="jobId">
+      <wsdl:input name="destroyRequest" message="impl:destroyRequest"/>
+      <wsdl:output name="destroyResponse" message="impl:destroyResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="terminate" parameterOrder="jobId">
+      <wsdl:input name="terminateRequest" message="impl:terminateRequest"/>
+      <wsdl:output name="terminateResponse" message="impl:terminateResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getStatus" parameterOrder="jobId">
+      <wsdl:input name="getStatusRequest" message="impl:getStatusRequest"/>
+      <wsdl:output name="getStatusResponse" message="impl:getStatusResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getResults" parameterOrder="jobId">
+      <wsdl:input name="getResultsRequest" message="impl:getResultsRequest"/>
+      <wsdl:output name="getResultsResponse" message="impl:getResultsResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="runAndWaitFor" parameterOrder="inputs">
+      <wsdl:input name="runAndWaitForRequest" message="impl:runAndWaitForRequest"/>
+      <wsdl:output name="runAndWaitForResponse" message="impl:runAndWaitForResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="describe">
+      <wsdl:input name="describeRequest" message="impl:describeRequest"/>
+      <wsdl:output name="describeResponse" message="impl:describeResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getLastEvent" parameterOrder="jobId">
+      <wsdl:input name="getLastEventRequest" message="impl:getLastEventRequest"/>
+      <wsdl:output name="getLastEventResponse" message="impl:getLastEventResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getInputSpec">
+      <wsdl:input name="getInputSpecRequest" message="impl:getInputSpecRequest"/>
+      <wsdl:output name="getInputSpecResponse" message="impl:getInputSpecResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getResultSpec">
+      <wsdl:input name="getResultSpecRequest" message="impl:getResultSpecRequest"/>
+      <wsdl:output name="getResultSpecResponse" message="impl:getResultSpecResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getAnalysisType">
+      <wsdl:input name="getAnalysisTypeRequest" message="impl:getAnalysisTypeRequest"/>
+      <wsdl:output name="getAnalysisTypeResponse" message="impl:getAnalysisTypeResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="createJob" parameterOrder="inputs">
+      <wsdl:input name="createJobRequest" message="impl:createJobRequest"/>
+      <wsdl:output name="createJobResponse" message="impl:createJobResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="runNotifiable" parameterOrder="jobId notificationDescriptor">
+      <wsdl:input name="runNotifiableRequest" message="impl:runNotifiableRequest"/>
+      <wsdl:output name="runNotifiableResponse" message="impl:runNotifiableResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="createAndRun" parameterOrder="inputs">
+      <wsdl:input name="createAndRunRequest" message="impl:createAndRunRequest"/>
+      <wsdl:output name="createAndRunResponse" message="impl:createAndRunResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="createAndRunNotifiable" parameterOrder="inputs notificationDescriptor">
+      <wsdl:input name="createAndRunNotifiableRequest" message="impl:createAndRunNotifiableRequest"/>
+      <wsdl:output name="createAndRunNotifiableResponse" message="impl:createAndRunNotifiableResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="waitFor" parameterOrder="jobId">
+      <wsdl:input name="waitForRequest" message="impl:waitForRequest"/>
+      <wsdl:output name="waitForResponse" message="impl:waitForResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCharacteristics" parameterOrder="jobId">
+      <wsdl:input name="getCharacteristicsRequest" message="impl:getCharacteristicsRequest"/>
+      <wsdl:output name="getCharacteristicsResponse" message="impl:getCharacteristicsResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationDescriptor" parameterOrder="jobId">
+      <wsdl:input name="getNotificationDescriptorRequest" message="impl:getNotificationDescriptorRequest"/>
+      <wsdl:output name="getNotificationDescriptorResponse" message="impl:getNotificationDescriptorResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getSomeResults" parameterOrder="jobId resultNames">
+      <wsdl:input name="getSomeResultsRequest" message="impl:getSomeResultsRequest"/>
+      <wsdl:output name="getSomeResultsResponse" message="impl:getSomeResultsResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCreated" parameterOrder="jobId">
+      <wsdl:input name="getCreatedRequest" message="impl:getCreatedRequest"/>
+      <wsdl:output name="getCreatedResponse" message="impl:getCreatedResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getStarted" parameterOrder="jobId">
+      <wsdl:input name="getStartedRequest" message="impl:getStartedRequest"/>
+      <wsdl:output name="getStartedResponse" message="impl:getStartedResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getEnded" parameterOrder="jobId">
+      <wsdl:input name="getEndedRequest" message="impl:getEndedRequest"/>
+      <wsdl:output name="getEndedResponse" message="impl:getEndedResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getElapsed" parameterOrder="jobId">
+      <wsdl:input name="getElapsedRequest" message="impl:getElapsedRequest"/>
+      <wsdl:output name="getElapsedResponse" message="impl:getElapsedResponse"/>
+      <wsdl:fault name="SoaplabException" message="impl:SoaplabException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="nucleic_composition.wordcountSoapBinding" type="impl:AnalysisService">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="run">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="runRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="runResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="destroy">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="destroyRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="destroyResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="terminate">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="terminateRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="terminateResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStatus">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getStatusRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getStatusResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getResults">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getResultsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getResultsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="runAndWaitFor">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="runAndWaitForRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="runAndWaitForResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="describe">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="describeRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="describeResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLastEvent">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getLastEventRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getLastEventResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInputSpec">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getInputSpecRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getInputSpecResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getResultSpec">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getResultSpecRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getResultSpecResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAnalysisType">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAnalysisTypeRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getAnalysisTypeResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createJob">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="createJobRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="createJobResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="runNotifiable">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="runNotifiableRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="runNotifiableResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createAndRun">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="createAndRunRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="createAndRunResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createAndRunNotifiable">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="createAndRunNotifiableRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="createAndRunNotifiableResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="waitFor">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="waitForRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="waitForResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCharacteristics">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getCharacteristicsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getCharacteristicsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getNotificationDescriptor">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getNotificationDescriptorRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getNotificationDescriptorResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSomeResults">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getSomeResultsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getSomeResultsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCreated">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getCreatedRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getCreatedResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStarted">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getStartedRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getStartedResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEnded">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getEndedRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getEndedResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getElapsed">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getElapsedRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis1.protocol.services.soaplab.org"/>
+      </wsdl:input>
+      <wsdl:output name="getElapsedResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:output>
+      <wsdl:fault name="SoaplabException">
+        <wsdlsoap:fault name="SoaplabException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AnalysisServiceService">
+    <wsdl:port name="nucleic_composition.wordcount" binding="impl:nucleic_composition.wordcountSoapBinding">
+      <wsdlsoap:address location="http://wsembnet.vital-it.ch/soaplab2-axis/services/nucleic_composition.wordcount"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

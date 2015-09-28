@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.wgu.edu/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.wgu.edu/webservices/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.wgu.edu/webservices/">
+      <s:element name="Update_Pts">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="InVendorWebID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="InStudentID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="InPoints" type="s:double"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_PtsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="Update_PtsResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="log_emails">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="InVendorWebID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="InStudentID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="inEmail_code" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="log_emailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="log_emailsResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Update_PtsSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_PtsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="log_emailsSoapOut">
+    <wsdl:part name="parameters" element="tns:log_emailsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Update_PtsSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Pts"/>
+  </wsdl:message>
+  <wsdl:message name="log_emailsSoapIn">
+    <wsdl:part name="parameters" element="tns:log_emails"/>
+  </wsdl:message>
+  <wsdl:portType name="Comm_vendor_communicationsSoap">
+    <wsdl:operation name="Update_Pts">
+      <wsdl:input message="tns:Update_PtsSoapIn"/>
+      <wsdl:output message="tns:Update_PtsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="log_emails">
+      <wsdl:input message="tns:log_emailsSoapIn"/>
+      <wsdl:output message="tns:log_emailsSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Comm_vendor_communicationsSoap12" type="tns:Comm_vendor_communicationsSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Update_Pts">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.wgu.edu/webservices/Update_Pts" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="log_emails">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.wgu.edu/webservices/log_emails" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Comm_vendor_communicationsSoap" type="tns:Comm_vendor_communicationsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Update_Pts">
+      <soap:operation soapAction="http://www.wgu.edu/webservices/Update_Pts" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="log_emails">
+      <soap:operation soapAction="http://www.wgu.edu/webservices/log_emails" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Comm_vendor_communications">
+    <wsdl:port name="Comm_vendor_communicationsSoap" binding="tns:Comm_vendor_communicationsSoap">
+      <soap:address location="http://wwwdev.wgu.edu/vendor_communications_in/Service.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="Comm_vendor_communicationsSoap12" binding="tns:Comm_vendor_communicationsSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://wwwdev.wgu.edu/vendor_communications_in/Service.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

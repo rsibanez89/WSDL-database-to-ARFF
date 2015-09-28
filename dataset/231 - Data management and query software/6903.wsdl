@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.kirupafx.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.kirupafx.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.kirupafx.com">
+      <s:element name="GetTop10">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetTop10Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetTop10Result" type="tns:ArrayOfString"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMovieAtNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="input" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMovieAtNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetMovieAtNumberResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTop10SoapOut">
+    <wsdl:part name="parameters" element="tns:GetTop10Response"/>
+  </wsdl:message>
+  <wsdl:message name="GetTop10SoapIn">
+    <wsdl:part name="parameters" element="tns:GetTop10"/>
+  </wsdl:message>
+  <wsdl:message name="GetMovieAtNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMovieAtNumber"/>
+  </wsdl:message>
+  <wsdl:message name="GetMovieAtNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMovieAtNumberResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="TopMoviesSoap">
+    <wsdl:operation name="GetTop10">
+      <wsdl:input message="tns:GetTop10SoapIn"/>
+      <wsdl:output message="tns:GetTop10SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovieAtNumber">
+      <wsdl:input message="tns:GetMovieAtNumberSoapIn"/>
+      <wsdl:output message="tns:GetMovieAtNumberSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TopMoviesSoap12" type="tns:TopMoviesSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetTop10">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.kirupafx.com/GetTop10" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovieAtNumber">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.kirupafx.com/GetMovieAtNumber" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TopMoviesSoap" type="tns:TopMoviesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetTop10">
+      <soap:operation soapAction="http://www.kirupafx.com/GetTop10" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovieAtNumber">
+      <soap:operation soapAction="http://www.kirupafx.com/GetMovieAtNumber" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TopMovies">
+    <wsdl:port name="TopMoviesSoap" binding="tns:TopMoviesSoap">
+      <soap:address location="http://www.kirupafx.com/WebService/TopMovies.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="TopMoviesSoap12" binding="tns:TopMoviesSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.kirupafx.com/WebService/TopMovies.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

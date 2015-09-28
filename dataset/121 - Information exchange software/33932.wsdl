@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="UMSSMS" targetNamespace="urn:UMSSMS" xmlns:typens="urn:UMSSMS" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <copyright>Copyright (C) 2004-2007 Unified Messaging Systems AS, Norway</copyright>
+    <author>Christian Stigen Larsen</author>
+      
+    <version name="server">1.7.0</version>
+    <version name="wsdl">1.7.0</version>
+    <version name="svn">$Id: smsSend.wsdl 35 2007-05-25 14:09:39Z csl $</version>
+      
+    <description>WSDL description on how to send SMS messages through the UMS platform.</description>
+      
+    <url name="Company">http://www.ums.no</url>
+      
+    <history>
+    <change author="csl" date="2004-03-10">Initial version</change>
+    <change author="csl" date="2004-06-16">Revised datatypes to support more of a stateless messaging scheme</change>
+    <change author="csl" date="2004-07-16">Removed msgReferenceArray, added msgGetStatus</change>
+    <change author="csl" date="2004-07-19">Removed default params in complex type &quot;Settings&quot;, renamed &quot;XxxArray&quot; to &quot;ArrayOfXxx&quot;</change>
+    <change author="csl" date="2004-07-22">Server now correctly adjusts doGetStatus responses to UTC/GMT times</change>
+    <change author="csl" date="2004-07-23">Server is now using gmtime() to convert to UTC</change>
+    <change author="csl" date="2004-08-05">Changed endpoint to secure.ums.no</change>
+    <change author="csl" date="2004-08-11">Added operation doGetReply</change>
+    <change author="csl" date="2004-08-16">Added doGetReply to binding</change>
+    <change author="csl" date="2005-08-30">Updated SOAP API and server</change>
+    <change author="csl" date="2006-04-19">Updated server</change>
+    <change author="csl" date="2006-04-23">In lsmssendpk changed datatype xsd:positiveInteger to xsd:int</change>
+    <change author="csl" date="2006-10-27">Bumped versions to 1.4, added doSendSMSSimple for one-recipient sendings, added timestamp for SMS replies.</change>
+    <change author="csl" date="2006-10-31">Added receivedOrder to SMSReply</change>
+    <change author="csl" date="2006-10-31">Release 1.4.0.  WSDL bumped to version 1.4.1</change>
+    <change author="csl" date="2007-03-19">Arrays are now compliant with WS-I 1.0a Basic Profile.  Added schedule time for SMS</change>
+    <change author="csl" date="2007-03-19">Using xsd:dateTime for all date and timestamps.  Removed messageClass, all sendings are now of type 'normal'</change>
+    <change author="csl" date="2007-03-19">Removed typens:Recipient, using xsd:string as base for recipientNumbers</change>
+    <change author="csl" date="2007-03-20">Errormessage in SMS status is now fetched directly from the database instead of in a harcoded table</change>
+    <change author="csl" date="2007-03-20">Added doGetStatusArray for querying several SMS sendings</change>
+    <change author="csl" date="2007-05-25">Added typens:groupedStatus for grouping all the possible SMS status codes</change>
+    </history>
+  </wsdl:documentation>
+  <types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:UMSSMS" xmlns="http://www.w3.org/2001/XMLSchema">
+      <xsd:complexType name="Account">
+        <xsd:all>
+          <xsd:element name="company" type="xsd:string"/>
+          <xsd:element name="department" type="xsd:string"/>
+          <xsd:element name="password" type="xsd:string"/>
+        </xsd:all>
+      </xsd:complexType>
+                  
+      <xsd:complexType name="SMS">
+        <xsd:all>
+          <xsd:element name="from" type="xsd:string"/>
+          <xsd:element name="text" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="schedule" type="xsd:dateTime"/><!-- Optional -->
+        </xsd:all>
+      </xsd:complexType>
+      
+      <xsd:complexType name="SMSReply">
+        <xsd:all>
+          <xsd:element name="receivedOrder" type="xsd:int"/>
+          <xsd:element name="from" type="xsd:string"/>
+          <xsd:element name="text" type="xsd:string"/>
+          <xsd:element name="timestamp" type="xsd:dateTime"/>
+        </xsd:all>
+      </xsd:complexType>
+      
+      <xsd:complexType name="ArrayOfRecipient">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="1" name="recipientNumber" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      
+      <xsd:complexType name="Settings">
+        <xsd:all>
+          <xsd:element name="splitMessages" type="xsd:boolean"/><!-- default is true -->
+          <xsd:element name="splitFormat" type="xsd:string"/><!-- default is "(%d/%t)\n" -->
+        </xsd:all>
+      </xsd:complexType>
+                  
+      <xsd:simpleType name="queueStatus">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="no-status-available"/>
+          <xsd:enumeration value="delivered"/>
+          <xsd:enumeration value="not-delivered-will-retry"/>
+          <xsd:enumeration value="not-delivered-given-up"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      
+      <xsd:simpleType name="groupedStatus">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ok-sms-sent"/>
+          <xsd:enumeration value="unknown-sms-in-queue"/>
+          <xsd:enumeration value="error-not-sent"/>
+          <xsd:enumeration value="error-blocked-number"/>
+          <xsd:enumeration value="error-subscriber-unavailable"/>
+          <xsd:enumeration value="error-subscriber-unknown"/>
+          <xsd:enumeration value="error-invalid-format"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      
+      <xsd:complexType name="Status">
+        <xsd:all>
+          <xsd:element name="lsmssendpk" type="xsd:int"/>
+          <xsd:element name="queueStatus" type="typens:queueStatus"/>
+          <xsd:element name="groupedStatus" type="typens:groupedStatus"/>
+          <xsd:element name="errorCode" type="xsd:int"/>
+          <xsd:element name="errorMessage" type="xsd:string"/>
+          <xsd:element name="deliveredToProvider" type="xsd:dateTime"/>
+          <xsd:element name="deliveredToRecipient" type="xsd:dateTime"/>
+          <xsd:element name="sentTo" type="xsd:string"/>
+        </xsd:all>
+      </xsd:complexType>
+      
+      <xsd:complexType name="ArrayOfReference">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="1" name="smssendpk" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      
+      <xsd:complexType name="ArrayOfStatus">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="1" name="smsStatus" type="typens:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      
+      <xsd:complexType name="ArrayOfSMSReply">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="1" name="smsReply" type="typens:SMSReply"/>
+        </xsd:sequence>
+      </xsd:complexType>      
+      
+    </xsd:schema>
+  </types>
+  <message name="msgSendSMSSimple">
+    <part name="umsCompany" type="xsd:string"/>
+    <part name="umsDepartment" type="xsd:string"/>
+    <part name="umsPassword" type="xsd:string"/>
+    <part name="to" type="xsd:string"/>
+    <part name="from" type="xsd:string"/>
+    <part name="text" type="xsd:string"/>
+  </message>
+  <message name="msgReference">
+    <part name="Reference" type="xsd:int"/>
+  </message>
+  <message name="msgGetStatusArrayIn">
+    <part name="Account" type="typens:Account"/>
+    <part name="References" type="typens:ArrayOfReference"/>
+  </message>
+  <message name="msgGetReplyOut">
+    <part name="Answers" type="typens:ArrayOfSMSReply"/>
+  </message>
+  <message name="msgSendSMS">
+    <part name="Account" type="typens:Account"/>
+    <part name="SMS" type="typens:SMS"/>
+    <part name="Recipients" type="typens:ArrayOfRecipient"/>
+    <part name="Settings" type="typens:Settings"/>
+  </message>
+  <message name="msgGetStatus">
+    <part name="Account" type="typens:Account"/>
+    <part name="Reference" type="xsd:int"/>
+  </message>
+  <message name="msgArrayOfStatus">
+    <part name="ArrayOfStatus" type="typens:ArrayOfStatus"/>
+  </message>
+  <message name="msgGetStatusArrayOut">
+    <part name="Statuses" type="typens:ArrayOfStatus"/>
+  </message>
+  <portType name="UMSSMSPort">
+    <operation name="doSendSMS">
+      <input message="typens:msgSendSMS"/>
+      <output message="typens:msgReference"/>
+    </operation>
+    <operation name="doSendSMSSimple">
+      <input message="typens:msgSendSMSSimple"/>
+      <output message="typens:msgReference"/>
+    </operation>
+    <operation name="doGetStatus">
+      <input message="typens:msgGetStatus"/>
+      <output message="typens:msgArrayOfStatus"/>
+    </operation>
+    <operation name="doGetStatusArray">
+      <input message="typens:msgGetStatusArrayIn"/>
+      <output message="typens:msgGetStatusArrayOut"/>
+    </operation>
+    <operation name="doGetReply">
+      <input message="typens:msgGetStatus"/>
+      <output message="typens:msgGetReplyOut"/>
+    </operation>
+  </portType>
+  <binding name="UMSSMSBinding" type="typens:UMSSMSPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="doSendSMS">
+      <soap:operation soapAction="urn:UMSSMSAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UMSSMS"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UMSSMS"/>
+      </output>
+    </operation>
+    <operation name="doSendSMSSimple">
+      <soap:operation soapAction="urn:UMSSMSAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UMSSMS"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UMSSMS"/>
+      </output>
+    </operation>
+    <operation name="doGetStatus">
+      <soap:operation soapAction="urn:UMSSMSAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UMSSMS"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UMSSMS"/>
+      </output>
+    </operation>
+    <operation name="doGetStatusArray">
+      <soap:operation soapAction="urn:UMSSMSAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UMSSMS"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UMSSMS"/>
+      </output>
+    </operation>
+    <operation name="doGetReply">
+      <soap:operation soapAction="urn:UMSSMSAction"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UMSSMS"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UMSSMS"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="UMSSMSService">
+    <port name="UMSSMSPort" binding="typens:UMSSMSBinding">
+      <soap:address location="https://secure.ums.no/soap/sms/1.7/"/>
+    </port>
+  </service>
+</definitions>

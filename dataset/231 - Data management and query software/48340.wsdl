@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://heig-vd.ch/Schemas/Directory/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://heig-vd.ch/Schemas/Directory/"/>
+      <s:element name="FindPeople">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="query" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPeopleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="FindPeopleResult" type="tns:ArrayOfPersonLight"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPersonLight">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="PersonLight" nillable="true" type="s1:PersonLight"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindPersonById">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="personId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPersonByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="FindPersonByIdResult" type="s1:Person"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://heig-vd.ch/Schemas/Directory/">
+      <s:complexType name="PersonLight">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="FirstName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LastName" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Person">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:PersonLight">
+            <s:sequence>
+              <s:element maxOccurs="1" minOccurs="0" name="Courtesy" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="WorkPhone" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Mail" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Acronym" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="MobilePhone" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Office" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Department" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Address" type="s1:Address"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Address">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Street" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="State" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="PostalCode" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FindPersonByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:FindPersonByIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FindPersonByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:FindPersonById"/>
+  </wsdl:message>
+  <wsdl:message name="FindPeopleSoapOut">
+    <wsdl:part name="parameters" element="tns:FindPeopleResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FindPeopleSoapIn">
+    <wsdl:part name="parameters" element="tns:FindPeople"/>
+  </wsdl:message>
+  <wsdl:portType name="DirectoryAutoCompleteSoap">
+    <wsdl:operation name="FindPeople">
+      <wsdl:input message="tns:FindPeopleSoapIn"/>
+      <wsdl:output message="tns:FindPeopleSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonById">
+      <wsdl:input message="tns:FindPersonByIdSoapIn"/>
+      <wsdl:output message="tns:FindPersonByIdSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DirectoryAutoCompleteSoap" type="tns:DirectoryAutoCompleteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="FindPeople">
+      <soap:operation soapAction="http://tempuri.org/FindPeople" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonById">
+      <soap:operation soapAction="http://tempuri.org/FindPersonById" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DirectoryAutoCompleteSoap12" type="tns:DirectoryAutoCompleteSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="FindPeople">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/FindPeople" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPersonById">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/FindPersonById" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DirectoryAutoComplete">
+    <wsdl:port name="DirectoryAutoCompleteSoap" binding="tns:DirectoryAutoCompleteSoap">
+      <soap:address location="http://international.heig-vd.ch/DirectoryService/DirectoryAutoComplete.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="DirectoryAutoCompleteSoap12" binding="tns:DirectoryAutoCompleteSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://international.heig-vd.ch/DirectoryService/DirectoryAutoComplete.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema"/>
+      <s:element name="GetDependsDataset">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="idDocTempl" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDependsDatasetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetDependsDatasetResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDependsDatasetByActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="idActivityTemplate" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="idStudentRegistration" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDependsDatasetByActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetDependsDatasetByActivityResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDependencyByFileName">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="fileName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="binDoc" type="s:base64Binary"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDependencyByFileNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetDependencyByFileNameResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="binDoc" type="s:base64Binary"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyLSTip">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="name" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="code" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="guid" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="description" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="level" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="topic" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="industry" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="keywords" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="taskData" type="s:base64Binary"/>
+            <s:element maxOccurs="1" minOccurs="1" name="creationDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="isApproved" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ModifyLSTipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ModifyLSTipResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadLSTip">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="name" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="code" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="guid" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="description" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="level" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="topic" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="industry" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="keywords" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="taskData" type="s:base64Binary"/>
+            <s:element maxOccurs="1" minOccurs="1" name="creationDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="isApproved" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="userID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadLSTipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="UploadLSTipResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadXMLDocumentAssignment">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="name" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="code" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="guid" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="description" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="level" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="keywords" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="taskData" type="s:base64Binary"/>
+            <s:element maxOccurs="1" minOccurs="1" name="creationDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="isApproved" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="oldTaskCodes" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="newTaskCodes" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="activityCode" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="userID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadXMLDocumentAssignmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="UploadXMLDocumentAssignmentResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="name" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="code" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="guid" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="type" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="task_type" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="description" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="level" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="topic" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="industry" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="keywords" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="taskData" type="s:base64Binary"/>
+            <s:element maxOccurs="1" minOccurs="1" name="creationDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="isApproved" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="case_type" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ModifyTaskResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="name" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="code" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="guid" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="type" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="task_type" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="description" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="level" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="topic" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="industry" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="keywords" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="taskData" type="s:base64Binary"/>
+            <s:element maxOccurs="1" minOccurs="1" name="creationDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="isApproved" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="userID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="case_type" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="UploadTaskResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetApprovedTasksDataset">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetApprovedTasksDatasetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetApprovedTasksDatasetResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTasksDataset">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTasksDatasetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetTasksDatasetResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLSTipsDataset">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLSTipsDatasetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetLSTipsDatasetResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAssignmentsDataset">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAssignmentsDatasetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetAssignmentsDatasetResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicsForTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="id_task" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicsForTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetTopicsForTaskResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKeywordsForDocTempl">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="id_task" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="doc_name" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKeywordsForDocTemplResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetKeywordsForDocTemplResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicsForLSTip">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="id_tip" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicsForLSTipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetTopicsForLSTipResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDocumentTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="id_doc" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDocumentTemplateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="DeleteDocumentTemplateResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXMLForDocumentTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="docTemplID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="zipDoc" type="s:base64Binary"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXMLForDocumentTemplateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetXMLForDocumentTemplateResult" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="zipDoc" type="s:base64Binary"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="idDocument" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="idUser" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="bIsApproved" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ApproveDocumentResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetireDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="idDocument" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="idUser" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="bIsRetired" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetireDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="RetireDocumentResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ApproveDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:ApproveDocumentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDocumentTemplate"/>
+  </wsdl:message>
+  <wsdl:message name="ModifyLSTipSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyLSTip"/>
+  </wsdl:message>
+  <wsdl:message name="GetDependsDatasetByActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetDependsDatasetByActivityResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetDependsDatasetByActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetDependsDatasetByActivity"/>
+  </wsdl:message>
+  <wsdl:message name="GetAssignmentsDatasetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAssignmentsDataset"/>
+  </wsdl:message>
+  <wsdl:message name="RetireDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:RetireDocumentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="UploadTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadTaskResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ApproveDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:ApproveDocument"/>
+  </wsdl:message>
+  <wsdl:message name="GetTasksDatasetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTasksDataset"/>
+  </wsdl:message>
+  <wsdl:message name="GetXMLForDocumentTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetXMLForDocumentTemplateResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetTopicsForTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTopicsForTaskResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ModifyLSTipSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyLSTipResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKeywordsForDocTemplSoapOut">
+    <wsdl:part name="parameters" element="tns:GetKeywordsForDocTemplResponse"/>
+  </wsdl:message>
+  <wsdl:message name="UploadTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadTask"/>
+  </wsdl:message>
+  <wsdl:message name="UploadLSTipSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadLSTip"/>
+  </wsdl:message>
+  <wsdl:message name="GetAssignmentsDatasetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAssignmentsDatasetResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetTopicsForLSTipSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTopicsForLSTip"/>
+  </wsdl:message>
+  <wsdl:message name="GetDependsDatasetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDependsDatasetResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKeywordsForDocTemplSoapIn">
+    <wsdl:part name="parameters" element="tns:GetKeywordsForDocTempl"/>
+  </wsdl:message>
+  <wsdl:message name="GetDependsDatasetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDependsDataset"/>
+  </wsdl:message>
+  <wsdl:message name="RetireDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:RetireDocument"/>
+  </wsdl:message>
+  <wsdl:message name="ModifyTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyTask"/>
+  </wsdl:message>
+  <wsdl:message name="UploadXMLDocumentAssignmentSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadXMLDocumentAssignmentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetLSTipsDatasetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLSTipsDataset"/>
+  </wsdl:message>
+  <wsdl:message name="UploadXMLDocumentAssignmentSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadXMLDocumentAssignment"/>
+  </wsdl:message>
+  <wsdl:message name="GetDependencyByFileNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDependencyByFileName"/>
+  </wsdl:message>
+  <wsdl:message name="GetApprovedTasksDatasetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetApprovedTasksDatasetResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteDocumentTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDocumentTemplateResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ModifyTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyTaskResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetApprovedTasksDatasetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetApprovedTasksDataset"/>
+  </wsdl:message>
+  <wsdl:message name="GetTasksDatasetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTasksDatasetResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetTopicsForTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTopicsForTask"/>
+  </wsdl:message>
+  <wsdl:message name="GetXMLForDocumentTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetXMLForDocumentTemplate"/>
+  </wsdl:message>
+  <wsdl:message name="GetTopicsForLSTipSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTopicsForLSTipResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetLSTipsDatasetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLSTipsDatasetResponse"/>
+  </wsdl:message>
+  <wsdl:message name="UploadLSTipSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadLSTipResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetDependencyByFileNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDependencyByFileNameResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="DocumentServiceSoap">
+    <wsdl:operation name="GetDependsDataset">
+      <wsdl:input message="tns:GetDependsDatasetSoapIn"/>
+      <wsdl:output message="tns:GetDependsDatasetSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDependsDatasetByActivity">
+      <wsdl:input message="tns:GetDependsDatasetByActivitySoapIn"/>
+      <wsdl:output message="tns:GetDependsDatasetByActivitySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDependencyByFileName">
+      <wsdl:input message="tns:GetDependencyByFileNameSoapIn"/>
+      <wsdl:output message="tns:GetDependencyByFileNameSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyLSTip">
+      <wsdl:input message="tns:ModifyLSTipSoapIn"/>
+      <wsdl:output message="tns:ModifyLSTipSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="UploadLSTip">
+      <wsdl:input message="tns:UploadLSTipSoapIn"/>
+      <wsdl:output message="tns:UploadLSTipSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="UploadXMLDocumentAssignment">
+      <wsdl:input message="tns:UploadXMLDocumentAssignmentSoapIn"/>
+      <wsdl:output message="tns:UploadXMLDocumentAssignmentSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTask">
+      <wsdl:input message="tns:ModifyTaskSoapIn"/>
+      <wsdl:output message="tns:ModifyTaskSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="UploadTask">
+      <wsdl:input message="tns:UploadTaskSoapIn"/>
+      <wsdl:output message="tns:UploadTaskSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovedTasksDataset">
+      <wsdl:input message="tns:GetApprovedTasksDatasetSoapIn"/>
+      <wsdl:output message="tns:GetApprovedTasksDatasetSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetTasksDataset">
+      <wsdl:input message="tns:GetTasksDatasetSoapIn"/>
+      <wsdl:output message="tns:GetTasksDatasetSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLSTipsDataset">
+      <wsdl:input message="tns:GetLSTipsDatasetSoapIn"/>
+      <wsdl:output message="tns:GetLSTipsDatasetSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssignmentsDataset">
+      <wsdl:input message="tns:GetAssignmentsDatasetSoapIn"/>
+      <wsdl:output message="tns:GetAssignmentsDatasetSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopicsForTask">
+      <wsdl:input message="tns:GetTopicsForTaskSoapIn"/>
+      <wsdl:output message="tns:GetTopicsForTaskSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywordsForDocTempl">
+      <wsdl:input message="tns:GetKeywordsForDocTemplSoapIn"/>
+      <wsdl:output message="tns:GetKeywordsForDocTemplSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopicsForLSTip">
+      <wsdl:input message="tns:GetTopicsForLSTipSoapIn"/>
+      <wsdl:output message="tns:GetTopicsForLSTipSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocumentTemplate">
+      <wsdl:input message="tns:DeleteDocumentTemplateSoapIn"/>
+      <wsdl:output message="tns:DeleteDocumentTemplateSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetXMLForDocumentTemplate">
+      <wsdl:input message="tns:GetXMLForDocumentTemplateSoapIn"/>
+      <wsdl:output message="tns:GetXMLForDocumentTemplateSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveDocument">
+      <wsdl:input message="tns:ApproveDocumentSoapIn"/>
+      <wsdl:output message="tns:ApproveDocumentSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RetireDocument">
+      <wsdl:input message="tns:RetireDocumentSoapIn"/>
+      <wsdl:output message="tns:RetireDocumentSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DocumentServiceSoap" type="tns:DocumentServiceSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetDependsDataset">
+      <soap:operation soapAction="http://tempuri.org/GetDependsDataset" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDependsDatasetByActivity">
+      <soap:operation soapAction="http://tempuri.org/GetDependsDatasetByActivity" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDependencyByFileName">
+      <soap:operation soapAction="http://tempuri.org/GetDependencyByFileName" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyLSTip">
+      <soap:operation soapAction="http://tempuri.org/ModifyLSTip" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadLSTip">
+      <soap:operation soapAction="http://tempuri.org/UploadLSTip" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadXMLDocumentAssignment">
+      <soap:operation soapAction="http://tempuri.org/UploadXMLDocumentAssignment" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTask">
+      <soap:operation soapAction="http://tempuri.org/ModifyTask" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadTask">
+      <soap:operation soapAction="http://tempuri.org/UploadTask" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovedTasksDataset">
+      <soap:operation soapAction="http://tempuri.org/GetApprovedTasksDataset" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTasksDataset">
+      <soap:operation soapAction="http://tempuri.org/GetTasksDataset" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLSTipsDataset">
+      <soap:operation soapAction="http://tempuri.org/GetLSTipsDataset" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssignmentsDataset">
+      <soap:operation soapAction="http://tempuri.org/GetAssignmentsDataset" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopicsForTask">
+      <soap:operation soapAction="http://tempuri.org/GetTopicsForTask" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywordsForDocTempl">
+      <soap:operation soapAction="http://tempuri.org/GetKeywordsForDocTempl" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopicsForLSTip">
+      <soap:operation soapAction="http://tempuri.org/GetTopicsForLSTip" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDocumentTemplate">
+      <soap:operation soapAction="http://tempuri.org/DeleteDocumentTemplate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXMLForDocumentTemplate">
+      <soap:operation soapAction="http://tempuri.org/GetXMLForDocumentTemplate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveDocument">
+      <soap:operation soapAction="http://tempuri.org/ApproveDocument" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetireDocument">
+      <soap:operation soapAction="http://tempuri.org/RetireDocument" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DocumentService">
+    <wsdl:port name="DocumentServiceSoap" binding="tns:DocumentServiceSoap">
+      <soap:address location="http://ws.netlearning.ro/WSServer_3/WebServices/DocumentService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

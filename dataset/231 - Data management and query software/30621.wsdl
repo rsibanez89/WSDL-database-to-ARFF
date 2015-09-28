@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="urn:brainsonic_com:SearchItemsService:v1" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:brainsonic_com:SearchItemsService:v1" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:brainsonic_com:SearchItemsService:v1">
+      <s:element name="searchItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="webTvConfigFileUrl" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="sessionId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="keyWords" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="searchItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="searchItemsResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="searchItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:searchItems"/>
+  </wsdl:message>
+  <wsdl:message name="searchItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:searchItemsResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="SearchItemsServiceSoap">
+    <wsdl:operation name="searchItems">
+      <wsdl:input message="tns:searchItemsSoapIn"/>
+      <wsdl:output message="tns:searchItemsSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SearchItemsServiceSoap" type="tns:SearchItemsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="searchItems">
+      <soap:operation soapAction="urn:brainsonic_com:SearchItemsService:v1/searchItems" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SearchItemsServiceSoap12" type="tns:SearchItemsServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="searchItems">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="urn:brainsonic_com:SearchItemsService:v1/searchItems" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SearchItemsService">
+    <wsdl:port name="SearchItemsServiceSoap12" binding="tns:SearchItemsServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://backoffice.brainsonic.com/desktopmodules/MediaNavigator_BackOffice/Services/SearchItemsService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SearchItemsServiceSoap" binding="tns:SearchItemsServiceSoap">
+      <soap:address location="http://backoffice.brainsonic.com/desktopmodules/MediaNavigator_BackOffice/Services/SearchItemsService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

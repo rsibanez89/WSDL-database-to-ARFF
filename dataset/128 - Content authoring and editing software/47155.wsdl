@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://dassel2000.de/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://dassel2000.de/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://dassel2000.de/">
+      <s:element name="GetSlides">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="contextKey" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSlidesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetSlidesResult" type="tns:ArrayOfSlide"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSlide">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="Slide" nillable="true" type="tns:Slide"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Slide">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ImagePath" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfSlide" nillable="true" type="tns:ArrayOfSlide"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSlidesHttpGetIn">
+    <wsdl:part name="contextKey" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetSlidesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSlides"/>
+  </wsdl:message>
+  <wsdl:message name="GetSlidesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSlide"/>
+  </wsdl:message>
+  <wsdl:message name="GetSlidesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSlidesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSlidesHttpPostIn">
+    <wsdl:part name="contextKey" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetSlidesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSlide"/>
+  </wsdl:message>
+  <wsdl:portType name="SlidesServiceHttpGet">
+    <wsdl:operation name="GetSlides">
+      <wsdl:input message="tns:GetSlidesHttpGetIn"/>
+      <wsdl:output message="tns:GetSlidesHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SlidesServiceHttpPost">
+    <wsdl:operation name="GetSlides">
+      <wsdl:input message="tns:GetSlidesHttpPostIn"/>
+      <wsdl:output message="tns:GetSlidesHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SlidesServiceSoap">
+    <wsdl:operation name="GetSlides">
+      <wsdl:input message="tns:GetSlidesSoapIn"/>
+      <wsdl:output message="tns:GetSlidesSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SlidesServiceSoap12" type="tns:SlidesServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSlides">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://dassel2000.de/GetSlides" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SlidesServiceHttpGet" type="tns:SlidesServiceHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="GetSlides">
+      <http:operation location="/GetSlides"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SlidesServiceHttpPost" type="tns:SlidesServiceHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="GetSlides">
+      <http:operation location="/GetSlides"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SlidesServiceSoap" type="tns:SlidesServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSlides">
+      <soap:operation soapAction="http://dassel2000.de/GetSlides" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SlidesService">
+    <wsdl:port name="SlidesServiceSoap" binding="tns:SlidesServiceSoap">
+      <soap:address location="http://www.fc-herdecke-ende.de/WebServices/SlidesService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SlidesServiceHttpPost" binding="tns:SlidesServiceHttpPost">
+      <http:address location="http://www.fc-herdecke-ende.de/WebServices/SlidesService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SlidesServiceHttpGet" binding="tns:SlidesServiceHttpGet">
+      <http:address location="http://www.fc-herdecke-ende.de/WebServices/SlidesService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SlidesServiceSoap12" binding="tns:SlidesServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.fc-herdecke-ende.de/WebServices/SlidesService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

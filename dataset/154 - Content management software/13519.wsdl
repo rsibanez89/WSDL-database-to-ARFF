@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www1.ccni.cl/wsRegistroLog/ws/EchoHeaders.jws" xmlns:tns1="http://www.w3.org/1999/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns2="http://www.w3.org/2003/05/soap-encoding" xmlns:impl="http://www1.ccni.cl/wsRegistroLog/ws/EchoHeaders.jws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://www1.ccni.cl/wsRegistroLog/ws/EchoHeaders.jws">
+  <wsdl:types>
+    <schema targetNamespace="http://www1.ccni.cl/wsRegistroLog/ws/EchoHeaders.jws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns2_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:string[]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  </wsdl:types>
+  <wsdl:message name="whoamiRequest">
+  </wsdl:message>
+  <wsdl:message name="throwRuntimeExceptionRequest">
+    <wsdl:part name="param" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="echoResponse">
+    <wsdl:part name="echoReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="throwAxisFaultResponse">
+  </wsdl:message>
+  <wsdl:message name="echoRequest">
+    <wsdl:part name="param" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="whoamiResponse">
+    <wsdl:part name="whoamiReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="throwExceptionRequest">
+    <wsdl:part name="param" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="listResponse">
+    <wsdl:part name="listReturn" type="impl:ArrayOf_tns2_string"/>
+  </wsdl:message>
+  <wsdl:message name="throwExceptionResponse">
+  </wsdl:message>
+  <wsdl:message name="throwRuntimeExceptionResponse">
+  </wsdl:message>
+  <wsdl:message name="throwAxisFaultRequest">
+    <wsdl:part name="param" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="listRequest">
+  </wsdl:message>
+  <wsdl:portType name="EchoHeaders">
+    <wsdl:operation name="echo" parameterOrder="param">
+      <wsdl:input name="echoRequest" message="impl:echoRequest"/>
+      <wsdl:output name="echoResponse" message="impl:echoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="list">
+      <wsdl:input name="listRequest" message="impl:listRequest"/>
+      <wsdl:output name="listResponse" message="impl:listResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="throwAxisFault" parameterOrder="param">
+      <wsdl:input name="throwAxisFaultRequest" message="impl:throwAxisFaultRequest"/>
+      <wsdl:output name="throwAxisFaultResponse" message="impl:throwAxisFaultResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="throwException" parameterOrder="param">
+      <wsdl:input name="throwExceptionRequest" message="impl:throwExceptionRequest"/>
+      <wsdl:output name="throwExceptionResponse" message="impl:throwExceptionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="throwRuntimeException" parameterOrder="param">
+      <wsdl:input name="throwRuntimeExceptionRequest" message="impl:throwRuntimeExceptionRequest"/>
+      <wsdl:output name="throwRuntimeExceptionResponse" message="impl:throwRuntimeExceptionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="whoami">
+      <wsdl:input name="whoamiRequest" message="impl:whoamiRequest"/>
+      <wsdl:output name="whoamiResponse" message="impl:whoamiResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EchoHeadersSoapBinding" type="impl:EchoHeaders">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="echo">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="echoRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:input>
+      <wsdl:output name="echoResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www1.ccni.cl/wsRegistroLog/ws/EchoHeaders.jws"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="list">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="listRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:input>
+      <wsdl:output name="listResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www1.ccni.cl/wsRegistroLog/ws/EchoHeaders.jws"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="throwAxisFault">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="throwAxisFaultRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:input>
+      <wsdl:output name="throwAxisFaultResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www1.ccni.cl/wsRegistroLog/ws/EchoHeaders.jws"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="throwException">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="throwExceptionRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:input>
+      <wsdl:output name="throwExceptionResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www1.ccni.cl/wsRegistroLog/ws/EchoHeaders.jws"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="throwRuntimeException">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="throwRuntimeExceptionRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:input>
+      <wsdl:output name="throwRuntimeExceptionResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www1.ccni.cl/wsRegistroLog/ws/EchoHeaders.jws"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="whoami">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="whoamiRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:input>
+      <wsdl:output name="whoamiResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www1.ccni.cl/wsRegistroLog/ws/EchoHeaders.jws"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EchoHeadersService">
+    <wsdl:port name="EchoHeaders" binding="impl:EchoHeadersSoapBinding">
+      <wsdlsoap:address location="http://www1.ccni.cl/wsRegistroLog/ws/EchoHeaders.jws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

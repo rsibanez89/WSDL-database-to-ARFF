@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx">
+      <s:element name="CheckBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="CheckBalanceResult" type="s:float"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DestinationAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="DCS" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DeliveryTime" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSMSResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsGold">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SenderAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DestinationAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsGoldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSmsGoldResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsGoldConcatenated">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SenderAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DestinationAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Header" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="DCS" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsGoldConcatenatedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSmsGoldConcatenatedResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsBronze">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DestinationAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsBronzeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSmsBronzeResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSimplePremiumSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SenderAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DestinationAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PremiumPrice" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="0" name="MoMessageId" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSimplePremiumSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSimplePremiumSMSResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendAdvancedPremiumSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SenderAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DestinationAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Dcs" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="UserDataHeader" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PremiumPrice" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="0" name="MoMessageId" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendAdvancedPremiumSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendAdvancedPremiumSMSResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWapPush">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SenderAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DestinationAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="urlTitle" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Url" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWapPushResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendWapPushResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReceivedMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="prefix" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="fDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="tDate" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReceivedMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetReceivedMessagesResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllReceivedMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="prefix" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="fDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="tDate" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllReceivedMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetAllReceivedMessagesResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsWithStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SenderAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DestinationAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsWithStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSmsWithStatusResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsConcatenatedWithStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SenderAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DestinationAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Header" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="DCS" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsConcatenatedWithStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSmsConcatenatedWithStatusResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSimpleSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SenderAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DestinationAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSimpleSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSimpleSMSResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetReceivedMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReceivedMessagesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsWithStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSmsWithStatus"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsBronzeSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSmsBronzeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsGoldSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSmsGold"/>
+  </wsdl:message>
+  <wsdl:message name="SendWapPushSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWapPush"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllReceivedMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllReceivedMessages"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsGoldSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSmsGoldResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSimpleSMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSimpleSMS"/>
+  </wsdl:message>
+  <wsdl:message name="SendWapPushSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWapPushResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CheckBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckBalance"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsConcatenatedWithStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSmsConcatenatedWithStatusResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsGoldConcatenatedSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSmsGoldConcatenatedResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CheckBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckBalanceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendAdvancedPremiumSMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SendAdvancedPremiumSMSResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsWithStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSmsWithStatusResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsBronzeSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSmsBronze"/>
+  </wsdl:message>
+  <wsdl:message name="SendSimplePremiumSMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSimplePremiumSMSResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsConcatenatedWithStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSmsConcatenatedWithStatus"/>
+  </wsdl:message>
+  <wsdl:message name="SendAdvancedPremiumSMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SendAdvancedPremiumSMS"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMS"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllReceivedMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllReceivedMessagesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsGoldConcatenatedSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSmsGoldConcatenated"/>
+  </wsdl:message>
+  <wsdl:message name="GetReceivedMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReceivedMessages"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSimplePremiumSMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSimplePremiumSMS"/>
+  </wsdl:message>
+  <wsdl:message name="SendSimpleSMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSimpleSMSResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="SmSServiceSoap">
+    <wsdl:operation name="CheckBalance">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Read balance from SMS prepaid account.</documentation>
+      <wsdl:input message="tns:CheckBalanceSoapIn"/>
+      <wsdl:output message="tns:CheckBalanceSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Sending a channel 1 SMS.</documentation>
+      <wsdl:input message="tns:SendSMSSoapIn"/>
+      <wsdl:output message="tns:SendSMSSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsGold">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Channel 4, sending a gold-channel SMS with delivery report.</documentation>
+      <wsdl:input message="tns:SendSmsGoldSoapIn"/>
+      <wsdl:output message="tns:SendSmsGoldSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsGoldConcatenated">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Channel 4, sending a concatenated SMS with delivery report.</documentation>
+      <wsdl:input message="tns:SendSmsGoldConcatenatedSoapIn"/>
+      <wsdl:output message="tns:SendSmsGoldConcatenatedSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsBronze">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description:Channel 6, sending a Bronze-channel SMS through a German operator.</documentation>
+      <wsdl:input message="tns:SendSmsBronzeSoapIn"/>
+      <wsdl:output message="tns:SendSmsBronzeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSimplePremiumSMS">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Sending a simple Mobile Terminated (MT) premium SMS. Mobile Originator SmsID must be attached.</documentation>
+      <wsdl:input message="tns:SendSimplePremiumSMSSoapIn"/>
+      <wsdl:output message="tns:SendSimplePremiumSMSSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendAdvancedPremiumSMS">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Sending a Advanced Mobile Terminated (MT) premium SMS. Mobile Originator SmsID must be attached.</documentation>
+      <wsdl:input message="tns:SendAdvancedPremiumSMSSoapIn"/>
+      <wsdl:output message="tns:SendAdvancedPremiumSMSSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendWapPush">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Push an URL to receivers phone.</documentation>
+      <wsdl:input message="tns:SendWapPushSoapIn"/>
+      <wsdl:output message="tns:SendWapPushSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceivedMessages">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Get received SMS with specific prefix between from and to date. From and to date should only include date. Received SMS only returns once.</documentation>
+      <wsdl:input message="tns:GetReceivedMessagesSoapIn"/>
+      <wsdl:output message="tns:GetReceivedMessagesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReceivedMessages">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Get received SMS with specific prefix between from and to date. From and to date should include date and time in format (now). Received SMS can be returned numerous times.</documentation>
+      <wsdl:input message="tns:GetAllReceivedMessagesSoapIn"/>
+      <wsdl:output message="tns:GetAllReceivedMessagesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsWithStatus">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Sending a class 3 SMS with delivery report. OBSOLETE! This method will be removed!</documentation>
+      <wsdl:input message="tns:SendSmsWithStatusSoapIn"/>
+      <wsdl:output message="tns:SendSmsWithStatusSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsConcatenatedWithStatus">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Sending a concatenated class 3 SMS with delivery report. OBSOLETE! This method will be removed!</documentation>
+      <wsdl:input message="tns:SendSmsConcatenatedWithStatusSoapIn"/>
+      <wsdl:output message="tns:SendSmsConcatenatedWithStatusSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSimpleSMS">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Description: Sending a channel gold SMS. OBSOLETE! This method will be removed!</documentation>
+      <wsdl:input message="tns:SendSimpleSMSSoapIn"/>
+      <wsdl:output message="tns:SendSimpleSMSSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SmSServiceSoap" type="tns:SmSServiceSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CheckBalance">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/CheckBalance" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/SendSMS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsGold">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/SendSmsGold" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsGoldConcatenated">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/SendSmsGoldConcatenated" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsBronze">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/SendSmsBronze" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSimplePremiumSMS">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/SendSimplePremiumSMS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendAdvancedPremiumSMS">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/SendAdvancedPremiumSMS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWapPush">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/SendWapPush" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceivedMessages">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/GetReceivedMessages" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReceivedMessages">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/GetAllReceivedMessages" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsWithStatus">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/SendSmsWithStatus" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSmsConcatenatedWithStatus">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/SendSmsConcatenatedWithStatus" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSimpleSMS">
+      <soap:operation soapAction="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx/SendSimpleSMS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SmSService">
+    <wsdl:port name="SmSServiceSoap" binding="tns:SmSServiceSoap">
+      <soap:address location="http://www.smartsms.se/webservice/wbssmsws/wbssmsws.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

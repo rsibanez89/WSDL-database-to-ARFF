@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.alltomstad.se/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.alltomstad.se/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.alltomstad.se/">
+      <s:element name="Vote">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="video" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="rating" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VoteResponse">
+        <s:complexType/>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="VoteHttpGetIn">
+    <wsdl:part name="video" type="s:string"/>
+    <wsdl:part name="rating" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="VoteSoapIn">
+    <wsdl:part name="parameters" element="tns:Vote"/>
+  </wsdl:message>
+  <wsdl:message name="VoteHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="VoteHttpPostIn">
+    <wsdl:part name="video" type="s:string"/>
+    <wsdl:part name="rating" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="VoteSoapOut">
+    <wsdl:part name="parameters" element="tns:VoteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="VoteHttpGetOut">
+  </wsdl:message>
+  <wsdl:portType name="VideoHttpGet">
+    <wsdl:operation name="Vote">
+      <wsdl:input message="tns:VoteHttpGetIn"/>
+      <wsdl:output message="tns:VoteHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="VideoSoap">
+    <wsdl:operation name="Vote">
+      <wsdl:input message="tns:VoteSoapIn"/>
+      <wsdl:output message="tns:VoteSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="VideoHttpPost">
+    <wsdl:operation name="Vote">
+      <wsdl:input message="tns:VoteHttpPostIn"/>
+      <wsdl:output message="tns:VoteHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VideoHttpGet" type="tns:VideoHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="Vote">
+      <http:operation location="/Vote"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VideoSoap" type="tns:VideoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Vote">
+      <soap:operation soapAction="http://www.alltomstad.se/Vote" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VideoSoap12" type="tns:VideoSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Vote">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.alltomstad.se/Vote" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VideoHttpPost" type="tns:VideoHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="Vote">
+      <http:operation location="/Vote"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Video">
+    <wsdl:port name="VideoHttpGet" binding="tns:VideoHttpGet">
+      <http:address location="http://www.alltomstad.se/video.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="VideoSoap" binding="tns:VideoSoap">
+      <soap:address location="http://www.alltomstad.se/video.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="VideoSoap12" binding="tns:VideoSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.alltomstad.se/video.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="VideoHttpPost" binding="tns:VideoHttpPost">
+      <http:address location="http://www.alltomstad.se/video.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

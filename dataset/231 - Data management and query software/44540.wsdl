@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://islington.gov.uk/GIS/AskIslington" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://islington.gov.uk/GIS/AskIslington" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">GisAskIslington</wsdl:documentation>
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://islington.gov.uk/GIS/AskIslington">
+      <s:element name="GetLocalInformationIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UPRN" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocalInformationOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetLocalInformationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocalInformationToRenderIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UPRN" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="templateTypeParam" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocalInformationToRenderOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetLocalInformationToRenderResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataCheckIn">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetDataCheckOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetDataCheckResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FlushCache">
+        <s:complexType/>
+      </s:element>
+      <s:element name="FlushCacheResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="FlushCacheResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDataCheckHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocalInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocalInformationIn"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocalInformationToRenderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocalInformationToRenderIn"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataCheckSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataCheckIn"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataCheckHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="FlushCacheHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="GetLocalInformationHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocalInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocalInformationOut"/>
+  </wsdl:message>
+  <wsdl:message name="FlushCacheSoapIn">
+    <wsdl:part name="parameters" element="tns:FlushCache"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocalInformationHttpPostIn">
+    <wsdl:part name="UPRN" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocalInformationToRenderHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="FlushCacheHttpPostOut">
+    <wsdl:part name="Body" element="tns:int"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocalInformationToRenderHttpPostIn">
+    <wsdl:part name="UPRN" type="s:string"/>
+    <wsdl:part name="templateTypeParam" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocalInformationToRenderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocalInformationToRenderOut"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataCheckSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataCheckOut"/>
+  </wsdl:message>
+  <wsdl:message name="FlushCacheSoapOut">
+    <wsdl:part name="parameters" element="tns:FlushCacheResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="GisAskIslingtonHttpPost">
+    <wsdl:operation name="GetLocalInformation">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Queries the GIS database and AskIslington for local information, as configured by QueryInfo.xml</wsdl:documentation>
+      <wsdl:input message="tns:GetLocalInformationHttpPostIn"/>
+      <wsdl:output message="tns:GetLocalInformationHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalInformationToRender">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Queries the results and transforms them to nearly html - see documentation for the transformable elements</wsdl:documentation>
+      <wsdl:input message="tns:GetLocalInformationToRenderHttpPostIn"/>
+      <wsdl:output message="tns:GetLocalInformationToRenderHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataCheck">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get diagnostic results for the queries</wsdl:documentation>
+      <wsdl:input message="tns:GetDataCheckHttpPostIn"/>
+      <wsdl:output message="tns:GetDataCheckHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FlushCache">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Flushes all cached subquery data</wsdl:documentation>
+      <wsdl:input message="tns:FlushCacheHttpPostIn"/>
+      <wsdl:output message="tns:FlushCacheHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GisAskIslingtonSoap">
+    <wsdl:operation name="GetLocalInformation">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Queries the GIS database and AskIslington for local information, as configured by QueryInfo.xml</wsdl:documentation>
+      <wsdl:input message="tns:GetLocalInformationSoapIn"/>
+      <wsdl:output message="tns:GetLocalInformationSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalInformationToRender">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Queries the results and transforms them to nearly html - see documentation for the transformable elements</wsdl:documentation>
+      <wsdl:input message="tns:GetLocalInformationToRenderSoapIn"/>
+      <wsdl:output message="tns:GetLocalInformationToRenderSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataCheck">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get diagnostic results for the queries</wsdl:documentation>
+      <wsdl:input message="tns:GetDataCheckSoapIn"/>
+      <wsdl:output message="tns:GetDataCheckSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FlushCache">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Flushes all cached subquery data</wsdl:documentation>
+      <wsdl:input message="tns:FlushCacheSoapIn"/>
+      <wsdl:output message="tns:FlushCacheSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GisAskIslingtonHttpPost" type="tns:GisAskIslingtonHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="GetLocalInformation">
+      <http:operation location="/GetLocalInformation"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalInformationToRender">
+      <http:operation location="/GetLocalInformationToRender"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataCheck">
+      <http:operation location="/GetDataCheck"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlushCache">
+      <http:operation location="/FlushCache"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GisAskIslingtonSoap12" type="tns:GisAskIslingtonSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetLocalInformation">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://islington.gov.uk/GIS/AskIslington/GetLocalInformation" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalInformationToRender">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://islington.gov.uk/GIS/AskIslington/GetLocalInformationToRender" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataCheck">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://islington.gov.uk/GIS/AskIslington/GetDataCheck" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlushCache">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://islington.gov.uk/GIS/AskIslington/FlushCache" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GisAskIslingtonSoap" type="tns:GisAskIslingtonSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetLocalInformation">
+      <soap:operation soapAction="http://islington.gov.uk/GIS/AskIslington/GetLocalInformation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalInformationToRender">
+      <soap:operation soapAction="http://islington.gov.uk/GIS/AskIslington/GetLocalInformationToRender" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataCheck">
+      <soap:operation soapAction="http://islington.gov.uk/GIS/AskIslington/GetDataCheck" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlushCache">
+      <soap:operation soapAction="http://islington.gov.uk/GIS/AskIslington/FlushCache" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GisAskIslington">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">GisAskIslington</wsdl:documentation>
+    <wsdl:port name="GisAskIslingtonHttpPost" binding="tns:GisAskIslingtonHttpPost">
+      <http:address location="http://webgis.islington.gov.uk/website/WebServices/LocalInfoDev/GisAskIslington.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="GisAskIslingtonSoap" binding="tns:GisAskIslingtonSoap">
+      <soap:address location="http://webgis.islington.gov.uk/website/WebServices/LocalInfoDev/GisAskIslington.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="GisAskIslingtonSoap12" binding="tns:GisAskIslingtonSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://webgis.islington.gov.uk/website/WebServices/LocalInfoDev/GisAskIslington.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,2671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddContainer2ByNewUserEr">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ContainerType" type="tns:ContainerTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Auto" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Zhd" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Sea" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Avia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="RecurrenceTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="recNotSpecified"/>
+          <s:enumeration value="recOneTime"/>
+          <s:enumeration value="recRegular"/>
+          <s:enumeration value="recDaily"/>
+          <s:enumeration value="recMonthly"/>
+          <s:enumeration value="recWeekly"/>
+          <s:enumeration value="recQueryRate"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ReqOfferTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="RequestType"/>
+          <s:enumeration value="OfferType"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ContainerTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="ctNotSpecified"/>
+          <s:enumeration value="ctStandart20"/>
+          <s:enumeration value="ctStandart40"/>
+          <s:enumeration value="ctHighCube40"/>
+          <s:enumeration value="ctRefrigerator20"/>
+          <s:enumeration value="ctRefrigerator40"/>
+          <s:enumeration value="ctRefrigeratorHighCube40"/>
+          <s:enumeration value="ctIsolated20"/>
+          <s:enumeration value="ctAerated20"/>
+          <s:enumeration value="ctOpenTop20"/>
+          <s:enumeration value="ctOpenTop40"/>
+          <s:enumeration value="ctFlatrack20"/>
+          <s:enumeration value="ctFlatrack40"/>
+          <s:enumeration value="ctTank"/>
+          <s:enumeration value="ctPoured20"/>
+          <s:enumeration value="ct20Dry"/>
+          <s:enumeration value="ct40Dry"/>
+          <s:enumeration value="ct40DryHC"/>
+          <s:enumeration value="ct20Refrigerated"/>
+          <s:enumeration value="ct40Refrigerated"/>
+          <s:enumeration value="ct40RefrigeratedHC"/>
+          <s:enumeration value="ct20Insulated"/>
+          <s:enumeration value="ct20InsulatedHC"/>
+          <s:enumeration value="ct40Insulated"/>
+          <s:enumeration value="ct40InsulatedHC"/>
+          <s:enumeration value="ct20OpenTop"/>
+          <s:enumeration value="ct40OpenTop"/>
+          <s:enumeration value="ct20FlatRack"/>
+          <s:enumeration value="ct40FlatRack"/>
+          <s:enumeration value="ctZD20"/>
+          <s:enumeration value="ctZD5"/>
+          <s:enumeration value="ctZD3"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddContainer2ByNewUserErResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Err" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddContainer2ByNewUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ContainerType" type="tns:ContainerTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Auto" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Zhd" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Sea" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Avia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddContainer2ByNewUserResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AddAutoByNewUser2">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="TraylerLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="TraylerWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="TraylerHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="TraylerCapa" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="TraylerVolume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TraylerType" type="tns:TraylerTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TraylerLoadingType" type="tns:AutoLoadingTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CarLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CarWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CarHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CarCapa" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CarVolume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CarType" type="tns:CarTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CarLoadingType" type="tns:AutoLoadingTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CarnetType" type="tns:CarnetTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ADR" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:AutoQuantityTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TrackingType" type="tns:TrackingTypes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="TraylerTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="trtNotSpecified"/>
+          <s:enumeration value="trtTent"/>
+          <s:enumeration value="trtLiftTrucker"/>
+          <s:enumeration value="trtIsothermal"/>
+          <s:enumeration value="trtBangboard"/>
+          <s:enumeration value="trtRefrigerator"/>
+          <s:enumeration value="trtSpecial"/>
+          <s:enumeration value="trtFourgon"/>
+          <s:enumeration value="trtPlatform"/>
+          <s:enumeration value="trtContainerTruck"/>
+          <s:enumeration value="trtEuroFura"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AutoLoadingTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="altNotSpecified"/>
+          <s:enumeration value="altTop"/>
+          <s:enumeration value="altSide"/>
+          <s:enumeration value="altNormal"/>
+          <s:enumeration value="altLiftTruck"/>
+          <s:enumeration value="altCrane"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="CarTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="crtNotSpecified"/>
+          <s:enumeration value="crtCrane"/>
+          <s:enumeration value="crtDumpTruck"/>
+          <s:enumeration value="crtClosed"/>
+          <s:enumeration value="crtLumberCarrier"/>
+          <s:enumeration value="crtLiftTrucker"/>
+          <s:enumeration value="crtGazel"/>
+          <s:enumeration value="crtTent"/>
+          <s:enumeration value="crtTruckTractor"/>
+          <s:enumeration value="crtIsothermal"/>
+          <s:enumeration value="crtBangboard"/>
+          <s:enumeration value="crtRefrigerator"/>
+          <s:enumeration value="crtCombi"/>
+          <s:enumeration value="crtTankCar"/>
+          <s:enumeration value="crtSpecial"/>
+          <s:enumeration value="crtFourgon"/>
+          <s:enumeration value="crtMinibus"/>
+          <s:enumeration value="crtJumbo"/>
+          <s:enumeration value="crtOpen"/>
+          <s:enumeration value="crtContainerTruck"/>
+          <s:enumeration value="crtAllMetal"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="CarnetTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="cNotSpecified"/>
+          <s:enumeration value="cTIR"/>
+          <s:enumeration value="cCMR"/>
+          <s:enumeration value="cTTH"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AutoQuantityTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="quantCar"/>
+          <s:enumeration value="quantPal"/>
+          <s:enumeration value="quantKont"/>
+          <s:enumeration value="quantWagon"/>
+          <s:enumeration value="quantNotSpecified"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="TrackingTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="ttNotSpecified"/>
+          <s:enumeration value="ttSatellite"/>
+          <s:enumeration value="ttCellular"/>
+          <s:enumeration value="ttTracking"/>
+          <s:enumeration value="ttWebSite"/>
+          <s:enumeration value="ttDispatcher"/>
+          <s:enumeration value="ttEMail"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddAutoByNewUser2Response">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AddAutoByNewUser2Err">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="TraylerLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="TraylerWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="TraylerHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="TraylerCapa" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="TraylerVolume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TraylerType" type="tns:TraylerTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TraylerLoadingType" type="tns:AutoLoadingTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CarLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CarWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CarHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CarCapa" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CarVolume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CarType" type="tns:CarTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CarLoadingType" type="tns:AutoLoadingTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CarnetType" type="tns:CarnetTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ADR" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:AutoQuantityTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TrackingType" type="tns:TrackingTypes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAutoByNewUser2ErrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Err" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUniRequestByNewUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:UniQuantityTypesOLD"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Length" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Width" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Height" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Auto" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Zhd" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Sea" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Avia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="UniQuantityTypesOLD">
+        <s:restriction base="s:string">
+          <s:enumeration value="UniQuantWagon"/>
+          <s:enumeration value="UniQuantTank"/>
+          <s:enumeration value="UniQuantKont"/>
+          <s:enumeration value="UniQuantCar"/>
+          <s:enumeration value="UniQuantPal"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddUniRequestByNewUserResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AddUniByNewUser2">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:UniQuantityTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Auto" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Sea" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Zhd" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Avia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TrackingType" type="tns:TrackingTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="UniQuantityTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="UniQuantMass"/>
+          <s:enumeration value="UniQuantPal"/>
+          <s:enumeration value="UniQuantBarrel"/>
+          <s:enumeration value="UniQuantBox"/>
+          <s:enumeration value="UniQuantBigBag"/>
+          <s:enumeration value="UniQuantContainer"/>
+          <s:enumeration value="UniQuantBale"/>
+          <s:enumeration value="UniQuantRouleau"/>
+          <s:enumeration value="UniQuantDrum"/>
+          <s:enumeration value="UniQuantSack"/>
+          <s:enumeration value="UniQuantPacket"/>
+          <s:enumeration value="UniQuantRoll"/>
+          <s:enumeration value="UniQuantCase"/>
+          <s:enumeration value="UniQuantNotSpecified"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddUniByNewUser2Response">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AddUniByNewUser2Er">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:UniQuantityTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Auto" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Sea" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Zhd" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Avia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TrackingType" type="tns:TrackingTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUniByNewUser2ErResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Err" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddZhdRequestByNewUser2">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:ZhdQuantityTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ZhdCarType" type="tns:ZhdCarTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="WagonPark" type="tns:WagonParks"/>
+            <s:element maxOccurs="1" minOccurs="0" name="gng" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="etsng" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Azerbaijan" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Armenia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Belarus" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Georgia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Kazakhstan" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Bishkek" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Latvia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Lithuania" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Moldova" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Russia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tadjikistan" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Turkmenistan" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Uzbekistan" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Ukraine" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Estonia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Capacity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TrackingType" type="tns:TrackingTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ZhdQuantityTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="ZhdQuantWagon"/>
+          <s:enumeration value="ZhdQuantKont"/>
+          <s:enumeration value="ZhdNotSpecified"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ZhdCarTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="zcdCarCarrier"/>
+          <s:enumeration value="zcdRefrigeratorVanAutonom"/>
+          <s:enumeration value="zcdBunkerPoluVagon"/>
+          <s:enumeration value="zcdVagonTermos"/>
+          <s:enumeration value="zcdVagonTermos918"/>
+          <s:enumeration value="zcdDumpCar"/>
+          <s:enumeration value="zcdGivoRibnVagon"/>
+          <s:enumeration value="zcdZernoVoz"/>
+          <s:enumeration value="zcdContejnerVoz"/>
+          <s:enumeration value="zcdUniContainer3"/>
+          <s:enumeration value="zcdUniContainer5"/>
+          <s:enumeration value="zcdContrailer"/>
+          <s:enumeration value="zcdCrane"/>
+          <s:enumeration value="zcdLargeCapacityCont13"/>
+          <s:enumeration value="zcdLargeCapacityCont20"/>
+          <s:enumeration value="zcdLargeCapacityCont24"/>
+          <s:enumeration value="zcdLargeCapacityCont30"/>
+          <s:enumeration value="zcdLargeCapacityCont40"/>
+          <s:enumeration value="zcdKritie"/>
+          <s:enumeration value="zcdRefrigeratorVan"/>
+          <s:enumeration value="zcdTimberVan"/>
+          <s:enumeration value="zcdLocomotive"/>
+          <s:enumeration value="zcdMineralVoz"/>
+          <s:enumeration value="zcdMukoVoz"/>
+          <s:enumeration value="zcdNotInList"/>
+          <s:enumeration value="zcdOkatishVoz"/>
+          <s:enumeration value="zcdPassengerCoache"/>
+          <s:enumeration value="zcdCarCarrier2"/>
+          <s:enumeration value="zcdPlatform"/>
+          <s:enumeration value="zcdFittingPaltform"/>
+          <s:enumeration value="zcdGondola"/>
+          <s:enumeration value="zcdGondolaGluhKuzov"/>
+          <s:enumeration value="zcdOtherVagon"/>
+          <s:enumeration value="zcdPutevieMashini"/>
+          <s:enumeration value="zcdRefcontainer20"/>
+          <s:enumeration value="zcdRefcontainer40"/>
+          <s:enumeration value="zcdRefrigerator"/>
+          <s:enumeration value="zcdRollCarier"/>
+          <s:enumeration value="zcdSkotoVoz"/>
+          <s:enumeration value="zcdSlugebnoTehnichesky"/>
+          <s:enumeration value="zcdSodovoz"/>
+          <s:enumeration value="zcdSpecContainerForChemFer"/>
+          <s:enumeration value="zcdSpecContainer"/>
+          <s:enumeration value="zcdTankContainer20"/>
+          <s:enumeration value="zcdTankContainer40"/>
+          <s:enumeration value="zcdDieselLocomotive"/>
+          <s:enumeration value="zcdOtherConveyer"/>
+          <s:enumeration value="zcdArticulatedConveyer"/>
+          <s:enumeration value="zcdAdhesionConveyer"/>
+          <s:enumeration value="zcdBigFittingPaltform"/>
+          <s:enumeration value="zcdHopperBatcher"/>
+          <s:enumeration value="zcdHopperCementovoz"/>
+          <s:enumeration value="zcdCistern"/>
+          <s:enumeration value="zcdCisternForLiquefiedGas"/>
+          <s:enumeration value="zcdBulkOilCistern"/>
+          <s:enumeration value="zcdThermosCostern"/>
+          <s:enumeration value="zcdCementovozCistern"/>
+          <s:enumeration value="zcdSplinterCarier"/>
+          <s:enumeration value="zcdNotSpecified"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="WagonParks">
+        <s:restriction base="s:string">
+          <s:enumeration value="wpNotSpecified"/>
+          <s:enumeration value="wpMPS"/>
+          <s:enumeration value="wpOwn"/>
+          <s:enumeration value="wpRent"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddZhdRequestByNewUser2Response">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AddZhdRequestByNewUser2Er">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:ZhdQuantityTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ZhdCarType" type="tns:ZhdCarTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="WagonPark" type="tns:WagonParks"/>
+            <s:element maxOccurs="1" minOccurs="0" name="gng" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="etsng" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Azerbaijan" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Armenia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Belarus" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Georgia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Kazakhstan" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Bishkek" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Latvia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Lithuania" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Moldova" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Russia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tadjikistan" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Turkmenistan" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Uzbekistan" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Ukraine" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Estonia" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Capacity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TrackingType" type="tns:TrackingTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddZhdRequestByNewUser2ErResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Err" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSeaRequestByNewUser2">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:SeaQuantityTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ShipType" type="tns:ShipTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="SeaQuantityTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="SesQunatNotSpecified"/>
+          <s:enumeration value="SeaQuantBox"/>
+          <s:enumeration value="SeaQuantPack"/>
+          <s:enumeration value="SeaQuantPallet"/>
+          <s:enumeration value="SaeQuantBarrel"/>
+          <s:enumeration value="SeaQuantContainer"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ShipTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="stContainerCarier"/>
+          <s:enumeration value="stTimberShip"/>
+          <s:enumeration value="stBulker"/>
+          <s:enumeration value="stBulkOil"/>
+          <s:enumeration value="stRiverSea"/>
+          <s:enumeration value="stDryCargoShip"/>
+          <s:enumeration value="stTanker"/>
+          <s:enumeration value="stFOFO"/>
+          <s:enumeration value="stRORO"/>
+          <s:enumeration value="stUniversal"/>
+          <s:enumeration value="stNotSpecified"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddSeaRequestByNewUser2Response">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AddSeaRequestByNewUser2Er">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:SeaQuantityTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ShipType" type="tns:ShipTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSeaRequestByNewUser2ErResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Err" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAviaRequestByNewUser2">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:AviaQuantityTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="AirCraftType" type="tns:AirCraftTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="AviaQuantityTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="AviaQuantNotSpecified"/>
+          <s:enumeration value="AviaQuantBox"/>
+          <s:enumeration value="AviaQuantPack"/>
+          <s:enumeration value="AviaQuantPallet"/>
+          <s:enumeration value="AviaQuantBarrel"/>
+          <s:enumeration value="AviaQuantContainer"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AirCraftTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="atNotSpecified"/>
+          <s:enumeration value="atIL96T"/>
+          <s:enumeration value="atAN225"/>
+          <s:enumeration value="atIL76"/>
+          <s:enumeration value="atAN26"/>
+          <s:enumeration value="atAN70"/>
+          <s:enumeration value="atTU330"/>
+          <s:enumeration value="atIL112B"/>
+          <s:enumeration value="atAN72"/>
+          <s:enumeration value="atIL114T"/>
+          <s:enumeration value="atIL106"/>
+          <s:enumeration value="atAN124"/>
+          <s:enumeration value="atAN12"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddAviaRequestByNewUser2Response">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AddAviaRequestByNewUser2Er">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:AviaQuantityTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Customs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tracking" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Harbour" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Stock" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Guard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Insurance" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="AirCraftType" type="tns:AirCraftTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAviaRequestByNewUser2ErResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Err" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPassengerRequestByNewUser2">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="NPlaces" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPassengerRequestByNewUser2Response">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AddPassengerRequestByNewUser2Er">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="NPlaces" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPassengerRequestByNewUser2ErResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Err" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddInsuranceRequestByNewUser2">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RiskType" type="tns:RiskTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PackageType" type="tns:PackageTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TransportType" type="tns:TransportTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoGuard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ADR" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="RiskTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="rtNotSpecified"/>
+          <s:enumeration value="rtAllRisks"/>
+          <s:enumeration value="rtOther"/>
+          <s:enumeration value="rtComplex"/>
+          <s:enumeration value="rtProperty"/>
+          <s:enumeration value="rtEquipment"/>
+          <s:enumeration value="rtTransport"/>
+          <s:enumeration value="rtTotalDestruction"/>
+          <s:enumeration value="rtResponsibility"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PackageTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="ptNotSpecified"/>
+          <s:enumeration value="ptBarrel"/>
+          <s:enumeration value="ptCoach"/>
+          <s:enumeration value="ptOther"/>
+          <s:enumeration value="ptContainer"/>
+          <s:enumeration value="ptBox"/>
+          <s:enumeration value="ptPallet"/>
+          <s:enumeration value="ptPacket"/>
+          <s:enumeration value="ptCistern"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="TransportTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="ttNotSpecified"/>
+          <s:enumeration value="ttAvia"/>
+          <s:enumeration value="ttAuto"/>
+          <s:enumeration value="ttRailway"/>
+          <s:enumeration value="ttContainer"/>
+          <s:enumeration value="ttAny"/>
+          <s:enumeration value="ttSea"/>
+          <s:enumeration value="ttRiver"/>
+          <s:enumeration value="ttMixed"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddInsuranceRequestByNewUser2Response">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AddInsuranceRequestByNewUser2Er">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RiskType" type="tns:RiskTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PackageType" type="tns:PackageTypes"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TransportType" type="tns:TransportTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoGuard" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ADR" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddInsuranceRequestByNewUser2ErResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Err" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSimpleServiceRequestByNewUser2">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="SimpleService" type="tns:SimpleServiceGUIDs"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="SimpleServiceGUIDs">
+        <s:restriction base="s:string">
+          <s:enumeration value="ssSimple"/>
+          <s:enumeration value="ssCustom"/>
+          <s:enumeration value="ssGuard"/>
+          <s:enumeration value="ssPortService"/>
+          <s:enumeration value="ssTradeGoods"/>
+          <s:enumeration value="ssTradeTransport"/>
+          <s:enumeration value="ssWarehouse"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddSimpleServiceRequestByNewUser2Response">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AddSimpleServiceRequestByNewUser2Er">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="SimpleService" type="tns:SimpleServiceGUIDs"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSimpleServiceRequestByNewUser2ErResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Err" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCourierRequestByNewUser2">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:CourierQuantityTypes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CourierQuantityTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="CourierQuantNotSpecified"/>
+          <s:enumeration value="CourierQuantBox"/>
+          <s:enumeration value="CourierPackage"/>
+          <s:enumeration value="CourierBarrel"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddCourierRequestByNewUser2Response">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AddCourierRequestByNewUser2Er">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DateFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RecurrenceType" type="tns:RecurrenceTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Notes" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ReqOfferType" type="tns:ReqOfferTypes"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceFrom" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PlaceTo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Tariff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Cargo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Weight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Volume" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoHeight" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoWidth" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CargoLength" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CompanyFullName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EMail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PhoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FaxNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ContactPerson" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Quantity" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="QuantityType" type="tns:CourierQuantityTypes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCourierRequestByNewUser2ErResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Err" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddContainer2ByNewUserHttpPostIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="ContainerType" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="Auto" type="s:string"/>
+    <wsdl:part name="Zhd" type="s:string"/>
+    <wsdl:part name="Sea" type="s:string"/>
+    <wsdl:part name="Avia" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniByNewUser2HttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="AddCourierRequestByNewUser2HttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AddSimpleServiceRequestByNewUser2HttpPostIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="SimpleService" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddPassengerRequestByNewUser2HttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="AddZhdRequestByNewUser2HttpGetIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="ZhdCarType" type="s:string"/>
+    <wsdl:part name="WagonPark" type="s:string"/>
+    <wsdl:part name="gng" type="s:string"/>
+    <wsdl:part name="etsng" type="s:string"/>
+    <wsdl:part name="Azerbaijan" type="s:string"/>
+    <wsdl:part name="Armenia" type="s:string"/>
+    <wsdl:part name="Belarus" type="s:string"/>
+    <wsdl:part name="Georgia" type="s:string"/>
+    <wsdl:part name="Kazakhstan" type="s:string"/>
+    <wsdl:part name="Bishkek" type="s:string"/>
+    <wsdl:part name="Latvia" type="s:string"/>
+    <wsdl:part name="Lithuania" type="s:string"/>
+    <wsdl:part name="Moldova" type="s:string"/>
+    <wsdl:part name="Russia" type="s:string"/>
+    <wsdl:part name="Tadjikistan" type="s:string"/>
+    <wsdl:part name="Turkmenistan" type="s:string"/>
+    <wsdl:part name="Uzbekistan" type="s:string"/>
+    <wsdl:part name="Ukraine" type="s:string"/>
+    <wsdl:part name="Estonia" type="s:string"/>
+    <wsdl:part name="Capacity" type="s:string"/>
+    <wsdl:part name="TrackingType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniByNewUser2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddUniByNewUser2Response"/>
+  </wsdl:message>
+  <wsdl:message name="AddAviaRequestByNewUser2HttpGetIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="AirCraftType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddAviaRequestByNewUser2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddAviaRequestByNewUser2Response"/>
+  </wsdl:message>
+  <wsdl:message name="AddInsuranceRequestByNewUser2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddInsuranceRequestByNewUser2"/>
+  </wsdl:message>
+  <wsdl:message name="AddAviaRequestByNewUser2HttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AddInsuranceRequestByNewUser2HttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="AddCourierRequestByNewUser2HttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="AddPassengerRequestByNewUser2HttpGetIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="NPlaces" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniRequestByNewUserHttpPostIn">
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="Length" type="s:string"/>
+    <wsdl:part name="Width" type="s:string"/>
+    <wsdl:part name="Height" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="Auto" type="s:string"/>
+    <wsdl:part name="Zhd" type="s:string"/>
+    <wsdl:part name="Sea" type="s:string"/>
+    <wsdl:part name="Avia" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddSeaRequestByNewUser2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddSeaRequestByNewUser2Response"/>
+  </wsdl:message>
+  <wsdl:message name="AddPassengerRequestByNewUser2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddPassengerRequestByNewUser2"/>
+  </wsdl:message>
+  <wsdl:message name="AddAutoByNewUser2HttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AddInsuranceRequestByNewUser2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddInsuranceRequestByNewUser2Response"/>
+  </wsdl:message>
+  <wsdl:message name="AddContainer2ByNewUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AddContainer2ByNewUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddCourierRequestByNewUser2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddCourierRequestByNewUser2"/>
+  </wsdl:message>
+  <wsdl:message name="AddAutoByNewUser2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddAutoByNewUser2Response"/>
+  </wsdl:message>
+  <wsdl:message name="AddInsuranceRequestByNewUser2HttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AddPassengerRequestByNewUser2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddPassengerRequestByNewUser2Response"/>
+  </wsdl:message>
+  <wsdl:message name="AddZhdRequestByNewUser2HttpPostIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="ZhdCarType" type="s:string"/>
+    <wsdl:part name="WagonPark" type="s:string"/>
+    <wsdl:part name="gng" type="s:string"/>
+    <wsdl:part name="etsng" type="s:string"/>
+    <wsdl:part name="Azerbaijan" type="s:string"/>
+    <wsdl:part name="Armenia" type="s:string"/>
+    <wsdl:part name="Belarus" type="s:string"/>
+    <wsdl:part name="Georgia" type="s:string"/>
+    <wsdl:part name="Kazakhstan" type="s:string"/>
+    <wsdl:part name="Bishkek" type="s:string"/>
+    <wsdl:part name="Latvia" type="s:string"/>
+    <wsdl:part name="Lithuania" type="s:string"/>
+    <wsdl:part name="Moldova" type="s:string"/>
+    <wsdl:part name="Russia" type="s:string"/>
+    <wsdl:part name="Tadjikistan" type="s:string"/>
+    <wsdl:part name="Turkmenistan" type="s:string"/>
+    <wsdl:part name="Uzbekistan" type="s:string"/>
+    <wsdl:part name="Ukraine" type="s:string"/>
+    <wsdl:part name="Estonia" type="s:string"/>
+    <wsdl:part name="Capacity" type="s:string"/>
+    <wsdl:part name="TrackingType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddAviaRequestByNewUser2HttpPostIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="AirCraftType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddInsuranceRequestByNewUser2HttpPostIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="RiskType" type="s:string"/>
+    <wsdl:part name="PackageType" type="s:string"/>
+    <wsdl:part name="TransportType" type="s:string"/>
+    <wsdl:part name="CargoGuard" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="ADR" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddAutoByNewUser2ErrSoapOut">
+    <wsdl:part name="parameters" element="tns:AddAutoByNewUser2ErrResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddAutoByNewUser2ErrSoapIn">
+    <wsdl:part name="parameters" element="tns:AddAutoByNewUser2Err"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniRequestByNewUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUniRequestByNewUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddSimpleServiceRequestByNewUser2HttpGetIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="SimpleService" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddPassengerRequestByNewUser2HttpPostIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="NPlaces" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddAviaRequestByNewUser2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddAviaRequestByNewUser2"/>
+  </wsdl:message>
+  <wsdl:message name="AddSimpleServiceRequestByNewUser2ErSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSimpleServiceRequestByNewUser2ErResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddInsuranceRequestByNewUser2ErSoapIn">
+    <wsdl:part name="parameters" element="tns:AddInsuranceRequestByNewUser2Er"/>
+  </wsdl:message>
+  <wsdl:message name="AddSeaRequestByNewUser2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddSeaRequestByNewUser2"/>
+  </wsdl:message>
+  <wsdl:message name="AddContainer2ByNewUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AddContainer2ByNewUser"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniRequestByNewUserHttpGetIn">
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="Length" type="s:string"/>
+    <wsdl:part name="Width" type="s:string"/>
+    <wsdl:part name="Height" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="Auto" type="s:string"/>
+    <wsdl:part name="Zhd" type="s:string"/>
+    <wsdl:part name="Sea" type="s:string"/>
+    <wsdl:part name="Avia" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddAutoByNewUser2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddAutoByNewUser2"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniByNewUser2ErSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUniByNewUser2Er"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniRequestByNewUserHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="AddSeaRequestByNewUser2HttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="AddSimpleServiceRequestByNewUser2ErSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSimpleServiceRequestByNewUser2Er"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniByNewUser2ErSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUniByNewUser2ErResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddSimpleServiceRequestByNewUser2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddSimpleServiceRequestByNewUser2Response"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniRequestByNewUserHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AddPassengerRequestByNewUser2ErSoapIn">
+    <wsdl:part name="parameters" element="tns:AddPassengerRequestByNewUser2Er"/>
+  </wsdl:message>
+  <wsdl:message name="AddContainer2ByNewUserErSoapIn">
+    <wsdl:part name="parameters" element="tns:AddContainer2ByNewUserEr"/>
+  </wsdl:message>
+  <wsdl:message name="AddSeaRequestByNewUser2HttpPostIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="ShipType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddContainer2ByNewUserHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AddUniByNewUser2HttpPostIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+    <wsdl:part name="Auto" type="s:string"/>
+    <wsdl:part name="Sea" type="s:string"/>
+    <wsdl:part name="Zhd" type="s:string"/>
+    <wsdl:part name="Avia" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="TrackingType" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniByNewUser2HttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AddCourierRequestByNewUser2ErSoapOut">
+    <wsdl:part name="parameters" element="tns:AddCourierRequestByNewUser2ErResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddZhdRequestByNewUser2ErSoapIn">
+    <wsdl:part name="parameters" element="tns:AddZhdRequestByNewUser2Er"/>
+  </wsdl:message>
+  <wsdl:message name="AddSeaRequestByNewUser2HttpGetIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="ShipType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddAviaRequestByNewUser2ErSoapIn">
+    <wsdl:part name="parameters" element="tns:AddAviaRequestByNewUser2Er"/>
+  </wsdl:message>
+  <wsdl:message name="AddAviaRequestByNewUser2ErSoapOut">
+    <wsdl:part name="parameters" element="tns:AddAviaRequestByNewUser2ErResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddZhdRequestByNewUser2ErSoapOut">
+    <wsdl:part name="parameters" element="tns:AddZhdRequestByNewUser2ErResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddPassengerRequestByNewUser2ErSoapOut">
+    <wsdl:part name="parameters" element="tns:AddPassengerRequestByNewUser2ErResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddAviaRequestByNewUser2HttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="AddZhdRequestByNewUser2HttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="AddContainer2ByNewUserErSoapOut">
+    <wsdl:part name="parameters" element="tns:AddContainer2ByNewUserErResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddInsuranceRequestByNewUser2ErSoapOut">
+    <wsdl:part name="parameters" element="tns:AddInsuranceRequestByNewUser2ErResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddAutoByNewUser2HttpGetIn">
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="TraylerLength" type="s:string"/>
+    <wsdl:part name="TraylerWidth" type="s:string"/>
+    <wsdl:part name="TraylerHeight" type="s:string"/>
+    <wsdl:part name="TraylerCapa" type="s:string"/>
+    <wsdl:part name="TraylerVolume" type="s:string"/>
+    <wsdl:part name="TraylerType" type="s:string"/>
+    <wsdl:part name="TraylerLoadingType" type="s:string"/>
+    <wsdl:part name="CarLength" type="s:string"/>
+    <wsdl:part name="CarWidth" type="s:string"/>
+    <wsdl:part name="CarHeight" type="s:string"/>
+    <wsdl:part name="CarCapa" type="s:string"/>
+    <wsdl:part name="CarVolume" type="s:string"/>
+    <wsdl:part name="CarType" type="s:string"/>
+    <wsdl:part name="CarLoadingType" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="CarnetType" type="s:string"/>
+    <wsdl:part name="ADR" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="TrackingType" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddSimpleServiceRequestByNewUser2HttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="AddContainer2ByNewUserHttpGetIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="ContainerType" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="Auto" type="s:string"/>
+    <wsdl:part name="Zhd" type="s:string"/>
+    <wsdl:part name="Sea" type="s:string"/>
+    <wsdl:part name="Avia" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddContainer2ByNewUserHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="AddUniByNewUser2HttpGetIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+    <wsdl:part name="Auto" type="s:string"/>
+    <wsdl:part name="Sea" type="s:string"/>
+    <wsdl:part name="Zhd" type="s:string"/>
+    <wsdl:part name="Avia" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="TrackingType" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddSeaRequestByNewUser2HttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AddSimpleServiceRequestByNewUser2HttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AddPassengerRequestByNewUser2HttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AddZhdRequestByNewUser2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddZhdRequestByNewUser2"/>
+  </wsdl:message>
+  <wsdl:message name="AddInsuranceRequestByNewUser2HttpGetIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="RiskType" type="s:string"/>
+    <wsdl:part name="PackageType" type="s:string"/>
+    <wsdl:part name="TransportType" type="s:string"/>
+    <wsdl:part name="CargoGuard" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="ADR" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddSeaRequestByNewUser2ErSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSeaRequestByNewUser2ErResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddSimpleServiceRequestByNewUser2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddSimpleServiceRequestByNewUser2"/>
+  </wsdl:message>
+  <wsdl:message name="AddAutoByNewUser2HttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="AddCourierRequestByNewUser2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddCourierRequestByNewUser2Response"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniByNewUser2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddUniByNewUser2"/>
+  </wsdl:message>
+  <wsdl:message name="AddUniRequestByNewUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUniRequestByNewUser"/>
+  </wsdl:message>
+  <wsdl:message name="AddZhdRequestByNewUser2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddZhdRequestByNewUser2Response"/>
+  </wsdl:message>
+  <wsdl:message name="AddZhdRequestByNewUser2HttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AddCourierRequestByNewUser2ErSoapIn">
+    <wsdl:part name="parameters" element="tns:AddCourierRequestByNewUser2Er"/>
+  </wsdl:message>
+  <wsdl:message name="AddCourierRequestByNewUser2HttpPostIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddCourierRequestByNewUser2HttpGetIn">
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AddSeaRequestByNewUser2ErSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSeaRequestByNewUser2Er"/>
+  </wsdl:message>
+  <wsdl:message name="AddAutoByNewUser2HttpPostIn">
+    <wsdl:part name="PlaceFrom" type="s:string"/>
+    <wsdl:part name="PlaceTo" type="s:string"/>
+    <wsdl:part name="TraylerLength" type="s:string"/>
+    <wsdl:part name="TraylerWidth" type="s:string"/>
+    <wsdl:part name="TraylerHeight" type="s:string"/>
+    <wsdl:part name="TraylerCapa" type="s:string"/>
+    <wsdl:part name="TraylerVolume" type="s:string"/>
+    <wsdl:part name="TraylerType" type="s:string"/>
+    <wsdl:part name="TraylerLoadingType" type="s:string"/>
+    <wsdl:part name="CarLength" type="s:string"/>
+    <wsdl:part name="CarWidth" type="s:string"/>
+    <wsdl:part name="CarHeight" type="s:string"/>
+    <wsdl:part name="CarCapa" type="s:string"/>
+    <wsdl:part name="CarVolume" type="s:string"/>
+    <wsdl:part name="CarType" type="s:string"/>
+    <wsdl:part name="CarLoadingType" type="s:string"/>
+    <wsdl:part name="Tariff" type="s:string"/>
+    <wsdl:part name="Notes" type="s:string"/>
+    <wsdl:part name="Tracking" type="s:string"/>
+    <wsdl:part name="CarnetType" type="s:string"/>
+    <wsdl:part name="ADR" type="s:string"/>
+    <wsdl:part name="Cargo" type="s:string"/>
+    <wsdl:part name="Volume" type="s:string"/>
+    <wsdl:part name="Weight" type="s:string"/>
+    <wsdl:part name="Quantity" type="s:string"/>
+    <wsdl:part name="QuantityType" type="s:string"/>
+    <wsdl:part name="Harbour" type="s:string"/>
+    <wsdl:part name="Insurance" type="s:string"/>
+    <wsdl:part name="Customs" type="s:string"/>
+    <wsdl:part name="Stock" type="s:string"/>
+    <wsdl:part name="Guard" type="s:string"/>
+    <wsdl:part name="CargoWidth" type="s:string"/>
+    <wsdl:part name="CargoHeight" type="s:string"/>
+    <wsdl:part name="CargoLength" type="s:string"/>
+    <wsdl:part name="DateFrom" type="s:string"/>
+    <wsdl:part name="DateTo" type="s:string"/>
+    <wsdl:part name="RecurrenceType" type="s:string"/>
+    <wsdl:part name="CompanyFullName" type="s:string"/>
+    <wsdl:part name="Country" type="s:string"/>
+    <wsdl:part name="City" type="s:string"/>
+    <wsdl:part name="Address" type="s:string"/>
+    <wsdl:part name="EMail" type="s:string"/>
+    <wsdl:part name="PhoneNumber" type="s:string"/>
+    <wsdl:part name="FaxNumber" type="s:string"/>
+    <wsdl:part name="ContactPerson" type="s:string"/>
+    <wsdl:part name="ReqOfferType" type="s:string"/>
+    <wsdl:part name="TrackingType" type="s:string"/>
+  </wsdl:message>
+  <wsdl:portType name="wsReqSenderSoap">
+    <wsdl:operation name="AddContainer2ByNewUserEr">
+      <wsdl:input message="tns:AddContainer2ByNewUserErSoapIn"/>
+      <wsdl:output message="tns:AddContainer2ByNewUserErSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddContainer2ByNewUser">
+      <wsdl:input message="tns:AddContainer2ByNewUserSoapIn"/>
+      <wsdl:output message="tns:AddContainer2ByNewUserSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddAutoByNewUser2">
+      <wsdl:input message="tns:AddAutoByNewUser2SoapIn"/>
+      <wsdl:output message="tns:AddAutoByNewUser2SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddAutoByNewUser2Err">
+      <wsdl:input message="tns:AddAutoByNewUser2ErrSoapIn"/>
+      <wsdl:output message="tns:AddAutoByNewUser2ErrSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniRequestByNewUser">
+      <wsdl:input message="tns:AddUniRequestByNewUserSoapIn"/>
+      <wsdl:output message="tns:AddUniRequestByNewUserSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniByNewUser2">
+      <wsdl:input message="tns:AddUniByNewUser2SoapIn"/>
+      <wsdl:output message="tns:AddUniByNewUser2SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniByNewUser2Er">
+      <wsdl:input message="tns:AddUniByNewUser2ErSoapIn"/>
+      <wsdl:output message="tns:AddUniByNewUser2ErSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddZhdRequestByNewUser2">
+      <wsdl:input message="tns:AddZhdRequestByNewUser2SoapIn"/>
+      <wsdl:output message="tns:AddZhdRequestByNewUser2SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddZhdRequestByNewUser2Er">
+      <wsdl:input message="tns:AddZhdRequestByNewUser2ErSoapIn"/>
+      <wsdl:output message="tns:AddZhdRequestByNewUser2ErSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeaRequestByNewUser2">
+      <wsdl:input message="tns:AddSeaRequestByNewUser2SoapIn"/>
+      <wsdl:output message="tns:AddSeaRequestByNewUser2SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeaRequestByNewUser2Er">
+      <wsdl:input message="tns:AddSeaRequestByNewUser2ErSoapIn"/>
+      <wsdl:output message="tns:AddSeaRequestByNewUser2ErSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddAviaRequestByNewUser2">
+      <wsdl:input message="tns:AddAviaRequestByNewUser2SoapIn"/>
+      <wsdl:output message="tns:AddAviaRequestByNewUser2SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddAviaRequestByNewUser2Er">
+      <wsdl:input message="tns:AddAviaRequestByNewUser2ErSoapIn"/>
+      <wsdl:output message="tns:AddAviaRequestByNewUser2ErSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddPassengerRequestByNewUser2">
+      <wsdl:input message="tns:AddPassengerRequestByNewUser2SoapIn"/>
+      <wsdl:output message="tns:AddPassengerRequestByNewUser2SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddPassengerRequestByNewUser2Er">
+      <wsdl:input message="tns:AddPassengerRequestByNewUser2ErSoapIn"/>
+      <wsdl:output message="tns:AddPassengerRequestByNewUser2ErSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddInsuranceRequestByNewUser2">
+      <wsdl:input message="tns:AddInsuranceRequestByNewUser2SoapIn"/>
+      <wsdl:output message="tns:AddInsuranceRequestByNewUser2SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddInsuranceRequestByNewUser2Er">
+      <wsdl:input message="tns:AddInsuranceRequestByNewUser2ErSoapIn"/>
+      <wsdl:output message="tns:AddInsuranceRequestByNewUser2ErSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddSimpleServiceRequestByNewUser2">
+      <wsdl:input message="tns:AddSimpleServiceRequestByNewUser2SoapIn"/>
+      <wsdl:output message="tns:AddSimpleServiceRequestByNewUser2SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddSimpleServiceRequestByNewUser2Er">
+      <wsdl:input message="tns:AddSimpleServiceRequestByNewUser2ErSoapIn"/>
+      <wsdl:output message="tns:AddSimpleServiceRequestByNewUser2ErSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddCourierRequestByNewUser2">
+      <wsdl:input message="tns:AddCourierRequestByNewUser2SoapIn"/>
+      <wsdl:output message="tns:AddCourierRequestByNewUser2SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddCourierRequestByNewUser2Er">
+      <wsdl:input message="tns:AddCourierRequestByNewUser2ErSoapIn"/>
+      <wsdl:output message="tns:AddCourierRequestByNewUser2ErSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsReqSenderHttpGet">
+    <wsdl:operation name="AddContainer2ByNewUser">
+      <wsdl:input message="tns:AddContainer2ByNewUserHttpGetIn"/>
+      <wsdl:output message="tns:AddContainer2ByNewUserHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddAutoByNewUser2">
+      <wsdl:input message="tns:AddAutoByNewUser2HttpGetIn"/>
+      <wsdl:output message="tns:AddAutoByNewUser2HttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniRequestByNewUser">
+      <wsdl:input message="tns:AddUniRequestByNewUserHttpGetIn"/>
+      <wsdl:output message="tns:AddUniRequestByNewUserHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniByNewUser2">
+      <wsdl:input message="tns:AddUniByNewUser2HttpGetIn"/>
+      <wsdl:output message="tns:AddUniByNewUser2HttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddZhdRequestByNewUser2">
+      <wsdl:input message="tns:AddZhdRequestByNewUser2HttpGetIn"/>
+      <wsdl:output message="tns:AddZhdRequestByNewUser2HttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeaRequestByNewUser2">
+      <wsdl:input message="tns:AddSeaRequestByNewUser2HttpGetIn"/>
+      <wsdl:output message="tns:AddSeaRequestByNewUser2HttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddAviaRequestByNewUser2">
+      <wsdl:input message="tns:AddAviaRequestByNewUser2HttpGetIn"/>
+      <wsdl:output message="tns:AddAviaRequestByNewUser2HttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddPassengerRequestByNewUser2">
+      <wsdl:input message="tns:AddPassengerRequestByNewUser2HttpGetIn"/>
+      <wsdl:output message="tns:AddPassengerRequestByNewUser2HttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddInsuranceRequestByNewUser2">
+      <wsdl:input message="tns:AddInsuranceRequestByNewUser2HttpGetIn"/>
+      <wsdl:output message="tns:AddInsuranceRequestByNewUser2HttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddSimpleServiceRequestByNewUser2">
+      <wsdl:input message="tns:AddSimpleServiceRequestByNewUser2HttpGetIn"/>
+      <wsdl:output message="tns:AddSimpleServiceRequestByNewUser2HttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddCourierRequestByNewUser2">
+      <wsdl:input message="tns:AddCourierRequestByNewUser2HttpGetIn"/>
+      <wsdl:output message="tns:AddCourierRequestByNewUser2HttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsReqSenderHttpPost">
+    <wsdl:operation name="AddContainer2ByNewUser">
+      <wsdl:input message="tns:AddContainer2ByNewUserHttpPostIn"/>
+      <wsdl:output message="tns:AddContainer2ByNewUserHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddAutoByNewUser2">
+      <wsdl:input message="tns:AddAutoByNewUser2HttpPostIn"/>
+      <wsdl:output message="tns:AddAutoByNewUser2HttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniRequestByNewUser">
+      <wsdl:input message="tns:AddUniRequestByNewUserHttpPostIn"/>
+      <wsdl:output message="tns:AddUniRequestByNewUserHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniByNewUser2">
+      <wsdl:input message="tns:AddUniByNewUser2HttpPostIn"/>
+      <wsdl:output message="tns:AddUniByNewUser2HttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddZhdRequestByNewUser2">
+      <wsdl:input message="tns:AddZhdRequestByNewUser2HttpPostIn"/>
+      <wsdl:output message="tns:AddZhdRequestByNewUser2HttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeaRequestByNewUser2">
+      <wsdl:input message="tns:AddSeaRequestByNewUser2HttpPostIn"/>
+      <wsdl:output message="tns:AddSeaRequestByNewUser2HttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddAviaRequestByNewUser2">
+      <wsdl:input message="tns:AddAviaRequestByNewUser2HttpPostIn"/>
+      <wsdl:output message="tns:AddAviaRequestByNewUser2HttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddPassengerRequestByNewUser2">
+      <wsdl:input message="tns:AddPassengerRequestByNewUser2HttpPostIn"/>
+      <wsdl:output message="tns:AddPassengerRequestByNewUser2HttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddInsuranceRequestByNewUser2">
+      <wsdl:input message="tns:AddInsuranceRequestByNewUser2HttpPostIn"/>
+      <wsdl:output message="tns:AddInsuranceRequestByNewUser2HttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddSimpleServiceRequestByNewUser2">
+      <wsdl:input message="tns:AddSimpleServiceRequestByNewUser2HttpPostIn"/>
+      <wsdl:output message="tns:AddSimpleServiceRequestByNewUser2HttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddCourierRequestByNewUser2">
+      <wsdl:input message="tns:AddCourierRequestByNewUser2HttpPostIn"/>
+      <wsdl:output message="tns:AddCourierRequestByNewUser2HttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsReqSenderSoap" type="tns:wsReqSenderSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AddContainer2ByNewUserEr">
+      <soap:operation soapAction="http://tempuri.org/AddContainer2ByNewUserEr" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddContainer2ByNewUser">
+      <soap:operation soapAction="http://tempuri.org/AddContainer2ByNewUser" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAutoByNewUser2">
+      <soap:operation soapAction="http://tempuri.org/AddAutoByNewUser2" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAutoByNewUser2Err">
+      <soap:operation soapAction="http://tempuri.org/AddAutoByNewUser2Err" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniRequestByNewUser">
+      <soap:operation soapAction="http://tempuri.org/AddUniRequestByNewUser" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniByNewUser2">
+      <soap:operation soapAction="http://tempuri.org/AddUniByNewUser2" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniByNewUser2Er">
+      <soap:operation soapAction="http://tempuri.org/AddUniByNewUser2Er" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddZhdRequestByNewUser2">
+      <soap:operation soapAction="http://tempuri.org/AddZhdRequestByNewUser2" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddZhdRequestByNewUser2Er">
+      <soap:operation soapAction="http://tempuri.org/AddZhdRequestByNewUser2Er" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeaRequestByNewUser2">
+      <soap:operation soapAction="http://tempuri.org/AddSeaRequestByNewUser2" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeaRequestByNewUser2Er">
+      <soap:operation soapAction="http://tempuri.org/AddSeaRequestByNewUser2Er" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAviaRequestByNewUser2">
+      <soap:operation soapAction="http://tempuri.org/AddAviaRequestByNewUser2" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAviaRequestByNewUser2Er">
+      <soap:operation soapAction="http://tempuri.org/AddAviaRequestByNewUser2Er" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPassengerRequestByNewUser2">
+      <soap:operation soapAction="http://tempuri.org/AddPassengerRequestByNewUser2" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPassengerRequestByNewUser2Er">
+      <soap:operation soapAction="http://tempuri.org/AddPassengerRequestByNewUser2Er" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInsuranceRequestByNewUser2">
+      <soap:operation soapAction="http://tempuri.org/AddInsuranceRequestByNewUser2" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInsuranceRequestByNewUser2Er">
+      <soap:operation soapAction="http://tempuri.org/AddInsuranceRequestByNewUser2Er" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSimpleServiceRequestByNewUser2">
+      <soap:operation soapAction="http://tempuri.org/AddSimpleServiceRequestByNewUser2" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSimpleServiceRequestByNewUser2Er">
+      <soap:operation soapAction="http://tempuri.org/AddSimpleServiceRequestByNewUser2Er" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCourierRequestByNewUser2">
+      <soap:operation soapAction="http://tempuri.org/AddCourierRequestByNewUser2" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCourierRequestByNewUser2Er">
+      <soap:operation soapAction="http://tempuri.org/AddCourierRequestByNewUser2Er" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsReqSenderHttpGet" type="tns:wsReqSenderHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="AddContainer2ByNewUser">
+      <http:operation location="/AddContainer2ByNewUser"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAutoByNewUser2">
+      <http:operation location="/AddAutoByNewUser2"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniRequestByNewUser">
+      <http:operation location="/AddUniRequestByNewUser"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniByNewUser2">
+      <http:operation location="/AddUniByNewUser2"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddZhdRequestByNewUser2">
+      <http:operation location="/AddZhdRequestByNewUser2"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeaRequestByNewUser2">
+      <http:operation location="/AddSeaRequestByNewUser2"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAviaRequestByNewUser2">
+      <http:operation location="/AddAviaRequestByNewUser2"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPassengerRequestByNewUser2">
+      <http:operation location="/AddPassengerRequestByNewUser2"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInsuranceRequestByNewUser2">
+      <http:operation location="/AddInsuranceRequestByNewUser2"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSimpleServiceRequestByNewUser2">
+      <http:operation location="/AddSimpleServiceRequestByNewUser2"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCourierRequestByNewUser2">
+      <http:operation location="/AddCourierRequestByNewUser2"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsReqSenderHttpPost" type="tns:wsReqSenderHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="AddContainer2ByNewUser">
+      <http:operation location="/AddContainer2ByNewUser"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAutoByNewUser2">
+      <http:operation location="/AddAutoByNewUser2"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniRequestByNewUser">
+      <http:operation location="/AddUniRequestByNewUser"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniByNewUser2">
+      <http:operation location="/AddUniByNewUser2"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddZhdRequestByNewUser2">
+      <http:operation location="/AddZhdRequestByNewUser2"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSeaRequestByNewUser2">
+      <http:operation location="/AddSeaRequestByNewUser2"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAviaRequestByNewUser2">
+      <http:operation location="/AddAviaRequestByNewUser2"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPassengerRequestByNewUser2">
+      <http:operation location="/AddPassengerRequestByNewUser2"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInsuranceRequestByNewUser2">
+      <http:operation location="/AddInsuranceRequestByNewUser2"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSimpleServiceRequestByNewUser2">
+      <http:operation location="/AddSimpleServiceRequestByNewUser2"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCourierRequestByNewUser2">
+      <http:operation location="/AddCourierRequestByNewUser2"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsReqSender">
+    <wsdl:port name="wsReqSenderSoap" binding="tns:wsReqSenderSoap">
+      <soap:address location="http://www.unirail.ru/WEBServices/WSRequests.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="wsReqSenderHttpPost" binding="tns:wsReqSenderHttpPost">
+      <http:address location="http://www.unirail.ru/WEBServices/WSRequests.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="wsReqSenderHttpGet" binding="tns:wsReqSenderHttpGet">
+      <http:address location="http://www.unirail.ru/WEBServices/WSRequests.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

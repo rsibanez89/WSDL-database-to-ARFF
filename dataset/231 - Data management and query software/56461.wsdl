@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://schemas.microsoft.com/sharepoint/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://schemas.microsoft.com/sharepoint/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/sharepoint/soap/">
+      <s:element name="ResolvePrincipals">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="principalKeys" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="1" name="principalType" type="tns:SPPrincipalType"/>
+            <s:element maxOccurs="1" minOccurs="1" name="addToUserInfoList" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="SPPrincipalType">
+        <s:list>
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="None"/>
+              <s:enumeration value="User"/>
+              <s:enumeration value="DistributionList"/>
+              <s:enumeration value="SecurityGroup"/>
+              <s:enumeration value="SharePointGroup"/>
+              <s:enumeration value="All"/>
+            </s:restriction>
+          </s:simpleType>
+        </s:list>
+      </s:simpleType>
+      <s:element name="ResolvePrincipalsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ResolvePrincipalsResult" type="tns:ArrayOfPrincipalInfo"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPrincipalInfo">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="PrincipalInfo" type="tns:PrincipalInfo"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PrincipalInfo">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="AccountName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="UserInfoID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="DisplayName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Email" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Department" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Title" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="IsResolved" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="MoreMatches" type="tns:ArrayOfPrincipalInfo"/>
+          <s:element maxOccurs="1" minOccurs="1" name="PrincipalType" type="tns:SPPrincipalType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchPrincipals">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="searchText" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="maxResults" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="principalType" type="tns:SPPrincipalType"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchPrincipalsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SearchPrincipalsResult" type="tns:ArrayOfPrincipalInfo"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SearchPrincipalsSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchPrincipalsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ResolvePrincipalsSoapOut">
+    <wsdl:part name="parameters" element="tns:ResolvePrincipalsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SearchPrincipalsSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchPrincipals"/>
+  </wsdl:message>
+  <wsdl:message name="ResolvePrincipalsSoapIn">
+    <wsdl:part name="parameters" element="tns:ResolvePrincipals"/>
+  </wsdl:message>
+  <wsdl:portType name="PeopleSoap">
+    <wsdl:operation name="ResolvePrincipals">
+      <wsdl:input message="tns:ResolvePrincipalsSoapIn"/>
+      <wsdl:output message="tns:ResolvePrincipalsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SearchPrincipals">
+      <wsdl:input message="tns:SearchPrincipalsSoapIn"/>
+      <wsdl:output message="tns:SearchPrincipalsSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PeopleSoap12" type="tns:PeopleSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ResolvePrincipals">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/ResolvePrincipals" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchPrincipals">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/SearchPrincipals" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PeopleSoap" type="tns:PeopleSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ResolvePrincipals">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ResolvePrincipals" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchPrincipals">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/SearchPrincipals" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="People">
+    <wsdl:port name="PeopleSoap" binding="tns:PeopleSoap">
+      <soap:address location="http://process.osellus.com/_vti_bin/People.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="PeopleSoap12" binding="tns:PeopleSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://process.osellus.com/_vti_bin/People.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

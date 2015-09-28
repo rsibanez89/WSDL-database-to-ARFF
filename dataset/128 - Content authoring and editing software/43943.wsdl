@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://dotnetblogengine.net/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://dotnetblogengine.net/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://dotnetblogengine.net/">
+      <s:element name="BlogType">
+        <s:complexType/>
+      </s:element>
+      <s:element name="BlogTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="BlogTypeResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BlogVersion">
+        <s:complexType/>
+      </s:element>
+      <s:element name="BlogVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="BlogVersionResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BlogFileHandler">
+        <s:complexType/>
+      </s:element>
+      <s:element name="BlogFileHandlerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="BlogFileHandlerResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BlogImageHandler">
+        <s:complexType/>
+      </s:element>
+      <s:element name="BlogImageHandlerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="BlogImageHandlerResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPost">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="import" type="tns:ImportPost"/>
+            <s:element maxOccurs="1" minOccurs="0" name="previousUrl" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="removeDuplicate" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ImportPost">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Title" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Author" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="PostDate" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Content" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Categories" type="tns:ArrayOfString"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Tags" type="tns:ArrayOfString"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Publish" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddPostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddPostResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthHeader" type="tns:AuthHeader"/>
+      <s:complexType name="AuthHeader">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+        </s:sequence>
+        <s:anyAttribute/>
+      </s:complexType>
+      <s:element name="AddComment">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="postID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="author" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="email" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="website" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="description" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="date" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCommentResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ForceReload">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ForceReloadResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="source" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="destination" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetFileResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="BlogImageHandlerSoapIn">
+    <wsdl:part name="parameters" element="tns:BlogImageHandler"/>
+  </wsdl:message>
+  <wsdl:message name="AddCommentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddComment"/>
+  </wsdl:message>
+  <wsdl:message name="BlogVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:BlogVersion"/>
+  </wsdl:message>
+  <wsdl:message name="GetFileAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+  </wsdl:message>
+  <wsdl:message name="BlogTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:BlogType"/>
+  </wsdl:message>
+  <wsdl:message name="BlogFileHandlerSoapIn">
+    <wsdl:part name="parameters" element="tns:BlogFileHandler"/>
+  </wsdl:message>
+  <wsdl:message name="AddCommentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddCommentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="BlogVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:BlogVersionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetFileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddPostSoapOut">
+    <wsdl:part name="parameters" element="tns:AddPostResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ForceReloadSoapIn">
+    <wsdl:part name="parameters" element="tns:ForceReload"/>
+  </wsdl:message>
+  <wsdl:message name="AddPostAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+  </wsdl:message>
+  <wsdl:message name="AddPostSoapIn">
+    <wsdl:part name="parameters" element="tns:AddPost"/>
+  </wsdl:message>
+  <wsdl:message name="GetFileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFile"/>
+  </wsdl:message>
+  <wsdl:message name="ForceReloadAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+  </wsdl:message>
+  <wsdl:message name="BlogImageHandlerSoapOut">
+    <wsdl:part name="parameters" element="tns:BlogImageHandlerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddCommentAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader"/>
+  </wsdl:message>
+  <wsdl:message name="BlogFileHandlerSoapOut">
+    <wsdl:part name="parameters" element="tns:BlogFileHandlerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ForceReloadSoapOut">
+    <wsdl:part name="parameters" element="tns:ForceReloadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="BlogTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:BlogTypeResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="BlogImporterSoap">
+    <wsdl:operation name="BlogType">
+      <wsdl:input message="tns:BlogTypeSoapIn"/>
+      <wsdl:output message="tns:BlogTypeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="BlogVersion">
+      <wsdl:input message="tns:BlogVersionSoapIn"/>
+      <wsdl:output message="tns:BlogVersionSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="BlogFileHandler">
+      <wsdl:input message="tns:BlogFileHandlerSoapIn"/>
+      <wsdl:output message="tns:BlogFileHandlerSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="BlogImageHandler">
+      <wsdl:input message="tns:BlogImageHandlerSoapIn"/>
+      <wsdl:output message="tns:BlogImageHandlerSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddPost">
+      <wsdl:input message="tns:AddPostSoapIn"/>
+      <wsdl:output message="tns:AddPostSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <wsdl:input message="tns:AddCommentSoapIn"/>
+      <wsdl:output message="tns:AddCommentSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ForceReload">
+      <wsdl:input message="tns:ForceReloadSoapIn"/>
+      <wsdl:output message="tns:ForceReloadSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <wsdl:input message="tns:GetFileSoapIn"/>
+      <wsdl:output message="tns:GetFileSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BlogImporterSoap" type="tns:BlogImporterSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="BlogType">
+      <soap:operation soapAction="http://dotnetblogengine.net/BlogType" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlogVersion">
+      <soap:operation soapAction="http://dotnetblogengine.net/BlogVersion" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlogFileHandler">
+      <soap:operation soapAction="http://dotnetblogengine.net/BlogFileHandler" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlogImageHandler">
+      <soap:operation soapAction="http://dotnetblogengine.net/BlogImageHandler" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPost">
+      <soap:operation soapAction="http://dotnetblogengine.net/AddPost" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:AddPostAuthHeader" part="AuthHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <soap:operation soapAction="http://dotnetblogengine.net/AddComment" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:AddCommentAuthHeader" part="AuthHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForceReload">
+      <soap:operation soapAction="http://dotnetblogengine.net/ForceReload" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ForceReloadAuthHeader" part="AuthHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <soap:operation soapAction="http://dotnetblogengine.net/GetFile" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:GetFileAuthHeader" part="AuthHeader" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BlogImporterSoap12" type="tns:BlogImporterSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="BlogType">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://dotnetblogengine.net/BlogType" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlogVersion">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://dotnetblogengine.net/BlogVersion" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlogFileHandler">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://dotnetblogengine.net/BlogFileHandler" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlogImageHandler">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://dotnetblogengine.net/BlogImageHandler" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPost">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://dotnetblogengine.net/AddPost" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:AddPostAuthHeader" part="AuthHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://dotnetblogengine.net/AddComment" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:AddCommentAuthHeader" part="AuthHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForceReload">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://dotnetblogengine.net/ForceReload" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ForceReloadAuthHeader" part="AuthHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://dotnetblogengine.net/GetFile" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:GetFileAuthHeader" part="AuthHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BlogImporter">
+    <wsdl:port name="BlogImporterSoap12" binding="tns:BlogImporterSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://hp.gov.in/csc/api/BlogImporter.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="BlogImporterSoap" binding="tns:BlogImporterSoap">
+      <soap:address location="http://hp.gov.in/csc/api/BlogImporter.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.mead.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.mead.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.mead.com/">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="userName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="createPersistentCookie" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="LoginResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Logout">
+        <s:complexType/>
+      </s:element>
+      <s:element name="LogoutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="LogoutResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserName">
+        <s:complexType/>
+      </s:element>
+      <s:element name="getUserNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="getUserNameResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isLoggedIn">
+        <s:complexType/>
+      </s:element>
+      <s:element name="isLoggedInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="isLoggedInResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSegment">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetSegmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetSegmentResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserByEmailPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="email" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserByEmailPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="CheckUserByEmailPasswordResult" type="tns:ExistingUser"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ExistingUser">
+        <s:restriction base="s:string">
+          <s:enumeration value="Loggedin"/>
+          <s:enumeration value="ForgotPassword"/>
+          <s:enumeration value="MMMUser"/>
+          <s:enumeration value="MMMForgotPassword"/>
+          <s:enumeration value="NotFound"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="isFaceBookUserLinked">
+        <s:complexType/>
+      </s:element>
+      <s:element name="isFaceBookUserLinkedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="isFaceBookUserLinkedResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FaceBookLoggedIn">
+        <s:complexType/>
+      </s:element>
+      <s:element name="FaceBookLoggedInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="FaceBookLoggedInResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShareOnFaceBook">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ShareOnFaceBookResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="FaceBookLoginClicked">
+        <s:complexType/>
+      </s:element>
+      <s:element name="FaceBookLoginClickedResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="FaceBookInPageLoginClicked">
+        <s:complexType/>
+      </s:element>
+      <s:element name="FaceBookInPageLoginClickedResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="PageView">
+        <s:complexType/>
+      </s:element>
+      <s:element name="PageViewResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="boolean" type="s:boolean"/>
+      <s:element name="anyType" nillable="true"/>
+      <s:element name="string" nillable="true" type="s:string"/>
+      <s:element name="ExistingUser" type="tns:ExistingUser"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getUserNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserName"/>
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapIn">
+    <wsdl:part name="parameters" element="tns:Logout"/>
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogoutResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CheckUserByEmailPasswordHttpPostIn">
+    <wsdl:part name="email" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse"/>
+  </wsdl:message>
+  <wsdl:message name="isFaceBookUserLinkedSoapIn">
+    <wsdl:part name="parameters" element="tns:isFaceBookUserLinked"/>
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoggedInHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="FaceBookInPageLoginClickedHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="FaceBookInPageLoginClickedSoapOut">
+    <wsdl:part name="parameters" element="tns:FaceBookInPageLoginClickedResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FaceBookInPageLoginClickedSoapIn">
+    <wsdl:part name="parameters" element="tns:FaceBookInPageLoginClicked"/>
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoggedInSoapIn">
+    <wsdl:part name="parameters" element="tns:FaceBookLoggedIn"/>
+  </wsdl:message>
+  <wsdl:message name="PageViewSoapIn">
+    <wsdl:part name="parameters" element="tns:PageView"/>
+  </wsdl:message>
+  <wsdl:message name="isFaceBookUserLinkedSoapOut">
+    <wsdl:part name="parameters" element="tns:isFaceBookUserLinkedResponse"/>
+  </wsdl:message>
+  <wsdl:message name="PageViewHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="ShareOnFaceBookSoapIn">
+    <wsdl:part name="parameters" element="tns:ShareOnFaceBook"/>
+  </wsdl:message>
+  <wsdl:message name="CheckUserByEmailPasswordHttpGetIn">
+    <wsdl:part name="email" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetSegmentHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoginClickedSoapIn">
+    <wsdl:part name="parameters" element="tns:FaceBookLoginClicked"/>
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoginClickedSoapOut">
+    <wsdl:part name="parameters" element="tns:FaceBookLoginClickedResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ShareOnFaceBookHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoginClickedHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="ShareOnFaceBookSoapOut">
+    <wsdl:part name="parameters" element="tns:ShareOnFaceBookResponse"/>
+  </wsdl:message>
+  <wsdl:message name="isLoggedInHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="GetSegmentHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="LogoutHttpGetOut">
+    <wsdl:part name="Body" element="tns:anyType"/>
+  </wsdl:message>
+  <wsdl:message name="isFaceBookUserLinkedHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="getUserNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserNameResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSegmentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSegment"/>
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="CheckUserByEmailPasswordHttpPostOut">
+    <wsdl:part name="Body" element="tns:ExistingUser"/>
+  </wsdl:message>
+  <wsdl:message name="PageViewHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="isFaceBookUserLinkedHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="getUserNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetSegmentHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoggedInHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="isLoggedInSoapIn">
+    <wsdl:part name="parameters" element="tns:isLoggedIn"/>
+  </wsdl:message>
+  <wsdl:message name="isLoggedInHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="FaceBookInPageLoginClickedHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login"/>
+  </wsdl:message>
+  <wsdl:message name="FaceBookInPageLoginClickedHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="ShareOnFaceBookHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="isLoggedInHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="isLoggedInSoapOut">
+    <wsdl:part name="parameters" element="tns:isLoggedInResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoggedInHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="PageViewSoapOut">
+    <wsdl:part name="parameters" element="tns:PageViewResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CheckUserByEmailPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserByEmailPasswordResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CheckUserByEmailPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUserByEmailPassword"/>
+  </wsdl:message>
+  <wsdl:message name="CheckUserByEmailPasswordHttpGetOut">
+    <wsdl:part name="Body" element="tns:ExistingUser"/>
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoggedInHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="ShareOnFaceBookHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="PageViewHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="GetSegmentHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="PageViewHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="getUserNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetSegmentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSegmentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LogoutHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoggedInSoapOut">
+    <wsdl:part name="parameters" element="tns:FaceBookLoggedInResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getUserNameHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="ShareOnFaceBookHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="LogoutHttpPostOut">
+    <wsdl:part name="Body" element="tns:anyType"/>
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoginClickedHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="LoginHttpGetIn">
+    <wsdl:part name="userName" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="createPersistentCookie" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="getUserNameHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="LogoutHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoginClickedHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="FaceBookLoginClickedHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="isFaceBookUserLinkedHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="isLoggedInHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="LoginHttpPostIn">
+    <wsdl:part name="userName" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="createPersistentCookie" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="isFaceBookUserLinkedHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="FaceBookInPageLoginClickedHttpPostOut">
+  </wsdl:message>
+  <wsdl:portType name="AuthSoap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn"/>
+      <wsdl:output message="tns:LoginSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutSoapIn"/>
+      <wsdl:output message="tns:LogoutSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <wsdl:input message="tns:getUserNameSoapIn"/>
+      <wsdl:output message="tns:getUserNameSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="isLoggedIn">
+      <wsdl:input message="tns:isLoggedInSoapIn"/>
+      <wsdl:output message="tns:isLoggedInSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegment">
+      <wsdl:input message="tns:GetSegmentSoapIn"/>
+      <wsdl:output message="tns:GetSegmentSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserByEmailPassword">
+      <wsdl:input message="tns:CheckUserByEmailPasswordSoapIn"/>
+      <wsdl:output message="tns:CheckUserByEmailPasswordSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="isFaceBookUserLinked">
+      <wsdl:input message="tns:isFaceBookUserLinkedSoapIn"/>
+      <wsdl:output message="tns:isFaceBookUserLinkedSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoggedIn">
+      <wsdl:input message="tns:FaceBookLoggedInSoapIn"/>
+      <wsdl:output message="tns:FaceBookLoggedInSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ShareOnFaceBook">
+      <wsdl:input message="tns:ShareOnFaceBookSoapIn"/>
+      <wsdl:output message="tns:ShareOnFaceBookSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoginClicked">
+      <wsdl:input message="tns:FaceBookLoginClickedSoapIn"/>
+      <wsdl:output message="tns:FaceBookLoginClickedSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookInPageLoginClicked">
+      <wsdl:input message="tns:FaceBookInPageLoginClickedSoapIn"/>
+      <wsdl:output message="tns:FaceBookInPageLoginClickedSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PageView">
+      <wsdl:input message="tns:PageViewSoapIn"/>
+      <wsdl:output message="tns:PageViewSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AuthHttpGet">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpGetIn"/>
+      <wsdl:output message="tns:LoginHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutHttpGetIn"/>
+      <wsdl:output message="tns:LogoutHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <wsdl:input message="tns:getUserNameHttpGetIn"/>
+      <wsdl:output message="tns:getUserNameHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="isLoggedIn">
+      <wsdl:input message="tns:isLoggedInHttpGetIn"/>
+      <wsdl:output message="tns:isLoggedInHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegment">
+      <wsdl:input message="tns:GetSegmentHttpGetIn"/>
+      <wsdl:output message="tns:GetSegmentHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserByEmailPassword">
+      <wsdl:input message="tns:CheckUserByEmailPasswordHttpGetIn"/>
+      <wsdl:output message="tns:CheckUserByEmailPasswordHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="isFaceBookUserLinked">
+      <wsdl:input message="tns:isFaceBookUserLinkedHttpGetIn"/>
+      <wsdl:output message="tns:isFaceBookUserLinkedHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoggedIn">
+      <wsdl:input message="tns:FaceBookLoggedInHttpGetIn"/>
+      <wsdl:output message="tns:FaceBookLoggedInHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ShareOnFaceBook">
+      <wsdl:input message="tns:ShareOnFaceBookHttpGetIn"/>
+      <wsdl:output message="tns:ShareOnFaceBookHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoginClicked">
+      <wsdl:input message="tns:FaceBookLoginClickedHttpGetIn"/>
+      <wsdl:output message="tns:FaceBookLoginClickedHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookInPageLoginClicked">
+      <wsdl:input message="tns:FaceBookInPageLoginClickedHttpGetIn"/>
+      <wsdl:output message="tns:FaceBookInPageLoginClickedHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PageView">
+      <wsdl:input message="tns:PageViewHttpGetIn"/>
+      <wsdl:output message="tns:PageViewHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AuthHttpPost">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginHttpPostIn"/>
+      <wsdl:output message="tns:LoginHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutHttpPostIn"/>
+      <wsdl:output message="tns:LogoutHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <wsdl:input message="tns:getUserNameHttpPostIn"/>
+      <wsdl:output message="tns:getUserNameHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="isLoggedIn">
+      <wsdl:input message="tns:isLoggedInHttpPostIn"/>
+      <wsdl:output message="tns:isLoggedInHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegment">
+      <wsdl:input message="tns:GetSegmentHttpPostIn"/>
+      <wsdl:output message="tns:GetSegmentHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserByEmailPassword">
+      <wsdl:input message="tns:CheckUserByEmailPasswordHttpPostIn"/>
+      <wsdl:output message="tns:CheckUserByEmailPasswordHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="isFaceBookUserLinked">
+      <wsdl:input message="tns:isFaceBookUserLinkedHttpPostIn"/>
+      <wsdl:output message="tns:isFaceBookUserLinkedHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoggedIn">
+      <wsdl:input message="tns:FaceBookLoggedInHttpPostIn"/>
+      <wsdl:output message="tns:FaceBookLoggedInHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ShareOnFaceBook">
+      <wsdl:input message="tns:ShareOnFaceBookHttpPostIn"/>
+      <wsdl:output message="tns:ShareOnFaceBookHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoginClicked">
+      <wsdl:input message="tns:FaceBookLoginClickedHttpPostIn"/>
+      <wsdl:output message="tns:FaceBookLoginClickedHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookInPageLoginClicked">
+      <wsdl:input message="tns:FaceBookInPageLoginClickedHttpPostIn"/>
+      <wsdl:output message="tns:FaceBookInPageLoginClickedHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PageView">
+      <wsdl:input message="tns:PageViewHttpPostIn"/>
+      <wsdl:output message="tns:PageViewHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthSoap12" type="tns:AuthSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Login">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/Login" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/Logout" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/getUserName" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isLoggedIn">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/isLoggedIn" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegment">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/GetSegment" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserByEmailPassword">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/CheckUserByEmailPassword" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isFaceBookUserLinked">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/isFaceBookUserLinked" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoggedIn">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/FaceBookLoggedIn" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShareOnFaceBook">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/ShareOnFaceBook" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoginClicked">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/FaceBookLoginClicked" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookInPageLoginClicked">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/FaceBookInPageLoginClicked" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PageView">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mead.com/PageView" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthSoap" type="tns:AuthSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://www.mead.com/Login" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://www.mead.com/Logout" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <soap:operation soapAction="http://www.mead.com/getUserName" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isLoggedIn">
+      <soap:operation soapAction="http://www.mead.com/isLoggedIn" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegment">
+      <soap:operation soapAction="http://www.mead.com/GetSegment" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserByEmailPassword">
+      <soap:operation soapAction="http://www.mead.com/CheckUserByEmailPassword" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isFaceBookUserLinked">
+      <soap:operation soapAction="http://www.mead.com/isFaceBookUserLinked" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoggedIn">
+      <soap:operation soapAction="http://www.mead.com/FaceBookLoggedIn" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShareOnFaceBook">
+      <soap:operation soapAction="http://www.mead.com/ShareOnFaceBook" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoginClicked">
+      <soap:operation soapAction="http://www.mead.com/FaceBookLoginClicked" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookInPageLoginClicked">
+      <soap:operation soapAction="http://www.mead.com/FaceBookInPageLoginClicked" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PageView">
+      <soap:operation soapAction="http://www.mead.com/PageView" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthHttpGet" type="tns:AuthHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="Login">
+      <http:operation location="/Login"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <http:operation location="/Logout"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <http:operation location="/getUserName"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isLoggedIn">
+      <http:operation location="/isLoggedIn"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegment">
+      <http:operation location="/GetSegment"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserByEmailPassword">
+      <http:operation location="/CheckUserByEmailPassword"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isFaceBookUserLinked">
+      <http:operation location="/isFaceBookUserLinked"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoggedIn">
+      <http:operation location="/FaceBookLoggedIn"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShareOnFaceBook">
+      <http:operation location="/ShareOnFaceBook"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoginClicked">
+      <http:operation location="/FaceBookLoginClicked"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookInPageLoginClicked">
+      <http:operation location="/FaceBookInPageLoginClicked"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PageView">
+      <http:operation location="/PageView"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthHttpPost" type="tns:AuthHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="Login">
+      <http:operation location="/Login"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <http:operation location="/Logout"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserName">
+      <http:operation location="/getUserName"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isLoggedIn">
+      <http:operation location="/isLoggedIn"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegment">
+      <http:operation location="/GetSegment"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUserByEmailPassword">
+      <http:operation location="/CheckUserByEmailPassword"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isFaceBookUserLinked">
+      <http:operation location="/isFaceBookUserLinked"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoggedIn">
+      <http:operation location="/FaceBookLoggedIn"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShareOnFaceBook">
+      <http:operation location="/ShareOnFaceBook"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookLoginClicked">
+      <http:operation location="/FaceBookLoginClicked"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FaceBookInPageLoginClicked">
+      <http:operation location="/FaceBookInPageLoginClicked"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PageView">
+      <http:operation location="/PageView"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Auth">
+    <wsdl:port name="AuthHttpPost" binding="tns:AuthHttpPost">
+      <http:address location="http://www.meadonline.com/Services/Auth.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="AuthHttpGet" binding="tns:AuthHttpGet">
+      <http:address location="http://www.meadonline.com/Services/Auth.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="AuthSoap" binding="tns:AuthSoap">
+      <soap:address location="http://www.meadonline.com/Services/Auth.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="AuthSoap12" binding="tns:AuthSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.meadonline.com/Services/Auth.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

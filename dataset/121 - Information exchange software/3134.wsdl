@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Online Messenger Service" targetNamespace="uri://www.myoms.net/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="uri://www.myoms.net/types/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tns="uri://www.myoms.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+  </types>
+  <message name="OMS2_AddUserToChatIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="userToAdd" type="s:string"/>
+    <part name="chatID" type="s:string"/>
+  </message>
+  <message name="OMS_AddOfflineUserIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="offlineUser" type="s:string"/>
+  </message>
+  <message name="OMS_EditUserIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="firstname" type="s:string"/>
+    <part name="lastname" type="s:string"/>
+    <part name="email" type="s:string"/>
+    <part name="password1" type="s:string"/>
+    <part name="password2" type="s:string"/>
+    <part name="country" type="s:string"/>
+    <part name="birthyear" type="s:long"/>
+    <part name="birthmonth" type="s:long"/>
+    <part name="birthday" type="s:long"/>
+  </message>
+  <message name="OMS_LoginIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_DisAllowUserToSeeMeWhenHiddenIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="disAllowedUser" type="s:string"/>
+  </message>
+  <message name="OMS2_GetUserInfoIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="usernameForInfo" type="s:string"/>
+  </message>
+  <message name="OMS_DeleteMessageIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_SetDisplayNameIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="displayName" type="s:string"/>
+  </message>
+  <message name="OMS2_ReceiveChatMessageIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_SendMessageToChatIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="chatID" type="s:string"/>
+    <part name="message" type="s:string"/>
+  </message>
+  <message name="OMS2_GetOnlineUsersIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS_ReceiveMessageIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_GetStatusIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_AllowUserToSeeMeWhenHiddenIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="allowedUser" type="s:string"/>
+  </message>
+  <message name="OMS2_LogoutIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_SetStatusIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="status" type="s:string"/>
+    <part name="statusMessage" type="s:string"/>
+  </message>
+  <message name="OMS2_GetUserlistIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_HideMeFromOtherUsersIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_CreateChatIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_GetDisplayNameIn">
+    <part name="username" type="s:string"/>
+  </message>
+  <message name="OMS2_GetUsersThatCanSeemeWhenHiddenIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_GetStatusOptionsIn">
+  </message>
+  <message name="OMS_DeleteOfflineUserIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="offlineUser" type="s:string"/>
+  </message>
+  <message name="OMS2_RemoveMeFromChatIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="chatID" type="s:string"/>
+  </message>
+  <message name="OMS2_FindUserIn">
+    <part name="criteria" type="s:string"/>
+  </message>
+  <message name="OMS2_GetNewMessageStatusIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS_PostMessageIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="to" type="s:string"/>
+    <part name="message" type="s:string"/>
+  </message>
+  <message name="OMS_SimpleResultOut">
+    <part name="Result" type="s:string"/>
+  </message>
+  <message name="OMS2_GetChatsIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_GetUsersFromChatIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+    <part name="chatID" type="s:string"/>
+  </message>
+  <message name="OMS2_GetOfflineUsersIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_GetServerTimeIn">
+  </message>
+  <message name="OMS_DeleteUserIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_UnHideMeFromOtherUsersIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS2_DeleteChatMessageIn">
+    <part name="username" type="s:string"/>
+    <part name="password" type="s:string"/>
+  </message>
+  <message name="OMS_CreateUserIn">
+    <part name="firstname" type="s:string"/>
+    <part name="lastname" type="s:string"/>
+    <part name="email" type="s:string"/>
+    <part name="username" type="s:string"/>
+    <part name="password1" type="s:string"/>
+    <part name="password2" type="s:string"/>
+    <part name="country" type="s:string"/>
+    <part name="birthyear" type="s:long"/>
+    <part name="birthmonth" type="s:long"/>
+    <part name="birthday" type="s:long"/>
+  </message>
+  <portType name="OnlineMessengerService">
+    <operation name="OMS_CreateUser_simple">
+      <input message="tns:OMS_CreateUserIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS_Login_simple">
+      <input message="tns:OMS_LoginIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_Logout_simple">
+      <input message="tns:OMS2_LogoutIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS_EditUser_simple">
+      <input message="tns:OMS_EditUserIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS_DeleteUser_simple">
+      <input message="tns:OMS_DeleteUserIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetUserlist_simple">
+      <input message="tns:OMS2_GetUserlistIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS_ReceiveMessage_simple">
+      <input message="tns:OMS_ReceiveMessageIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS_DeleteMessage_simple">
+      <input message="tns:OMS_DeleteMessageIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS_PostMessage_simple">
+      <input message="tns:OMS_PostMessageIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS_AddOfflineUser_simple">
+      <input message="tns:OMS_AddOfflineUserIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS_DeleteOfflineUser_simple">
+      <input message="tns:OMS_DeleteOfflineUserIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetUserInfo_simple">
+      <input message="tns:OMS2_GetUserInfoIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_FindUser_simple">
+      <input message="tns:OMS2_FindUserIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetOfflineUsers_simple">
+      <input message="tns:OMS2_GetOfflineUsersIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetOnlineUsers_simple">
+      <input message="tns:OMS2_GetOnlineUsersIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetStatusOptions_simple">
+      <input message="tns:OMS2_GetStatusOptionsIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_SetStatus_simple">
+      <input message="tns:OMS2_SetStatusIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetStatus_simple">
+      <input message="tns:OMS2_GetStatusIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_SetDisplayName_simple">
+      <input message="tns:OMS2_SetDisplayNameIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetDisplayName_simple">
+      <input message="tns:OMS2_GetDisplayNameIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_HideMeFromOtherUsers_simple">
+      <input message="tns:OMS2_HideMeFromOtherUsersIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_UnHideMeFromOtherUsers_simple">
+      <input message="tns:OMS2_HideMeFromOtherUsersIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_AllowUserToSeeMeWhenHidden_simple">
+      <input message="tns:OMS2_AllowUserToSeeMeWhenHiddenIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_DisAllowUserToSeeMeWhenHidden_simple">
+      <input message="tns:OMS2_DisAllowUserToSeeMeWhenHiddenIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetUsersThatCanSeemeWhenHidden_simple">
+      <input message="tns:OMS2_GetUsersThatCanSeemeWhenHiddenIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_CreateChat_simple">
+      <input message="tns:OMS2_CreateChatIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_AddUserToChat_simple">
+      <input message="tns:OMS2_AddUserToChatIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_RemoveMeFromChat_simple">
+      <input message="tns:OMS2_RemoveMeFromChatIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetUsersFromChat_simple">
+      <input message="tns:OMS2_GetUsersFromChatIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetChats_simple">
+      <input message="tns:OMS2_GetChatsIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_SendMessageToChat_simple">
+      <input message="tns:OMS2_SendMessageToChatIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_ReceiveChatMessage_simple">
+      <input message="tns:OMS2_ReceiveChatMessageIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_DeleteChatMessage_simple">
+      <input message="tns:OMS2_DeleteChatMessageIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetNewMessageStatus_simple">
+      <input message="tns:OMS2_GetNewMessageStatusIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+    <operation name="OMS2_GetServerTime_simple">
+      <input message="tns:OMS2_GetServerTimeIn"/>
+      <output message="tns:OMS_SimpleResultOut"/>
+    </operation>
+  </portType>
+  <binding name="OnlineMessengerServiceSoap" type="tns:OnlineMessengerService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="OMS_Login_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS_Login_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_Logout_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_Logout_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS_CreateUser_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS_CreateUser_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS_EditUser_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS_EditUser_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS_DeleteUser_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS_DeleteUser_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetUserlist_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetUserlist_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS_ReceiveMessage_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS_ReceiveMessage_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS_DeleteMessage_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS_DeleteMessage_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS_PostMessage_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS_PostMessage_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS_AddOfflineUser_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS_AddOfflineUser_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS_DeleteOfflineUser_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS_DeleteOfflineUser_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetUserInfo_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetUserInfo_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_FindUser_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_FindUser_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetOfflineUsers_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetOfflineUsers_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetOnlineUsers_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetOnlineUsers_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetStatusOptions_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetStatusOptions_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_SetStatus_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_SetStatus_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetStatus_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetStatus_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_SetDisplayName_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_SetDisplayName_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetDisplayName_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetDisplayName_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_HideMeFromOtherUsers_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_HideMeFromOtherUsers_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_UnHideMeFromOtherUsers_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_HideMeFromOtherUsers_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_AllowUserToSeeMeWhenHidden_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_AllowUserToSeeMeWhenHidden_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_DisAllowUserToSeeMeWhenHidden_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_DisAllowUserToSeeMeWhenHidden_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetUsersThatCanSeemeWhenHidden_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetUsersThatCanSeemeWhenHidden_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_CreateChat_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_CreateChat_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_AddUserToChat_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_AddUserToChat_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_RemoveMeFromChat_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_RemoveMeFromChat_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetUsersFromChat_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetUsersFromChat_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetChats_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetChats_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_SendMessageToChat_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_SendMessageToChat_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_ReceiveChatMessage_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_ReceiveChatMessage_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_DeleteChatMessage_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_DeleteChatMessage_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetNewMessageStatus_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetNewMessageStatus_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+    <operation name="OMS2_GetServerTime_simple">
+      <soap:operation soapAction="http://www.myoms.net/action/OMS2_GetServerTime_simple"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="uri://www.myoms.net/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="OnlineMessenger">
+<documentation>Visit http://www.myoms.net/soap for the latest documentation of all the webservices available at Ni-Frith Media Systems.
+							Also try http://www.myoms.net/soap/oms2.wsdl for the simple complextype methods! 
+		</documentation>
+    <port name="OnlineMessengerServiceSoapPort" binding="tns:OnlineMessengerServiceSoap">
+      <soap:address location="http://www.myoms.net/cgi-bin/oms2_soap.pl"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,1261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:grms" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="urn:grms" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="urn:grms">
+  <types>
+    <schema targetNamespace="urn:grms" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:impl="urn:grms">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+
+   <simpleType name="EventType">
+    <restriction base="xsd:string">
+    <enumeration value="STATUS"/>
+    <enumeration value="REQUEST"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="ProtocolType">
+    <restriction base="xsd:string">
+    <enumeration value="SOAP"/>
+    <enumeration value="GASS"/>
+    <enumeration value="SOCKET"/> <!-- not supported yet -->
+    </restriction>
+   </simpleType>
+   <simpleType name="UrlType">
+    <restriction base="xsd:string">
+    <enumeration value="PHYSICAL"/>
+    <enumeration value="LOGICAL"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="PathType">
+    <restriction base="xsd:string">
+    <enumeration value="FILE"/>
+    <enumeration value="DIRECTORY"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="DescriptionType">
+    <restriction base="xsd:string">
+    <enumeration value="SHORT"/>
+    <enumeration value="FULL"/>
+    </restriction>
+   </simpleType>
+   <simpleType name="JobStatusType">
+    <restriction base="xsd:string">
+    <enumeration value="QUEUED"/>
+    <enumeration value="PREPROCESSING"/>
+    <enumeration value="PENDING"/>
+    <enumeration value="RUNNING"/>
+    <enumeration value="STOPPED"/>
+    <enumeration value="POSTPROCESSING"/>
+    <enumeration value="FINISHED"/>
+    <enumeration value="SUSPENDED"/>
+    <enumeration value="FAILED"/>
+    <enumeration value="CANCELED"/>
+    </restriction>
+   </simpleType>
+   
+   <complexType name="ArrayOf_xsd_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="jobHistory">
+    <sequence>
+     <element name="hostName" nillable="true" type="xsd:string"/>
+     <element name="startTime" type="xsd:dateTime"/>
+     <element name="localSubmissionTime" type="xsd:dateTime"/>
+     <element name="localStartTime" type="xsd:dateTime"/>
+     <element name="localFinishTime" type="xsd:dateTime"/>
+     <element name="jobDescription" nillable="true" type="xsd:string"/>
+     <element name="applicationAccess" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="jobInformation">
+    <sequence>
+     <element name="project" nillable="true" type="xsd:string"/>
+     <element name="userDn" nillable="true" type="xsd:string"/>
+     <element name="jobStatus" nillable="true" type="impl:JobStatusType"/>
+     <element name="submissionTime" type="xsd:dateTime"/>
+     <element name="finishTime" type="xsd:dateTime"/>
+     <element name="requestStatus" nillable="true" type="xsd:string"/>
+     <element name="reqNumStatus" type="xsd:int"/>
+     <element name="errorDescription" nillable="true" type="xsd:string"/>
+     <element name="lastHistory" nillable="true" type="impl:jobHistory"/>
+     <element name="historyLength" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfjobHistory">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="impl:jobHistory[]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="NotificationRequest">
+    <sequence>
+     <element name="eventType" type="impl:EventType"/>
+     <element name="protocol" type="impl:ProtocolType"/>
+     <element name="destination" nillable="true" type="xsd:string"/>
+     <element name="append" type="xsd:boolean"/>
+     <element name="format" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="GrmsResponse">
+    <sequence>
+     <element name="errorCode" type="xsd:int"/>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfGrmsResponse">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="impl:GrmsResponse[]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="FileDir">
+    <sequence>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="path" nillable="true" type="xsd:string"/>
+     <element name="urltype" type="impl:UrlType"/>
+     <element name="pathtype" type="impl:PathType"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfFileDir">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="impl:FileDir[]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  </types>
+  <message name="getAllJobsListResponse">
+    <part name="getAllJobsListReturn" type="impl:GrmsResponse"/>
+    <part name="jobsList" type="impl:ArrayOf_xsd_string"/>
+  </message>
+  <message name="getNotificationInformationResponse">
+    <part name="getNotificationInformationReturn" type="impl:GrmsResponse"/>
+    <part name="notificationRequest" type="impl:NotificationRequest"/>
+  </message>
+  <message name="getJobsListResponse">
+    <part name="getJobsListReturn" type="impl:GrmsResponse"/>
+    <part name="jobsList" type="impl:ArrayOf_xsd_string"/>
+  </message>
+  <message name="submitJobRequest">
+    <part name="jobDefinition" type="xsd:string"/>
+  </message>
+  <message name="addCheckpointFileDirsResponse">
+    <part name="result" type="impl:ArrayOfGrmsResponse"/>
+    <part name="addCheckpointFileDirsReturn" type="impl:GrmsResponse"/>
+    <part name="errors" type="xsd:int"/>
+  </message>
+  <message name="migrateJobRequest1">
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <message name="unregisterApplicationAccessResponse">
+    <part name="unregisterApplicationAccessReturn" type="impl:GrmsResponse"/>
+  </message>
+  <message name="findResourcesRequest">
+    <part name="resourceDefinition" type="xsd:string"/>
+  </message>
+  <message name="getJobHistoryResponse">
+    <part name="getJobHistoryReturn" type="impl:GrmsResponse"/>
+    <part name="history" type="impl:ArrayOfjobHistory"/>
+  </message>
+  <message name="getJobInfoRequest">
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <message name="registerApplicationAccessResponse">
+    <part name="registerApplicationAccessReturn" type="impl:GrmsResponse"/>
+  </message>
+  <message name="getOutputFileDirsResponse">
+    <part name="getOutputFileDirsReturn" type="impl:GrmsResponse"/>
+    <part name="items" type="impl:ArrayOfFileDir"/>
+  </message>
+  <message name="getJobHistoryRequest">
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <message name="getServiceDescriptionRequest">
+    <part name="type" type="impl:DescriptionType"/>
+  </message>
+  <message name="registerNotificationRequest">
+    <part name="jobId" type="xsd:string"/>
+    <part name="request" type="impl:NotificationRequest"/>
+  </message>
+  <message name="unregisterNotificationResponse">
+    <part name="unregisterNotificationReturn" type="impl:GrmsResponse"/>
+  </message>
+  <message name="findResourcesResponse">
+    <part name="findResourcesReturn" type="impl:GrmsResponse"/>
+    <part name="resources" type="impl:ArrayOf_xsd_string"/>
+  </message>
+  <message name="getJobsListRequest">
+  </message>
+  <message name="resumeJobResponse1">
+    <part name="resumeJobReturn" type="impl:GrmsResponse"/>
+  </message>
+  <message name="testJobDescriptionRequest">
+    <part name="JobDescription" type="xsd:string"/>
+  </message>
+  <message name="registerApplicationAccessRequest">
+    <part name="jobId" type="xsd:string"/>
+    <part name="service_location" type="xsd:string"/>
+    <part name="pid" type="xsd:int"/>
+  </message>
+  <message name="getProjectJobsListResponse1">
+    <part name="getProjectJobsListReturn" type="impl:GrmsResponse"/>
+    <part name="jobsList" type="impl:ArrayOf_xsd_string"/>
+  </message>
+  <message name="suspendJobRequest1">
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <message name="deleteOutputFileDirsResponse">
+    <part name="result" type="impl:ArrayOfGrmsResponse"/>
+    <part name="deleteOutputFileDirsReturn" type="impl:GrmsResponse"/>
+    <part name="errors" type="xsd:int"/>
+  </message>
+  <message name="getOutputFileDirsRequest">
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <message name="getJobsListRequest1">
+    <part name="status" type="impl:JobStatusType"/>
+  </message>
+  <message name="addOutputFileDirsResponse">
+    <part name="result" type="impl:ArrayOfGrmsResponse"/>
+    <part name="addOutputFileDirsReturn" type="impl:GrmsResponse"/>
+    <part name="errors" type="xsd:int"/>
+  </message>
+  <message name="addCheckpointFileDirsRequest">
+    <part name="jobId" type="xsd:string"/>
+    <part name="items" type="impl:ArrayOfFileDir"/>
+  </message>
+  <message name="submitJobResponse">
+    <part name="submitJobReturn" type="impl:GrmsResponse"/>
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <message name="getNotificationsListRequest">
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <message name="resumeJobRequest">
+    <part name="jobId" type="xsd:string"/>
+    <part name="jobDefinition" type="xsd:string"/>
+  </message>
+  <message name="getApplicationAccessResponse">
+    <part name="getApplicationAccessReturn" type="impl:GrmsResponse"/>
+    <part name="service_location" type="xsd:string"/>
+    <part name="pid" type="xsd:int"/>
+  </message>
+  <message name="cancelJobResponse">
+    <part name="cancelJobReturn" type="impl:GrmsResponse"/>
+  </message>
+  <message name="deleteCheckpointFileDirsResponse">
+    <part name="result" type="impl:ArrayOfGrmsResponse"/>
+    <part name="deleteCheckpointFileDirsReturn" type="impl:GrmsResponse"/>
+    <part name="errors" type="xsd:int"/>
+  </message>
+  <message name="migrateJobResponse">
+    <part name="migrateJobReturn" type="impl:GrmsResponse"/>
+  </message>
+  <message name="resumeJobRequest1">
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <message name="addOutputFileDirsRequest">
+    <part name="jobId" type="xsd:string"/>
+    <part name="items" type="impl:ArrayOfFileDir"/>
+  </message>
+  <message name="getCheckpointFileDirsResponse">
+    <part name="getCheckpointFileDirsReturn" type="impl:GrmsResponse"/>
+    <part name="items" type="impl:ArrayOfFileDir"/>
+  </message>
+  <message name="deleteOutputFileDirsRequest">
+    <part name="jobId" type="xsd:string"/>
+    <part name="items" type="impl:ArrayOfFileDir"/>
+  </message>
+  <message name="getServiceDescriptionResponse">
+    <part name="getServiceDescriptionReturn" type="xsd:string"/>
+  </message>
+  <message name="getProjectJobsListRequest1">
+    <part name="project" type="xsd:string"/>
+    <part name="status" type="impl:JobStatusType"/>
+  </message>
+  <message name="getJobInfoResponse">
+    <part name="getJobInfoReturn" type="impl:GrmsResponse"/>
+    <part name="jobInfo" type="impl:jobInformation"/>
+  </message>
+  <message name="getNotificationInformationRequest">
+    <part name="jobId" type="xsd:string"/>
+    <part name="notificationId" type="xsd:string"/>
+  </message>
+  <message name="unregisterApplicationAccessRequest">
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <message name="suspendJobRequest">
+    <part name="jobId" type="xsd:string"/>
+    <part name="jobDefinition" type="xsd:string"/>
+  </message>
+  <message name="getAllJobsListRequest">
+    <part name="status" type="impl:JobStatusType"/>
+  </message>
+  <message name="unregisterNotificationRequest">
+    <part name="jobId" type="xsd:string"/>
+    <part name="notificationId" type="xsd:string"/>
+  </message>
+  <message name="getNotificationsListResponse">
+    <part name="getNotificationsListReturn" type="impl:GrmsResponse"/>
+    <part name="notificationIds" type="impl:ArrayOf_xsd_string"/>
+  </message>
+  <message name="getCheckpointFileDirsRequest">
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <message name="resumeJobResponse">
+    <part name="resumeJobReturn" type="impl:GrmsResponse"/>
+  </message>
+  <message name="registerNotificationResponse">
+    <part name="registerNotificationReturn" type="impl:GrmsResponse"/>
+    <part name="notificationId" type="xsd:string"/>
+  </message>
+  <message name="getJobsListResponse1">
+    <part name="getJobsListReturn" type="impl:GrmsResponse"/>
+    <part name="jobsList" type="impl:ArrayOf_xsd_string"/>
+  </message>
+  <message name="suspendJobResponse1">
+    <part name="suspendJobReturn" type="impl:GrmsResponse"/>
+  </message>
+  <message name="migrateJobResponse1">
+    <part name="migrateJobReturn" type="impl:GrmsResponse"/>
+  </message>
+  <message name="getApplicationAccessRequest">
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <message name="getProjectJobsListRequest">
+    <part name="project" type="xsd:string"/>
+  </message>
+  <message name="getProjectJobsListResponse">
+    <part name="getProjectJobsListReturn" type="impl:GrmsResponse"/>
+    <part name="jobsList" type="impl:ArrayOf_xsd_string"/>
+  </message>
+  <message name="migrateJobRequest">
+    <part name="jobId" type="xsd:string"/>
+    <part name="jobDefinition" type="xsd:string"/>
+  </message>
+  <message name="testJobDescriptionResponse">
+    <part name="testJobDescriptionReturn" type="impl:GrmsResponse"/>
+  </message>
+  <message name="deleteCheckpointFileDirsRequest">
+    <part name="jobId" type="xsd:string"/>
+    <part name="items" type="impl:ArrayOfFileDir"/>
+  </message>
+  <message name="suspendJobResponse">
+    <part name="suspendJobReturn" type="impl:GrmsResponse"/>
+  </message>
+  <message name="cancelJobRequest">
+    <part name="jobId" type="xsd:string"/>
+  </message>
+  <portType name="grms">
+    <operation name="submitJob" parameterOrder="jobDefinition jobId">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for job submitting
+
+             GrmsResponse submitJob(String jobDefinition, String jobId)
+
+             Input Parameters:
+                - String jobDefinition - XML document describing job to be submitted
+             Output Parameters:
+                - String JobId -&gt; unique Job ID
+             Return Value:
+                - GrmsResponse.errorCode
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="submitJobRequest" message="impl:submitJobRequest"/>
+      <output name="submitJobResponse" message="impl:submitJobResponse"/>
+    </operation>
+    <operation name="migrateJob" parameterOrder="jobId jobDefinition">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for job migration
+
+             GrmsResponse migrateJob(String jobId, String jobDefinition)
+
+             Input Parameters:
+                - String jobId - id of job to be migrated
+                - String jobDefinition - XML document describing migration
+             Output Parameters:
+                -
+             Return Value:
+                - GrmsResponse.errorCode
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="migrateJobRequest" message="impl:migrateJobRequest"/>
+      <output name="migrateJobResponse" message="impl:migrateJobResponse"/>
+    </operation>
+    <operation name="migrateJob" parameterOrder="jobId">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for job migration
+
+             GrmsResponse migrateJob(String jobId)
+
+             Input Parameters:
+                - String jobId - id of job to be migrated
+             Output Parameters:
+                -
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="migrateJobRequest1" message="impl:migrateJobRequest1"/>
+      <output name="migrateJobResponse1" message="impl:migrateJobResponse1"/>
+    </operation>
+    <operation name="suspendJob" parameterOrder="jobId jobDefinition">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for job suspending
+
+             GrmsResponse suspendJob(String jobId, String jobDefinition)
+
+             Input Parameters:
+                - String jobId - id of job to be suspended
+                - String jobDefinition - XML document describing migration
+             Output Parameters:
+                -
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="suspendJobRequest" message="impl:suspendJobRequest"/>
+      <output name="suspendJobResponse" message="impl:suspendJobResponse"/>
+    </operation>
+    <operation name="suspendJob" parameterOrder="jobId">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for job suspending
+
+             int suspendJob(String jobId)
+
+             Input Parameters:
+                - String jobId - id of job to be suspended
+             Output Parameters:
+                -
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="suspendJobRequest1" message="impl:suspendJobRequest1"/>
+      <output name="suspendJobResponse1" message="impl:suspendJobResponse1"/>
+    </operation>
+    <operation name="resumeJob" parameterOrder="jobId jobDefinition">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for job resuming
+
+             GrmsResponse resumeJob(String jobId, String jobDefinition)
+
+             Input Parameters:
+                - String jobId - id of job to be migrated
+                - String jobDefinition - XML document describing resumed
+             Output Parameters:
+                -
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="resumeJobRequest" message="impl:resumeJobRequest"/>
+      <output name="resumeJobResponse" message="impl:resumeJobResponse"/>
+    </operation>
+    <operation name="resumeJob" parameterOrder="jobId">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for job resumeing
+
+             GrmsResponse resumeJob(String jobId)
+
+             Input Parameters:
+                - String jobId - id of job to be resumed
+             Output Parameters:
+                -
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="resumeJobRequest1" message="impl:resumeJobRequest1"/>
+      <output name="resumeJobResponse1" message="impl:resumeJobResponse1"/>
+    </operation>
+    <operation name="getJobsList" parameterOrder="jobsList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for obtaining list of jobs belonging to the user
+
+             GrmsResponse getJobsList(String[] jobsList)
+
+             Input Parameters:
+                -
+             Output Parameters:
+                - String[] - array of job IDs belonging to the user
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getJobsListRequest" message="impl:getJobsListRequest"/>
+      <output name="getJobsListResponse" message="impl:getJobsListResponse"/>
+    </operation>
+    <operation name="getJobsList" parameterOrder="status jobsList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for obtaining list of jobs in given state belonging to the user
+
+             int getJobsList(enum JobStatusType status, String[] jobsList)
+
+             Input Parameters:
+                - enum JobStatusType status - status of the job
+             Output Parameters:
+                - String[] - array of job IDs belonging to the user
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getJobsListRequest1" message="impl:getJobsListRequest1"/>
+      <output name="getJobsListResponse1" message="impl:getJobsListResponse1"/>
+    </operation>
+    <operation name="getProjectJobsList" parameterOrder="project jobsList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for obtaining list of jobs belonging to the given project
+
+             GrmsResponse getProjectJobsList(String project, String[] jobsList)
+
+             Input Parameters:
+                - String project - name of the project
+             Output Parameters:
+                - String[] - array of job IDs belonging to the user
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getProjectJobsListRequest" message="impl:getProjectJobsListRequest"/>
+      <output name="getProjectJobsListResponse" message="impl:getProjectJobsListResponse"/>
+    </operation>
+    <operation name="getProjectJobsList" parameterOrder="project status jobsList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for obtaining list of jobs in given state belonging to the given project
+
+             int getProjectJobsList(enum JobStatusType status, String[] jobsList)
+
+             Input Parameters:
+	        - String project - name of the project
+                - enum JobStatusType status - status of the job
+             Output Parameters:
+                - String[] - array of job IDs belonging to the user
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getProjectJobsListRequest1" message="impl:getProjectJobsListRequest1"/>
+      <output name="getProjectJobsListResponse1" message="impl:getProjectJobsListResponse1"/>
+    </operation>
+    <operation name="registerApplicationAccess" parameterOrder="jobId service_location pid">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for registering application access
+
+             GrmsResponse registerApplicationAccess(String jobId, String service_location, int pid)
+
+             Input Parameters:
+                - String jobId - job identifier
+                - String service_location - location of the application/service
+		- int pod - ProcessID
+             Output Parameters:
+                -
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="registerApplicationAccessRequest" message="impl:registerApplicationAccessRequest"/>
+      <output name="registerApplicationAccessResponse" message="impl:registerApplicationAccessResponse"/>
+    </operation>
+    <operation name="unregisterApplicationAccess" parameterOrder="jobId">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for unregistering application access
+
+             GrmsResponse unregisterApplicationAccess( String jobId)
+
+             Input Parameters:
+                - String jobId - job identifier
+             Output Parameters:
+                -
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="unregisterApplicationAccessRequest" message="impl:unregisterApplicationAccessRequest"/>
+      <output name="unregisterApplicationAccessResponse" message="impl:unregisterApplicationAccessResponse"/>
+    </operation>
+    <operation name="getApplicationAccess" parameterOrder="jobId service_location pid">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for getting application access
+
+             GrmsResponse getApplicationAccess(String jobId, String service_location, int pid)
+
+             Input Parameters:
+                - String jobId - job identifier
+             Output Parameters:
+                - String service_location - location of the application/service
+				- int pod - ProcessID
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getApplicationAccessRequest" message="impl:getApplicationAccessRequest"/>
+      <output name="getApplicationAccessResponse" message="impl:getApplicationAccessResponse"/>
+    </operation>
+    <operation name="testJobDescription" parameterOrder="JobDescription">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for testing the description of the job
+
+             GrmsResponse testJobDescription(String jobId)
+
+             Input Parameters:
+                - String jobId - job identifier
+             Output Parameters:
+
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="testJobDescriptionRequest" message="impl:testJobDescriptionRequest"/>
+      <output name="testJobDescriptionResponse" message="impl:testJobDescriptionResponse"/>
+    </operation>
+    <operation name="getJobInfo" parameterOrder="jobId jobInfo">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for getting the information of job
+
+             GrmsResponse getJobInfo(String jobId, jobInformation jobInfo)
+
+             Input Parameters:
+                - String jobId - job identifier
+             Output Parameters:
+                - jobInformation jobInfo - information about the job
+
+		jobInformation
+		{
+ 			String userDn;
+   			enum JobStatusType jobStatus;
+   			Calendar submitionTime;
+   			Calendar finishTime;
+   			String requestStatus;
+   			int reqNumStatus;
+   			String errorDescription;
+
+   			jobHistory history;
+		}
+
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getJobInfoRequest" message="impl:getJobInfoRequest"/>
+      <output name="getJobInfoResponse" message="impl:getJobInfoResponse"/>
+    </operation>
+    <operation name="getJobHistory" parameterOrder="jobId history">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for getting the history of job
+
+             GrmsResponse getJobHistory(String jobId, jobHistory[] history)
+
+             Input Parameters:
+                - String jobId - job identifier
+             Output Parameters:
+                - jobHistory[] history - information about the history
+
+		jobHistory
+		{
+   			String hostName;
+   			Calendar startTime;
+   			Calendar localStartTime;
+   			Calendar localFinishTime;
+   			String jobDescription;
+   		}
+
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getJobHistoryRequest" message="impl:getJobHistoryRequest"/>
+      <output name="getJobHistoryResponse" message="impl:getJobHistoryResponse"/>
+    </operation>
+    <operation name="findResources" parameterOrder="resourceDefinition resources">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for finding resources
+
+             GrmsResponse findResources( String resourceDefinition, String[] resources)
+
+             Input Parameters:
+                - String resourceDefinition - XML document describing resource preferences
+             Output Parameters:
+                - String[] resources -&gt; array of resources (resourceManagerContact) that match user preferences
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="findResourcesRequest" message="impl:findResourcesRequest"/>
+      <output name="findResourcesResponse" message="impl:findResourcesResponse"/>
+    </operation>
+    <operation name="cancelJob" parameterOrder="jobId">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for canceling a job
+
+             GrmsResponse cancelJob( String jobId)
+
+             Input Parameters:
+                - String jobId - job identifier
+             Output Parameters:
+                -
+             Return Value:
+                - GrmsResponse:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="cancelJobRequest" message="impl:cancelJobRequest"/>
+      <output name="cancelJobResponse" message="impl:cancelJobResponse"/>
+    </operation>
+    <operation name="getServiceDescription" parameterOrder="type">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for getting the description of the service
+
+             String getServiceDescription( DescriptionType description)
+
+             Input Parameters:
+                - DescriptionType type - type of the description (enum SHORT, FULL)
+             Output Parameters:
+                -
+             Return Value:
+                - String - containing the description of the service
+         </wsdl:documentation>
+      <input name="getServiceDescriptionRequest" message="impl:getServiceDescriptionRequest"/>
+      <output name="getServiceDescriptionResponse" message="impl:getServiceDescriptionResponse"/>
+    </operation>
+    <operation name="getAllJobsList" parameterOrder="status jobsList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for obtaining list of all jobs in given state
+
+             GrmsResponse getJobsList(enum JobStatusType status, String[] jobsList)
+
+             Input Parameters:
+                - enum JobStatusType status 
+             Output Parameters:
+                - String[] - array of job IDs belonging to the user
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getAllJobsListRequest" message="impl:getAllJobsListRequest"/>
+      <output name="getAllJobsListResponse" message="impl:getAllJobsListResponse"/>
+    </operation>
+    <operation name="registerNotification" parameterOrder="jobId request notificationId">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for registering listner for notifications
+
+             GrmsResponse registerNotification(String jobId, NotificationRequest request, String notificationId)
+
+             Input Parameters:
+                - String jobId - job identifier
+		- NotificationRequest request:
+		    - enum eventType = {STATUS, REQUEST}
+		    - enum protocol = {SOAP, GASS}
+		    - String destination - url of service waiting for notifications
+		    - bool append - in case of GASS notification defines in event should be append to the file or overwrite it
+		    - String format - in case of GASS notification specifies format of message
+             Output Parameters:
+                - String notificationId - identifier of the notification
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="registerNotificationRequest" message="impl:registerNotificationRequest"/>
+      <output name="registerNotificationResponse" message="impl:registerNotificationResponse"/>
+    </operation>
+    <operation name="getNotificationsList" parameterOrder="jobId notificationIds">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for list of registered notifications
+
+             GrmsResponse getrNotificationsList(String jobId, String[] notificationIds)
+
+             Input Parameters:
+                - String jobId - job identifier
+             Output Parameters:
+                - String[] notificationIds - list of registered notifications
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getNotificationsListRequest" message="impl:getNotificationsListRequest"/>
+      <output name="getNotificationsListResponse" message="impl:getNotificationsListResponse"/>
+    </operation>
+    <operation name="unregisterNotification" parameterOrder="jobId notificationId">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for unregistering listner for notifications
+
+             GrmsResponse unregisterNotification( String jobId String notificationId)
+
+             Input Parameters:
+	        - String notificationId - identifier of the notification
+	     Output Parameters:
+	        -
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="unregisterNotificationRequest" message="impl:unregisterNotificationRequest"/>
+      <output name="unregisterNotificationResponse" message="impl:unregisterNotificationResponse"/>
+    </operation>
+    <operation name="getNotificationInformation" parameterOrder="jobId notificationId notificationRequest">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for getting information about registered notification
+
+             GrmsResponse getNotificationInformation(String jobId, String notificationId, NotificationRequest request)
+
+             Input Parameters:
+                - String jobId - job identifier
+                - String notificationId - notification identifier
+             Output Parameters:
+		- NotificationRequest request:
+		    - enum eventType = {STATUS, REQUEST}
+		    - enum protocol = {SOAP, GASS}
+		    - String destination - url of service waiting for notifications
+		    - bool append - in case of GASS notification defines in event should be append to the file or overwrite it
+		    - String format - in case of GASS notification specifies format of message
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getNotificationInformationRequest" message="impl:getNotificationInformationRequest"/>
+      <output name="getNotificationInformationResponse" message="impl:getNotificationInformationResponse"/>
+    </operation>
+    <operation name="addOutputFileDirs" parameterOrder="jobId items result addOutputFileDirsReturn errors">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for registering new output files/directories
+
+             GrmsResponse AddOutputFileDirs( String jobId, FileDir[] items, OUT int errors, OUT int[] result)
+
+             Input Parameters:
+	        - String jobId - job identifier
+	        - FileDir[] items - files/directories to be added
+		  FileDir:
+		  	- String name - name of the file
+			- String path - path of the file
+			- enum UrlType urlType = {PHISICAL, LOGICAL}
+			- enum PathType pathType = {FILE, DIRECTORY}
+	     Output Parameters:
+	        - int errors - number of errors in 'result' array
+	        - int[] result - results of operation (for each item)
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="addOutputFileDirsRequest" message="impl:addOutputFileDirsRequest"/>
+      <output name="addOutputFileDirsResponse" message="impl:addOutputFileDirsResponse"/>
+    </operation>
+    <operation name="getOutputFileDirs" parameterOrder="jobId items">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for getting registered output files/directories
+
+             GrmsResponse getOutputFileDirs( String jobId, OUT FileDir[] items)
+
+             Input Parameters:
+
+	     Output Parameters:
+	        - String jobId - job identifier
+	        - FileDir[] items - registered output files/directories
+		For definition of FileDir see AddOutFileDir operation
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getOutputFileDirsRequest" message="impl:getOutputFileDirsRequest"/>
+      <output name="getOutputFileDirsResponse" message="impl:getOutputFileDirsResponse"/>
+    </operation>
+    <operation name="deleteOutputFileDirs" parameterOrder="jobId items result deleteOutputFileDirsReturn errors">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for unregistering output files/directories
+
+             GrmsResponse DeleteOutputFileDirs( String jobId, FileDir[] items, OUT int errors, OUT int[] result)
+	     For definition of FileDir see AddOutFileDir operation.
+
+             Input Parameters:
+	        - String jobId - job identifier
+	        - FileDir[] items - files/directories to be added
+	     Output Parameters:
+	        - int errors - number of errors in 'result' array
+	        - int[] result - results of operation (for each item)
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="deleteOutputFileDirsRequest" message="impl:deleteOutputFileDirsRequest"/>
+      <output name="deleteOutputFileDirsResponse" message="impl:deleteOutputFileDirsResponse"/>
+    </operation>
+    <operation name="addCheckpointFileDirs" parameterOrder="jobId items result addCheckpointFileDirsReturn errors">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for registering new checkpoint files/directories
+
+             GrmsResponse AddCheckpointFileDirs( String jobId, FileDir[] items, OUT int errors, OUT int[] result)
+
+             Input Parameters:
+	        - String jobId - job identifier
+	        - FileDir[] items - files/directories to be added
+		  For definition of FileDir see the AddOutFIleDirs operation
+	     Output Parameters:
+	        - int errors - number of errors in 'result' array
+	        - int[] result - results of operation (for each item)
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="addCheckpointFileDirsRequest" message="impl:addCheckpointFileDirsRequest"/>
+      <output name="addCheckpointFileDirsResponse" message="impl:addCheckpointFileDirsResponse"/>
+    </operation>
+    <operation name="getCheckpointFileDirs" parameterOrder="jobId items">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for getting registered checkpoint files/directories
+
+             GrmsResponse getCheckpointFileDirs( String jobId, OUT FileDir[] items)
+
+             Input Parameters:
+
+	     Output Parameters:
+	        - String jobId - job identifier
+	        - FileDir[] items - registered output files/directories
+		For definition of FileDir see AddOutFileDir operation
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="getCheckpointFileDirsRequest" message="impl:getCheckpointFileDirsRequest"/>
+      <output name="getCheckpointFileDirsResponse" message="impl:getCheckpointFileDirsResponse"/>
+    </operation>
+    <operation name="deleteCheckpointFileDirs" parameterOrder="jobId items result deleteCheckpointFileDirsReturn errors">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+             Definition of WebService interface for unregistering checkpoint files/directories
+
+             GrmsResponse DeleteCheckpointFileDirs( String jobId, FileDir[] items, OUT int, OUT int[] result)
+	     For definition of FileDir see AddOutFileDir operation.
+
+             Input Parameters:
+	        - String jobId - job identifier
+	        - FileDir[] items - files/directories to be added
+	     Output Parameters:
+	        - int errors - number of errors in 'result' array
+	        - int[] result - results of operation (for each item)
+             Return Value:
+                - GrmsResponse.errorCode:
+                    0 - success
+                   &gt;0 - error code
+         </wsdl:documentation>
+      <input name="deleteCheckpointFileDirsRequest" message="impl:deleteCheckpointFileDirsRequest"/>
+      <output name="deleteCheckpointFileDirsResponse" message="impl:deleteCheckpointFileDirsResponse"/>
+    </operation>
+  </portType>
+  <binding name="grmsSoapBinding" type="impl:grms">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="findResources">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="findResourcesRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="findResourcesResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="submitJob">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="submitJobRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="submitJobResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="migrateJob">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="migrateJobRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="migrateJobResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="migrateJob">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="migrateJobRequest1">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="migrateJobResponse1">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="suspendJob">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="suspendJobRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="suspendJobResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="suspendJob">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="suspendJobRequest1">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="suspendJobResponse1">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="resumeJob">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="resumeJobRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="resumeJobResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="resumeJob">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="resumeJobRequest1">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="resumeJobResponse1">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getJobsList">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getJobsListRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getJobsListResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getJobsList">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getJobsListRequest1">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getJobsListResponse1">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getProjectJobsList">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getProjectJobsListRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getProjectJobsListResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getProjectJobsList">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getProjectJobsListRequest1">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getProjectJobsListResponse1">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="registerApplicationAccess">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="registerApplicationAccessRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="registerApplicationAccessResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="unregisterApplicationAccess">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="unregisterApplicationAccessRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="unregisterApplicationAccessResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getApplicationAccess">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getApplicationAccessRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getApplicationAccessResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="cancelJob">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="cancelJobRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="cancelJobResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getServiceDescription">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getServiceDescriptionRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getServiceDescriptionResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getAllJobsList">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getAllJobsListRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getAllJobsListResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="testJobDescription">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="testJobDescriptionRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="testJobDescriptionResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getJobInfo">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getJobInfoRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getJobInfoResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getJobHistory">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getJobHistoryRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getJobHistoryResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="registerNotification">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="registerNotificationRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="registerNotificationResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getNotificationsList">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getNotificationsListRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getNotificationsListResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="unregisterNotification">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="unregisterNotificationRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="unregisterNotificationResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getNotificationInformation">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getNotificationInformationRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getNotificationInformationResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="addOutputFileDirs">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="addOutputFileDirsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="addOutputFileDirsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getOutputFileDirs">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getOutputFileDirsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getOutputFileDirsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="deleteOutputFileDirs">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="deleteOutputFileDirsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="deleteOutputFileDirsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="addCheckpointFileDirs">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="addCheckpointFileDirsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="addCheckpointFileDirsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="getCheckpointFileDirs">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getCheckpointFileDirsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="getCheckpointFileDirsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+    <operation name="deleteCheckpointFileDirs">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="deleteCheckpointFileDirsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </input>
+      <output name="deleteCheckpointFileDirsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:grms"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="grmsService">
+    <port name="grms" binding="impl:grmsSoapBinding">
+      <wsdlsoap:address location="httpg://rage1.man.poznan.pl:8443/axis/services/grms"/>
+    </port>
+  </service>
+</definitions>

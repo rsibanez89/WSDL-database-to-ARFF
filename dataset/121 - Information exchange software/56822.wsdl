@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://FreebieSMS.co.uk" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://FreebieSMS.co.uk" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://FreebieSMS.co.uk">
+      <s:element name="SendSms">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="FromName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FromNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ToNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="locale" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AffiliateSendSms">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="AffiliateID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FromName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FromNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ToNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="locale" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AffiliateSendSmsResponse">
+        <s:complexType/>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendSmsHttpPostIn">
+    <wsdl:part name="FromName" type="s:string"/>
+    <wsdl:part name="FromNumber" type="s:string"/>
+    <wsdl:part name="ToNumber" type="s:string"/>
+    <wsdl:part name="Message" type="s:string"/>
+    <wsdl:part name="locale" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSms"/>
+  </wsdl:message>
+  <wsdl:message name="AffiliateSendSmsSoapOut">
+    <wsdl:part name="parameters" element="tns:AffiliateSendSmsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSmsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AffiliateSendSmsHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AffiliateSendSmsHttpGetIn">
+    <wsdl:part name="AffiliateID" type="s:string"/>
+    <wsdl:part name="FromName" type="s:string"/>
+    <wsdl:part name="FromNumber" type="s:string"/>
+    <wsdl:part name="ToNumber" type="s:string"/>
+    <wsdl:part name="Message" type="s:string"/>
+    <wsdl:part name="locale" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AffiliateSendSmsSoapIn">
+    <wsdl:part name="parameters" element="tns:AffiliateSendSms"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="SendSmsHttpGetIn">
+    <wsdl:part name="FromName" type="s:string"/>
+    <wsdl:part name="FromNumber" type="s:string"/>
+    <wsdl:part name="ToNumber" type="s:string"/>
+    <wsdl:part name="Message" type="s:string"/>
+    <wsdl:part name="locale" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSmsHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="AffiliateSendSmsHttpPostIn">
+    <wsdl:part name="AffiliateID" type="s:string"/>
+    <wsdl:part name="FromName" type="s:string"/>
+    <wsdl:part name="FromNumber" type="s:string"/>
+    <wsdl:part name="ToNumber" type="s:string"/>
+    <wsdl:part name="Message" type="s:string"/>
+    <wsdl:part name="locale" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AffiliateSendSmsHttpGetOut">
+  </wsdl:message>
+  <wsdl:portType name="sendSmsHttpGet">
+    <wsdl:operation name="SendSms">
+      <wsdl:input message="tns:SendSmsHttpGetIn"/>
+      <wsdl:output message="tns:SendSmsHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AffiliateSendSms">
+      <wsdl:input message="tns:AffiliateSendSmsHttpGetIn"/>
+      <wsdl:output message="tns:AffiliateSendSmsHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="sendSmsSoap">
+    <wsdl:operation name="SendSms">
+      <wsdl:input message="tns:SendSmsSoapIn"/>
+      <wsdl:output message="tns:SendSmsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AffiliateSendSms">
+      <wsdl:input message="tns:AffiliateSendSmsSoapIn"/>
+      <wsdl:output message="tns:AffiliateSendSmsSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="sendSmsHttpPost">
+    <wsdl:operation name="SendSms">
+      <wsdl:input message="tns:SendSmsHttpPostIn"/>
+      <wsdl:output message="tns:SendSmsHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AffiliateSendSms">
+      <wsdl:input message="tns:AffiliateSendSmsHttpPostIn"/>
+      <wsdl:output message="tns:AffiliateSendSmsHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="sendSmsHttpGet" type="tns:sendSmsHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="SendSms">
+      <http:operation location="/SendSms"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AffiliateSendSms">
+      <http:operation location="/AffiliateSendSms"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="sendSmsSoap" type="tns:sendSmsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendSms">
+      <soap:operation soapAction="http://FreebieSMS.co.uk/SendSms" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AffiliateSendSms">
+      <soap:operation soapAction="http://FreebieSMS.co.uk/AffiliateSendSms" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="sendSmsSoap12" type="tns:sendSmsSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendSms">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://FreebieSMS.co.uk/SendSms" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AffiliateSendSms">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://FreebieSMS.co.uk/AffiliateSendSms" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="sendSmsHttpPost" type="tns:sendSmsHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="SendSms">
+      <http:operation location="/SendSms"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AffiliateSendSms">
+      <http:operation location="/AffiliateSendSms"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="sendSms">
+    <wsdl:port name="sendSmsHttpPost" binding="tns:sendSmsHttpPost">
+      <http:address location="http://www.smsgratisversturen.be/sendsms.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="sendSmsHttpGet" binding="tns:sendSmsHttpGet">
+      <http:address location="http://www.smsgratisversturen.be/sendsms.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="sendSmsSoap" binding="tns:sendSmsSoap">
+      <soap:address location="http://www.smsgratisversturen.be/sendsms.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="sendSmsSoap12" binding="tns:sendSmsSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.smsgratisversturen.be/sendsms.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

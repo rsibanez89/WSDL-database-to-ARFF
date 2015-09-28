@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://www.2chatter.com/api/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.2chatter.com/api/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.2chatter.com/api/">
+ <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+ <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+</xsd:schema>
+  </types>
+  <message name="getReportResponse">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="sendMessageResponse">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="sendSMSResponse">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="sendSMSRequest">
+    <part name="username" type="xsd:string"/>
+    <part name="password" type="xsd:string"/>
+    <part name="sender" type="xsd:string"/>
+    <part name="fullsms" type="xsd:string"/>
+    <part name="from_address" type="xsd:string"/>
+    <part name="carrier_id" type="xsd:string"/>
+    <part name="dummy_test" type="xsd:string"/>
+  </message>
+  <message name="getSendStatusResponse">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="sendVoiceRequest">
+    <part name="username" type="xsd:string"/>
+    <part name="password" type="xsd:string"/>
+    <part name="to" type="xsd:string"/>
+    <part name="text" type="xsd:string"/>
+    <part name="callerid" type="xsd:string"/>
+    <part name="sound_file" type="xsd:string"/>
+    <part name="job_id" type="xsd:string"/>
+    <part name="callback_url" type="xsd:string"/>
+    <part name="dummy_test" type="xsd:string"/>
+  </message>
+  <message name="sendMessageRequest">
+    <part name="username" type="xsd:string"/>
+    <part name="password" type="xsd:string"/>
+    <part name="to" type="xsd:string"/>
+    <part name="text" type="xsd:string"/>
+    <part name="from_address" type="xsd:string"/>
+    <part name="carrier_id" type="xsd:string"/>
+    <part name="dummy_test" type="xsd:string"/>
+  </message>
+  <message name="getSendStatusRequest">
+    <part name="statuscode" type="xsd:string"/>
+  </message>
+  <message name="sendVoiceResponse">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="getReportRequest">
+    <part name="username" type="xsd:string"/>
+    <part name="password" type="xsd:string"/>
+    <part name="jobid" type="xsd:string"/>
+  </message>
+  <portType name="ChatterSMSPortType">
+    <operation name="sendSMS">
+      <input message="tns:sendSMSRequest"/>
+      <output message="tns:sendSMSResponse"/>
+    </operation>
+    <operation name="sendMessage">
+      <input message="tns:sendMessageRequest"/>
+      <output message="tns:sendMessageResponse"/>
+    </operation>
+    <operation name="sendVoice">
+      <input message="tns:sendVoiceRequest"/>
+      <output message="tns:sendVoiceResponse"/>
+    </operation>
+    <operation name="getSendStatus">
+      <input message="tns:getSendStatusRequest"/>
+      <output message="tns:getSendStatusResponse"/>
+    </operation>
+    <operation name="getReport">
+      <input message="tns:getReportRequest"/>
+      <output message="tns:getReportResponse"/>
+    </operation>
+  </portType>
+  <binding name="ChatterSMSBinding" type="tns:ChatterSMSPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="sendSMS">
+      <soap:operation soapAction="http://www.2chatter.com/api/ChatterSMS.php/sendSMS" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.2chatter.com/api/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.2chatter.com/api/"/>
+      </output>
+    </operation>
+    <operation name="sendMessage">
+      <soap:operation soapAction="http://www.2chatter.com/api/ChatterSMS.php/sendMessage" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.2chatter.com/api/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.2chatter.com/api/"/>
+      </output>
+    </operation>
+    <operation name="sendVoice">
+      <soap:operation soapAction="http://www.2chatter.com/api/ChatterSMS.php/sendVoice" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.2chatter.com/api/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.2chatter.com/api/"/>
+      </output>
+    </operation>
+    <operation name="getSendStatus">
+      <soap:operation soapAction="http://www.2chatter.com/api/ChatterSMS.php/getSendStatus" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.2chatter.com/api/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.2chatter.com/api/"/>
+      </output>
+    </operation>
+    <operation name="getReport">
+      <soap:operation soapAction="http://www.2chatter.com/api/ChatterSMS.php/getReport" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.2chatter.com/api/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.2chatter.com/api/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ChatterSMS">
+    <port name="ChatterSMSPort" binding="tns:ChatterSMSBinding">
+      <soap:address location="http://www.2chatter.com/api/ChatterSMS.php"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="TextWS" targetNamespace="urn:TextWS" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:TextWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+  <types>
+  </types>
+  <message name="GetInvoiceDropDownHTML_WSResponse">
+    <part name="returnsString" type="xsd:string"/>
+  </message>
+  <message name="ServiceTest_WSRequest">
+    <part name="AgreementNo" type="xsd:string"/>
+    <part name="Key" type="xsd:string"/>
+  </message>
+  <message name="ping_WSRequest">
+    <part name="hellostringin" type="xsd:string"/>
+    <part name="hellostringin2" type="xsd:string"/>
+  </message>
+  <message name="FormatNumber_WSResponse">
+    <part name="returnsString" type="xsd:string"/>
+  </message>
+  <message name="GetInvoiceDropDownHTML_WSRequest">
+    <part name="AgreementNo" type="xsd:string"/>
+    <part name="Key" type="xsd:string"/>
+    <part name="Selected" type="xsd:string"/>
+  </message>
+  <message name="ServiceTest_WSResponse">
+    <part name="returnsString" type="xsd:string"/>
+  </message>
+  <message name="CheckNumber_WSRequest">
+    <part name="AgreementNo" type="xsd:string"/>
+    <part name="Key" type="xsd:string"/>
+    <part name="Number" type="xsd:string"/>
+  </message>
+  <message name="GetMessagesByBatchRef_WSRequest">
+    <part name="AgreementNo" type="xsd:string"/>
+    <part name="Key" type="xsd:string"/>
+    <part name="BatchRef" type="xsd:string"/>
+  </message>
+  <message name="BillingRequest_WSRequest">
+    <part name="AgreementNo" type="xsd:string"/>
+    <part name="Key" type="xsd:string"/>
+    <part name="UserPK" type="xsd:string"/>
+    <part name="InvoiceReference" type="xsd:string"/>
+  </message>
+  <message name="GetMessagesByBatchRef_WSResponse">
+    <part name="returnsString" type="xsd:string"/>
+  </message>
+  <message name="BillingRequest_WSResponse">
+    <part name="returnsString" type="xsd:string"/>
+  </message>
+  <message name="ping_WSResponse">
+    <part name="hellostringout" type="xsd:string"/>
+  </message>
+  <message name="SendSMS_WSRequest">
+    <part name="AgreementNo" type="xsd:string"/>
+    <part name="Key" type="xsd:string"/>
+    <part name="SentFromRef1" type="xsd:string"/>
+    <part name="SentFromRef2" type="xsd:string"/>
+    <part name="BatchRef" type="xsd:string"/>
+    <part name="Originator" type="xsd:string"/>
+    <part name="OType" type="xsd:string"/>
+    <part name="Recipient" type="xsd:string"/>
+    <part name="Body" type="xsd:string"/>
+    <part name="UserPK" type="xsd:string"/>
+    <part name="AppPK" type="xsd:string"/>
+    <part name="TaskPK" type="xsd:string"/>
+    <part name="GenLetterPK" type="xsd:string"/>
+    <part name="Reply_Type" type="xsd:string"/>
+    <part name="Reply_Data" type="xsd:string"/>
+    <part name="Connection" type="xsd:string"/>
+  </message>
+  <message name="SendSMSV1_1_WSRequest">
+    <part name="AgreementNo" type="xsd:string"/>
+    <part name="Key" type="xsd:string"/>
+    <part name="SentFromRef1" type="xsd:string"/>
+    <part name="SentFromRef2" type="xsd:string"/>
+    <part name="BatchRef" type="xsd:string"/>
+    <part name="Originator" type="xsd:string"/>
+    <part name="OType" type="xsd:string"/>
+    <part name="Recipient" type="xsd:string"/>
+    <part name="Body" type="xsd:string"/>
+    <part name="UserPK" type="xsd:string"/>
+    <part name="AppPK" type="xsd:string"/>
+    <part name="TaskPK" type="xsd:string"/>
+    <part name="GenLetterPK" type="xsd:string"/>
+    <part name="Reply_Type" type="xsd:string"/>
+    <part name="Reply_Data" type="xsd:string"/>
+    <part name="Connection" type="xsd:string"/>
+    <part name="CSID" type="xsd:string"/>
+  </message>
+  <message name="FormatNumber_WSRequest">
+    <part name="AgreementNo" type="xsd:string"/>
+    <part name="Key" type="xsd:string"/>
+    <part name="Number" type="xsd:string"/>
+  </message>
+  <message name="SendSMS_WSResponse">
+    <part name="SendResult" type="xsd:string"/>
+  </message>
+  <message name="SendSMSV1_1_WSResponse">
+    <part name="SendResult" type="xsd:string"/>
+  </message>
+  <message name="Authenticate_WSRequest">
+    <part name="AgreementNo" type="xsd:string"/>
+    <part name="Key" type="xsd:string"/>
+  </message>
+  <message name="CheckNumber_WSResponse">
+    <part name="returnsString" type="xsd:string"/>
+  </message>
+  <message name="Authenticate_WSResponse">
+    <part name="AuthenticationResult" type="xsd:boolean"/>
+  </message>
+  <portType name="TextWSPort">
+    <operation name="ping_WS">
+      <input message="tns:ping_WSRequest"/>
+      <output message="tns:ping_WSResponse"/>
+    </operation>
+    <operation name="Authenticate_WS">
+      <input message="tns:Authenticate_WSRequest"/>
+      <output message="tns:Authenticate_WSResponse"/>
+    </operation>
+    <operation name="SendSMS_WS">
+      <input message="tns:SendSMS_WSRequest"/>
+      <output message="tns:SendSMS_WSResponse"/>
+    </operation>
+    <operation name="SendSMSV1_1_WS">
+      <input message="tns:SendSMSV1_1_WSRequest"/>
+      <output message="tns:SendSMSV1_1_WSResponse"/>
+    </operation>
+    <operation name="ServiceTest_WS">
+      <input message="tns:ServiceTest_WSRequest"/>
+      <output message="tns:ServiceTest_WSResponse"/>
+    </operation>
+    <operation name="CheckNumber_WS">
+      <input message="tns:CheckNumber_WSRequest"/>
+      <output message="tns:CheckNumber_WSResponse"/>
+    </operation>
+    <operation name="FormatNumber_WS">
+      <input message="tns:FormatNumber_WSRequest"/>
+      <output message="tns:FormatNumber_WSResponse"/>
+    </operation>
+    <operation name="BillingRequest_WS">
+      <input message="tns:BillingRequest_WSRequest"/>
+      <output message="tns:BillingRequest_WSResponse"/>
+    </operation>
+    <operation name="GetInvoiceDropDownHTML_WS">
+      <input message="tns:GetInvoiceDropDownHTML_WSRequest"/>
+      <output message="tns:GetInvoiceDropDownHTML_WSResponse"/>
+    </operation>
+    <operation name="GetMessagesByBatchRef_WS">
+      <input message="tns:GetMessagesByBatchRef_WSRequest"/>
+      <output message="tns:GetMessagesByBatchRef_WSResponse"/>
+    </operation>
+  </portType>
+  <binding name="TextWSBinding" type="tns:TextWSPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="ping_WS">
+      <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/#textws#ping_WS"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </output>
+    </operation>
+    <operation name="Authenticate_WS">
+      <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/#textws#Authenticate_WS"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </output>
+    </operation>
+    <operation name="SendSMS_WS">
+      <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/#textws#SendSMS_WS"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </output>
+    </operation>
+    <operation name="SendSMSV1_1_WS">
+      <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/#textws#SendSMSV1_1_WS"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </output>
+    </operation>
+    <operation name="ServiceTest_WS">
+      <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/#textws#ServiceTest_WS"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </output>
+    </operation>
+    <operation name="CheckNumber_WS">
+      <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/#textws#CheckNumber_WS"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </output>
+    </operation>
+    <operation name="FormatNumber_WS">
+      <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/#textws#FormatNumber_WS"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </output>
+    </operation>
+    <operation name="BillingRequest_WS">
+      <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/#textws#BillingRequest_WS"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </output>
+    </operation>
+    <operation name="GetInvoiceDropDownHTML_WS">
+      <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/#textws#GetInvoiceDropDownHTML_WS"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </output>
+    </operation>
+    <operation name="GetMessagesByBatchRef_WS">
+      <soap:operation soapAction="http://schemas.xmlsoap.org/soap/envelope/#textws#GetMessagesByBatchRef_WS"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="TextWSService">
+<documentation/>
+    <port name="TextWSPort" binding="tns:TextWSBinding">
+      <soap:address location="http://89.238.134.82/MKServer/php/TextWS.php"/>
+    </port>
+  </service>
+</definitions>

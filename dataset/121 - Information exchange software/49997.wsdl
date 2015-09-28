@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://delivra.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://delivra.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://delivra.com/">
+      <s:element name="DeleteMailing">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MailingID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ListName" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMailingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="DeleteMailingResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Header" type="tns:Header"/>
+      <s:complexType name="Header">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="List" type="s:string"/>
+        </s:sequence>
+        <s:anyAttribute/>
+      </s:complexType>
+      <s:element name="ApproveMailing">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MailingID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="AdminID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveMailingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ApproveMailingResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SoapHeaderTest">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Email" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SoapHeaderTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SoapHeaderTestResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SoapHeaderTestHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ApproveMailingSoapOut">
+    <wsdl:part name="parameters" element="tns:ApproveMailingResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SoapHeaderTestSoapOut">
+    <wsdl:part name="parameters" element="tns:SoapHeaderTestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteMailingSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteMailingResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteMailingHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="SoapHeaderTestSoapIn">
+    <wsdl:part name="parameters" element="tns:SoapHeaderTest"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteMailingSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteMailing"/>
+  </wsdl:message>
+  <wsdl:message name="ApproveMailingHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ApproveMailingSoapIn">
+    <wsdl:part name="parameters" element="tns:ApproveMailing"/>
+  </wsdl:message>
+  <wsdl:portType name="AdministrationServiceSoap">
+    <wsdl:operation name="DeleteMailing">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">[Delivra ONLY].</wsdl:documentation>
+      <wsdl:input message="tns:DeleteMailingSoapIn"/>
+      <wsdl:output message="tns:DeleteMailingSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveMailing">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">[Delivra ONLY].</wsdl:documentation>
+      <wsdl:input message="tns:ApproveMailingSoapIn"/>
+      <wsdl:output message="tns:ApproveMailingSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SoapHeaderTest">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Is your SoapHeader formatted correctly?</wsdl:documentation>
+      <wsdl:input message="tns:SoapHeaderTestSoapIn"/>
+      <wsdl:output message="tns:SoapHeaderTestSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdministrationServiceSoap12" type="tns:AdministrationServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="DeleteMailing">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/DeleteMailing" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:DeleteMailingHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveMailing">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/ApproveMailing" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ApproveMailingHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoapHeaderTest">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/SoapHeaderTest" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SoapHeaderTestHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdministrationServiceSoap" type="tns:AdministrationServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="DeleteMailing">
+      <soap:operation soapAction="http://delivra.com/DeleteMailing" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:DeleteMailingHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveMailing">
+      <soap:operation soapAction="http://delivra.com/ApproveMailing" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ApproveMailingHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoapHeaderTest">
+      <soap:operation soapAction="http://delivra.com/SoapHeaderTest" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SoapHeaderTestHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdministrationService">
+    <wsdl:port name="AdministrationServiceSoap12" binding="tns:AdministrationServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://integration.delivra.com/DelivraServices/AdministrationService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="AdministrationServiceSoap" binding="tns:AdministrationServiceSoap">
+      <soap:address location="http://integration.delivra.com/DelivraServices/AdministrationService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

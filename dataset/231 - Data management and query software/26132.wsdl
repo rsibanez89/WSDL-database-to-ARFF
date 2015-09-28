@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetCompletionList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="prefixText" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="count" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompletionListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetCompletionListResult" type="tns:ArrayOfString"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCompletionListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompletionList"/>
+  </wsdl:message>
+  <wsdl:message name="GetCompletionListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompletionListResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="SearchErrorReportSoap">
+    <wsdl:operation name="GetCompletionList">
+      <wsdl:input message="tns:GetCompletionListSoapIn"/>
+      <wsdl:output message="tns:GetCompletionListSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SearchErrorReportSoap" type="tns:SearchErrorReportSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetCompletionList">
+      <soap:operation soapAction="http://tempuri.org/GetCompletionList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SearchErrorReportSoap12" type="tns:SearchErrorReportSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetCompletionList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetCompletionList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SearchErrorReport">
+    <wsdl:port name="SearchErrorReportSoap" binding="tns:SearchErrorReportSoap">
+      <soap:address location="http://www.diligentia.se/DiligentiaServices/SearchErrorReport.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SearchErrorReportSoap12" binding="tns:SearchErrorReportSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.diligentia.se/DiligentiaServices/SearchErrorReport.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

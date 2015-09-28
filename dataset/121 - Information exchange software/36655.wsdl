@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ObterMensagens">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="idDestinatario" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObterMensagensResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ObterMensagensResult" type="tns:ArrayOfAnyType"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="anyType" nillable="true"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChatUsuario">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="IdUsuario" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="UltimaVerificacao" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Admin" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChatMensagem">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="IdRemetente" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="IdDestinatario" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="DataHora" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Mensagem" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EnviarMensagem">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="idRemetente" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="idDestinatario" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="mensagem" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarMensagemResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ObterUsuarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="idUsuario" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="admin" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObterUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ObterUsuariosResult" type="tns:ArrayOfAnyType"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdminConectado">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AdminConectadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="AdminConectadoResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObterMensagensSoapOut">
+    <wsdl:part name="parameters" element="tns:ObterMensagensResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ObterMensagensSoapIn">
+    <wsdl:part name="parameters" element="tns:ObterMensagens"/>
+  </wsdl:message>
+  <wsdl:message name="AdminConectadoSoapIn">
+    <wsdl:part name="parameters" element="tns:AdminConectado"/>
+  </wsdl:message>
+  <wsdl:message name="EnviarMensagemSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarMensagem"/>
+  </wsdl:message>
+  <wsdl:message name="AdminConectadoSoapOut">
+    <wsdl:part name="parameters" element="tns:AdminConectadoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ObterUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:ObterUsuariosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ObterUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:ObterUsuarios"/>
+  </wsdl:message>
+  <wsdl:message name="EnviarMensagemSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarMensagemResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="wsChatSoap">
+    <wsdl:operation name="ObterMensagens">
+      <wsdl:input message="tns:ObterMensagensSoapIn"/>
+      <wsdl:output message="tns:ObterMensagensSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarMensagem">
+      <wsdl:input message="tns:EnviarMensagemSoapIn"/>
+      <wsdl:output message="tns:EnviarMensagemSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ObterUsuarios">
+      <wsdl:input message="tns:ObterUsuariosSoapIn"/>
+      <wsdl:output message="tns:ObterUsuariosSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AdminConectado">
+      <wsdl:input message="tns:AdminConectadoSoapIn"/>
+      <wsdl:output message="tns:AdminConectadoSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsChatSoap12" type="tns:wsChatSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ObterMensagens">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/ObterMensagens" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarMensagem">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/EnviarMensagem" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObterUsuarios">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/ObterUsuarios" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminConectado">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/AdminConectado" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsChatSoap" type="tns:wsChatSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ObterMensagens">
+      <soap:operation soapAction="http://tempuri.org/ObterMensagens" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarMensagem">
+      <soap:operation soapAction="http://tempuri.org/EnviarMensagem" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObterUsuarios">
+      <soap:operation soapAction="http://tempuri.org/ObterUsuarios" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdminConectado">
+      <soap:operation soapAction="http://tempuri.org/AdminConectado" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsChat">
+    <wsdl:port name="wsChatSoap12" binding="tns:wsChatSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.clinica449.com.br/ws/wschat.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="wsChatSoap" binding="tns:wsChatSoap">
+      <soap:address location="http://www.clinica449.com.br/ws/wschat.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

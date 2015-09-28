@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="NotifierService" targetNamespace="urn:singles:operations" xmlns:ns1="http://cxf.apache.org/bindings/xformat" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:singles:operations" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="urn:singles:operations" version="1.0" xmlns:tns="urn:singles:operations" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="acceptCall" type="tns:acceptCall"/>
+<xs:element name="acceptCallResponse" type="tns:acceptCallResponse"/>
+<xs:element name="acceptChatRequest" type="tns:acceptChatRequest"/>
+<xs:element name="acceptChatRequestResponse" type="tns:acceptChatRequestResponse"/>
+<xs:element name="closeMessage" type="tns:closeMessage"/>
+<xs:element name="closeMessageResponse" type="tns:closeMessageResponse"/>
+<xs:element name="declineCall" type="tns:declineCall"/>
+<xs:element name="declineCallResponse" type="tns:declineCallResponse"/>
+<xs:element name="declineChatRequest" type="tns:declineChatRequest"/>
+<xs:element name="declineChatRequestResponse" type="tns:declineChatRequestResponse"/>
+<xs:element name="getInitializeInfo" type="tns:getInitializeInfo"/>
+<xs:element name="getInitializeInfoResponse" type="tns:getInitializeInfoResponse"/>
+<xs:element name="getMessage" type="tns:getMessage"/>
+<xs:element name="getMessageResponse" type="tns:getMessageResponse"/>
+<xs:element name="getNewNotificatorInfo" type="tns:getNewNotificatorInfo"/>
+<xs:element name="getNewNotificatorInfoResponse" type="tns:getNewNotificatorInfoResponse"/>
+<xs:element name="getNotifierLocalizedMessages" type="tns:getNotifierLocalizedMessages"/>
+<xs:element name="getNotifierLocalizedMessagesResponse" type="tns:getNotifierLocalizedMessagesResponse"/>
+<xs:element name="getStatisticsInfo" type="tns:getStatisticsInfo"/>
+<xs:element name="getStatisticsInfoResponse" type="tns:getStatisticsInfoResponse"/>
+<xs:element name="makeChatRequest" type="tns:makeChatRequest"/>
+<xs:element name="makeChatRequestResponse" type="tns:makeChatRequestResponse"/>
+<xs:element name="notifierInitialization" type="tns:notifierInitialization"/>
+<xs:element name="notifierMessage" type="tns:notifierMessage"/>
+<xs:element name="notifierPingInfo" type="tns:notifierPingInfo"/>
+<xs:element name="notifierStatisticsInfo" type="tns:notifierStatisticsInfo"/>
+<xs:element name="notifierUserInfo" type="tns:notifierUserInfo"/>
+<xs:element name="serviceProperty" type="tns:serviceProperty"/>
+<xs:element name="simpleNotifierResponse" type="tns:simpleNotifierResponse"/>
+<xs:element name="svcError" type="tns:svcError"/>
+<xs:complexType name="makeChatRequest">
+<xs:sequence>
+<xs:element form="qualified" name="userFromId" type="xs:int"/>
+<xs:element form="qualified" name="userToId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="makeChatRequestResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="SimpleNotifierResponse" type="tns:simpleNotifierResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="simpleNotifierResponse">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="notifierMessage" type="tns:notifierMessage"/>
+<xs:element minOccurs="0" name="svcError" type="tns:svcError"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="baseDto">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="notifierMessage">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element name="messageId" type="xs:long"/>
+<xs:element name="messageType" type="xs:int"/>
+<xs:element minOccurs="0" name="originationMemberNickName" type="xs:string"/>
+<xs:element minOccurs="0" name="reference" type="xs:string"/>
+<xs:element name="userFromId" type="xs:int"/>
+<xs:element name="userToId" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="svcError">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="description" type="xs:string"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="reference" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="getNotifierLocalizedMessages">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="labelNames" type="tns:serviceProperty"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="serviceProperty">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="id" type="xs:int"/>
+<xs:element minOccurs="0" name="label" type="xs:string"/>
+<xs:element minOccurs="0" name="value" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="getNotifierLocalizedMessagesResponse">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="NotifierLocalizedMessages" type="tns:serviceProperty"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getNewNotificatorInfo">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getNewNotificatorInfoResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="NotifierPingInfo" type="tns:notifierPingInfo"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="notifierPingInfo">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="notifierMessage" type="tns:notifierMessage"/>
+<xs:element minOccurs="0" name="notifierStatisticsInfo" type="tns:notifierStatisticsInfo"/>
+<xs:element minOccurs="0" name="svcError" type="tns:svcError"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="notifierStatisticsInfo">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element name="audioViewCount" type="xs:int"/>
+<xs:element name="blockListCount" type="xs:int"/>
+<xs:element name="incomingCallCount" type="xs:int"/>
+<xs:element name="newMessagesCount" type="xs:int"/>
+<xs:element name="oppositeHotListCount" type="xs:int"/>
+<xs:element name="photoViewCount" type="xs:int"/>
+<xs:element name="profileViewCount" type="xs:int"/>
+<xs:element name="sessionAvailable" type="xs:boolean"/>
+<xs:element name="videoViewCount" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="acceptCall">
+<xs:sequence>
+<xs:element form="qualified" name="messageId" type="xs:int"/>
+<xs:element form="qualified" minOccurs="0" name="destinationNumber" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="acceptCallResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="SimpleNotifierResponse" type="tns:simpleNotifierResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="declineChatRequest">
+<xs:sequence>
+<xs:element form="qualified" name="messageId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="declineChatRequestResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="SimpleNotifierResponse" type="tns:simpleNotifierResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getInitializeInfo">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="labelNames" type="tns:serviceProperty"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getInitializeInfoResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="NotifierInitialization" type="tns:notifierInitialization"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="notifierInitialization">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="localizedLabels" type="tns:serviceProperty"/>
+<xs:element minOccurs="0" name="notifierMessage" type="tns:notifierMessage"/>
+<xs:element minOccurs="0" name="notifierStatisticsInfo" type="tns:notifierStatisticsInfo"/>
+<xs:element minOccurs="0" name="svcError" type="tns:svcError"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="systemInfo" type="tns:serviceProperty"/>
+<xs:element minOccurs="0" name="userInfo" type="tns:notifierUserInfo"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="notifierUserInfo">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="nickName" type="xs:string"/>
+<xs:element minOccurs="0" name="sessionId" type="xs:string"/>
+<xs:element name="userId" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="declineCall">
+<xs:sequence>
+<xs:element form="qualified" name="messageId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="declineCallResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="SimpleNotifierResponse" type="tns:simpleNotifierResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getStatisticsInfo">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getStatisticsInfoResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="NotifierStatisticsInfo" type="tns:notifierStatisticsInfo"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="acceptChatRequest">
+<xs:sequence>
+<xs:element form="qualified" name="messageId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="acceptChatRequestResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="SimpleNotifierResponse" type="tns:simpleNotifierResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="closeMessage">
+<xs:sequence>
+<xs:element form="qualified" name="messageId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="closeMessageResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="SimpleNotifierResponse" type="tns:simpleNotifierResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getMessage">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getMessageResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="NotifierMessage" type="tns:notifierMessage"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getStatisticsInfoResponse">
+    <wsdl:part name="parameters" element="tns:getStatisticsInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="makeChatRequestResponse">
+    <wsdl:part name="parameters" element="tns:makeChatRequestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getNewNotificatorInfoResponse">
+    <wsdl:part name="parameters" element="tns:getNewNotificatorInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="declineCallResponse">
+    <wsdl:part name="parameters" element="tns:declineCallResponse"/>
+  </wsdl:message>
+  <wsdl:message name="declineCall">
+    <wsdl:part name="parameters" element="tns:declineCall"/>
+  </wsdl:message>
+  <wsdl:message name="acceptCall">
+    <wsdl:part name="parameters" element="tns:acceptCall"/>
+  </wsdl:message>
+  <wsdl:message name="closeMessage">
+    <wsdl:part name="parameters" element="tns:closeMessage"/>
+  </wsdl:message>
+  <wsdl:message name="getNewNotificatorInfo">
+    <wsdl:part name="parameters" element="tns:getNewNotificatorInfo"/>
+  </wsdl:message>
+  <wsdl:message name="declineChatRequest">
+    <wsdl:part name="parameters" element="tns:declineChatRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getMessage">
+    <wsdl:part name="parameters" element="tns:getMessage"/>
+  </wsdl:message>
+  <wsdl:message name="closeMessageResponse">
+    <wsdl:part name="parameters" element="tns:closeMessageResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getNotifierLocalizedMessages">
+    <wsdl:part name="parameters" element="tns:getNotifierLocalizedMessages"/>
+  </wsdl:message>
+  <wsdl:message name="declineChatRequestResponse">
+    <wsdl:part name="parameters" element="tns:declineChatRequestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getNotifierLocalizedMessagesResponse">
+    <wsdl:part name="parameters" element="tns:getNotifierLocalizedMessagesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="acceptChatRequestResponse">
+    <wsdl:part name="parameters" element="tns:acceptChatRequestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getMessageResponse">
+    <wsdl:part name="parameters" element="tns:getMessageResponse"/>
+  </wsdl:message>
+  <wsdl:message name="acceptChatRequest">
+    <wsdl:part name="parameters" element="tns:acceptChatRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getInitializeInfo">
+    <wsdl:part name="parameters" element="tns:getInitializeInfo"/>
+  </wsdl:message>
+  <wsdl:message name="getStatisticsInfo">
+    <wsdl:part name="parameters" element="tns:getStatisticsInfo"/>
+  </wsdl:message>
+  <wsdl:message name="makeChatRequest">
+    <wsdl:part name="parameters" element="tns:makeChatRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getInitializeInfoResponse">
+    <wsdl:part name="parameters" element="tns:getInitializeInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="acceptCallResponse">
+    <wsdl:part name="parameters" element="tns:acceptCallResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="INotifierService">
+    <wsdl:operation name="makeChatRequest">
+      <wsdl:input name="makeChatRequest" message="tns:makeChatRequest"/>
+      <wsdl:output name="makeChatRequestResponse" message="tns:makeChatRequestResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getNotifierLocalizedMessages">
+      <wsdl:input name="getNotifierLocalizedMessages" message="tns:getNotifierLocalizedMessages"/>
+      <wsdl:output name="getNotifierLocalizedMessagesResponse" message="tns:getNotifierLocalizedMessagesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getNewNotificatorInfo">
+      <wsdl:input name="getNewNotificatorInfo" message="tns:getNewNotificatorInfo"/>
+      <wsdl:output name="getNewNotificatorInfoResponse" message="tns:getNewNotificatorInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="acceptCall">
+      <wsdl:input name="acceptCall" message="tns:acceptCall"/>
+      <wsdl:output name="acceptCallResponse" message="tns:acceptCallResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="declineChatRequest">
+      <wsdl:input name="declineChatRequest" message="tns:declineChatRequest"/>
+      <wsdl:output name="declineChatRequestResponse" message="tns:declineChatRequestResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getInitializeInfo">
+      <wsdl:input name="getInitializeInfo" message="tns:getInitializeInfo"/>
+      <wsdl:output name="getInitializeInfoResponse" message="tns:getInitializeInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="declineCall">
+      <wsdl:input name="declineCall" message="tns:declineCall"/>
+      <wsdl:output name="declineCallResponse" message="tns:declineCallResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getStatisticsInfo">
+      <wsdl:input name="getStatisticsInfo" message="tns:getStatisticsInfo"/>
+      <wsdl:output name="getStatisticsInfoResponse" message="tns:getStatisticsInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="acceptChatRequest">
+      <wsdl:input name="acceptChatRequest" message="tns:acceptChatRequest"/>
+      <wsdl:output name="acceptChatRequestResponse" message="tns:acceptChatRequestResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="closeMessage">
+      <wsdl:input name="closeMessage" message="tns:closeMessage"/>
+      <wsdl:output name="closeMessageResponse" message="tns:closeMessageResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getMessage">
+      <wsdl:input name="getMessage" message="tns:getMessage"/>
+      <wsdl:output name="getMessageResponse" message="tns:getMessageResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NotifierServiceSoapBinding" type="tns:INotifierService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="makeChatRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="makeChatRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="makeChatRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNewNotificatorInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNewNotificatorInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNewNotificatorInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNotifierLocalizedMessages">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getNotifierLocalizedMessages">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNotifierLocalizedMessagesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acceptCall">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="acceptCall">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="acceptCallResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="declineChatRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="declineChatRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="declineChatRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInitializeInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getInitializeInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getInitializeInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="declineCall">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="declineCall">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="declineCallResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatisticsInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getStatisticsInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStatisticsInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="acceptChatRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="acceptChatRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="acceptChatRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="closeMessage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="closeMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="closeMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMessage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NotifierService">
+    <wsdl:port name="NotifierServicePort" binding="tns:NotifierServiceSoapBinding">
+      <soap:address location="http://www.sexnz.co.nz/ws/NotifierService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

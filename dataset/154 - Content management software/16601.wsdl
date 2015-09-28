@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices.moneyexpert.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservices.moneyexpert.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://webservices.moneyexpert.com">
+      <s:element name="Submit">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="mortgageEnquiryDetails" type="tns:MortgageEnquiryDetails"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MortgageEnquiryDetails">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="AffiliateID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PrimaryApplicantDetails" type="tns:LeadApplicantDetails"/>
+          <s:element maxOccurs="1" minOccurs="0" name="JointApplicantDetails" type="tns:LeadApplicantDetails"/>
+          <s:element maxOccurs="1" minOccurs="1" name="MortgageReason" type="tns:MortgageReasons"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FoundProperty" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ValueOfProperty" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="MortgageAmountRequired" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="JointApplication" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LeadApplicantDetails">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="AddressDetails" type="tns:LeadAddressDetails"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Title" type="tns:Title"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Forename" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Surname" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="MaidenName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="DateOfBirth" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="0" name="EmailAddress" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="MaritalStatus" type="tns:MaritalStatus"/>
+          <s:element maxOccurs="1" minOccurs="1" name="EmploymentStatus" type="tns:EmploymentType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PhoneHome" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PhoneWork" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PhoneMobile" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="AnnualIncome" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="AdverseCreditHistory" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LeadAddressDetails">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="YearsAtAddress" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="MonthsAtAddress" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="FlatNo" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="BuildingName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="HouseNameNo" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Street" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Locality" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Town" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="County" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PostcodeOutcode" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PostcodeIncode" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Title">
+        <s:restriction base="s:string">
+          <s:enumeration value="None"/>
+          <s:enumeration value="Mr"/>
+          <s:enumeration value="Mrs"/>
+          <s:enumeration value="Miss"/>
+          <s:enumeration value="Dr"/>
+          <s:enumeration value="Prof"/>
+          <s:enumeration value="Rev"/>
+          <s:enumeration value="Ms"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="MaritalStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="None"/>
+          <s:enumeration value="Single"/>
+          <s:enumeration value="Married"/>
+          <s:enumeration value="Divorced"/>
+          <s:enumeration value="Cohabiting"/>
+          <s:enumeration value="Widow"/>
+          <s:enumeration value="Widower"/>
+          <s:enumeration value="Seperated"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="EmploymentType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None"/>
+          <s:enumeration value="Employed"/>
+          <s:enumeration value="SelfEmployedLessThan1YearsAccounts"/>
+          <s:enumeration value="SelfEmployed1YearsAccounts"/>
+          <s:enumeration value="SelfEmployed2YearsAccounts"/>
+          <s:enumeration value="SelfEmployed3OrMoreYearsAccounts"/>
+          <s:enumeration value="DirectorLess1YearsAccounts"/>
+          <s:enumeration value="Director1YearsAccounts"/>
+          <s:enumeration value="Director2YearsAccounts"/>
+          <s:enumeration value="Director3OrMoreYearsAccounts"/>
+          <s:enumeration value="Unemployed"/>
+          <s:enumeration value="InvalidityDisabilityBenefit"/>
+          <s:enumeration value="Homemaker"/>
+          <s:enumeration value="SelfEmployed"/>
+          <s:enumeration value="Unknown"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="MortgageReasons">
+        <s:restriction base="s:string">
+          <s:enumeration value="None"/>
+          <s:enumeration value="MovingHome"/>
+          <s:enumeration value="FirstTimeBuyer"/>
+          <s:enumeration value="Remortgage"/>
+          <s:enumeration value="RightToBuy"/>
+          <s:enumeration value="SharedOwnership"/>
+          <s:enumeration value="BuyToLet"/>
+          <s:enumeration value="SelfBuild"/>
+          <s:enumeration value="LifeTimeMortgageEquityRelease"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SubmitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SubmitResult" type="tns:SubmitResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SubmitResponse">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Success" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="MoneyExpertReference" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="FailureReasons" type="tns:ArrayOfFailureReason"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFailureReason">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="FailureReason" nillable="true" type="tns:FailureReason"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FailureReason">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="FieldName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Reason" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SubmitSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitSoapIn">
+    <wsdl:part name="parameters" element="tns:Submit"/>
+  </wsdl:message>
+  <wsdl:portType name="LongEnquiryMortgageHttpGet">
+  </wsdl:portType>
+  <wsdl:portType name="LongEnquiryMortgageHttpPost">
+  </wsdl:portType>
+  <wsdl:portType name="LongEnquiryMortgageSoap">
+    <wsdl:operation name="Submit">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This allows the submission of a long mortgage enquiry</wsdl:documentation>
+      <wsdl:input message="tns:SubmitSoapIn"/>
+      <wsdl:output message="tns:SubmitSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LongEnquiryMortgageSoap12" type="tns:LongEnquiryMortgageSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Submit">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://webservices.moneyexpert.com/Submit" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LongEnquiryMortgageHttpGet" type="tns:LongEnquiryMortgageHttpGet">
+    <http:binding verb="GET"/>
+  </wsdl:binding>
+  <wsdl:binding name="LongEnquiryMortgageHttpPost" type="tns:LongEnquiryMortgageHttpPost">
+    <http:binding verb="POST"/>
+  </wsdl:binding>
+  <wsdl:binding name="LongEnquiryMortgageSoap" type="tns:LongEnquiryMortgageSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Submit">
+      <soap:operation soapAction="http://webservices.moneyexpert.com/Submit" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LongEnquiryMortgage">
+    <wsdl:port name="LongEnquiryMortgageSoap" binding="tns:LongEnquiryMortgageSoap">
+      <soap:address location="http://webservices3.moneyexpert.com/LongEnquiryMortgage.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="LongEnquiryMortgageHttpPost" binding="tns:LongEnquiryMortgageHttpPost">
+      <http:address location="http://webservices3.moneyexpert.com/LongEnquiryMortgage.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="LongEnquiryMortgageHttpGet" binding="tns:LongEnquiryMortgageHttpGet">
+      <http:address location="http://webservices3.moneyexpert.com/LongEnquiryMortgage.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="LongEnquiryMortgageSoap12" binding="tns:LongEnquiryMortgageSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://webservices3.moneyexpert.com/LongEnquiryMortgage.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

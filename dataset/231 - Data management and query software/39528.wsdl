@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://schemas.microsoft.com/sharepoint/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://schemas.microsoft.com/sharepoint/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/sharepoint/soap/">
+      <s:element name="Wait">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="millisecondsToWait" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WaitResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetObjectStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="objectUrl" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetObjectStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetObjectStatusResult" type="tns:PublishingObjectStatus"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PublishingObjectStatus">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="ObjectType" type="tns:PublishingObjectType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Url" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PathName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="LastMajorVersion" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="LastMajorModifiedTime" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="LastMinorVersion" type="s:decimal"/>
+          <s:element maxOccurs="1" minOccurs="1" name="LastMinorModifiedTime" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ScheduledStartTime" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ScheduledEndTime" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ModerationStatus" type="tns:SPModerationStatusType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PublishingObjectType">
+        <s:restriction base="s:string">
+          <s:enumeration value="ListItem"/>
+          <s:enumeration value="File"/>
+          <s:enumeration value="AccessDenied"/>
+          <s:enumeration value="FileNotFound"/>
+          <s:enumeration value="UnrecoverableFailure"/>
+          <s:enumeration value="Undefined"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="SPModerationStatusType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Approved"/>
+          <s:enumeration value="Denied"/>
+          <s:enumeration value="Pending"/>
+          <s:enumeration value="Draft"/>
+          <s:enumeration value="Scheduled"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetObjectStatusCollection">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="objectUrls" type="tns:ArrayOfString"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetObjectStatusCollectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetObjectStatusCollectionResult" type="tns:ArrayOfPublishingObjectStatus"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPublishingObjectStatus">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="PublishingObjectStatus" nillable="true" type="tns:PublishingObjectStatus"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetObjectStatusCollectionWithExclusions">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="objectUrls" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="thisPageUrl" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetObjectStatusCollectionWithExclusionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetObjectStatusCollectionWithExclusionsResult" type="tns:ArrayOfPublishingObjectStatus"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportObjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="webUrl" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportObjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ExportObjectsResult" type="s:base64Binary"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportObjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="siteUrl" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="fileContent" type="s:base64Binary"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportObjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ImportObjectsResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePageLayout">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pageLayoutName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="associatedContentTypeId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="title" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="description" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="siteUrl" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePageLayoutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CreatePageLayoutResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DisconnectPageLayout">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pageUrl" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DisconnectPageLayoutResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ReconnectPageLayout">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pageUrl" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReconnectPageLayoutResponse">
+        <s:complexType/>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ImportObjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportObjects"/>
+  </wsdl:message>
+  <wsdl:message name="ExportObjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:ExportObjects"/>
+  </wsdl:message>
+  <wsdl:message name="GetObjectStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetObjectStatusResponse"/>
+  </wsdl:message>
+  <wsdl:message name="WaitSoapOut">
+    <wsdl:part name="parameters" element="tns:WaitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetObjectStatusCollectionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetObjectStatusCollectionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CreatePageLayoutSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePageLayoutResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetObjectStatusCollectionWithExclusionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetObjectStatusCollectionWithExclusionsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CreatePageLayoutSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePageLayout"/>
+  </wsdl:message>
+  <wsdl:message name="WaitSoapIn">
+    <wsdl:part name="parameters" element="tns:Wait"/>
+  </wsdl:message>
+  <wsdl:message name="ReconnectPageLayoutSoapOut">
+    <wsdl:part name="parameters" element="tns:ReconnectPageLayoutResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ReconnectPageLayoutSoapIn">
+    <wsdl:part name="parameters" element="tns:ReconnectPageLayout"/>
+  </wsdl:message>
+  <wsdl:message name="DisconnectPageLayoutSoapIn">
+    <wsdl:part name="parameters" element="tns:DisconnectPageLayout"/>
+  </wsdl:message>
+  <wsdl:message name="ExportObjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:ExportObjectsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ImportObjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportObjectsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetObjectStatusCollectionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetObjectStatusCollection"/>
+  </wsdl:message>
+  <wsdl:message name="DisconnectPageLayoutSoapOut">
+    <wsdl:part name="parameters" element="tns:DisconnectPageLayoutResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetObjectStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetObjectStatus"/>
+  </wsdl:message>
+  <wsdl:message name="GetObjectStatusCollectionWithExclusionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetObjectStatusCollectionWithExclusions"/>
+  </wsdl:message>
+  <wsdl:portType name="PublishingServiceSoap">
+    <wsdl:operation name="Wait">
+      <wsdl:input message="tns:WaitSoapIn"/>
+      <wsdl:output message="tns:WaitSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectStatus">
+      <wsdl:input message="tns:GetObjectStatusSoapIn"/>
+      <wsdl:output message="tns:GetObjectStatusSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectStatusCollection">
+      <wsdl:input message="tns:GetObjectStatusCollectionSoapIn"/>
+      <wsdl:output message="tns:GetObjectStatusCollectionSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectStatusCollectionWithExclusions">
+      <wsdl:input message="tns:GetObjectStatusCollectionWithExclusionsSoapIn"/>
+      <wsdl:output message="tns:GetObjectStatusCollectionWithExclusionsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ExportObjects">
+      <wsdl:input message="tns:ExportObjectsSoapIn"/>
+      <wsdl:output message="tns:ExportObjectsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ImportObjects">
+      <wsdl:input message="tns:ImportObjectsSoapIn"/>
+      <wsdl:output message="tns:ImportObjectsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePageLayout">
+      <wsdl:input message="tns:CreatePageLayoutSoapIn"/>
+      <wsdl:output message="tns:CreatePageLayoutSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DisconnectPageLayout">
+      <wsdl:input message="tns:DisconnectPageLayoutSoapIn"/>
+      <wsdl:output message="tns:DisconnectPageLayoutSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReconnectPageLayout">
+      <wsdl:input message="tns:ReconnectPageLayoutSoapIn"/>
+      <wsdl:output message="tns:ReconnectPageLayoutSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PublishingServiceSoap12" type="tns:PublishingServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Wait">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/Wait" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectStatus">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/GetObjectStatus" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectStatusCollection">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/GetObjectStatusCollection" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectStatusCollectionWithExclusions">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/GetObjectStatusCollectionWithExclusions" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportObjects">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/ExportObjects" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportObjects">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/ImportObjects" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePageLayout">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/CreatePageLayout" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisconnectPageLayout">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/DisconnectPageLayout" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReconnectPageLayout">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/ReconnectPageLayout" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PublishingServiceSoap" type="tns:PublishingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Wait">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/Wait" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectStatus">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/GetObjectStatus" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectStatusCollection">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/GetObjectStatusCollection" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectStatusCollectionWithExclusions">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/GetObjectStatusCollectionWithExclusions" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportObjects">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ExportObjects" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportObjects">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ImportObjects" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePageLayout">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/CreatePageLayout" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisconnectPageLayout">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/DisconnectPageLayout" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReconnectPageLayout">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ReconnectPageLayout" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PublishingService">
+    <wsdl:port name="PublishingServiceSoap12" binding="tns:PublishingServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.industry.go.th/ops/pio/singburi/_vti_bin/PublishingService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="PublishingServiceSoap" binding="tns:PublishingServiceSoap">
+      <soap:address location="http://www.industry.go.th/ops/pio/singburi/_vti_bin/PublishingService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

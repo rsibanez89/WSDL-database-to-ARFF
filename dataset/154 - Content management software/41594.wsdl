@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://carttestnal.rete.toscana.it/protocollo/services/Version" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="http://carttestnal.rete.toscana.it/protocollo/services/Version" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://carttestnal.rete.toscana.it/protocollo/services/Version">
+  <message name="getVersionResponse">
+    <part name="getVersionReturn" type="xsd:string"/>
+  </message>
+  <message name="getVersionRequest">
+  </message>
+  <portType name="Version">
+    <operation name="getVersion">
+      <input name="getVersionRequest" message="impl:getVersionRequest"/>
+      <output name="getVersionResponse" message="impl:getVersionResponse"/>
+    </operation>
+  </portType>
+  <binding name="VersionSoapBinding" type="impl:Version">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getVersion">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="getVersionRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis.apache.org"/>
+      </input>
+      <output name="getVersionResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://carttestnal.rete.toscana.it/protocollo/services/Version"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="VersionService">
+    <port name="Version" binding="impl:VersionSoapBinding">
+      <wsdlsoap:address location="http://carttestnal.rete.toscana.it/protocollo/services/Version"/>
+    </port>
+  </service>
+</definitions>

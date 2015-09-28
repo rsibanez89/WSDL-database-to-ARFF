@@ -1,0 +1,1134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.mystateusa.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.mystateusa.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.mystateusa.com">
+      <s:element name="GetServerTime">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetServerTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetServerTimeResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateXML">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="xml" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateXMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ValidateXMLResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendXmlToHub">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="xml" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendXmlToHubResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendXmlToHubResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublicXMLFromHub">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="startDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="endDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublicXMLFromHubResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetPublicXMLFromHubResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublicEAS">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="startDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublicEASResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetPublicEASResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeoCodeAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="zipcode" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeoCodeAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="geocode" nillable="true" type="tns:geocode"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="geocode">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="city" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="state" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="zip" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="latitude" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="longitude" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="timezone" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="county" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="fips" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="mapURL" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="aerialURL" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CityByZipCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="zipcode" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CityByZipCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CityByZipCodeResult" type="tns:ArrayOfArea"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfArea">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="area" nillable="true" type="tns:area"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="area">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="city" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="state" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="county" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="fips" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="timezone" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="latitude" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="longitude" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EASCodes">
+        <s:complexType/>
+      </s:element>
+      <s:element name="EASCodesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="EASCodesResult" type="tns:ArrayOfEAS"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEAS">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="EAS" nillable="true" type="tns:EAS"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EAS">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="code" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="description" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="toList" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="from" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="subject" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="htmlBody" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendMailResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTextMsg">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="msg" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="number" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTextMsgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendTextMsgResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTextMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="msg" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="from" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="numbers" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTextMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendTextMessagesResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CellProviderLookup">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="phone" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CellProviderLookupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CellProviderLookupResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string"/>
+      <s:element name="geocode" nillable="true" type="tns:geocode"/>
+      <s:element name="ArrayOfArea" nillable="true" type="tns:ArrayOfArea"/>
+      <s:element name="ArrayOfEAS" nillable="true" type="tns:ArrayOfEAS"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetPublicXMLFromHubHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="GetPublicEASHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="CellProviderLookupHttpGetIn">
+    <wsdl:part name="phone" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CellProviderLookupHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpPostIn">
+    <wsdl:part name="toList" type="s:string"/>
+    <wsdl:part name="from" type="s:string"/>
+    <wsdl:part name="subject" type="s:string"/>
+    <wsdl:part name="htmlBody" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendTextMsgHttpPostIn">
+    <wsdl:part name="msg" type="s:string"/>
+    <wsdl:part name="number" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendTextMessagesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateXMLHttpPostIn">
+    <wsdl:part name="xml" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateXMLHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="CityByZipCodeHttpPostIn">
+    <wsdl:part name="zipcode" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateXMLSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateXMLResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendXmlToHubSoapOut">
+    <wsdl:part name="parameters" element="tns:SendXmlToHubResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendTextMessagesHttpGetIn">
+    <wsdl:part name="msg" type="s:string"/>
+    <wsdl:part name="from" type="s:string"/>
+    <wsdl:part name="numbers" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="GetPublicXMLFromHubHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="CityByZipCodeHttpGetIn">
+    <wsdl:part name="zipcode" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendTextMsgSoapIn">
+    <wsdl:part name="parameters" element="tns:SendTextMsg"/>
+  </wsdl:message>
+  <wsdl:message name="GetPublicXMLFromHubHttpGetIn">
+    <wsdl:part name="startDate" type="s:string"/>
+    <wsdl:part name="endDate" type="s:string"/>
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetPublicXMLFromHubSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPublicXMLFromHub"/>
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="CellProviderLookupSoapOut">
+    <wsdl:part name="parameters" element="tns:CellProviderLookupResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendXmlToHubHttpPostIn">
+    <wsdl:part name="xml" type="s:string"/>
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendTextMsgHttpGetIn">
+    <wsdl:part name="msg" type="s:string"/>
+    <wsdl:part name="number" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="EASCodesHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="SendTextMsgSoapOut">
+    <wsdl:part name="parameters" element="tns:SendTextMsgResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMailResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerTimeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpGetIn">
+    <wsdl:part name="toList" type="s:string"/>
+    <wsdl:part name="from" type="s:string"/>
+    <wsdl:part name="subject" type="s:string"/>
+    <wsdl:part name="htmlBody" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GeoCodeAddressHttpPostOut">
+    <wsdl:part name="Body" element="tns:geocode"/>
+  </wsdl:message>
+  <wsdl:message name="SendXmlToHubHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="ValidateXMLHttpGetIn">
+    <wsdl:part name="xml" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetPublicEASHttpGetIn">
+    <wsdl:part name="startDate" type="s:string"/>
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GeoCodeAddressHttpPostIn">
+    <wsdl:part name="address" type="s:string"/>
+    <wsdl:part name="zipcode" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GeoCodeAddressHttpGetOut">
+    <wsdl:part name="Body" element="tns:geocode"/>
+  </wsdl:message>
+  <wsdl:message name="CityByZipCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:CityByZipCodeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CityByZipCodeHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfArea"/>
+  </wsdl:message>
+  <wsdl:message name="SendTextMessagesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerTime"/>
+  </wsdl:message>
+  <wsdl:message name="EASCodesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEAS"/>
+  </wsdl:message>
+  <wsdl:message name="SendTextMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:SendTextMessagesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendXmlToHubHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="SendTextMsgHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="EASCodesSoapIn">
+    <wsdl:part name="parameters" element="tns:EASCodes"/>
+  </wsdl:message>
+  <wsdl:message name="GeoCodeAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:GeoCodeAddressResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetPublicXMLFromHubSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPublicXMLFromHubResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CellProviderLookupHttpPostIn">
+    <wsdl:part name="phone" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetPublicXMLFromHubHttpPostIn">
+    <wsdl:part name="startDate" type="s:string"/>
+    <wsdl:part name="endDate" type="s:string"/>
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendXmlToHubHttpGetIn">
+    <wsdl:part name="xml" type="s:string"/>
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="EASCodesHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="GetPublicEASHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="GeoCodeAddressHttpGetIn">
+    <wsdl:part name="address" type="s:string"/>
+    <wsdl:part name="zipcode" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendTextMsgHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetPublicEASSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPublicEAS"/>
+  </wsdl:message>
+  <wsdl:message name="EASCodesSoapOut">
+    <wsdl:part name="parameters" element="tns:EASCodesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GeoCodeAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:GeoCodeAddress"/>
+  </wsdl:message>
+  <wsdl:message name="GetPublicEASHttpPostIn">
+    <wsdl:part name="startDate" type="s:string"/>
+    <wsdl:part name="username" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CellProviderLookupSoapIn">
+    <wsdl:part name="parameters" element="tns:CellProviderLookup"/>
+  </wsdl:message>
+  <wsdl:message name="CellProviderLookupHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="CityByZipCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:CityByZipCode"/>
+  </wsdl:message>
+  <wsdl:message name="EASCodesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEAS"/>
+  </wsdl:message>
+  <wsdl:message name="CityByZipCodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfArea"/>
+  </wsdl:message>
+  <wsdl:message name="SendXmlToHubSoapIn">
+    <wsdl:part name="parameters" element="tns:SendXmlToHub"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateXMLSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateXML"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateXMLHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="SendMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMail"/>
+  </wsdl:message>
+  <wsdl:message name="GetPublicEASSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPublicEASResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendTextMessagesHttpPostIn">
+    <wsdl:part name="msg" type="s:string"/>
+    <wsdl:part name="from" type="s:string"/>
+    <wsdl:part name="numbers" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendTextMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:SendTextMessages"/>
+  </wsdl:message>
+  <wsdl:message name="SendMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:portType name="MyStateUSAHttpPost">
+    <wsdl:operation name="GetServerTime">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the date and time of the server.</wsdl:documentation>
+      <wsdl:input message="tns:GetServerTimeHttpPostIn"/>
+      <wsdl:output message="tns:GetServerTimeHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateXML">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Takes XML with or without newlines, verifies it is valid, and returns it as XML typed document</wsdl:documentation>
+      <wsdl:input message="tns:ValidateXMLHttpPostIn"/>
+      <wsdl:output message="tns:ValidateXMLHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendXmlToHub">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Takes XML in CAP, EDXL, ICS or really any format with an identity tag and stores it in the hub. Unique Identifiers are the responsibility of the Caller. Message content may be updated by sending the updated message with the same Identity. Identifiers are to be prefixed with an organization identifier such as 'MyStateUSA'. The following keywords and order of precedence are used when extracting the Identifier from the XML message content: 'distributionID', 'identifier', 'messageID', 'requestNumber'. The 'dateTimeSent' or 'sent' nodes are used for the message.</wsdl:documentation>
+      <wsdl:input message="tns:SendXmlToHubHttpPostIn"/>
+      <wsdl:output message="tns:SendXmlToHubHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicXMLFromHub">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns XML from the HUB by Date Range.</wsdl:documentation>
+      <wsdl:input message="tns:GetPublicXMLFromHubHttpPostIn"/>
+      <wsdl:output message="tns:GetPublicXMLFromHubHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicEAS">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns XML from the HUB by Date Range.</wsdl:documentation>
+      <wsdl:input message="tns:GetPublicEASHttpPostIn"/>
+      <wsdl:output message="tns:GetPublicEASHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GeoCodeAddress">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return latitude, longitude, fips code, etc. for a given address and zip.</wsdl:documentation>
+      <wsdl:input message="tns:GeoCodeAddressHttpPostIn"/>
+      <wsdl:output message="tns:GeoCodeAddressHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CityByZipCode">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return matching Geo area info (city, state, country, fips code, etc.) by 5 digit zipcode.</wsdl:documentation>
+      <wsdl:input message="tns:CityByZipCodeHttpPostIn"/>
+      <wsdl:output message="tns:CityByZipCodeHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="EASCodes">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of EAS Codes.</wsdl:documentation>
+      <wsdl:input message="tns:EASCodesHttpPostIn"/>
+      <wsdl:output message="tns:EASCodesHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends an email from the current web server. Body may be plain text or contain HTML.</wsdl:documentation>
+      <wsdl:input message="tns:SendMailHttpPostIn"/>
+      <wsdl:output message="tns:SendMailHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMsg">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a wireless message to a cellphone/wireless device given the phone number.</wsdl:documentation>
+      <wsdl:input message="tns:SendTextMsgHttpPostIn"/>
+      <wsdl:output message="tns:SendTextMsgHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMessages">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a wireless message to cellphone(s). This will break messages longer that 130 (including the from) characters into 2 messages.</wsdl:documentation>
+      <wsdl:input message="tns:SendTextMessagesHttpPostIn"/>
+      <wsdl:output message="tns:SendTextMessagesHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CellProviderLookup">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a wireless message to a cellphone/wireless device given a # and a provider. Most cell phones can only have 125 characters so this method can break the message up into multiple parts that start with 1 of 2, etc. See WirelessProviders method to get a list of current supported providers.</wsdl:documentation>
+      <wsdl:input message="tns:CellProviderLookupHttpPostIn"/>
+      <wsdl:output message="tns:CellProviderLookupHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MyStateUSAHttpGet">
+    <wsdl:operation name="GetServerTime">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the date and time of the server.</wsdl:documentation>
+      <wsdl:input message="tns:GetServerTimeHttpGetIn"/>
+      <wsdl:output message="tns:GetServerTimeHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateXML">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Takes XML with or without newlines, verifies it is valid, and returns it as XML typed document</wsdl:documentation>
+      <wsdl:input message="tns:ValidateXMLHttpGetIn"/>
+      <wsdl:output message="tns:ValidateXMLHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendXmlToHub">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Takes XML in CAP, EDXL, ICS or really any format with an identity tag and stores it in the hub. Unique Identifiers are the responsibility of the Caller. Message content may be updated by sending the updated message with the same Identity. Identifiers are to be prefixed with an organization identifier such as 'MyStateUSA'. The following keywords and order of precedence are used when extracting the Identifier from the XML message content: 'distributionID', 'identifier', 'messageID', 'requestNumber'. The 'dateTimeSent' or 'sent' nodes are used for the message.</wsdl:documentation>
+      <wsdl:input message="tns:SendXmlToHubHttpGetIn"/>
+      <wsdl:output message="tns:SendXmlToHubHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicXMLFromHub">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns XML from the HUB by Date Range.</wsdl:documentation>
+      <wsdl:input message="tns:GetPublicXMLFromHubHttpGetIn"/>
+      <wsdl:output message="tns:GetPublicXMLFromHubHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicEAS">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns XML from the HUB by Date Range.</wsdl:documentation>
+      <wsdl:input message="tns:GetPublicEASHttpGetIn"/>
+      <wsdl:output message="tns:GetPublicEASHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GeoCodeAddress">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return latitude, longitude, fips code, etc. for a given address and zip.</wsdl:documentation>
+      <wsdl:input message="tns:GeoCodeAddressHttpGetIn"/>
+      <wsdl:output message="tns:GeoCodeAddressHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CityByZipCode">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return matching Geo area info (city, state, country, fips code, etc.) by 5 digit zipcode.</wsdl:documentation>
+      <wsdl:input message="tns:CityByZipCodeHttpGetIn"/>
+      <wsdl:output message="tns:CityByZipCodeHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="EASCodes">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of EAS Codes.</wsdl:documentation>
+      <wsdl:input message="tns:EASCodesHttpGetIn"/>
+      <wsdl:output message="tns:EASCodesHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends an email from the current web server. Body may be plain text or contain HTML.</wsdl:documentation>
+      <wsdl:input message="tns:SendMailHttpGetIn"/>
+      <wsdl:output message="tns:SendMailHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMsg">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a wireless message to a cellphone/wireless device given the phone number.</wsdl:documentation>
+      <wsdl:input message="tns:SendTextMsgHttpGetIn"/>
+      <wsdl:output message="tns:SendTextMsgHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMessages">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a wireless message to cellphone(s). This will break messages longer that 130 (including the from) characters into 2 messages.</wsdl:documentation>
+      <wsdl:input message="tns:SendTextMessagesHttpGetIn"/>
+      <wsdl:output message="tns:SendTextMessagesHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CellProviderLookup">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a wireless message to a cellphone/wireless device given a # and a provider. Most cell phones can only have 125 characters so this method can break the message up into multiple parts that start with 1 of 2, etc. See WirelessProviders method to get a list of current supported providers.</wsdl:documentation>
+      <wsdl:input message="tns:CellProviderLookupHttpGetIn"/>
+      <wsdl:output message="tns:CellProviderLookupHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MyStateUSASoap">
+    <wsdl:operation name="GetServerTime">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the date and time of the server.</wsdl:documentation>
+      <wsdl:input message="tns:GetServerTimeSoapIn"/>
+      <wsdl:output message="tns:GetServerTimeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateXML">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Takes XML with or without newlines, verifies it is valid, and returns it as XML typed document</wsdl:documentation>
+      <wsdl:input message="tns:ValidateXMLSoapIn"/>
+      <wsdl:output message="tns:ValidateXMLSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendXmlToHub">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Takes XML in CAP, EDXL, ICS or really any format with an identity tag and stores it in the hub. Unique Identifiers are the responsibility of the Caller. Message content may be updated by sending the updated message with the same Identity. Identifiers are to be prefixed with an organization identifier such as 'MyStateUSA'. The following keywords and order of precedence are used when extracting the Identifier from the XML message content: 'distributionID', 'identifier', 'messageID', 'requestNumber'. The 'dateTimeSent' or 'sent' nodes are used for the message.</wsdl:documentation>
+      <wsdl:input message="tns:SendXmlToHubSoapIn"/>
+      <wsdl:output message="tns:SendXmlToHubSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicXMLFromHub">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns XML from the HUB by Date Range.</wsdl:documentation>
+      <wsdl:input message="tns:GetPublicXMLFromHubSoapIn"/>
+      <wsdl:output message="tns:GetPublicXMLFromHubSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicEAS">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns XML from the HUB by Date Range.</wsdl:documentation>
+      <wsdl:input message="tns:GetPublicEASSoapIn"/>
+      <wsdl:output message="tns:GetPublicEASSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GeoCodeAddress">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return latitude, longitude, fips code, etc. for a given address and zip.</wsdl:documentation>
+      <wsdl:input message="tns:GeoCodeAddressSoapIn"/>
+      <wsdl:output message="tns:GeoCodeAddressSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CityByZipCode">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return matching Geo area info (city, state, country, fips code, etc.) by 5 digit zipcode.</wsdl:documentation>
+      <wsdl:input message="tns:CityByZipCodeSoapIn"/>
+      <wsdl:output message="tns:CityByZipCodeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="EASCodes">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a list of EAS Codes.</wsdl:documentation>
+      <wsdl:input message="tns:EASCodesSoapIn"/>
+      <wsdl:output message="tns:EASCodesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends an email from the current web server. Body may be plain text or contain HTML.</wsdl:documentation>
+      <wsdl:input message="tns:SendMailSoapIn"/>
+      <wsdl:output message="tns:SendMailSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMsg">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a wireless message to a cellphone/wireless device given the phone number.</wsdl:documentation>
+      <wsdl:input message="tns:SendTextMsgSoapIn"/>
+      <wsdl:output message="tns:SendTextMsgSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMessages">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a wireless message to cellphone(s). This will break messages longer that 130 (including the from) characters into 2 messages.</wsdl:documentation>
+      <wsdl:input message="tns:SendTextMessagesSoapIn"/>
+      <wsdl:output message="tns:SendTextMessagesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CellProviderLookup">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a wireless message to a cellphone/wireless device given a # and a provider. Most cell phones can only have 125 characters so this method can break the message up into multiple parts that start with 1 of 2, etc. See WirelessProviders method to get a list of current supported providers.</wsdl:documentation>
+      <wsdl:input message="tns:CellProviderLookupSoapIn"/>
+      <wsdl:output message="tns:CellProviderLookupSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MyStateUSAHttpPost" type="tns:MyStateUSAHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="GetServerTime">
+      <http:operation location="/GetServerTime"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateXML">
+      <http:operation location="/ValidateXML"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendXmlToHub">
+      <http:operation location="/SendXmlToHub"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicXMLFromHub">
+      <http:operation location="/GetPublicXMLFromHub"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicEAS">
+      <http:operation location="/GetPublicEAS"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeoCodeAddress">
+      <http:operation location="/GeoCodeAddress"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CityByZipCode">
+      <http:operation location="/CityByZipCode"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EASCodes">
+      <http:operation location="/EASCodes"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <http:operation location="/SendMail"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMsg">
+      <http:operation location="/SendTextMsg"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMessages">
+      <http:operation location="/SendTextMessages"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CellProviderLookup">
+      <http:operation location="/CellProviderLookup"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MyStateUSASoap12" type="tns:MyStateUSASoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetServerTime">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/GetServerTime" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateXML">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/ValidateXML" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendXmlToHub">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/SendXmlToHub" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicXMLFromHub">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/GetPublicXMLFromHub" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicEAS">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/GetPublicEAS" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeoCodeAddress">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/GeoCodeAddress" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CityByZipCode">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/CityByZipCode" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EASCodes">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/EASCodes" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/SendMail" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMsg">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/SendTextMsg" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMessages">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/SendTextMessages" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CellProviderLookup">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.mystateusa.com/CellProviderLookup" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MyStateUSAHttpGet" type="tns:MyStateUSAHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="GetServerTime">
+      <http:operation location="/GetServerTime"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateXML">
+      <http:operation location="/ValidateXML"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendXmlToHub">
+      <http:operation location="/SendXmlToHub"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicXMLFromHub">
+      <http:operation location="/GetPublicXMLFromHub"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicEAS">
+      <http:operation location="/GetPublicEAS"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeoCodeAddress">
+      <http:operation location="/GeoCodeAddress"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CityByZipCode">
+      <http:operation location="/CityByZipCode"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EASCodes">
+      <http:operation location="/EASCodes"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <http:operation location="/SendMail"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMsg">
+      <http:operation location="/SendTextMsg"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMessages">
+      <http:operation location="/SendTextMessages"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CellProviderLookup">
+      <http:operation location="/CellProviderLookup"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MyStateUSASoap" type="tns:MyStateUSASoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetServerTime">
+      <soap:operation soapAction="http://www.mystateusa.com/GetServerTime" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateXML">
+      <soap:operation soapAction="http://www.mystateusa.com/ValidateXML" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendXmlToHub">
+      <soap:operation soapAction="http://www.mystateusa.com/SendXmlToHub" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicXMLFromHub">
+      <soap:operation soapAction="http://www.mystateusa.com/GetPublicXMLFromHub" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicEAS">
+      <soap:operation soapAction="http://www.mystateusa.com/GetPublicEAS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeoCodeAddress">
+      <soap:operation soapAction="http://www.mystateusa.com/GeoCodeAddress" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CityByZipCode">
+      <soap:operation soapAction="http://www.mystateusa.com/CityByZipCode" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EASCodes">
+      <soap:operation soapAction="http://www.mystateusa.com/EASCodes" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap:operation soapAction="http://www.mystateusa.com/SendMail" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMsg">
+      <soap:operation soapAction="http://www.mystateusa.com/SendTextMsg" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextMessages">
+      <soap:operation soapAction="http://www.mystateusa.com/SendTextMessages" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CellProviderLookup">
+      <soap:operation soapAction="http://www.mystateusa.com/CellProviderLookup" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MyStateUSA">
+    <wsdl:port name="MyStateUSAHttpPost" binding="tns:MyStateUSAHttpPost">
+      <http:address location="https://www.mystateusa.com/webservice.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MyStateUSASoap12" binding="tns:MyStateUSASoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="https://www.mystateusa.com/webservice.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MyStateUSAHttpGet" binding="tns:MyStateUSAHttpGet">
+      <http:address location="https://www.mystateusa.com/webservice.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MyStateUSASoap" binding="tns:MyStateUSASoap">
+      <soap:address location="https://www.mystateusa.com/webservice.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.icodeon.com/services/ss" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.icodeon.com/services/ss" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.icodeon.com/services/ss">
+      <s:element name="Resume" type="tns:Resume"/>
+      <s:complexType name="Resume">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="manifest" type="tns:manifestType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="manifestType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="organizations" type="tns:organizationsType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="sequencingCollection" type="tns:sequencingCollectionType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="globalObjectives" type="tns:ArrayOfObjectiveType"/>
+          <s:element maxOccurs="1" minOccurs="1" name="navRequest" type="tns:navRequestType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="syncClientServer" type="tns:syncClientServerType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="mode" type="tns:modeType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="organizationsType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="identifiers" type="tns:identifiersType"/>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="organization" type="tns:organizationType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="identifiersType">
+        <s:attribute name="domainID" type="s:string"/>
+        <s:attribute name="learnerID" type="s:string"/>
+        <s:attribute name="courseID" type="s:string"/>
+        <s:attribute name="orgID" type="s:string"/>
+        <s:attribute name="sessionID" type="s:string"/>
+        <s:attribute name="requestType" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="organizationType">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:itemType">
+            <s:sequence>
+              <s:element maxOccurs="1" minOccurs="0" name="schema" type="s:string"/>
+            </s:sequence>
+            <s:attribute name="objectivesGlobalToSystem" type="s:boolean"/>
+            <s:attribute name="schemaVersion" type="s:string"/>
+            <s:attribute name="primaryKey" type="s:string"/>
+            <s:attribute name="isDefault" type="s:boolean"/>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="itemType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="title" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="dataFromLMS" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="completionThreshold" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="timeLimitAction" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="maxtimeallowed" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="masteryscore" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="resource" type="tns:resourceType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="activityProgressInfo" type="tns:activityProgressInfoType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="attemptProgressInfo" type="tns:attemptProgressInfoType"/>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="item" type="tns:itemType"/>
+          <s:any maxOccurs="unbounded" minOccurs="0"/>
+        </s:sequence>
+        <s:attribute name="current" type="s:boolean" use="required"/>
+        <s:attribute name="resumable" type="s:boolean" use="required"/>
+        <s:attribute name="suspended" type="s:boolean"/>
+        <s:attribute name="active" type="s:boolean"/>
+        <s:attribute name="selected" type="s:boolean"/>
+        <s:attribute name="isvisible" type="s:boolean"/>
+        <s:attribute name="updated" type="s:boolean"/>
+        <s:attribute name="exit" type="s:string"/>
+        <s:attribute name="identifier" type="s:ID"/>
+        <s:attribute name="parameters" type="s:string"/>
+        <s:anyAttribute/>
+      </s:complexType>
+      <s:complexType name="resourceType">
+        <s:attribute name="scormType" type="s:string"/>
+        <s:attribute name="type" type="s:string"/>
+        <s:attribute name="href" type="s:anyURI"/>
+        <s:attribute name="xmlBase" type="s:anyURI"/>
+      </s:complexType>
+      <s:complexType name="activityProgressInfoType">
+        <s:attribute name="progressStatus" type="s:boolean" use="required"/>
+        <s:attribute name="attemptCount" type="s:int" use="required"/>
+        <s:attribute name="experiencedDuration" type="s:duration"/>
+        <s:attribute name="absoluteDuration" type="s:duration"/>
+      </s:complexType>
+      <s:complexType name="attemptProgressInfoType">
+        <s:attribute name="recordedInPriorAttempt" type="s:boolean" use="required"/>
+        <s:attribute name="progressStatus" type="s:boolean" use="required"/>
+        <s:attribute name="completionStatus" type="s:boolean" use="required"/>
+        <s:attribute name="completionAmount" type="s:decimal" use="required"/>
+        <s:attribute name="experiencedDuration" type="s:duration"/>
+        <s:attribute name="absoluteDuration" type="s:duration"/>
+      </s:complexType>
+      <s:complexType name="sequencingCollectionType">
+        <s:sequence>
+          <s:any maxOccurs="unbounded" minOccurs="0"/>
+        </s:sequence>
+        <s:attribute name="ID" type="s:ID"/>
+      </s:complexType>
+      <s:complexType name="ArrayOfObjectiveType">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="objective" type="tns:objectiveType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="objectiveType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="objectiveProgressInfo" type="tns:objectiveProgressInfoType"/>
+        </s:sequence>
+        <s:attribute name="objectiveID" type="s:string"/>
+        <s:attribute name="objectivesGlobalToSystem" type="s:boolean"/>
+      </s:complexType>
+      <s:complexType name="objectiveProgressInfoType">
+        <s:attribute name="recordedInPriorAttempt" type="s:boolean" use="required"/>
+        <s:attribute name="progressStatus" type="s:boolean" use="required"/>
+        <s:attribute name="satisfiedStatus" type="s:boolean" use="required"/>
+        <s:attribute name="measureStatus" type="s:boolean" use="required"/>
+        <s:attribute name="normalizedMeasure" type="s:decimal" use="required"/>
+      </s:complexType>
+      <s:simpleType name="navRequestType">
+        <s:restriction base="s:string">
+          <s:enumeration value="start"/>
+          <s:enumeration value="resumeAll"/>
+          <s:enumeration value="retry"/>
+          <s:enumeration value="previous"/>
+          <s:enumeration value="continue"/>
+          <s:enumeration value="choice"/>
+          <s:enumeration value="abandon"/>
+          <s:enumeration value="exit"/>
+          <s:enumeration value="exitAll"/>
+          <s:enumeration value="suspendAll"/>
+          <s:enumeration value="abandonAll"/>
+          <s:enumeration value="_none_"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="syncClientServerType">
+        <s:restriction base="s:string">
+          <s:enumeration value="request"/>
+          <s:enumeration value="differential"/>
+          <s:enumeration value="session"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="modeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="browse"/>
+          <s:enumeration value="normal"/>
+          <s:enumeration value="review"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="manifest" type="tns:manifestType"/>
+      <s:element name="Create" type="tns:Create"/>
+      <s:complexType name="Create">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="manifest" type="tns:manifestType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Terminate" type="tns:Terminate"/>
+      <s:complexType name="Terminate">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="manifest" type="tns:manifestType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Deliver" type="tns:Deliver"/>
+      <s:complexType name="Deliver">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="manifest" type="tns:manifestType"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateSoapOut">
+    <wsdl:part name="CreateResult" element="tns:manifest"/>
+  </wsdl:message>
+  <wsdl:message name="DeliverSoapOut">
+  </wsdl:message>
+  <wsdl:message name="DeliverSoapIn">
+    <wsdl:part name="deliver" element="tns:Deliver"/>
+  </wsdl:message>
+  <wsdl:message name="TerminateSoapOut">
+  </wsdl:message>
+  <wsdl:message name="TerminateSoapIn">
+    <wsdl:part name="terminate" element="tns:Terminate"/>
+  </wsdl:message>
+  <wsdl:message name="ResumeSoapOut">
+    <wsdl:part name="ResumeResult" element="tns:manifest"/>
+  </wsdl:message>
+  <wsdl:message name="ResumeSoapIn">
+    <wsdl:part name="resume" element="tns:Resume"/>
+  </wsdl:message>
+  <wsdl:message name="CreateSoapIn">
+    <wsdl:part name="create" element="tns:Create"/>
+  </wsdl:message>
+  <wsdl:portType name="SequencingServiceSoap">
+    <wsdl:operation name="Resume">
+      <wsdl:input message="tns:ResumeSoapIn"/>
+      <wsdl:output message="tns:ResumeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+      <wsdl:input message="tns:CreateSoapIn"/>
+      <wsdl:output message="tns:CreateSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Terminate">
+      <wsdl:input message="tns:TerminateSoapIn"/>
+      <wsdl:output message="tns:TerminateSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Deliver">
+      <wsdl:input message="tns:DeliverSoapIn"/>
+      <wsdl:output message="tns:DeliverSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SequencingServiceSoap12" type="tns:SequencingServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Resume">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.icodeon.com/services/ss/Resume" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.icodeon.com/services/ss/Create" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Terminate">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.icodeon.com/services/ss/Terminate" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Deliver">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.icodeon.com/services/ss/Deliver" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SequencingServiceSoap" type="tns:SequencingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Resume">
+      <soap:operation soapAction="http://www.icodeon.com/services/ss/Resume" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Create">
+      <soap:operation soapAction="http://www.icodeon.com/services/ss/Create" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Terminate">
+      <soap:operation soapAction="http://www.icodeon.com/services/ss/Terminate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Deliver">
+      <soap:operation soapAction="http://www.icodeon.com/services/ss/Deliver" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SequencingService">
+    <wsdl:port name="SequencingServiceSoap" binding="tns:SequencingServiceSoap">
+      <soap:address location="http://www.scormlive.com/services/SequencingService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SequencingServiceSoap12" binding="tns:SequencingServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.scormlive.com/services/SequencingService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

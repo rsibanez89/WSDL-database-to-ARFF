@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.dcmnr.ie/eGov" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.dcmnr.ie/eGov" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.dcmnr.ie/eGov">
+      <s:element name="SelectPerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="currentBoard" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="roleType" type="s:long"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectPersonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SelectPersonResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:long"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SelectHistoryResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectMatchesByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="forename" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="surname" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectMatchesByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SelectMatchesByNameResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectMatchesByPpsn">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ppsn" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectMatchesByPpsnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SelectMatchesByPpsnResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectMatchesByEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="email" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectMatchesByEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SelectMatchesByEmailResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitBio">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="dataAsXml" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="currentBoard" type="s:long"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitBioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SubmitBioResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitPerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="currentBoard" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="department" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="roleType" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="dataAsXml" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitPersonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SubmitPersonResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Submit">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="dataAsXml" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SubmitResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Select">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="clientName" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SelectResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SelectMatchesByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectMatchesByNameResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SelectSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitBioSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitBio"/>
+  </wsdl:message>
+  <wsdl:message name="SelectPersonSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectPersonResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SelectMatchesByEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectMatchesByEmail"/>
+  </wsdl:message>
+  <wsdl:message name="SelectMatchesByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectMatchesByName"/>
+  </wsdl:message>
+  <wsdl:message name="SelectSoapIn">
+    <wsdl:part name="parameters" element="tns:Select"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitPersonSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitPersonResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SelectMatchesByEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectMatchesByEmailResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitPersonSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitPerson"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitSoapIn">
+    <wsdl:part name="parameters" element="tns:Submit"/>
+  </wsdl:message>
+  <wsdl:message name="SelectMatchesByPpsnSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectMatchesByPpsn"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SelectPersonSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectPerson"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitBioSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitBioResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SelectHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:SelectHistory"/>
+  </wsdl:message>
+  <wsdl:message name="SelectHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:SelectHistoryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SelectMatchesByPpsnSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectMatchesByPpsnResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="PeopleServiceSoap">
+    <wsdl:operation name="SelectPerson">
+      <wsdl:input message="tns:SelectPersonSoapIn"/>
+      <wsdl:output message="tns:SelectPersonSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SelectHistory">
+      <wsdl:input message="tns:SelectHistorySoapIn"/>
+      <wsdl:output message="tns:SelectHistorySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMatchesByName">
+      <wsdl:input message="tns:SelectMatchesByNameSoapIn"/>
+      <wsdl:output message="tns:SelectMatchesByNameSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMatchesByPpsn">
+      <wsdl:input message="tns:SelectMatchesByPpsnSoapIn"/>
+      <wsdl:output message="tns:SelectMatchesByPpsnSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMatchesByEmail">
+      <wsdl:input message="tns:SelectMatchesByEmailSoapIn"/>
+      <wsdl:output message="tns:SelectMatchesByEmailSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitBio">
+      <wsdl:input message="tns:SubmitBioSoapIn"/>
+      <wsdl:output message="tns:SubmitBioSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitPerson">
+      <wsdl:input message="tns:SubmitPersonSoapIn"/>
+      <wsdl:output message="tns:SubmitPersonSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Submit">
+      <wsdl:input message="tns:SubmitSoapIn"/>
+      <wsdl:output message="tns:SubmitSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <wsdl:input message="tns:SelectSoapIn"/>
+      <wsdl:output message="tns:SelectSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PeopleServiceSoap" type="tns:PeopleServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SelectPerson">
+      <soap:operation soapAction="http://www.dcmnr.ie/eGov/SelectPerson" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectHistory">
+      <soap:operation soapAction="http://www.dcmnr.ie/eGov/SelectHistory" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMatchesByName">
+      <soap:operation soapAction="http://www.dcmnr.ie/eGov/SelectMatchesByName" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMatchesByPpsn">
+      <soap:operation soapAction="http://www.dcmnr.ie/eGov/SelectMatchesByPpsn" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMatchesByEmail">
+      <soap:operation soapAction="http://www.dcmnr.ie/eGov/SelectMatchesByEmail" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitBio">
+      <soap:operation soapAction="http://www.dcmnr.ie/eGov/SubmitBio" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitPerson">
+      <soap:operation soapAction="http://www.dcmnr.ie/eGov/SubmitPerson" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Submit">
+      <soap:operation soapAction="http://www.dcmnr.ie/eGov/Submit" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+      <soap:operation soapAction="http://www.dcmnr.ie/eGov/Select" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PeopleServiceSoap12" type="tns:PeopleServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SelectPerson">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.dcmnr.ie/eGov/SelectPerson" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectHistory">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.dcmnr.ie/eGov/SelectHistory" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMatchesByName">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.dcmnr.ie/eGov/SelectMatchesByName" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMatchesByPpsn">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.dcmnr.ie/eGov/SelectMatchesByPpsn" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMatchesByEmail">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.dcmnr.ie/eGov/SelectMatchesByEmail" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitBio">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.dcmnr.ie/eGov/SubmitBio" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitPerson">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.dcmnr.ie/eGov/SubmitPerson" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Submit">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.dcmnr.ie/eGov/Submit" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Select">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.dcmnr.ie/eGov/Select" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PeopleService">
+    <wsdl:port name="PeopleServiceSoap12" binding="tns:PeopleServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.egovernance.ie/Services/PeopleService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="PeopleServiceSoap" binding="tns:PeopleServiceSoap">
+      <soap:address location="http://www.egovernance.ie/Services/PeopleService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

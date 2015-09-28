@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://gsj.zj.gov.cn/wcm/services/trs:myzjService" xmlns:tns1="http://dom.w3c.org" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:impl="http://gsj.zj.gov.cn/wcm/services/trs:myzjService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://gsj.zj.gov.cn/wcm/services/trs:myzjService">
+  <wsdl:message name="NodetoStringResponse">
+    <wsdl:part name="NodetoStringReturn" type="soapenc:string"/>
+  </wsdl:message>
+  <wsdl:message name="queryInfoByNoResponse">
+    <wsdl:part name="queryInfoByNoReturn" type="soapenc:string"/>
+  </wsdl:message>
+  <wsdl:message name="queryInfoByNoRequest">
+    <wsdl:part name="channelId" type="soapenc:string"/>
+    <wsdl:part name="queryNo" type="soapenc:string"/>
+  </wsdl:message>
+  <wsdl:message name="savedcRequest">
+    <wsdl:part name="name" type="soapenc:string"/>
+    <wsdl:part name="title" type="soapenc:string"/>
+    <wsdl:part name="content" type="soapenc:string"/>
+    <wsdl:part name="email" type="soapenc:string"/>
+    <wsdl:part name="phone" type="soapenc:string"/>
+    <wsdl:part name="postcode" type="soapenc:string"/>
+    <wsdl:part name="address" type="soapenc:string"/>
+    <wsdl:part name="flag" type="soapenc:string"/>
+  </wsdl:message>
+  <wsdl:message name="NodetoStringRequest">
+    <wsdl:part name="node" type="xsd:anyType"/>
+  </wsdl:message>
+  <wsdl:message name="savedcResponse">
+    <wsdl:part name="savedcReturn" type="soapenc:string"/>
+  </wsdl:message>
+  <wsdl:portType name="MYZJService">
+    <wsdl:operation name="queryInfoByNo" parameterOrder="channelId queryNo">
+      <wsdl:input name="queryInfoByNoRequest" message="impl:queryInfoByNoRequest"/>
+      <wsdl:output name="queryInfoByNoResponse" message="impl:queryInfoByNoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="savedc" parameterOrder="name title content email phone postcode address flag">
+      <wsdl:input name="savedcRequest" message="impl:savedcRequest"/>
+      <wsdl:output name="savedcResponse" message="impl:savedcResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="NodetoString" parameterOrder="node">
+      <wsdl:input name="NodetoStringRequest" message="impl:NodetoStringRequest"/>
+      <wsdl:output name="NodetoStringResponse" message="impl:NodetoStringResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="trs:myzjServiceSoapBinding" type="impl:MYZJService">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="queryInfoByNo">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="queryInfoByNoRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.trs.com"/>
+      </wsdl:input>
+      <wsdl:output name="queryInfoByNoResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://gsj.zj.gov.cn/wcm/services/trs:myzjService"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="savedc">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="savedcRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.trs.com"/>
+      </wsdl:input>
+      <wsdl:output name="savedcResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://gsj.zj.gov.cn/wcm/services/trs:myzjService"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NodetoString">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="NodetoStringRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://impl.service.trs.com"/>
+      </wsdl:input>
+      <wsdl:output name="NodetoStringResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://gsj.zj.gov.cn/wcm/services/trs:myzjService"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MYZJServiceService">
+    <wsdl:port name="trs:myzjService" binding="impl:trs:myzjServiceSoapBinding">
+      <wsdlsoap:address location="http://gsj.zj.gov.cn/wcm/services/trs:myzjService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

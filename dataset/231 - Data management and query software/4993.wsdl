@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="condorCollector" targetNamespace="urn:condor" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:condor="urn:condor" xmlns:tns="urn:condor" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/">
+  <types>
+    <schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="urn:condor" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:condor="urn:condor" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <simpleType name="StatusCode">
+   <restriction base="xsd:string">
+    <enumeration value="SUCCESS"/>
+    <enumeration value="FAIL"/>
+    <enumeration value="INVALIDTRANSACTION"/>
+    <enumeration value="UNKNOWNCLUSTER"/>
+    <enumeration value="UNKNOWNJOB"/>
+    <enumeration value="UNKNOWNFILE"/>
+    <enumeration value="INCOMPLETE"/>
+    <enumeration value="INVALIDOFFSET"/>
+    <enumeration value="ALREADYEXISTS"/>
+   </restriction>
+  </simpleType>
+  <simpleType name="ClassAdAttrType">
+   <restriction base="xsd:string">
+    <enumeration value="INTEGER-ATTR"/>
+    <enumeration value="FLOAT-ATTR"/>
+    <enumeration value="STRING-ATTR"/>
+    <enumeration value="EXPRESSION-ATTR"/>
+    <enumeration value="BOOLEAN-ATTR"/>
+    <enumeration value="UNDEFINED-ATTR"/>
+    <enumeration value="ERROR-ATTR"/>
+   </restriction>
+  </simpleType>
+  <complexType name="Status">
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="code" type="condor:StatusCode"/>
+     <element maxOccurs="1" minOccurs="0" name="message" nillable="true" type="xsd:string"/>
+     <element maxOccurs="1" minOccurs="0" name="next" nillable="true" type="condor:Status"/>
+   </sequence>
+  </complexType>
+  <complexType name="ClassAdStructAttr">
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="name" nillable="false" type="xsd:string"/>
+     <element maxOccurs="1" minOccurs="1" name="type" type="condor:ClassAdAttrType"/>
+     <element maxOccurs="1" minOccurs="1" name="value" nillable="false" type="xsd:string"/>
+   </sequence>
+  </complexType>
+  <complexType name="ClassAdStruct">
+   <sequence>
+    <element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="condor:ClassAdStructAttr"/>
+   </sequence>
+  </complexType>
+  <complexType name="ClassAdStructArray">
+   <sequence>
+    <element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="condor:ClassAdStruct"/>
+   </sequence>
+  </complexType>
+  <complexType name="ClassAdStructAndStatus">
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="status" type="condor:Status"/>
+     <element maxOccurs="1" minOccurs="0" name="classAd" nillable="true" type="condor:ClassAdStruct"/>
+   </sequence>
+  </complexType>
+  <complexType name="ClassAdStructArrayAndStatus">
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="status" type="condor:Status"/>
+     <element maxOccurs="1" minOccurs="0" name="classAdArray" nillable="true" type="condor:ClassAdStructArray"/>
+   </sequence>
+  </complexType>
+  <complexType name="StringAndStatus">
+   <sequence>
+     <element maxOccurs="1" minOccurs="1" name="status" type="condor:Status"/>
+     <element maxOccurs="1" minOccurs="0" name="message" nillable="true" type="xsd:string"/>
+   </sequence>
+  </complexType>
+  <!-- operation request element -->
+  <element name="queryStartdAds">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="constraint" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="queryStartdAdsResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="result" type="condor:ClassAdStructArray"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="queryScheddAds">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="constraint" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="queryScheddAdsResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="result" type="condor:ClassAdStructArray"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="queryMasterAds">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="constraint" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="queryMasterAdsResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="result" type="condor:ClassAdStructArray"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="querySubmittorAds">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="constraint" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="querySubmittorAdsResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="result" type="condor:ClassAdStructArray"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="queryLicenseAds">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="constraint" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="queryLicenseAdsResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="result" type="condor:ClassAdStructArray"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="queryStorageAds">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="constraint" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="queryStorageAdsResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="result" type="condor:ClassAdStructArray"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="queryAnyAds">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="constraint" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="queryAnyAdsResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="1" name="result" type="condor:ClassAdStructArray"/>
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+  </types>
+  <message name="queryAnyAdsRequest">
+    <part name="parameters" element="condor:queryAnyAds"/>
+  </message>
+  <message name="queryScheddAdsRequest">
+    <part name="parameters" element="condor:queryScheddAds"/>
+  </message>
+  <message name="queryStorageAdsResponse">
+    <part name="parameters" element="condor:queryStorageAdsResponse"/>
+  </message>
+  <message name="querySubmittorAdsRequest">
+    <part name="parameters" element="condor:querySubmittorAds"/>
+  </message>
+  <message name="queryStartdAdsRequest">
+    <part name="parameters" element="condor:queryStartdAds"/>
+  </message>
+  <message name="queryStartdAdsResponse">
+    <part name="parameters" element="condor:queryStartdAdsResponse"/>
+  </message>
+  <message name="queryAnyAdsResponse">
+    <part name="parameters" element="condor:queryAnyAdsResponse"/>
+  </message>
+  <message name="queryLicenseAdsRequest">
+    <part name="parameters" element="condor:queryLicenseAds"/>
+  </message>
+  <message name="queryStorageAdsRequest">
+    <part name="parameters" element="condor:queryStorageAds"/>
+  </message>
+  <message name="querySubmittorAdsResponse">
+    <part name="parameters" element="condor:querySubmittorAdsResponse"/>
+  </message>
+  <message name="queryLicenseAdsResponse">
+    <part name="parameters" element="condor:queryLicenseAdsResponse"/>
+  </message>
+  <message name="queryMasterAdsRequest">
+    <part name="parameters" element="condor:queryMasterAds"/>
+  </message>
+  <message name="queryScheddAdsResponse">
+    <part name="parameters" element="condor:queryScheddAdsResponse"/>
+  </message>
+  <message name="queryMasterAdsResponse">
+    <part name="parameters" element="condor:queryMasterAdsResponse"/>
+  </message>
+  <portType name="condorCollectorPortType">
+    <operation name="queryStartdAds">
+<documentation>Service definition of function condor__queryStartdAds</documentation>
+      <input message="condor:queryStartdAdsRequest"/>
+      <output message="condor:queryStartdAdsResponse"/>
+    </operation>
+    <operation name="queryScheddAds">
+<documentation>Service definition of function condor__queryScheddAds</documentation>
+      <input message="condor:queryScheddAdsRequest"/>
+      <output message="condor:queryScheddAdsResponse"/>
+    </operation>
+    <operation name="queryMasterAds">
+<documentation>Service definition of function condor__queryMasterAds</documentation>
+      <input message="condor:queryMasterAdsRequest"/>
+      <output message="condor:queryMasterAdsResponse"/>
+    </operation>
+    <operation name="querySubmittorAds">
+<documentation>Service definition of function condor__querySubmittorAds</documentation>
+      <input message="condor:querySubmittorAdsRequest"/>
+      <output message="condor:querySubmittorAdsResponse"/>
+    </operation>
+    <operation name="queryLicenseAds">
+<documentation>Service definition of function condor__queryLicenseAds</documentation>
+      <input message="condor:queryLicenseAdsRequest"/>
+      <output message="condor:queryLicenseAdsResponse"/>
+    </operation>
+    <operation name="queryStorageAds">
+<documentation>Service definition of function condor__queryStorageAds</documentation>
+      <input message="condor:queryStorageAdsRequest"/>
+      <output message="condor:queryStorageAdsResponse"/>
+    </operation>
+    <operation name="queryAnyAds">
+<documentation>Service definition of function condor__queryAnyAds</documentation>
+      <input message="condor:queryAnyAdsRequest"/>
+      <output message="condor:queryAnyAdsResponse"/>
+    </operation>
+  </portType>
+  <binding name="condorCollector" type="condor:condorCollectorPortType">
+    <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="queryStartdAds">
+      <SOAP:operation soapAction=""/>
+      <input>
+        <SOAP:body use="literal"/>
+      </input>
+      <output>
+        <SOAP:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="queryScheddAds">
+      <SOAP:operation soapAction=""/>
+      <input>
+        <SOAP:body use="literal"/>
+      </input>
+      <output>
+        <SOAP:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="queryMasterAds">
+      <SOAP:operation soapAction=""/>
+      <input>
+        <SOAP:body use="literal"/>
+      </input>
+      <output>
+        <SOAP:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="querySubmittorAds">
+      <SOAP:operation soapAction=""/>
+      <input>
+        <SOAP:body use="literal"/>
+      </input>
+      <output>
+        <SOAP:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="queryLicenseAds">
+      <SOAP:operation soapAction=""/>
+      <input>
+        <SOAP:body use="literal"/>
+      </input>
+      <output>
+        <SOAP:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="queryStorageAds">
+      <SOAP:operation soapAction=""/>
+      <input>
+        <SOAP:body use="literal"/>
+      </input>
+      <output>
+        <SOAP:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="queryAnyAds">
+      <SOAP:operation soapAction=""/>
+      <input>
+        <SOAP:body use="literal"/>
+      </input>
+      <output>
+        <SOAP:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="condorCollector">
+<documentation>gSOAP 2.7.0d generated service definition</documentation>
+    <port name="condorCollector" binding="condor:condorCollector">
+      <SOAP:address location="http://localhost:80"/>
+    </port>
+  </service>
+</definitions>

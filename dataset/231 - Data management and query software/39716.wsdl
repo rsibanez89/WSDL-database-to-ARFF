@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MOBY_Central_Generated_WSDL" targetNamespace="http://biomoby.org/Central.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://biomoby.org/Central.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://biomoby.org/CentralXSDs.xsd" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <message name="BIND_IdSearchGetFastaByGenbankIdInput">
+    <part name="data" type="xsd:string"/>
+  </message>
+  <message name="BIND_IdSearchGetFastaByGenbankIdOutput">
+    <part name="body" type="xsd:string"/>
+  </message>
+  <portType name="BIND_IdSearchGetFastaByGenbankIdPortType">
+    <operation name="BIND_IdSearchGetFastaByGenbankId">
+      <input message="tns:BIND_IdSearchGetFastaByGenbankIdInput"/>
+      <output message="tns:BIND_IdSearchGetFastaByGenbankIdOutput"/>
+    </operation>
+  </portType>
+  <binding name="BIND_IdSearchGetFastaByGenbankIdBinding" type="tns:BIND_IdSearchGetFastaByGenbankIdPortType">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="BIND_IdSearchGetFastaByGenbankId">
+      <wsdlsoap:operation soapAction="http://biomoby.org/#BIND_IdSearchGetFastaByGenbankId" style="rpc"/>
+      <input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://biomoby.org/"/>
+      </input>
+      <output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://biomoby.org/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="BIND_IdSearchGetFastaByGenbankIdService">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authority: bioinfo.icapture.ubc.ca  -  Searches over the BIND protein-protein interaction database for the specified id and returns hits as FASTA sequences</wsdl:documentation>
+    <port name="BIND_IdSearchGetFastaByGenbankIdPort" binding="tns:BIND_IdSearchGetFastaByGenbankIdBinding">
+      <wsdlsoap:address location="http://dev.biordf.net/~kawas/cgi-bin/EdMobyServer.cgi"/>
+    </port>
+  </service>
+</definitions>

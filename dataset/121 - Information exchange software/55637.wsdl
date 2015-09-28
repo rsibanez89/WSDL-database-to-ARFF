@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http//chodientu.vn/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http//chodientu.vn/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http//chodientu.vn/">
+ <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+ <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+</xsd:schema>
+  </types>
+  <message name="ReceiveSMSResponse">
+    <part name="result" type="xsd:string"/>
+  </message>
+  <message name="ReceiveSMSRequest">
+    <part name="Username" type="xsd:string"/>
+    <part name="Password" type="xsd:string"/>
+    <part name="User_ID" type="xsd:string"/>
+    <part name="Service_ID" type="xsd:string"/>
+    <part name="Provider_ID" type="xsd:string"/>
+    <part name="Message" type="xsd:string"/>
+    <part name="Request_ID" type="xsd:string"/>
+  </message>
+  <message name="SendSMSResponse">
+    <part name="results" type="xsd:string"/>
+  </message>
+  <message name="SendSMSRequest">
+    <part name="passWord" type="xsd:string"/>
+    <part name="phoneNuber" type="xsd:string"/>
+    <part name="messages" type="xsd:string"/>
+  </message>
+  <portType name="WS_WITH_SMSPortType">
+    <operation name="ReceiveSMS">
+      <input message="tns:ReceiveSMSRequest"/>
+      <output message="tns:ReceiveSMSResponse"/>
+    </operation>
+    <operation name="SendSMS">
+      <input message="tns:SendSMSRequest"/>
+      <output message="tns:SendSMSResponse"/>
+    </operation>
+  </portType>
+  <binding name="WS_WITH_SMSBinding" type="tns:WS_WITH_SMSPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="ReceiveSMS">
+      <soap:operation soapAction="http://chodientu.vn/vasc_webservice.php/ReceiveSMS" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http//chodientu.vn/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http//chodientu.vn/"/>
+      </output>
+    </operation>
+    <operation name="SendSMS">
+      <soap:operation soapAction="http://chodientu.vn/vasc_webservice.php/SendSMS" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http//chodientu.vn/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http//chodientu.vn/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="WS_WITH_SMS">
+    <port name="WS_WITH_SMSPort" binding="tns:WS_WITH_SMSBinding">
+      <soap:address location="http://chodientu.vn:81/vasc_webservice.php"/>
+    </port>
+  </service>
+</definitions>

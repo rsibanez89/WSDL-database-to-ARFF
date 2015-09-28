@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www7.ccni.cl/inlandTariff/ws/services/Version" xmlns:tns1="http://www.w3.org/1999/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns2="http://www.w3.org/2003/05/soap-encoding" xmlns:impl="http://www7.ccni.cl/inlandTariff/ws/services/Version" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://www7.ccni.cl/inlandTariff/ws/services/Version">
+  <wsdl:message name="getVersionResponse">
+    <wsdl:part name="getVersionReturn" type="tns2:string"/>
+  </wsdl:message>
+  <wsdl:message name="getVersionRequest">
+  </wsdl:message>
+  <wsdl:portType name="Version">
+    <wsdl:operation name="getVersion">
+      <wsdl:input name="getVersionRequest" message="impl:getVersionRequest"/>
+      <wsdl:output name="getVersionResponse" message="impl:getVersionResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VersionSoapBinding" type="impl:Version">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getVersion">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getVersionRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://axis.apache.org"/>
+      </wsdl:input>
+      <wsdl:output name="getVersionResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www7.ccni.cl/inlandTariff/ws/services/Version"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VersionService">
+    <wsdl:port name="Version" binding="impl:VersionSoapBinding">
+      <wsdlsoap:address location="http://www7.ccni.cl/inlandTariff/ws/services/Version"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.fullerdata.com/ScoreWS/HighScore.asmx" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.fullerdata.com/ScoreWS/HighScore.asmx" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.fullerdata.com/ScoreWS/HighScore.asmx">
+      <s:element name="isSupported">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="category" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isSupportedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="isSupportedResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="showSupported">
+        <s:complexType/>
+      </s:element>
+      <s:element name="showSupportedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="showSupportedResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getScoreXML">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="category" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getScoreXMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="getScoreXMLResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registerForScores">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="category" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GUID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="playerEmail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="cryptKey" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registerForScoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="registerForScoresResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submitScore">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="category" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="score" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="playerEmail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GUID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="registeredCryptKey" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submitScoreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="submitScoreResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean"/>
+      <s:element name="string" nillable="true" type="s:string"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="registerForScoresSoapIn">
+    <wsdl:part name="parameters" element="tns:registerForScores"/>
+  </wsdl:message>
+  <wsdl:message name="submitScoreHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="submitScoreSoapOut">
+    <wsdl:part name="parameters" element="tns:submitScoreResponse"/>
+  </wsdl:message>
+  <wsdl:message name="isSupportedSoapOut">
+    <wsdl:part name="parameters" element="tns:isSupportedResponse"/>
+  </wsdl:message>
+  <wsdl:message name="showSupportedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="showSupportedHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="registerForScoresHttpPostIn">
+    <wsdl:part name="category" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="playerEmail" type="s:string"/>
+    <wsdl:part name="cryptKey" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="isSupportedSoapIn">
+    <wsdl:part name="parameters" element="tns:isSupported"/>
+  </wsdl:message>
+  <wsdl:message name="getScoreXMLHttpGetIn">
+    <wsdl:part name="category" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="submitScoreHttpPostIn">
+    <wsdl:part name="category" type="s:string"/>
+    <wsdl:part name="score" type="s:string"/>
+    <wsdl:part name="playerEmail" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="registeredCryptKey" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="isSupportedHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="isSupportedHttpPostIn">
+    <wsdl:part name="category" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="registerForScoresHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="showSupportedSoapOut">
+    <wsdl:part name="parameters" element="tns:showSupportedResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getScoreXMLHttpPostIn">
+    <wsdl:part name="category" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="registerForScoresHttpGetIn">
+    <wsdl:part name="category" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="playerEmail" type="s:string"/>
+    <wsdl:part name="cryptKey" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="showSupportedHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="getScoreXMLSoapOut">
+    <wsdl:part name="parameters" element="tns:getScoreXMLResponse"/>
+  </wsdl:message>
+  <wsdl:message name="showSupportedHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="submitScoreSoapIn">
+    <wsdl:part name="parameters" element="tns:submitScore"/>
+  </wsdl:message>
+  <wsdl:message name="isSupportedHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="registerForScoresHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="submitScoreHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="isSupportedHttpGetIn">
+    <wsdl:part name="category" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="getScoreXMLHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="submitScoreHttpGetIn">
+    <wsdl:part name="category" type="s:string"/>
+    <wsdl:part name="score" type="s:string"/>
+    <wsdl:part name="playerEmail" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="registeredCryptKey" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="getScoreXMLSoapIn">
+    <wsdl:part name="parameters" element="tns:getScoreXML"/>
+  </wsdl:message>
+  <wsdl:message name="getScoreXMLHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="registerForScoresSoapOut">
+    <wsdl:part name="parameters" element="tns:registerForScoresResponse"/>
+  </wsdl:message>
+  <wsdl:message name="showSupportedSoapIn">
+    <wsdl:part name="parameters" element="tns:showSupported"/>
+  </wsdl:message>
+  <wsdl:portType name="FullerData_x0020_High_x0020_Score_x0020_ServiceSoap">
+    <wsdl:operation name="isSupported">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Check whether a game category is supported</documentation>
+      <wsdl:input message="tns:isSupportedSoapIn"/>
+      <wsdl:output message="tns:isSupportedSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="showSupported">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Show all of the supported games</documentation>
+      <wsdl:input message="tns:showSupportedSoapIn"/>
+      <wsdl:output message="tns:showSupportedSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="getScoreXML">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Get the high scores as an XML document for a given game category</documentation>
+      <wsdl:input message="tns:getScoreXMLSoapIn"/>
+      <wsdl:output message="tns:getScoreXMLSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="registerForScores">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Register for score submission, using combination of GUID and encryption key to authenticate</documentation>
+      <wsdl:input message="tns:registerForScoresSoapIn"/>
+      <wsdl:output message="tns:registerForScoresSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitScore">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Submit a score using GUID and response crypt key from registerForScores method</documentation>
+      <wsdl:input message="tns:submitScoreSoapIn"/>
+      <wsdl:output message="tns:submitScoreSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FullerData_x0020_High_x0020_Score_x0020_ServiceHttpGet">
+    <wsdl:operation name="isSupported">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Check whether a game category is supported</documentation>
+      <wsdl:input message="tns:isSupportedHttpGetIn"/>
+      <wsdl:output message="tns:isSupportedHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="showSupported">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Show all of the supported games</documentation>
+      <wsdl:input message="tns:showSupportedHttpGetIn"/>
+      <wsdl:output message="tns:showSupportedHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="getScoreXML">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Get the high scores as an XML document for a given game category</documentation>
+      <wsdl:input message="tns:getScoreXMLHttpGetIn"/>
+      <wsdl:output message="tns:getScoreXMLHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="registerForScores">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Register for score submission, using combination of GUID and encryption key to authenticate</documentation>
+      <wsdl:input message="tns:registerForScoresHttpGetIn"/>
+      <wsdl:output message="tns:registerForScoresHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitScore">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Submit a score using GUID and response crypt key from registerForScores method</documentation>
+      <wsdl:input message="tns:submitScoreHttpGetIn"/>
+      <wsdl:output message="tns:submitScoreHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FullerData_x0020_High_x0020_Score_x0020_ServiceHttpPost">
+    <wsdl:operation name="isSupported">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Check whether a game category is supported</documentation>
+      <wsdl:input message="tns:isSupportedHttpPostIn"/>
+      <wsdl:output message="tns:isSupportedHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="showSupported">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Show all of the supported games</documentation>
+      <wsdl:input message="tns:showSupportedHttpPostIn"/>
+      <wsdl:output message="tns:showSupportedHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="getScoreXML">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Get the high scores as an XML document for a given game category</documentation>
+      <wsdl:input message="tns:getScoreXMLHttpPostIn"/>
+      <wsdl:output message="tns:getScoreXMLHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="registerForScores">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Register for score submission, using combination of GUID and encryption key to authenticate</documentation>
+      <wsdl:input message="tns:registerForScoresHttpPostIn"/>
+      <wsdl:output message="tns:registerForScoresHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitScore">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Submit a score using GUID and response crypt key from registerForScores method</documentation>
+      <wsdl:input message="tns:submitScoreHttpPostIn"/>
+      <wsdl:output message="tns:submitScoreHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FullerData_x0020_High_x0020_Score_x0020_ServiceSoap" type="tns:FullerData_x0020_High_x0020_Score_x0020_ServiceSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="isSupported">
+      <soap:operation soapAction="http://www.fullerdata.com/ScoreWS/HighScore.asmx/isSupported" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="showSupported">
+      <soap:operation soapAction="http://www.fullerdata.com/ScoreWS/HighScore.asmx/showSupported" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScoreXML">
+      <soap:operation soapAction="http://www.fullerdata.com/ScoreWS/HighScore.asmx/getScoreXML" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerForScores">
+      <soap:operation soapAction="http://www.fullerdata.com/ScoreWS/HighScore.asmx/registerForScores" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitScore">
+      <soap:operation soapAction="http://www.fullerdata.com/ScoreWS/HighScore.asmx/submitScore" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FullerData_x0020_High_x0020_Score_x0020_ServiceHttpGet" type="tns:FullerData_x0020_High_x0020_Score_x0020_ServiceHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="isSupported">
+      <http:operation location="/isSupported"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="showSupported">
+      <http:operation location="/showSupported"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScoreXML">
+      <http:operation location="/getScoreXML"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerForScores">
+      <http:operation location="/registerForScores"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitScore">
+      <http:operation location="/submitScore"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FullerData_x0020_High_x0020_Score_x0020_ServiceHttpPost" type="tns:FullerData_x0020_High_x0020_Score_x0020_ServiceHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="isSupported">
+      <http:operation location="/isSupported"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="showSupported">
+      <http:operation location="/showSupported"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getScoreXML">
+      <http:operation location="/getScoreXML"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerForScores">
+      <http:operation location="/registerForScores"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitScore">
+      <http:operation location="/submitScore"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FullerData_x0020_High_x0020_Score_x0020_Service">
+<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">A simple service to maintain the top scores for a given category (i.e. game), using XML files to store the data.</documentation>
+    <wsdl:port name="FullerData_x0020_High_x0020_Score_x0020_ServiceHttpGet" binding="tns:FullerData_x0020_High_x0020_Score_x0020_ServiceHttpGet">
+      <http:address location="http://fullerdata.com/ScoreWS/HighScore.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="FullerData_x0020_High_x0020_Score_x0020_ServiceHttpPost" binding="tns:FullerData_x0020_High_x0020_Score_x0020_ServiceHttpPost">
+      <http:address location="http://fullerdata.com/ScoreWS/HighScore.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="FullerData_x0020_High_x0020_Score_x0020_ServiceSoap" binding="tns:FullerData_x0020_High_x0020_Score_x0020_ServiceSoap">
+      <soap:address location="http://fullerdata.com/ScoreWS/HighScore.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

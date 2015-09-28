@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://schemas.microsoft.com/sharepoint/dsp" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://schemas.microsoft.com/sharepoint/dsp" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/sharepoint/dsp">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema"/>
+      <s:element name="queryRequest" nillable="true" type="s0:QueryRequest"/>
+      <s:complexType name="QueryRequest">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="dsQuery" type="s0:DSQuery"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ptQuery" type="s0:PTQuery"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DSQuery">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Query" type="s0:DspQuery"/>
+        </s:sequence>
+        <s:attribute name="select" type="s:string"/>
+        <s:attribute default="both" name="resultContent" type="s0:ResultContentType"/>
+        <s:attribute default="element" name="columnMapping" type="s0:ColumnMappingType"/>
+        <s:attribute name="resultNamespace" type="s:string"/>
+        <s:attribute name="resultPrefix" type="s:string"/>
+        <s:attribute name="resultRoot" type="s:string"/>
+        <s:attribute name="resultRow" type="s:string"/>
+        <s:attribute name="startPosition" type="s:string"/>
+        <s:attribute name="comparisonLocale" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="DspQuery">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ServerParameterInfo" type="s0:ServerParameterInfo"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Fields" type="s0:Fields"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ServerParameters" type="s0:ArrayOfServerParameter"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Where">
+            <s:complexType mixed="true">
+              <s:sequence>
+                <s:any/>
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element maxOccurs="1" minOccurs="0" name="OrderBy" type="s0:ArrayOfOrderField"/>
+        </s:sequence>
+        <s:attribute default="-1" name="RowLimit" type="s:long"/>
+      </s:complexType>
+      <s:complexType name="ServerParameterInfo"/>
+      <s:complexType name="Fields">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="Field" type="s0:Field"/>
+          <s:element maxOccurs="1" minOccurs="0" name="AllFields" type="s0:AllFields"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Field">
+        <s:attribute name="Name" type="s:string"/>
+        <s:attribute name="Alias" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="AllFields">
+        <s:attribute default="false" name="IncludeHiddenFields" type="s:boolean"/>
+      </s:complexType>
+      <s:complexType name="ArrayOfServerParameter">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="ServerParameter" type="s0:ServerParameter"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServerParameter">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="Name" type="s:string"/>
+            <s:attribute default="false" name="Null" type="s:boolean"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfOrderField">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="OrderField" type="s0:OrderField"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderField">
+        <s:attribute name="Name" type="s:string"/>
+        <s:attribute default="ASC" name="Direction" type="s0:OrderDirection"/>
+      </s:complexType>
+      <s:simpleType name="OrderDirection">
+        <s:restriction base="s:string">
+          <s:enumeration value="ASC"/>
+          <s:enumeration value="DESC"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ResultContentType">
+        <s:restriction base="s:string">
+          <s:enumeration value="both"/>
+          <s:enumeration value="schemaOnly"/>
+          <s:enumeration value="dataOnly"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ColumnMappingType">
+        <s:restriction base="s:string">
+          <s:enumeration value="element"/>
+          <s:enumeration value="attribute"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PTQuery">
+        <s:sequence>
+          <s:any maxOccurs="unbounded" minOccurs="0"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="queryResponse">
+        <s:complexType mixed="true">
+          <s:sequence>
+            <s:any/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="authentication" type="s0:Authentication"/>
+      <s:complexType name="Authentication">
+        <s:sequence>
+          <s:any maxOccurs="unbounded" minOccurs="0"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="dataRoot" type="s0:DataRoot"/>
+      <s:complexType name="DataRoot">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="root" type="s:string"/>
+        </s:sequence>
+        <s:attribute default="true" name="allowRemoteDataAccess" type="s:boolean"/>
+      </s:complexType>
+      <s:element name="request" type="s0:RequestHeader"/>
+      <s:complexType name="RequestHeader">
+        <s:attribute name="document" type="s0:DocumentType" use="required"/>
+        <s:attribute name="method" type="s0:MethodType" use="required"/>
+      </s:complexType>
+      <s:simpleType name="DocumentType">
+        <s:restriction base="s:string">
+          <s:enumeration value="content"/>
+          <s:enumeration value="system"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="MethodType">
+        <s:restriction base="s:string">
+          <s:enumeration value="query"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="versions" type="s0:Versions"/>
+      <s:complexType name="Versions">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="version" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="queryRequestdataRoot">
+    <part name="dataRoot" element="s0:dataRoot"/>
+  </message>
+  <message name="queryRequestSoapIn">
+    <part name="Request" element="s0:queryRequest"/>
+  </message>
+  <message name="queryRequestrequest">
+    <part name="request" element="s0:request"/>
+  </message>
+  <message name="queryRequestauthentication">
+    <part name="authentication" element="s0:authentication"/>
+  </message>
+  <message name="queryRequestSoapOut">
+    <part name="queryRequestResult" element="s0:queryResponse"/>
+  </message>
+  <message name="queryRequestversions">
+    <part name="versions" element="s0:versions"/>
+  </message>
+  <portType name="StsAdapterSoap">
+    <operation name="Query">
+      <input name="queryRequest" message="s0:queryRequestSoapIn"/>
+      <output name="queryRequest" message="s0:queryRequestSoapOut"/>
+    </operation>
+  </portType>
+  <binding name="StsAdapterSoap" type="s0:StsAdapterSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Query">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/dsp/queryRequest" style="document"/>
+      <input name="queryRequest">
+        <soap:body use="literal"/>
+        <soap:header message="s0:queryRequestauthentication" part="authentication" use="literal">
+        </soap:header>
+        <soap:header message="s0:queryRequestdataRoot" part="dataRoot" use="literal">
+        </soap:header>
+        <soap:header message="s0:queryRequestrequest" part="request" use="literal">
+        </soap:header>
+        <soap:header message="s0:queryRequestversions" part="versions" use="literal">
+        </soap:header>
+      </input>
+      <output name="queryRequest">
+        <soap:body use="literal"/>
+        <soap:header message="s0:queryRequestversions" part="versions" use="literal">
+        </soap:header>
+      </output>
+    </operation>
+  </binding>
+  <service name="StsAdapter">
+    <port name="StsAdapterSoap" binding="s0:StsAdapterSoap">
+      <soap:address location="http://www.zimalimited.co.uk/_vti_bin/DspSts.asmx"/>
+    </port>
+  </service>
+</definitions>

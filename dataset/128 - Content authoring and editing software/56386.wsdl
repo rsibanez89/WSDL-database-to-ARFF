@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetVideos">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="pageSize" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="pageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="sortType" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetVideosResult" type="tns:VideoSearchResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VideoSearchResult">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="totalPages" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="totalVideos" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ownerName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="videos" type="tns:ArrayOfVideoList"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVideoList">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="VideoList" nillable="true" type="tns:VideoList"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VideoList">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="thumbnailUrl" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="previewUrl" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="videoUrl" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="title" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="videoId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="views" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="favorites" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ownerName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="avatarUrl" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="tags" type="tns:ArrayOfString"/>
+          <s:element maxOccurs="1" minOccurs="1" name="datePublished" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="durationInSeconds" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVideosByTag">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="pageSize" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="pageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="sortType" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="tag" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideosByTagResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetVideosByTagResult" type="tns:VideoSearchResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideosByOwner">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="pageSize" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="pageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="sortType" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="memberId" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideosByOwnerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetVideosByOwnerResult" type="tns:VideoSearchResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideosByRecentViews">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="pageSize" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="pageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="sortType" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="memberId" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideosByRecentViewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetVideosByRecentViewsResult" type="tns:VideoSearchResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideosByFavorite">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="pageSize" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="pageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="sortType" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="memberId" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideosByFavoriteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetVideosByFavoriteResult" type="tns:VideoSearchResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideoDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="videoId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideoDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetVideoDetailsResult" type="tns:VideoList"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetVideosByOwnerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVideosByOwner"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideoDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVideoDetails"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideosByTagSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVideosByTag"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideoDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVideoDetailsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideosByFavoriteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVideosByFavorite"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVideosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideosByTagSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVideosByTagResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideosByFavoriteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVideosByFavoriteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideosByRecentViewsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVideosByRecentViews"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideosByOwnerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVideosByOwnerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVideos"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideosByRecentViewsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVideosByRecentViewsResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="VideoWebserviceSoap">
+    <wsdl:operation name="GetVideos">
+      <wsdl:input message="tns:GetVideosSoapIn"/>
+      <wsdl:output message="tns:GetVideosSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByTag">
+      <wsdl:input message="tns:GetVideosByTagSoapIn"/>
+      <wsdl:output message="tns:GetVideosByTagSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByOwner">
+      <wsdl:input message="tns:GetVideosByOwnerSoapIn"/>
+      <wsdl:output message="tns:GetVideosByOwnerSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByRecentViews">
+      <wsdl:input message="tns:GetVideosByRecentViewsSoapIn"/>
+      <wsdl:output message="tns:GetVideosByRecentViewsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByFavorite">
+      <wsdl:input message="tns:GetVideosByFavoriteSoapIn"/>
+      <wsdl:output message="tns:GetVideosByFavoriteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoDetails">
+      <wsdl:input message="tns:GetVideoDetailsSoapIn"/>
+      <wsdl:output message="tns:GetVideoDetailsSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VideoWebserviceSoap12" type="tns:VideoWebserviceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetVideos">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetVideos" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByTag">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetVideosByTag" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByOwner">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetVideosByOwner" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByRecentViews">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetVideosByRecentViews" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByFavorite">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetVideosByFavorite" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoDetails">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetVideoDetails" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VideoWebserviceSoap" type="tns:VideoWebserviceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetVideos">
+      <soap:operation soapAction="http://tempuri.org/GetVideos" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByTag">
+      <soap:operation soapAction="http://tempuri.org/GetVideosByTag" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByOwner">
+      <soap:operation soapAction="http://tempuri.org/GetVideosByOwner" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByRecentViews">
+      <soap:operation soapAction="http://tempuri.org/GetVideosByRecentViews" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideosByFavorite">
+      <soap:operation soapAction="http://tempuri.org/GetVideosByFavorite" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoDetails">
+      <soap:operation soapAction="http://tempuri.org/GetVideoDetails" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VideoWebservice">
+    <wsdl:port name="VideoWebserviceSoap" binding="tns:VideoWebserviceSoap">
+      <soap:address location="http://videoshow.vertigo.com/Webservices/VideoWebservice.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="VideoWebserviceSoap12" binding="tns:VideoWebserviceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://videoshow.vertigo.com/Webservices/VideoWebservice.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

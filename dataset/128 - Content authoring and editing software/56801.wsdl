@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetSinglePhoto">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="_id" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SM_ID" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSinglePhotoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetSinglePhotoResult" type="tns:GBPhoto"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GBPhoto">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="ID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Title" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Caption" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="IsCover" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Thumbnail" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="BigThumbnail" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="OriginalPath" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LargePath" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="xLargePath" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="MemberName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UploadedDate" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="CarIcon" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Views" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Likes" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Dislikes" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Favs" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="FavInfo" type="tns:FavPhotoInfo"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FavPhotoInfo">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="AlbumName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="OwnerName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="CarIcon" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Added_at" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Views" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddAlbum">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="_title" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="_visible" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAlbumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddAlbumResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditAlbumInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="_title" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="_visible" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="_coverPhotoId" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditAlbumInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="EditAlbumInfoResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAlbum">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAlbumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DeleteAlbumResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPhotoComment">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="photoId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="comment" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPhotoCommentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddPhotoCommentResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetThumbnailList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="albumId" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetThumbnailListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetThumbnailListResult" type="tns:ArrayOfGBPhoto"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGBPhoto">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="GBPhoto" nillable="true" type="tns:GBPhoto"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="submitImgInfor">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="id" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="title" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="caption" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submitImgInforResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="submitImgInforResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submitAlbumCover">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="AlbumId" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PhotoId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submitAlbumCoverResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="submitAlbumCoverResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submitProfileCover">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="PhotoId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submitProfileCoverResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="submitProfileCoverResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setPrevProfilePic">
+        <s:complexType/>
+      </s:element>
+      <s:element name="setPrevProfilePicResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="setPrevProfilePicResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setPhotoRating">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="photoId" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="rating" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setPhotoRatingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="setPhotoRatingResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setLikePhoto">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="photoId" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="likePhoto" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setLikePhotoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="setLikePhotoResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToFavoritePhoto">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="photoId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToFavoritePhotoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddToFavoritePhotoResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPhotoStats">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="photoId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PhotoStats">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="IsMyFavorite" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FavorCount" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ViewCount" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="LikeCount" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="DislikeCount" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ILikedIt" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPhotoStatsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetPhotoStatsResult" type="tns:PhotoStats"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSingleFavPhoto">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="photoId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSingleFavPhotoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetSingleFavPhotoResult" type="tns:GBPhoto"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="submitAlbumCoverSoapOut">
+    <wsdl:part name="parameters" element="tns:submitAlbumCoverResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSingleFavPhotoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSingleFavPhotoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddPhotoCommentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddPhotoComment"/>
+  </wsdl:message>
+  <wsdl:message name="AddToFavoritePhotoSoapOut">
+    <wsdl:part name="parameters" element="tns:AddToFavoritePhotoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSinglePhotoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSinglePhotoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="submitImgInforSoapOut">
+    <wsdl:part name="parameters" element="tns:submitImgInforResponse"/>
+  </wsdl:message>
+  <wsdl:message name="EditAlbumInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:EditAlbumInfo"/>
+  </wsdl:message>
+  <wsdl:message name="setPrevProfilePicSoapOut">
+    <wsdl:part name="parameters" element="tns:setPrevProfilePicResponse"/>
+  </wsdl:message>
+  <wsdl:message name="EditAlbumInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:EditAlbumInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="submitProfileCoverSoapOut">
+    <wsdl:part name="parameters" element="tns:submitProfileCoverResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddAlbumSoapOut">
+    <wsdl:part name="parameters" element="tns:AddAlbumResponse"/>
+  </wsdl:message>
+  <wsdl:message name="submitAlbumCoverSoapIn">
+    <wsdl:part name="parameters" element="tns:submitAlbumCover"/>
+  </wsdl:message>
+  <wsdl:message name="GetThumbnailListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetThumbnailListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="submitProfileCoverSoapIn">
+    <wsdl:part name="parameters" element="tns:submitProfileCover"/>
+  </wsdl:message>
+  <wsdl:message name="setPhotoRatingSoapIn">
+    <wsdl:part name="parameters" element="tns:setPhotoRating"/>
+  </wsdl:message>
+  <wsdl:message name="setPhotoRatingSoapOut">
+    <wsdl:part name="parameters" element="tns:setPhotoRatingResponse"/>
+  </wsdl:message>
+  <wsdl:message name="submitImgInforSoapIn">
+    <wsdl:part name="parameters" element="tns:submitImgInfor"/>
+  </wsdl:message>
+  <wsdl:message name="AddToFavoritePhotoSoapIn">
+    <wsdl:part name="parameters" element="tns:AddToFavoritePhoto"/>
+  </wsdl:message>
+  <wsdl:message name="GetSinglePhotoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSinglePhoto"/>
+  </wsdl:message>
+  <wsdl:message name="AddAlbumSoapIn">
+    <wsdl:part name="parameters" element="tns:AddAlbum"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteAlbumSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAlbumResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetPhotoStatsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPhotoStatsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteAlbumSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAlbum"/>
+  </wsdl:message>
+  <wsdl:message name="AddPhotoCommentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddPhotoCommentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="setLikePhotoSoapOut">
+    <wsdl:part name="parameters" element="tns:setLikePhotoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="setPrevProfilePicSoapIn">
+    <wsdl:part name="parameters" element="tns:setPrevProfilePic"/>
+  </wsdl:message>
+  <wsdl:message name="GetThumbnailListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetThumbnailList"/>
+  </wsdl:message>
+  <wsdl:message name="GetSingleFavPhotoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSingleFavPhoto"/>
+  </wsdl:message>
+  <wsdl:message name="setLikePhotoSoapIn">
+    <wsdl:part name="parameters" element="tns:setLikePhoto"/>
+  </wsdl:message>
+  <wsdl:message name="GetPhotoStatsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPhotoStats"/>
+  </wsdl:message>
+  <wsdl:portType name="PhotoServiceSoap">
+    <wsdl:operation name="GetSinglePhoto">
+      <wsdl:input message="tns:GetSinglePhotoSoapIn"/>
+      <wsdl:output message="tns:GetSinglePhotoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddAlbum">
+      <wsdl:input message="tns:AddAlbumSoapIn"/>
+      <wsdl:output message="tns:AddAlbumSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="EditAlbumInfo">
+      <wsdl:input message="tns:EditAlbumInfoSoapIn"/>
+      <wsdl:output message="tns:EditAlbumInfoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAlbum">
+      <wsdl:input message="tns:DeleteAlbumSoapIn"/>
+      <wsdl:output message="tns:DeleteAlbumSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddPhotoComment">
+      <wsdl:input message="tns:AddPhotoCommentSoapIn"/>
+      <wsdl:output message="tns:AddPhotoCommentSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetThumbnailList">
+      <wsdl:input message="tns:GetThumbnailListSoapIn"/>
+      <wsdl:output message="tns:GetThumbnailListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitImgInfor">
+      <wsdl:input message="tns:submitImgInforSoapIn"/>
+      <wsdl:output message="tns:submitImgInforSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitAlbumCover">
+      <wsdl:input message="tns:submitAlbumCoverSoapIn"/>
+      <wsdl:output message="tns:submitAlbumCoverSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitProfileCover">
+      <wsdl:input message="tns:submitProfileCoverSoapIn"/>
+      <wsdl:output message="tns:submitProfileCoverSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="setPrevProfilePic">
+      <wsdl:input message="tns:setPrevProfilePicSoapIn"/>
+      <wsdl:output message="tns:setPrevProfilePicSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="setPhotoRating">
+      <wsdl:input message="tns:setPhotoRatingSoapIn"/>
+      <wsdl:output message="tns:setPhotoRatingSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="setLikePhoto">
+      <wsdl:input message="tns:setLikePhotoSoapIn"/>
+      <wsdl:output message="tns:setLikePhotoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddToFavoritePhoto">
+      <wsdl:input message="tns:AddToFavoritePhotoSoapIn"/>
+      <wsdl:output message="tns:AddToFavoritePhotoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPhotoStats">
+      <wsdl:input message="tns:GetPhotoStatsSoapIn"/>
+      <wsdl:output message="tns:GetPhotoStatsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSingleFavPhoto">
+      <wsdl:input message="tns:GetSingleFavPhotoSoapIn"/>
+      <wsdl:output message="tns:GetSingleFavPhotoSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PhotoServiceSoap" type="tns:PhotoServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSinglePhoto">
+      <soap:operation soapAction="http://tempuri.org/GetSinglePhoto" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAlbum">
+      <soap:operation soapAction="http://tempuri.org/AddAlbum" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditAlbumInfo">
+      <soap:operation soapAction="http://tempuri.org/EditAlbumInfo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAlbum">
+      <soap:operation soapAction="http://tempuri.org/DeleteAlbum" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPhotoComment">
+      <soap:operation soapAction="http://tempuri.org/AddPhotoComment" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetThumbnailList">
+      <soap:operation soapAction="http://tempuri.org/GetThumbnailList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitImgInfor">
+      <soap:operation soapAction="http://tempuri.org/submitImgInfor" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitAlbumCover">
+      <soap:operation soapAction="http://tempuri.org/submitAlbumCover" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitProfileCover">
+      <soap:operation soapAction="http://tempuri.org/submitProfileCover" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPrevProfilePic">
+      <soap:operation soapAction="http://tempuri.org/setPrevProfilePic" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPhotoRating">
+      <soap:operation soapAction="http://tempuri.org/setPhotoRating" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setLikePhoto">
+      <soap:operation soapAction="http://tempuri.org/setLikePhoto" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToFavoritePhoto">
+      <soap:operation soapAction="http://tempuri.org/AddToFavoritePhoto" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPhotoStats">
+      <soap:operation soapAction="http://tempuri.org/GetPhotoStats" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSingleFavPhoto">
+      <soap:operation soapAction="http://tempuri.org/GetSingleFavPhoto" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PhotoServiceSoap12" type="tns:PhotoServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSinglePhoto">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetSinglePhoto" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAlbum">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/AddAlbum" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditAlbumInfo">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/EditAlbumInfo" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAlbum">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/DeleteAlbum" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPhotoComment">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/AddPhotoComment" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetThumbnailList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetThumbnailList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitImgInfor">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/submitImgInfor" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitAlbumCover">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/submitAlbumCover" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitProfileCover">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/submitProfileCover" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPrevProfilePic">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/setPrevProfilePic" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPhotoRating">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/setPhotoRating" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setLikePhoto">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/setLikePhoto" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToFavoritePhoto">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/AddToFavoritePhoto" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPhotoStats">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetPhotoStats" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSingleFavPhoto">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetSingleFavPhoto" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PhotoService">
+    <wsdl:port name="PhotoServiceSoap12" binding="tns:PhotoServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.saskgasprices.com/PhotoService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="PhotoServiceSoap" binding="tns:PhotoServiceSoap">
+      <soap:address location="http://www.saskgasprices.com/PhotoService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

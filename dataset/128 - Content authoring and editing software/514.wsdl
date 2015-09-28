@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="eventsDemo" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="eventsDemo" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The HiartsEvents web service v1.2 exposes the methods that allowing you to search for events in the HI-arts events listings for the Highland and Islands of Scotland. The listings can be queried by area, venue, type and date range. Visual Studio 2003 version</wsdl:documentation>
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="eventsDemo">
+      <s:element name="GetEventByEventID">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="EventID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventByEventIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetEventByEventIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByArtsArea">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="artsArea" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByArtsAreaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetEventsByArtsAreaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEvents">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetAllEventsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetAllEventsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByartsOrgVenueID">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="artsOrgVenueID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByartsOrgVenueIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetEventsByartsOrgVenueIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByDateRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SearchStartDate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SearchEndDate" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByDateRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetEventsByDateRangeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByMonth">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="siteID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="typeID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="areaID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="mth" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="yr" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByMonthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetEventsByMonthResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema"/>
+            <s:any/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetEventByEventIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByartsOrgVenueIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventsByartsOrgVenueIDResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllEventsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllEventsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllEventsHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="GetEventsByArtsAreaHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByMonthHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByArtsAreaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEventsByArtsArea"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByArtsAreaHttpGetIn">
+    <wsdl:part name="artsArea" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByArtsAreaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventsByArtsAreaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllEventsHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="GetEventByEventIDHttpGetIn">
+    <wsdl:part name="EventID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventByEventIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventByEventIDResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByartsOrgVenueIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventByEventIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEventByEventID"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByArtsAreaHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByMonthHttpGetIn">
+    <wsdl:part name="siteID" type="s:string"/>
+    <wsdl:part name="typeID" type="s:string"/>
+    <wsdl:part name="areaID" type="s:string"/>
+    <wsdl:part name="mth" type="s:string"/>
+    <wsdl:part name="yr" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByDateRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEventsByDateRange"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByartsOrgVenueIDHttpGetIn">
+    <wsdl:part name="artsOrgVenueID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventByEventIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByMonthHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByMonthSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventsByMonthResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByMonthHttpPostIn">
+    <wsdl:part name="siteID" type="s:string"/>
+    <wsdl:part name="typeID" type="s:string"/>
+    <wsdl:part name="areaID" type="s:string"/>
+    <wsdl:part name="mth" type="s:string"/>
+    <wsdl:part name="yr" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByartsOrgVenueIDHttpPostIn">
+    <wsdl:part name="artsOrgVenueID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByDateRangeHttpPostIn">
+    <wsdl:part name="SearchStartDate" type="s:string"/>
+    <wsdl:part name="SearchEndDate" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByDateRangeHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByArtsAreaHttpPostIn">
+    <wsdl:part name="artsArea" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllEventsHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByDateRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventsByDateRangeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllEventsHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByartsOrgVenueIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEventsByartsOrgVenueID"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByDateRangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllEventsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllEvents"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventByEventIDHttpPostIn">
+    <wsdl:part name="EventID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByMonthSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEventsByMonth"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByDateRangeHttpGetIn">
+    <wsdl:part name="SearchStartDate" type="s:string"/>
+    <wsdl:part name="SearchEndDate" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByartsOrgVenueIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:portType name="HiartsEventsHttpGet">
+    <wsdl:operation name="GetEventByEventID">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the event details for a specified eventID.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventByEventIDHttpGetIn"/>
+      <wsdl:output message="tns:GetEventByEventIDHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByArtsArea">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all events in a specific area from now on.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByArtsAreaHttpGetIn"/>
+      <wsdl:output message="tns:GetEventsByArtsAreaHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEvents">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all events from now on.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEventsHttpGetIn"/>
+      <wsdl:output message="tns:GetAllEventsHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByartsOrgVenueID">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns events from now on for a particular venue.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByartsOrgVenueIDHttpGetIn"/>
+      <wsdl:output message="tns:GetEventsByartsOrgVenueIDHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByDateRange">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns events listing between a specified date range.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByDateRangeHttpGetIn"/>
+      <wsdl:output message="tns:GetEventsByDateRangeHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByMonth">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the a HTML table of events details for a specified month of the year Can be filtered on arts type and area.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByMonthHttpGetIn"/>
+      <wsdl:output message="tns:GetEventsByMonthHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="HiartsEventsHttpPost">
+    <wsdl:operation name="GetEventByEventID">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the event details for a specified eventID.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventByEventIDHttpPostIn"/>
+      <wsdl:output message="tns:GetEventByEventIDHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByArtsArea">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all events in a specific area from now on.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByArtsAreaHttpPostIn"/>
+      <wsdl:output message="tns:GetEventsByArtsAreaHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEvents">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all events from now on.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEventsHttpPostIn"/>
+      <wsdl:output message="tns:GetAllEventsHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByartsOrgVenueID">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns events from now on for a particular venue.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByartsOrgVenueIDHttpPostIn"/>
+      <wsdl:output message="tns:GetEventsByartsOrgVenueIDHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByDateRange">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns events listing between a specified date range.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByDateRangeHttpPostIn"/>
+      <wsdl:output message="tns:GetEventsByDateRangeHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByMonth">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the a HTML table of events details for a specified month of the year Can be filtered on arts type and area.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByMonthHttpPostIn"/>
+      <wsdl:output message="tns:GetEventsByMonthHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="HiartsEventsSoap">
+    <wsdl:operation name="GetEventByEventID">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the event details for a specified eventID.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventByEventIDSoapIn"/>
+      <wsdl:output message="tns:GetEventByEventIDSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByArtsArea">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all events in a specific area from now on.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByArtsAreaSoapIn"/>
+      <wsdl:output message="tns:GetEventsByArtsAreaSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEvents">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all events from now on.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEventsSoapIn"/>
+      <wsdl:output message="tns:GetAllEventsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByartsOrgVenueID">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns events from now on for a particular venue.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByartsOrgVenueIDSoapIn"/>
+      <wsdl:output message="tns:GetEventsByartsOrgVenueIDSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByDateRange">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns events listing between a specified date range.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByDateRangeSoapIn"/>
+      <wsdl:output message="tns:GetEventsByDateRangeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByMonth">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the a HTML table of events details for a specified month of the year Can be filtered on arts type and area.</wsdl:documentation>
+      <wsdl:input message="tns:GetEventsByMonthSoapIn"/>
+      <wsdl:output message="tns:GetEventsByMonthSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HiartsEventsHttpGet" type="tns:HiartsEventsHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="GetEventByEventID">
+      <http:operation location="/GetEventByEventID"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByArtsArea">
+      <http:operation location="/GetEventsByArtsArea"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEvents">
+      <http:operation location="/GetAllEvents"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByartsOrgVenueID">
+      <http:operation location="/GetEventsByartsOrgVenueID"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByDateRange">
+      <http:operation location="/GetEventsByDateRange"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByMonth">
+      <http:operation location="/GetEventsByMonth"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HiartsEventsSoap12" type="tns:HiartsEventsSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetEventByEventID">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="eventsDemo/GetEventByEventID" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByArtsArea">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="eventsDemo/GetEventsByArtsArea" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEvents">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="eventsDemo/GetAllEvents" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByartsOrgVenueID">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="eventsDemo/GetEventsByartsOrgVenueID" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByDateRange">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="eventsDemo/GetEventsByDateRange" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByMonth">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="eventsDemo/GetEventsByMonth" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HiartsEventsHttpPost" type="tns:HiartsEventsHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="GetEventByEventID">
+      <http:operation location="/GetEventByEventID"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByArtsArea">
+      <http:operation location="/GetEventsByArtsArea"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEvents">
+      <http:operation location="/GetAllEvents"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByartsOrgVenueID">
+      <http:operation location="/GetEventsByartsOrgVenueID"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByDateRange">
+      <http:operation location="/GetEventsByDateRange"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByMonth">
+      <http:operation location="/GetEventsByMonth"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HiartsEventsSoap" type="tns:HiartsEventsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetEventByEventID">
+      <soap:operation soapAction="eventsDemo/GetEventByEventID" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByArtsArea">
+      <soap:operation soapAction="eventsDemo/GetEventsByArtsArea" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEvents">
+      <soap:operation soapAction="eventsDemo/GetAllEvents" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByartsOrgVenueID">
+      <soap:operation soapAction="eventsDemo/GetEventsByartsOrgVenueID" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByDateRange">
+      <soap:operation soapAction="eventsDemo/GetEventsByDateRange" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByMonth">
+      <soap:operation soapAction="eventsDemo/GetEventsByMonth" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HiartsEvents">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The HiartsEvents web service v1.2 exposes the methods that allowing you to search for events in the HI-arts events listings for the Highland and Islands of Scotland. The listings can be queried by area, venue, type and date range. Visual Studio 2003 version</wsdl:documentation>
+    <wsdl:port name="HiartsEventsSoap" binding="tns:HiartsEventsSoap">
+      <soap:address location="http://ws.hie.co.uk/events/data101.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="HiartsEventsHttpGet" binding="tns:HiartsEventsHttpGet">
+      <http:address location="http://ws.hie.co.uk/events/data101.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="HiartsEventsSoap12" binding="tns:HiartsEventsSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://ws.hie.co.uk/events/data101.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="HiartsEventsHttpPost" binding="tns:HiartsEventsHttpPost">
+      <http:address location="http://ws.hie.co.uk/events/data101.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.courts.state.mn.us/IS/02" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://www.courts.state.mn.us/CourtXML/3" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.courts.state.mn.us/IS/02" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.courts.state.mn.us/CourtXML/3">
+      <s:element name="CaseSearchByPartyRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Selection">
+              <s:complexType>
+                <s:sequence>
+                  <s:choice maxOccurs="1" minOccurs="1">
+                    <s:element maxOccurs="1" minOccurs="0" name="BusinessName">
+                      <s:complexType>
+                        <s:simpleContent>
+                          <s:extension base="s:string">
+                            <s:attribute name="useSoundexIndicator" type="s:boolean"/>
+                          </s:extension>
+                        </s:simpleContent>
+                      </s:complexType>
+                    </s:element>
+                    <s:element maxOccurs="1" minOccurs="0" name="PersonNameBirthAndDeathDate">
+                      <s:complexType>
+                        <s:sequence>
+                          <s:element maxOccurs="1" minOccurs="0" name="PersonGivenName" type="s:string"/>
+                          <s:element maxOccurs="1" minOccurs="0" name="PersonMiddleName" type="s:string"/>
+                          <s:element maxOccurs="1" minOccurs="0" name="PersonSurName" type="s:string"/>
+                          <s:element maxOccurs="1" minOccurs="0" name="PartyBirthDate" type="s:date"/>
+                          <s:element maxOccurs="1" minOccurs="0" name="PartyDeathDate" type="s:date"/>
+                        </s:sequence>
+                        <s:attribute name="useSoundexIndicator" type="s:boolean"/>
+                      </s:complexType>
+                    </s:element>
+                    <s:element maxOccurs="1" minOccurs="0" name="PersonStateID" type="s0:PersonStateIDType"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="PersonSSNID" type="s0:PersonSSNIDType"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="PersonOtherID">
+                      <s:complexType>
+                        <s:sequence>
+                          <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+                          <s:element maxOccurs="1" minOccurs="0" name="IDTypeCodeText" type="s:string"/>
+                        </s:sequence>
+                      </s:complexType>
+                    </s:element>
+                    <s:element maxOccurs="1" minOccurs="0" name="PersonFBIID" type="s0:PersonFBIIDType"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="PersonID" type="s0:PersonIDType"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="PersonDriverLicenseID">
+                      <s:complexType>
+                        <s:complexContent mixed="false">
+                          <s:extension base="s0:PersonDriverLicenseIDType"/>
+                        </s:complexContent>
+                      </s:complexType>
+                    </s:element>
+                    <s:element maxOccurs="1" minOccurs="0" name="PartyKey" type="s0:IntegrationIDType"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="GroupID">
+                      <s:complexType>
+                        <s:sequence>
+                          <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+                        </s:sequence>
+                      </s:complexType>
+                    </s:element>
+                  </s:choice>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element maxOccurs="1" minOccurs="0" name="Restriction">
+              <s:complexType>
+                <s:sequence>
+                  <s:element maxOccurs="1" minOccurs="0" name="CaseTypes">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="1" name="CaseCategoryText" nillable="true" type="s0:CaseCategoryCodeTextType"/>
+                        <s:element maxOccurs="unbounded" minOccurs="0" name="CaseTypeText" nillable="true" type="s0:CaseTypeCodeTextType"/>
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element maxOccurs="1" minOccurs="0" name="CaseLocations" type="s0:ArrayOfCourtLocationCodeTextType"/>
+                  <s:element maxOccurs="1" minOccurs="0" name="PartyCaseAssociations">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element maxOccurs="unbounded" minOccurs="0" name="PartyBaseCaseAssociationText" nillable="true" type="s0:BaseConnectionCodeTextType"/>
+                        <s:element maxOccurs="unbounded" minOccurs="0" name="PartyCaseAssociationText" nillable="true" type="s0:ExtendedPartyConnectionTypeCodeTextType"/>
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element default="false" maxOccurs="1" minOccurs="0" name="IncludeInactiveIndicator" type="s:boolean"/>
+                  <s:element maxOccurs="1" minOccurs="0" name="CaseMatchLimit" type="s:int"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="schemaVersion" type="s:string"/>
+          <s:attribute name="messageProducedDateTime" type="s:dateTime"/>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PersonStateIDType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="IDJurisdictionCode" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PersonSSNIDType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PersonFBIIDType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PersonIDType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PersonDriverLicenseIDType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="IDJurisdictionCode" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IntegrationIDType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CaseCategoryCodeTextType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="code" type="s:string"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="CaseTypeCodeTextType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="code" type="s:string"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCourtLocationCodeTextType">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="CaseLocationText" nillable="true" type="s0:CourtLocationCodeTextType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CourtLocationCodeTextType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="code" type="s:string"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="BaseConnectionCodeTextType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="code" type="s:string"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ExtendedPartyConnectionTypeCodeTextType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="code" type="s:string"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:element name="CaseSearchByPartyReply">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="unbounded" minOccurs="0" name="PartyMatch">
+              <s:complexType>
+                <s:sequence>
+                  <s:element maxOccurs="unbounded" minOccurs="0" name="Group" type="s0:GroupType"/>
+                  <s:element maxOccurs="unbounded" minOccurs="0" name="PartyName">
+                    <s:complexType>
+                      <s:complexContent mixed="false">
+                        <s:extension base="s0:PartyNameBaseType">
+                          <s:attribute name="currentNameIndicator" type="s:boolean" use="required"/>
+                        </s:extension>
+                      </s:complexContent>
+                    </s:complexType>
+                  </s:element>
+                  <s:element maxOccurs="unbounded" minOccurs="0" name="PartyBirthDate" type="s:date"/>
+                  <s:element maxOccurs="1" minOccurs="0" name="PartyDeathDate" type="s:date"/>
+                  <s:element maxOccurs="1" minOccurs="0" name="PersonAssignedIDDetails" type="s0:PersonAssignedIDDetailsType"/>
+                  <s:element maxOccurs="1" minOccurs="1" name="ActiveWarrantCount" type="s:int"/>
+                  <s:element maxOccurs="unbounded" minOccurs="0" name="CaseMatch">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="PartyCaseAssociationText" type="s0:ExtendedPartyConnectionTypeCodeTextType"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="PartyBaseCaseAssociationText" type="s0:BaseConnectionCodeTextType"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="CourtFileNumber" type="s0:CourtFileNumberType"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="CaseCountyNumber" type="s:positiveInteger"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="CaseLocationText" type="s0:CourtLocationCodeTextType"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="BaseCaseTypeText" type="s:string"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="CaseCategoryText" type="s0:CaseCategoryCodeTextType"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="CaseTitle" type="s:string"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="CaseTypeText" type="s0:CaseTypeCodeTextType"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="CaseSubTypeText" type="s0:CaseSubTypeCodeTextType"/>
+                        <s:element maxOccurs="1" minOccurs="1" name="CaseFiledDateTime" type="s:dateTime"/>
+                        <s:element maxOccurs="1" minOccurs="1" name="CaseIsConfidential" type="s:boolean"/>
+                        <s:element maxOccurs="1" minOccurs="1" name="CaseIsSealed" type="s:boolean"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="CaseIsRestricted" type="s:boolean"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="Group" type="s0:GroupType"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="CaseStatus">
+                          <s:complexType>
+                            <s:complexContent mixed="false">
+                              <s:extension base="s0:CourtCaseStatusType">
+                                <s:attribute name="currentStatusIndicator" type="s:boolean"/>
+                              </s:extension>
+                            </s:complexContent>
+                          </s:complexType>
+                        </s:element>
+                      </s:sequence>
+                      <s:attribute name="caseNumberKey" type="s:string"/>
+                      <s:attribute name="caseKey" type="s:positiveInteger"/>
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+                <s:attribute name="partyKey" type="s:positiveInteger"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+          <s:attribute name="schemaVersion" type="s:string"/>
+          <s:attribute name="messageProducedDateTime" type="s:dateTime"/>
+          <s:attribute name="partyMatchCount" type="s:int" use="required"/>
+          <s:attribute name="caseMatchCount" type="s:int" use="required"/>
+          <s:attribute name="caseMatchLimitExceededIndicator" type="s:boolean" use="required"/>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GroupType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="GroupID" type="s0:GroupIDType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="GroupNameText" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="GroupCommentText" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GroupIDType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="IDTypeText" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="IDTypeCodeText" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PartyNameBaseType">
+        <s:sequence>
+          <s:choice maxOccurs="1" minOccurs="1">
+            <s:element maxOccurs="1" minOccurs="0" name="PersonName" type="s0:PersonNameType"/>
+            <s:element maxOccurs="1" minOccurs="0" name="BusinessName" type="s:string"/>
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PersonNameType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="PersonPrefixName" nillable="true" type="s0:PrefixNameTypeCodeTextType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PersonGivenName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PersonMiddleName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PersonSurName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="PersonSuffixName" nillable="true" type="s0:SuffixNameTypeCodeTextType"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PersonFullName" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PrefixNameTypeCodeTextType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="code" type="s:string"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="SuffixNameTypeCodeTextType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="code" type="s:string"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="PartyNameType">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:PartyNameBaseType">
+            <s:attribute name="currentNameIndicator" type="s:boolean" use="required"/>
+            <s:attribute name="nameTypeText" type="s:string"/>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PersonAssignedIDDetailsType">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="PersonID" type="s0:PersonIDType"/>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="PersonSSNID">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s0:PersonSSNIDType">
+                  <s:attribute name="currentKnownIndicator" type="s:boolean" use="required"/>
+                </s:extension>
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="PersonDriverLicenseID">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s0:PersonDriverLicenseIDType">
+                  <s:attribute name="currentKnownIndicator" type="s:boolean" use="required"/>
+                </s:extension>
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="PersonFBIID">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s0:PersonFBIIDType">
+                  <s:attribute name="currentKnownIndicator" type="s:boolean" use="required"/>
+                </s:extension>
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="PersonStateID">
+            <s:complexType>
+              <s:complexContent mixed="false">
+                <s:extension base="s0:PersonStateIDType">
+                  <s:attribute name="currentKnownIndicator" type="s:boolean" use="required"/>
+                </s:extension>
+              </s:complexContent>
+            </s:complexType>
+          </s:element>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="PersonOtherID" type="s0:PersonOtherIDType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PersonOtherIDType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="IDTypeText" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="IDTypeCodeText" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CourtFileNumberType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CaseSubTypeCodeTextType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="code" type="s:string"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="CourtCaseStatusType">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="CaseStatusText" type="s0:CaseStatusTypeCodeTextType"/>
+          <s:element maxOccurs="1" minOccurs="1" name="CaseStatusDate" type="s:date"/>
+          <s:element maxOccurs="1" minOccurs="0" name="CaseStatusComment" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CaseStatusTypeCodeTextType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="code" type="s:string"/>
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.courts.state.mn.us/IS/02">
+      <s:element name="CaseSearchByPartyString">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strCaseSearchByPartyRequest" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CaseSearchByPartyStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CaseSearchByPartyStringResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CaseSearchByPartyStringSoapOut">
+    <wsdl:part name="parameters" element="tns:CaseSearchByPartyStringResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CaseSearchByPartyStringSoapIn">
+    <wsdl:part name="parameters" element="tns:CaseSearchByPartyString"/>
+  </wsdl:message>
+  <wsdl:message name="CaseSearchByPartySoapIn">
+    <wsdl:part name="CaseSearchByPartyRequest" element="s0:CaseSearchByPartyRequest"/>
+  </wsdl:message>
+  <wsdl:message name="CaseSearchByPartySoapOut">
+    <wsdl:part name="CaseSearchByPartyResult" element="s0:CaseSearchByPartyReply"/>
+  </wsdl:message>
+  <wsdl:portType name="CaseSearchByPartyService_3_1Soap">
+    <wsdl:operation name="CaseSearchByParty">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Search for cases based on party identifying information in MNCIS. Version 3:1</wsdl:documentation>
+      <wsdl:input message="tns:CaseSearchByPartySoapIn"/>
+      <wsdl:output message="tns:CaseSearchByPartySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CaseSearchByPartyString">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Search for cases based on party identifying information in MNCIS.  XML Passed as a string parameter. Version 3:1</wsdl:documentation>
+      <wsdl:input message="tns:CaseSearchByPartyStringSoapIn"/>
+      <wsdl:output message="tns:CaseSearchByPartyStringSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CaseSearchByPartyService_3_1Soap" type="tns:CaseSearchByPartyService_3_1Soap">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/"/>
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CaseSearchByParty">
+      <soap:operation soapAction="http://www.courts.state.mn.us/IS/02/CaseSearchByPartyRequest" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CaseSearchByPartyString">
+      <soap:operation soapAction="http://www.courts.state.mn.us/IS/02/CaseSearchByPartyRequestString" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CaseSearchByPartyService_3_1Soap12" type="tns:CaseSearchByPartyService_3_1Soap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CaseSearchByParty">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.courts.state.mn.us/IS/02/CaseSearchByPartyRequest" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CaseSearchByPartyString">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.courts.state.mn.us/IS/02/CaseSearchByPartyRequestString" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CaseSearchByPartyService_3_1">
+    <wsdl:port name="CaseSearchByPartyService_3_1Soap" binding="tns:CaseSearchByPartyService_3_1Soap">
+      <soap:address location="http://is.courts.state.mn.us/Prod/WebServices/CourtsIS_02/CaseSearchByPartyService_3_1.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="CaseSearchByPartyService_3_1Soap12" binding="tns:CaseSearchByPartyService_3_1Soap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://is.courts.state.mn.us/Prod/WebServices/CourtsIS_02/CaseSearchByPartyService_3_1.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

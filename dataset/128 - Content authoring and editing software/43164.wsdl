@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://schemas.microsoft.com/sharepoint/soap/ois/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://schemas.microsoft.com/sharepoint/soap/ois/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/sharepoint/soap/ois/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema"/>
+      <s:element name="CreateNewFolder">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strListName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="strParentFolder" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateNewFolderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CreateNewFolderResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Rename">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strListName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="strFolder" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="request">
+              <s:complexType>
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RenameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="RenameResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckSubwebAndList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strUrl" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckSubwebAndListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CheckSubwebAndListResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strListName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="strFolder" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetListItemsResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Edit">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strListName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="strFolder" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="itemFileName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="recipe">
+              <s:complexType>
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="EditResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Download">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strListName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="strFolder" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="itemFileNames" type="s0:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="1" name="type" type="s:unsignedInt"/>
+            <s:element maxOccurs="1" minOccurs="1" name="fFetchOriginalIfNotAvailable" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DownloadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DownloadResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemsByIds">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strListName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ids" type="s0:ArrayOfUnsignedInt"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUnsignedInt">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="unsignedInt" type="s:unsignedInt"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetItemsByIdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetItemsByIdsResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemsXMLData">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strListName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="strFolder" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="itemFileNames" type="s0:ArrayOfString"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemsXMLDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetItemsXMLDataResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strListName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="strFolder" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="itemFileNames" type="s0:ArrayOfString"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DeleteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Upload">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strListName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="strFolder" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="bytes" type="s:base64Binary"/>
+            <s:element maxOccurs="1" minOccurs="0" name="fileName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="fOverWriteIfExist" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UploadResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListPictureLibrary">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ListPictureLibraryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ListPictureLibraryResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="DeleteSoapIn">
+    <part name="parameters" element="s0:Delete"/>
+  </message>
+  <message name="RenameSoapOut">
+    <part name="parameters" element="s0:RenameResponse"/>
+  </message>
+  <message name="CreateNewFolderSoapOut">
+    <part name="parameters" element="s0:CreateNewFolderResponse"/>
+  </message>
+  <message name="ListPictureLibrarySoapIn">
+    <part name="parameters" element="s0:ListPictureLibrary"/>
+  </message>
+  <message name="EditSoapOut">
+    <part name="parameters" element="s0:EditResponse"/>
+  </message>
+  <message name="UploadSoapOut">
+    <part name="parameters" element="s0:UploadResponse"/>
+  </message>
+  <message name="GetListItemsSoapOut">
+    <part name="parameters" element="s0:GetListItemsResponse"/>
+  </message>
+  <message name="EditSoapIn">
+    <part name="parameters" element="s0:Edit"/>
+  </message>
+  <message name="DeleteSoapOut">
+    <part name="parameters" element="s0:DeleteResponse"/>
+  </message>
+  <message name="CheckSubwebAndListSoapOut">
+    <part name="parameters" element="s0:CheckSubwebAndListResponse"/>
+  </message>
+  <message name="GetItemsXMLDataSoapOut">
+    <part name="parameters" element="s0:GetItemsXMLDataResponse"/>
+  </message>
+  <message name="GetItemsXMLDataSoapIn">
+    <part name="parameters" element="s0:GetItemsXMLData"/>
+  </message>
+  <message name="CheckSubwebAndListSoapIn">
+    <part name="parameters" element="s0:CheckSubwebAndList"/>
+  </message>
+  <message name="DownloadSoapOut">
+    <part name="parameters" element="s0:DownloadResponse"/>
+  </message>
+  <message name="RenameSoapIn">
+    <part name="parameters" element="s0:Rename"/>
+  </message>
+  <message name="ListPictureLibrarySoapOut">
+    <part name="parameters" element="s0:ListPictureLibraryResponse"/>
+  </message>
+  <message name="UploadSoapIn">
+    <part name="parameters" element="s0:Upload"/>
+  </message>
+  <message name="DownloadSoapIn">
+    <part name="parameters" element="s0:Download"/>
+  </message>
+  <message name="GetItemsByIdsSoapOut">
+    <part name="parameters" element="s0:GetItemsByIdsResponse"/>
+  </message>
+  <message name="GetListItemsSoapIn">
+    <part name="parameters" element="s0:GetListItems"/>
+  </message>
+  <message name="CreateNewFolderSoapIn">
+    <part name="parameters" element="s0:CreateNewFolder"/>
+  </message>
+  <message name="GetItemsByIdsSoapIn">
+    <part name="parameters" element="s0:GetItemsByIds"/>
+  </message>
+  <portType name="ImagingSoap">
+    <operation name="CreateNewFolder">
+      <input message="s0:CreateNewFolderSoapIn"/>
+      <output message="s0:CreateNewFolderSoapOut"/>
+    </operation>
+    <operation name="Rename">
+      <input message="s0:RenameSoapIn"/>
+      <output message="s0:RenameSoapOut"/>
+    </operation>
+    <operation name="CheckSubwebAndList">
+      <input message="s0:CheckSubwebAndListSoapIn"/>
+      <output message="s0:CheckSubwebAndListSoapOut"/>
+    </operation>
+    <operation name="GetListItems">
+      <input message="s0:GetListItemsSoapIn"/>
+      <output message="s0:GetListItemsSoapOut"/>
+    </operation>
+    <operation name="Edit">
+      <input message="s0:EditSoapIn"/>
+      <output message="s0:EditSoapOut"/>
+    </operation>
+    <operation name="Download">
+      <input message="s0:DownloadSoapIn"/>
+      <output message="s0:DownloadSoapOut"/>
+    </operation>
+    <operation name="GetItemsByIds">
+      <input message="s0:GetItemsByIdsSoapIn"/>
+      <output message="s0:GetItemsByIdsSoapOut"/>
+    </operation>
+    <operation name="GetItemsXMLData">
+      <input message="s0:GetItemsXMLDataSoapIn"/>
+      <output message="s0:GetItemsXMLDataSoapOut"/>
+    </operation>
+    <operation name="Delete">
+      <input message="s0:DeleteSoapIn"/>
+      <output message="s0:DeleteSoapOut"/>
+    </operation>
+    <operation name="Upload">
+      <input message="s0:UploadSoapIn"/>
+      <output message="s0:UploadSoapOut"/>
+    </operation>
+    <operation name="ListPictureLibrary">
+      <input message="s0:ListPictureLibrarySoapIn"/>
+      <output message="s0:ListPictureLibrarySoapOut"/>
+    </operation>
+  </portType>
+  <binding name="ImagingSoap" type="s0:ImagingSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="CreateNewFolder">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ois/CreateNewFolder" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Rename">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ois/Rename" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CheckSubwebAndList">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ois/CheckSubwebAndList" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetListItems">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ois/GetListItems" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Edit">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ois/Edit" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Download">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ois/Download" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetItemsByIds">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ois/GetItemsByIds" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetItemsXMLData">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ois/GetItemsXMLData" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Delete">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ois/Delete" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Upload">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ois/Upload" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ListPictureLibrary">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ois/ListPictureLibrary" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="Imaging">
+    <port name="ImagingSoap" binding="s0:ImagingSoap">
+      <soap:address location="http://doktoranci.polsl.pl/_vti_bin/Imaging.asmx"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,7 @@
+get
+set
+soap
+request
+response
+put
+post

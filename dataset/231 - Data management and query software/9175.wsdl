@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.xignite.com/services/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.xignite.com/services/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This Web Service provides operations for the management of user data sets.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.xignite.com/services/">
+      <s:element name="SaveDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="Userid" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SessionId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Identifier" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Content" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SaveDataSetResult" type="tns:DataSet"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DataSet">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Common">
+            <s:sequence>
+              <s:element maxOccurs="1" minOccurs="1" name="Userid" type="s:int"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Identifier" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Content" type="s:string"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Common">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Outcome" type="tns:OutcomeTypes"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Identity" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Delay" type="s:double"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="OutcomeTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success"/>
+          <s:enumeration value="SystemError"/>
+          <s:enumeration value="RequestError"/>
+          <s:enumeration value="RegistrationError"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Header" type="tns:Header"/>
+      <s:complexType name="Header">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Tracer" type="s:string"/>
+        </s:sequence>
+        <s:anyAttribute/>
+      </s:complexType>
+      <s:element name="GetDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="Userid" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SessionId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Identifier" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetDataSetResult" type="tns:DataSet"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="Userid" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SessionId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Identifier" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="DeleteDataSetResult" type="tns:DeleteResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DeleteResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Common">
+            <s:sequence>
+              <s:element maxOccurs="1" minOccurs="1" name="Deleted" type="s:boolean"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DataSet" nillable="true" type="tns:DataSet"/>
+      <s:element name="DeleteResult" nillable="true" type="tns:DeleteResult"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DeleteDataSetHttpPostIn">
+    <wsdl:part name="Userid" type="s:string"/>
+    <wsdl:part name="SessionId" type="s:string"/>
+    <wsdl:part name="Identifier" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteDataSetHttpGetOut">
+    <wsdl:part name="Body" element="tns:DeleteResult"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDataSetResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetHttpPostIn">
+    <wsdl:part name="Userid" type="s:string"/>
+    <wsdl:part name="SessionId" type="s:string"/>
+    <wsdl:part name="Identifier" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDataSetHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetHttpGetIn">
+    <wsdl:part name="Userid" type="s:string"/>
+    <wsdl:part name="SessionId" type="s:string"/>
+    <wsdl:part name="Identifier" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteDataSetHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteDataSetHttpPostOut">
+    <wsdl:part name="Body" element="tns:DeleteResult"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDataSetHttpPostIn">
+    <wsdl:part name="Userid" type="s:string"/>
+    <wsdl:part name="SessionId" type="s:string"/>
+    <wsdl:part name="Identifier" type="s:string"/>
+    <wsdl:part name="Content" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDataSetHttpGetIn">
+    <wsdl:part name="Userid" type="s:string"/>
+    <wsdl:part name="SessionId" type="s:string"/>
+    <wsdl:part name="Identifier" type="s:string"/>
+    <wsdl:part name="Content" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDataSetHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDataSetHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteDataSetHttpGetIn">
+    <wsdl:part name="Userid" type="s:string"/>
+    <wsdl:part name="SessionId" type="s:string"/>
+    <wsdl:part name="Identifier" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDataSetResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="SaveDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDataSet"/>
+  </wsdl:message>
+  <wsdl:message name="GetDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataSetResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="XigniteDataSetSoap">
+    <wsdl:operation name="SaveDataSet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Save a user data set.</wsdl:documentation>
+      <wsdl:input message="tns:SaveDataSetSoapIn"/>
+      <wsdl:output message="tns:SaveDataSetSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataSet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a user data set.</wsdl:documentation>
+      <wsdl:input message="tns:GetDataSetSoapIn"/>
+      <wsdl:output message="tns:GetDataSetSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDataSet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete a user data set.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteDataSetSoapIn"/>
+      <wsdl:output message="tns:DeleteDataSetSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="XigniteDataSetHttpGet">
+    <wsdl:operation name="SaveDataSet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Save a user data set.</wsdl:documentation>
+      <wsdl:input message="tns:SaveDataSetHttpGetIn"/>
+      <wsdl:output message="tns:SaveDataSetHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataSet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a user data set.</wsdl:documentation>
+      <wsdl:input message="tns:GetDataSetHttpGetIn"/>
+      <wsdl:output message="tns:GetDataSetHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDataSet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete a user data set.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteDataSetHttpGetIn"/>
+      <wsdl:output message="tns:DeleteDataSetHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="XigniteDataSetHttpPost">
+    <wsdl:operation name="SaveDataSet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Save a user data set.</wsdl:documentation>
+      <wsdl:input message="tns:SaveDataSetHttpPostIn"/>
+      <wsdl:output message="tns:SaveDataSetHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataSet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get a user data set.</wsdl:documentation>
+      <wsdl:input message="tns:GetDataSetHttpPostIn"/>
+      <wsdl:output message="tns:GetDataSetHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDataSet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete a user data set.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteDataSetHttpPostIn"/>
+      <wsdl:output message="tns:DeleteDataSetHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="XigniteDataSetSoap" type="tns:XigniteDataSetSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SaveDataSet">
+      <soap:operation soapAction="http://www.xignite.com/services/SaveDataSet" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SaveDataSetHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataSet">
+      <soap:operation soapAction="http://www.xignite.com/services/GetDataSet" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:GetDataSetHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDataSet">
+      <soap:operation soapAction="http://www.xignite.com/services/DeleteDataSet" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:DeleteDataSetHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="XigniteDataSetHttpGet" type="tns:XigniteDataSetHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="SaveDataSet">
+      <http:operation location="/SaveDataSet"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataSet">
+      <http:operation location="/GetDataSet"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDataSet">
+      <http:operation location="/DeleteDataSet"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="XigniteDataSetSoap12" type="tns:XigniteDataSetSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SaveDataSet">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.xignite.com/services/SaveDataSet" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SaveDataSetHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataSet">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.xignite.com/services/GetDataSet" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:GetDataSetHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDataSet">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.xignite.com/services/DeleteDataSet" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:DeleteDataSetHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="XigniteDataSetHttpPost" type="tns:XigniteDataSetHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="SaveDataSet">
+      <http:operation location="/SaveDataSet"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataSet">
+      <http:operation location="/GetDataSet"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDataSet">
+      <http:operation location="/DeleteDataSet"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="XigniteDataSet">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This Web Service provides operations for the management of user data sets.</wsdl:documentation>
+    <wsdl:port name="XigniteDataSetSoap" binding="tns:XigniteDataSetSoap">
+      <soap:address location="http://www.xignite.com/xDataSet.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="XigniteDataSetHttpGet" binding="tns:XigniteDataSetHttpGet">
+      <http:address location="http://www.xignite.com/xDataSet.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="XigniteDataSetSoap12" binding="tns:XigniteDataSetSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.xignite.com/xDataSet.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="XigniteDataSetHttpPost" binding="tns:XigniteDataSetHttpPost">
+      <http:address location="http://www.xignite.com/xDataSet.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

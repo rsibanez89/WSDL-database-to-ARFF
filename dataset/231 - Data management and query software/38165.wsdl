@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.gama-system.com/webservices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.gama-system.com/webservices" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This webservice returns results from newspaper Dnevnik.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.gama-system.com/webservices">
+      <s:element name="GetSearchResultsXML">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strSearch" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchResultsXMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetSearchResultsXMLResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchResultsXMLSchema">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetSearchResultsXMLSchemaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetSearchResultsXMLSchemaResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSearchResultsXMLSchemaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSearchResultsXMLSchemaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSearchResultsXMLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSearchResultsXMLResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSearchResultsXMLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSearchResultsXML"/>
+  </wsdl:message>
+  <wsdl:message name="GetSearchResultsXMLSchemaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSearchResultsXMLSchema"/>
+  </wsdl:message>
+  <wsdl:portType name="SearchDnevnikSiSoap">
+    <wsdl:operation name="GetSearchResultsXML">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns results for the given search string.</wsdl:documentation>
+      <wsdl:input message="tns:GetSearchResultsXMLSoapIn"/>
+      <wsdl:output message="tns:GetSearchResultsXMLSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchResultsXMLSchema">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the XML schema for the results.</wsdl:documentation>
+      <wsdl:input message="tns:GetSearchResultsXMLSchemaSoapIn"/>
+      <wsdl:output message="tns:GetSearchResultsXMLSchemaSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SearchDnevnikSiSoap" type="tns:SearchDnevnikSiSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSearchResultsXML">
+      <soap:operation soapAction="http://www.gama-system.com/webservices/GetSearchResultsXML" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchResultsXMLSchema">
+      <soap:operation soapAction="http://www.gama-system.com/webservices/GetSearchResultsXMLSchema" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SearchDnevnikSiSoap12" type="tns:SearchDnevnikSiSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSearchResultsXML">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.gama-system.com/webservices/GetSearchResultsXML" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchResultsXMLSchema">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.gama-system.com/webservices/GetSearchResultsXMLSchema" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SearchDnevnikSi">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This webservice returns results from newspaper Dnevnik.</wsdl:documentation>
+    <wsdl:port name="SearchDnevnikSiSoap" binding="tns:SearchDnevnikSiSoap">
+      <soap:address location="http://webservices.gama-system.com/searchdnevniksi.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SearchDnevnikSiSoap12" binding="tns:SearchDnevnikSiSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://webservices.gama-system.com/searchdnevniksi.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

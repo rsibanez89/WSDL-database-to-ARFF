@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://www.bea.com/webservices" xmlns:wsr="http://www.openuri.org/2002/10/soap/reliability/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12enc="http://www.w3.org/2003/05/soap-encoding" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.bea.com/webservices" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:partns="http://www.w3.org/2001/XMLSchema" xmlns:conv="http://www.openuri.org/2002/04/wsdl/conversation/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <message name="pingResponse">
+    <part name="result" type="s:string"/>
+  </message>
+  <message name="debug">
+    <part name="arg0" type="s:string"/>
+  </message>
+  <message name="countQueryResponse">
+    <part name="result" type="s:string"/>
+  </message>
+  <message name="pesStats">
+  </message>
+  <message name="transcodeFromEUResponse">
+    <part name="result" type="s:string"/>
+  </message>
+  <message name="showJvQueryResponse">
+    <part name="result" type="s:string"/>
+  </message>
+  <message name="transcodeToEUResponse">
+    <part name="result" type="s:string"/>
+  </message>
+  <message name="pesStatsResponse">
+    <part name="result" type="s:string"/>
+  </message>
+  <message name="transcodeFromEU">
+    <part name="arg0" type="s:string"/>
+    <part name="arg1" type="s:string"/>
+  </message>
+  <message name="countQuery">
+    <part name="arg0" type="s:string"/>
+    <part name="arg1" type="s:string"/>
+    <part name="arg2" type="s:string"/>
+    <part name="arg3" type="s:string"/>
+    <part name="arg4" type="s:string"/>
+    <part name="arg5" type="s:string"/>
+    <part name="arg6" type="s:string"/>
+    <part name="arg7" type="s:string"/>
+    <part name="arg8" type="s:string"/>
+    <part name="arg9" type="s:string"/>
+  </message>
+  <message name="ping">
+  </message>
+  <message name="transcodeToEU">
+    <part name="arg0" type="s:string"/>
+    <part name="arg1" type="s:string"/>
+  </message>
+  <message name="findQueryResponse">
+    <part name="result" type="s:string"/>
+  </message>
+  <message name="showJvQuery">
+    <part name="arg0" type="s:string"/>
+  </message>
+  <message name="findQuery">
+    <part name="arg0" type="s:string"/>
+    <part name="arg1" type="s:string"/>
+    <part name="arg2" type="s:string"/>
+    <part name="arg3" type="s:string"/>
+    <part name="arg4" type="s:string"/>
+    <part name="arg5" type="s:string"/>
+    <part name="arg6" type="s:string"/>
+    <part name="arg7" type="s:string"/>
+    <part name="arg8" type="s:string"/>
+    <part name="arg9" type="s:string"/>
+  </message>
+  <message name="debugResponse">
+    <part name="result" type="s:string"/>
+  </message>
+  <portType name="ServiceProviderPort">
+    <operation name="countQuery">
+      <input message="tns:countQuery"/>
+      <output message="tns:countQueryResponse"/>
+    </operation>
+    <operation name="debug">
+      <input message="tns:debug"/>
+      <output message="tns:debugResponse"/>
+    </operation>
+    <operation name="findQuery">
+      <input message="tns:findQuery"/>
+      <output message="tns:findQueryResponse"/>
+    </operation>
+    <operation name="pesStats">
+      <input message="tns:pesStats"/>
+      <output message="tns:pesStatsResponse"/>
+    </operation>
+    <operation name="ping">
+      <input message="tns:ping"/>
+      <output message="tns:pingResponse"/>
+    </operation>
+    <operation name="showJvQuery">
+      <input message="tns:showJvQuery"/>
+      <output message="tns:showJvQueryResponse"/>
+    </operation>
+    <operation name="transcodeFromEU">
+      <input message="tns:transcodeFromEU"/>
+      <output message="tns:transcodeFromEUResponse"/>
+    </operation>
+    <operation name="transcodeToEU">
+      <input message="tns:transcodeToEU"/>
+      <output message="tns:transcodeToEUResponse"/>
+    </operation>
+  </portType>
+  <binding name="ServiceProviderPort" type="tns:ServiceProviderPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="countQuery">
+      <soap:operation soapAction="" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </output>
+    </operation>
+    <operation name="debug">
+      <soap:operation soapAction="" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </output>
+    </operation>
+    <operation name="findQuery">
+      <soap:operation soapAction="" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </output>
+    </operation>
+    <operation name="pesStats">
+      <soap:operation soapAction="" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </output>
+    </operation>
+    <operation name="ping">
+      <soap:operation soapAction="" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </output>
+    </operation>
+    <operation name="showJvQuery">
+      <soap:operation soapAction="" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </output>
+    </operation>
+    <operation name="transcodeFromEU">
+      <soap:operation soapAction="" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </output>
+    </operation>
+    <operation name="transcodeToEU">
+      <soap:operation soapAction="" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.bea.com/webservices"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ServiceProvider">
+    <port name="ServiceProviderPort" binding="tns:ServiceProviderPort">
+      <soap:address location="http://www.jobcentreplus.gov.uk:80/euresWS-LocalPes/services/ServiceProvider.ws"/>
+    </port>
+  </service>
+</definitions>

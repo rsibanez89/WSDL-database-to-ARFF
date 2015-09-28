@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="com.esendex.ems.soapinterface" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="com.esendex.ems.soapinterface" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Implementation of the SendContentService with authentication information passed in as parameters rather than in a header. This allows development/runtime environments without support for the SOAPHeaders to consume the service. Click here for a &lt;a href=&quot;https://www.esendex.com/uk/evaluation/evaluation.aspx&quot; title=&quot;SMS Service Trial&quot;&gt;free trial&lt;/a&gt;.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="com.esendex.ems.soapinterface">
+      <s:element name="SendWAPPush">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="account" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="recipient" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="href" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="text" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWAPPushResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendWAPPushResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWAPPushFull">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="account" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="originator" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="recipient" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="href" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="text" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="validityperiod" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWAPPushFullResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendWAPPushFullResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWAPPushMultipleRecipients">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="account" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="recipients" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="href" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="text" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendWAPPushMultipleRecipientsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendWAPPushMultipleRecipientsResult" type="tns:ArrayOfString"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWAPPushMultipleRecipientsFull">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="account" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="originator" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="recipients" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="href" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="text" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="validityperiod" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWAPPushMultipleRecipientsFullResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendWAPPushMultipleRecipientsFullResult" type="tns:ArrayOfString"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendWAPPushSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWAPPushResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendWAPPushMultipleRecipientsSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWAPPushMultipleRecipients"/>
+  </wsdl:message>
+  <wsdl:message name="SendWAPPushFullSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWAPPushFull"/>
+  </wsdl:message>
+  <wsdl:message name="SendWAPPushMultipleRecipientsFullSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWAPPushMultipleRecipientsFull"/>
+  </wsdl:message>
+  <wsdl:message name="SendWAPPushMultipleRecipientsFullSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWAPPushMultipleRecipientsFullResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendWAPPushFullSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWAPPushFullResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendWAPPushMultipleRecipientsSoapOut">
+    <wsdl:part name="parameters" element="tns:SendWAPPushMultipleRecipientsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendWAPPushSoapIn">
+    <wsdl:part name="parameters" element="tns:SendWAPPush"/>
+  </wsdl:message>
+  <wsdl:portType name="SendContentServiceNoHeaderSoap">
+    <wsdl:operation name="SendWAPPush">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;Sends an SMS message containing a WAP Push instruction to the specified recipient using the default originator and validity period&lt;/p&gt;&lt;b&gt;Parameters&lt;/b&gt;	&lt;table border=&quot;1&quot; width=&quot;500&quot;&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;username&lt;/TD&gt;			&lt;td&gt;Your Esendex username&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;password&lt;/TD&gt;			&lt;td&gt;Your Esendex password&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;account&lt;/TD&gt;			&lt;td&gt;Your Esendex account reference, usually the inbound number in international format eg: 447777111222&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;recipient&lt;/TD&gt;			&lt;td&gt;The mobile number to send the message to&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;href&lt;/TD&gt;			&lt;td&gt;A URL accessible to the recipient device&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;text&lt;/TD&gt;			&lt;td&gt;Text used to describe the content to the user&lt;/TD&gt;		&lt;/tr&gt;	&lt;/table&gt;&lt;br&gt;Returns the ID of the message assigned by the Esendex message Server</wsdl:documentation>
+      <wsdl:input message="tns:SendWAPPushSoapIn"/>
+      <wsdl:output message="tns:SendWAPPushSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendWAPPushFull">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;Sends an SMS message containg a WAP Push instruction to the specified recipient&lt;/p&gt;&lt;b&gt;Parameters&lt;/b&gt;	&lt;table border=&quot;1&quot; width=&quot;500&quot;&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;username&lt;/TD&gt;			&lt;td&gt;Your Esendex username&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;password&lt;/TD&gt;			&lt;td&gt;Your Esendex password&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;account&lt;/TD&gt;			&lt;td&gt;Your Esendex account reference, usually the inbound number in international format eg: 447777111222&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;originator&lt;/TD&gt;			&lt;td&gt;The alias the message should appear to come from. Can be another phone number or up to 11 alpha numeric characters&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;recipient&lt;/TD&gt;			&lt;td&gt;The mobile number to send the message to&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;href&lt;/TD&gt;			&lt;td&gt;A URL accessible to the recipient device&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;text&lt;/TD&gt;			&lt;td&gt;Text used to describe the content to the user&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;validityperiod&lt;/TD&gt;			&lt;td&gt;The validity period of the message in hours.&lt;/td&gt;		&lt;/tr&gt;	&lt;/table&gt;&lt;br&gt;Returns the ID of the message assigned by the Esendex message Server</wsdl:documentation>
+      <wsdl:input message="tns:SendWAPPushFullSoapIn"/>
+      <wsdl:output message="tns:SendWAPPushFullSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendWAPPushMultipleRecipients">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;Sends an SMS message containing a WAP Push instruction to the specified recipients using the default originator and validity period&lt;/p&gt;&lt;b&gt;Parameters&lt;/b&gt;	&lt;table border=&quot;1&quot; width=&quot;500&quot;&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;username&lt;/TD&gt;			&lt;td&gt;Your Esendex username&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;password&lt;/TD&gt;			&lt;td&gt;Your Esendex password&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;account&lt;/TD&gt;			&lt;td&gt;Your Esendex account reference, usually the inbound number in international format eg: 447777111222&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;recipients&lt;/TD&gt;			&lt;td&gt;An array of mobile numbers to send the message to&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;href&lt;/TD&gt;			&lt;td&gt;A URL accessible to the recipient device&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;text&lt;/TD&gt;			&lt;td&gt;Text used to describe the content to the user&lt;/TD&gt;		&lt;/tr&gt;	&lt;/table&gt;&lt;br&gt;Returns an array of message IDs assigned by the Esendex message Server</wsdl:documentation>
+      <wsdl:input message="tns:SendWAPPushMultipleRecipientsSoapIn"/>
+      <wsdl:output message="tns:SendWAPPushMultipleRecipientsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendWAPPushMultipleRecipientsFull">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;p&gt;Sends an SMS message containg a WAP Push instruction to the specified recipients using the default originator and validity period&lt;/p&gt;&lt;b&gt;Parameters&lt;/b&gt;	&lt;table border=&quot;1&quot; width=&quot;500&quot;&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;username&lt;/TD&gt;			&lt;td&gt;Your Esendex username&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;password&lt;/TD&gt;			&lt;td&gt;Your Esendex password&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;account&lt;/TD&gt;			&lt;td&gt;Your Esendex account reference, usually the inbound number in international format eg: 447777111222&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;originator&lt;/TD&gt;			&lt;td&gt;The alias the message should appear to come from. Can be another phone number or up to 11 alpha numeric characters&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;recipients&lt;/TD&gt;			&lt;td&gt;An array of mobile numbers to send the message to&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;href&lt;/TD&gt;			&lt;td&gt;A URL accessible to the recipient device&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;text&lt;/TD&gt;			&lt;td&gt;Text used to describe the content to the user&lt;/TD&gt;		&lt;/tr&gt;		&lt;tr valign=top&gt;			&lt;td width=&quot;100&quot;&gt;validityperiod&lt;/TD&gt;			&lt;td&gt;The validity period of the message in hours.&lt;/td&gt;		&lt;/tr&gt;	&lt;/table&gt;&lt;br&gt;Returns an array of message IDs assigned by the Esendex message Server</wsdl:documentation>
+      <wsdl:input message="tns:SendWAPPushMultipleRecipientsFullSoapIn"/>
+      <wsdl:output message="tns:SendWAPPushMultipleRecipientsFullSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SendContentServiceNoHeaderSoap" type="tns:SendContentServiceNoHeaderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendWAPPush">
+      <soap:operation soapAction="com.esendex.ems.soapinterface/SendWAPPush" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWAPPushFull">
+      <soap:operation soapAction="com.esendex.ems.soapinterface/SendWAPPushFull" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWAPPushMultipleRecipients">
+      <soap:operation soapAction="com.esendex.ems.soapinterface/SendWAPPushMultipleRecipients" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWAPPushMultipleRecipientsFull">
+      <soap:operation soapAction="com.esendex.ems.soapinterface/SendWAPPushMultipleRecipientsFull" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SendContentServiceNoHeaderSoap12" type="tns:SendContentServiceNoHeaderSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendWAPPush">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="com.esendex.ems.soapinterface/SendWAPPush" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWAPPushFull">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="com.esendex.ems.soapinterface/SendWAPPushFull" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWAPPushMultipleRecipients">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="com.esendex.ems.soapinterface/SendWAPPushMultipleRecipients" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWAPPushMultipleRecipientsFull">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="com.esendex.ems.soapinterface/SendWAPPushMultipleRecipientsFull" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SendContentServiceNoHeader">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Implementation of the SendContentService with authentication information passed in as parameters rather than in a header. This allows development/runtime environments without support for the SOAPHeaders to consume the service. Click here for a &lt;a href=&quot;https://www.esendex.com/uk/evaluation/evaluation.aspx&quot; title=&quot;SMS Service Trial&quot;&gt;free trial&lt;/a&gt;.</wsdl:documentation>
+    <wsdl:port name="SendContentServiceNoHeaderSoap" binding="tns:SendContentServiceNoHeaderSoap">
+      <soap:address location="http://www.esendex.com/secure/messenger/soap/SendContentServiceNoHeader.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SendContentServiceNoHeaderSoap12" binding="tns:SendContentServiceNoHeaderSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.esendex.com/secure/messenger/soap/SendContentServiceNoHeader.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

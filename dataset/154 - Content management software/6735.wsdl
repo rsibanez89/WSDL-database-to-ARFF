@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://ws.apache.org/axis2" xmlns:axis2="http://ws.apache.org/axis2" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://axisversion.sample/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://axisversion.sample/xsd" xmlns:ns="http://axisversion.sample/xsd">
+<xs:element name="getVersion">
+<xs:complexType/>
+</xs:element>
+<xs:element name="getVersionResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+  </types>
+  <message name="getVersionResponse">
+    <part name="part1" element="ns0:getVersionResponse"/>
+  </message>
+  <message name="getVersionMessage">
+    <part name="part1" element="ns0:getVersion"/>
+  </message>
+  <portType name="versionPortType">
+    <operation name="getVersion">
+      <input message="axis2:getVersionMessage"/>
+      <output message="axis2:getVersionResponse"/>
+    </operation>
+  </portType>
+  <binding name="versionSOAP11Binding" type="axis2:versionPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getVersion">
+      <soap:operation soapAction="urn:getVersion" style="document"/>
+      <input>
+        <soap:body use="literal" namespace="http://ws.apache.org/axis2"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ws.apache.org/axis2"/>
+      </output>
+    </operation>
+  </binding>
+  <binding name="versionSOAP12Binding" type="axis2:versionPortType">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getVersion">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="urn:getVersion" style="document"/>
+      <input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" namespace="http://ws.apache.org/axis2" use="literal"/>
+      </input>
+      <output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" namespace="http://ws.apache.org/axis2" use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <binding name="versionHttpBinding" type="axis2:versionPortType">
+    <http:binding verb="POST"/>
+    <operation name="getVersion">
+      <http:operation location="getVersion"/>
+      <input>
+        <mime:content type="text/xml"/>
+      </input>
+      <output>
+        <mime:content type="text/xml"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="version">
+    <port name="versionHttpport0" binding="axis2:versionHttpBinding">
+      <http:address location="http://localhost:8080/axis2/rest/version"/>
+    </port>
+    <port name="versionSOAP11port0" binding="axis2:versionSOAP11Binding">
+      <soap:address location="http://localhost:8080/axis2/services/version"/>
+    </port>
+    <port name="versionSOAP12port0" binding="axis2:versionSOAP12Binding">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://localhost:8080/axis2/services/version"/>
+    </port>
+  </service>
+    <plnk:partnerLinkType xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" name="versionLinkType">
+        <plnk:role name="versionRole" portType="axis2:versionPortType"/>
+    </plnk:partnerLinkType>
+</definitions>

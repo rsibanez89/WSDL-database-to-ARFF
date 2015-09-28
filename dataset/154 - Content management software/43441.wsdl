@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MOBY_Central_Generated_WSDL" targetNamespace="http://biomoby.org/Central.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://biomoby.org/Central.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://biomoby.org/CentralXSDs.xsd" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <message name="runBlast2geneInput">
+    <part name="data" type="xsd:string"/>
+  </message>
+  <message name="runBlast2geneOutput">
+    <part name="body" type="xsd:string"/>
+  </message>
+  <portType name="	">
+    <operation name="runBlast2gene">
+      <input message="tns:runBlast2geneInput"/>
+      <output message="tns:runBlast2geneOutput"/>
+    </operation>
+  </portType>
+  <binding name="runBlast2geneBinding" type="tns:runBlast2genePortType">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="runBlast2gene">
+      <wsdlsoap:operation soapAction="http://biomoby.org/#runBlast2gene" style="rpc"/>
+      <input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://biomoby.org/"/>
+      </input>
+      <output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://biomoby.org/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="runBlast2geneService">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authority: inb.bsc.es  -  Analysis of genomic regions containing completely or partially duplicated genes: it all high scoring pairwise alignments (HSPs) and provides the disposition of all independent copies along the genomic fragment from a BLAST report.</wsdl:documentation>
+    <port name="runBlast2genePort" binding="tns:runBlast2geneBinding">
+      <wsdlsoap:address location="http://inb.bsc.es/cgi-bin/mobyServices/dispatchers/Dispatcher.cgi"/>
+    </port>
+  </service>
+</definitions>

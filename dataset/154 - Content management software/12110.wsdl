@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:OpenDoxxMembers" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:OpenDoxxMembers" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:OpenDoxxMembers">
+ <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+ <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+</xsd:schema>
+  </types>
+  <message name="getListRequest">
+    <part name="jxml" type="xsd:string"/>
+  </message>
+  <message name="getMemberInfoRequest">
+    <part name="gxml" type="xsd:string"/>
+  </message>
+  <message name="getMemberInfoResponse">
+    <part name="getMemberInfo" type="xsd:string"/>
+  </message>
+  <message name="getListResponse">
+    <part name="getList" type="xsd:string"/>
+  </message>
+  <portType name="OpenDoxxMembersPortType">
+    <operation name="getList">
+<documentation>Sends OpenDoxx Customer List</documentation>
+      <input message="tns:getListRequest"/>
+      <output message="tns:getListResponse"/>
+    </operation>
+    <operation name="getMemberInfo">
+<documentation>Takes MemberID As Input And Sends Member Information As Output</documentation>
+      <input message="tns:getMemberInfoRequest"/>
+      <output message="tns:getMemberInfoResponse"/>
+    </operation>
+  </portType>
+  <binding name="OpenDoxxMembersBinding" type="tns:OpenDoxxMembersPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getList">
+      <soap:operation soapAction="urn:OpenDoxxMembers#getList" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:OpenDoxxMembers"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:OpenDoxxMembers"/>
+      </output>
+    </operation>
+    <operation name="getMemberInfo">
+      <soap:operation soapAction="urn:OpenDoxxMembers#getMemberInfo" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:OpenDoxxMembers"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:OpenDoxxMembers"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="OpenDoxxMembers">
+    <port name="OpenDoxxMembersPort" binding="tns:OpenDoxxMembersBinding">
+      <soap:address location="http://opendoxx.com/getlist.php"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="https://api.onlyfordemo.net/services/com.logicboxes.foundation.sfnb.order.mailfwd.MailFwd" xmlns:tns1="http://error.logicboxes.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="https://api.onlyfordemo.net/services/com.logicboxes.foundation.sfnb.order.mailfwd.MailFwd" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="https://api.onlyfordemo.net/services/com.logicboxes.foundation.sfnb.order.mailfwd.MailFwd">
+  <types>
+    <schema targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://error.logicboxes.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="mapItem">
+    <sequence>
+     <element name="key" nillable="true" type="xsd:anyType"/>
+     <element name="value" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <complexType name="Map">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="apachesoap:mapItem"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema targetNamespace="http://error.logicboxes.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="LogicBoxesException">
+    <sequence>
+     <element name="className" nillable="true" type="xsd:string"/>
+     <element name="exceptionClassType" nillable="true" type="xsd:string"/>
+     <element name="logLevel" nillable="true" type="xsd:string"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="errorClassType" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  </types>
+  <message name="LogicBoxesException">
+    <part name="fault" type="tns1:LogicBoxesException"/>
+  </message>
+  <message name="renewRequest">
+    <part name="domainHash" type="apachesoap:Map"/>
+    <part name="invoiceOption" type="xsd:string"/>
+  </message>
+  <message name="renewResponse">
+    <part name="renewReturn" type="apachesoap:Map"/>
+  </message>
+  <portType name="MailFwd">
+    <operation name="renew" parameterOrder="domainHash invoiceOption">
+      <input name="renewRequest" message="impl:renewRequest"/>
+      <output name="renewResponse" message="impl:renewResponse"/>
+      <fault name="LogicBoxesException" message="impl:LogicBoxesException"/>
+    </operation>
+  </portType>
+  <binding name="com.logicboxes.foundation.sfnb.order.mailfwd.MailFwdSoapBinding" type="impl:MailFwd">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="renew">
+      <wsdlsoap:operation soapAction=""/>
+      <input name="renewRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://mailfwd.order.sfnb.foundation.logicboxes.com"/>
+      </input>
+      <output name="renewResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://api.onlyfordemo.net/services/com.logicboxes.foundation.sfnb.order.mailfwd.MailFwd"/>
+      </output>
+      <fault name="LogicBoxesException">
+        <wsdlsoap:fault name="LogicBoxesException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://api.onlyfordemo.net/services/com.logicboxes.foundation.sfnb.order.mailfwd.MailFwd"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="MailFwdService">
+    <port name="com.logicboxes.foundation.sfnb.order.mailfwd.MailFwd" binding="impl:com.logicboxes.foundation.sfnb.order.mailfwd.MailFwdSoapBinding">
+      <wsdlsoap:address location="http://www.foundationapi.com/services/com.logicboxes.foundation.sfnb.order.mailfwd.MailFwd"/>
+    </port>
+  </service>
+</definitions>

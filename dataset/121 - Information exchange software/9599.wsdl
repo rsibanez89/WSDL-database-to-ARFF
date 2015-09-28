@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/"/>
+      <s:element name="MakeProposition">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="otherPseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="raison" type="tns:Raison"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Raison">
+        <s:restriction base="s:string">
+          <s:enumeration value="MissiveDirecte"/>
+          <s:enumeration value="Kairos"/>
+          <s:enumeration value="Livres"/>
+          <s:enumeration value="Films"/>
+          <s:enumeration value="CD"/>
+          <s:enumeration value="Favoris"/>
+          <s:enumeration value="Ressemble"/>
+          <s:enumeration value="Actualite"/>
+          <s:enumeration value="AimeLesFavoris"/>
+          <s:enumeration value="FaitPourVous"/>
+          <s:enumeration value="Invites"/>
+          <s:enumeration value="Newbie"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="MakePropositionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MakePropositionResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsPropositionAvailableForUtilisateur">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsPropositionAvailableForUtilisateurResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="IsPropositionAvailableForUtilisateurResult" type="tns:PropositionChatForJs"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PropositionChatForJs">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="texte" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="tempsRestant" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="statut" type="tns:Statut"/>
+          <s:element maxOccurs="1" minOccurs="1" name="raison" type="tns:Raison"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Statut">
+        <s:restriction base="s:string">
+          <s:enumeration value="PropositionDisponible"/>
+          <s:enumeration value="PropositionAffichee"/>
+          <s:enumeration value="PropositionAcceptee"/>
+          <s:enumeration value="PropositionRefusee"/>
+          <s:enumeration value="UtilisateurConnecte"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SetPropositionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="response" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPropositionResponseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SetPropositionResponseResult" nillable="true" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPropositionStatut">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPropositionStatutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetPropositionStatutResult" nillable="true" type="tns:Statut"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StillHaveToWait">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StillHaveToWaitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="StillHaveToWaitResult" nillable="true" type="tns:StatutPropositionConnection"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="StatutPropositionConnection">
+        <s:restriction base="s:string">
+          <s:enumeration value="ContinueWaiting"/>
+          <s:enumeration value="StartChatting"/>
+          <s:enumeration value="ConnectionLost"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ChatSendMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="message" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChatSendMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ChatSendMessageResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChatGetConversationInformations">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChatGetConversationInformationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ChatGetConversationInformationsResult" type="tns:ConversationInformationsForJs"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConversationInformationsForJs">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="duree" nillable="true" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ChatGetLastMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="index" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChatGetLastMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ChatGetLastMessagesResult" type="tns:ConversationUpdateChatForJs"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConversationUpdateChatForJs">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="secondes" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="messages" type="tns:ArrayOfMessageChatForJs"/>
+          <s:element maxOccurs="1" minOccurs="1" name="status" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMessageChatForJs">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="MessageChatForJs" nillable="true" type="tns:MessageChatForJs"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MessageChatForJs">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="texte" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="auteur" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="index" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ChatAlerteConversation">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChatAlerteConversationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ChatAlerteConversationResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChatArreteConversation">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChatArreteConversationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ChatArreteConversationResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChatSetAvisForConversation">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="conversationId" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="avis" type="s1:char"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChatSetAvisForConversationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ChatSetAvisForConversationResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChatSetAppreciationForConversation">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="pseudo" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="conversationId" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="appr" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChatSetAppreciationForConversationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ChatSetAppreciationForConversationResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPseudos">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="prefixText" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="count" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPseudosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="FindPseudosResult" type="tns:ArrayOfString"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="char">
+        <s:restriction base="s:unsignedShort"/>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ChatGetConversationInformationsSoapIn">
+    <wsdl:part name="parameters" element="tns:ChatGetConversationInformations"/>
+  </wsdl:message>
+  <wsdl:message name="ChatGetLastMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:ChatGetLastMessagesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IsPropositionAvailableForUtilisateurSoapOut">
+    <wsdl:part name="parameters" element="tns:IsPropositionAvailableForUtilisateurResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetPropositionStatutSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPropositionStatutResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ChatSetAvisForConversationSoapIn">
+    <wsdl:part name="parameters" element="tns:ChatSetAvisForConversation"/>
+  </wsdl:message>
+  <wsdl:message name="ChatGetConversationInformationsSoapOut">
+    <wsdl:part name="parameters" element="tns:ChatGetConversationInformationsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetPropositionStatutSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPropositionStatut"/>
+  </wsdl:message>
+  <wsdl:message name="IsPropositionAvailableForUtilisateurSoapIn">
+    <wsdl:part name="parameters" element="tns:IsPropositionAvailableForUtilisateur"/>
+  </wsdl:message>
+  <wsdl:message name="ChatSetAvisForConversationSoapOut">
+    <wsdl:part name="parameters" element="tns:ChatSetAvisForConversationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FindPseudosSoapOut">
+    <wsdl:part name="parameters" element="tns:FindPseudosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="MakePropositionSoapOut">
+    <wsdl:part name="parameters" element="tns:MakePropositionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ChatArreteConversationSoapIn">
+    <wsdl:part name="parameters" element="tns:ChatArreteConversation"/>
+  </wsdl:message>
+  <wsdl:message name="ChatGetLastMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:ChatGetLastMessages"/>
+  </wsdl:message>
+  <wsdl:message name="MakePropositionSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeProposition"/>
+  </wsdl:message>
+  <wsdl:message name="ChatSendMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:ChatSendMessageResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ChatSetAppreciationForConversationSoapIn">
+    <wsdl:part name="parameters" element="tns:ChatSetAppreciationForConversation"/>
+  </wsdl:message>
+  <wsdl:message name="FindPseudosSoapIn">
+    <wsdl:part name="parameters" element="tns:FindPseudos"/>
+  </wsdl:message>
+  <wsdl:message name="ChatAlerteConversationSoapIn">
+    <wsdl:part name="parameters" element="tns:ChatAlerteConversation"/>
+  </wsdl:message>
+  <wsdl:message name="SetPropositionResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:SetPropositionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetPropositionResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:SetPropositionResponseResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ChatSetAppreciationForConversationSoapOut">
+    <wsdl:part name="parameters" element="tns:ChatSetAppreciationForConversationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ChatAlerteConversationSoapOut">
+    <wsdl:part name="parameters" element="tns:ChatAlerteConversationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="StillHaveToWaitSoapOut">
+    <wsdl:part name="parameters" element="tns:StillHaveToWaitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="StillHaveToWaitSoapIn">
+    <wsdl:part name="parameters" element="tns:StillHaveToWait"/>
+  </wsdl:message>
+  <wsdl:message name="ChatSendMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:ChatSendMessage"/>
+  </wsdl:message>
+  <wsdl:message name="ChatArreteConversationSoapOut">
+    <wsdl:part name="parameters" element="tns:ChatArreteConversationResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="RelationManagerSoap">
+    <wsdl:operation name="MakeProposition">
+      <wsdl:input message="tns:MakePropositionSoapIn"/>
+      <wsdl:output message="tns:MakePropositionSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="IsPropositionAvailableForUtilisateur">
+      <wsdl:input message="tns:IsPropositionAvailableForUtilisateurSoapIn"/>
+      <wsdl:output message="tns:IsPropositionAvailableForUtilisateurSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetPropositionResponse">
+      <wsdl:input message="tns:SetPropositionResponseSoapIn"/>
+      <wsdl:output message="tns:SetPropositionResponseSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropositionStatut">
+      <wsdl:input message="tns:GetPropositionStatutSoapIn"/>
+      <wsdl:output message="tns:GetPropositionStatutSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="StillHaveToWait">
+      <wsdl:input message="tns:StillHaveToWaitSoapIn"/>
+      <wsdl:output message="tns:StillHaveToWaitSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ChatSendMessage">
+      <wsdl:input message="tns:ChatSendMessageSoapIn"/>
+      <wsdl:output message="tns:ChatSendMessageSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ChatGetConversationInformations">
+      <wsdl:input message="tns:ChatGetConversationInformationsSoapIn"/>
+      <wsdl:output message="tns:ChatGetConversationInformationsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ChatGetLastMessages">
+      <wsdl:input message="tns:ChatGetLastMessagesSoapIn"/>
+      <wsdl:output message="tns:ChatGetLastMessagesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ChatAlerteConversation">
+      <wsdl:input message="tns:ChatAlerteConversationSoapIn"/>
+      <wsdl:output message="tns:ChatAlerteConversationSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ChatArreteConversation">
+      <wsdl:input message="tns:ChatArreteConversationSoapIn"/>
+      <wsdl:output message="tns:ChatArreteConversationSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ChatSetAvisForConversation">
+      <wsdl:input message="tns:ChatSetAvisForConversationSoapIn"/>
+      <wsdl:output message="tns:ChatSetAvisForConversationSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ChatSetAppreciationForConversation">
+      <wsdl:input message="tns:ChatSetAppreciationForConversationSoapIn"/>
+      <wsdl:output message="tns:ChatSetAppreciationForConversationSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FindPseudos">
+      <wsdl:input message="tns:FindPseudosSoapIn"/>
+      <wsdl:output message="tns:FindPseudosSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RelationManagerSoap12" type="tns:RelationManagerSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="MakeProposition">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/MakeProposition" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPropositionAvailableForUtilisateur">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/IsPropositionAvailableForUtilisateur" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPropositionResponse">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/SetPropositionResponse" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropositionStatut">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/GetPropositionStatut" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StillHaveToWait">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/StillHaveToWait" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatSendMessage">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/ChatSendMessage" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatGetConversationInformations">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/ChatGetConversationInformations" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatGetLastMessages">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/ChatGetLastMessages" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatAlerteConversation">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/ChatAlerteConversation" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatArreteConversation">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/ChatArreteConversation" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatSetAvisForConversation">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/ChatSetAvisForConversation" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatSetAppreciationForConversation">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/ChatSetAppreciationForConversation" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPseudos">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/FindPseudos" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RelationManagerSoap" type="tns:RelationManagerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="MakeProposition">
+      <soap:operation soapAction="http://tempuri.org/MakeProposition" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPropositionAvailableForUtilisateur">
+      <soap:operation soapAction="http://tempuri.org/IsPropositionAvailableForUtilisateur" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPropositionResponse">
+      <soap:operation soapAction="http://tempuri.org/SetPropositionResponse" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropositionStatut">
+      <soap:operation soapAction="http://tempuri.org/GetPropositionStatut" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StillHaveToWait">
+      <soap:operation soapAction="http://tempuri.org/StillHaveToWait" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatSendMessage">
+      <soap:operation soapAction="http://tempuri.org/ChatSendMessage" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatGetConversationInformations">
+      <soap:operation soapAction="http://tempuri.org/ChatGetConversationInformations" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatGetLastMessages">
+      <soap:operation soapAction="http://tempuri.org/ChatGetLastMessages" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatAlerteConversation">
+      <soap:operation soapAction="http://tempuri.org/ChatAlerteConversation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatArreteConversation">
+      <soap:operation soapAction="http://tempuri.org/ChatArreteConversation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatSetAvisForConversation">
+      <soap:operation soapAction="http://tempuri.org/ChatSetAvisForConversation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChatSetAppreciationForConversation">
+      <soap:operation soapAction="http://tempuri.org/ChatSetAppreciationForConversation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPseudos">
+      <soap:operation soapAction="http://tempuri.org/FindPseudos" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RelationManager">
+    <wsdl:port name="RelationManagerSoap" binding="tns:RelationManagerSoap">
+      <soap:address location="http://www.mescorrespondances.fr/WebServices/RelationManager.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="RelationManagerSoap12" binding="tns:RelationManagerSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.mescorrespondances.fr/WebServices/RelationManager.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

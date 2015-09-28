@@ -1,0 +1,3081 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ujcweb.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ujcweb.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ujcweb.org/">
+      <s:element name="GetLocationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="FedID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetLocationListResult" type="tns:ArrayOfCalendarLocation"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCalendarLocation">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="CalendarLocation" nillable="true" type="tns:CalendarLocation"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CalendarLocation">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FederationId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="OwnerId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Ir_Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="State" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Zip" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Phone" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Fax" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Email" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Website" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Other" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="BPublic" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGlobalLocationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="FedID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGlobalLocationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetGlobalLocationListResult" type="tns:ArrayOfCalendarLocation"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLocationToPublicList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="cl" type="tns:CalendarLocation"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLocationToPublicListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SaveLocationToPublicListResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadLocationById">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="locationid" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="flag" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadLocationByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="LoadLocationByIdResult" type="tns:CalendarLocation"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="FedID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="UserID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetContactListResult" type="tns:ArrayOfCalendarContact"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCalendarContact">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="CalendarContact" nillable="true" type="tns:CalendarContact"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CalendarContact">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FederationId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="OwnerId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="FirstName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LastName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Phone" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Fax" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="EmailAddress" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Website" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Other" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="BPublic" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LoadContactById">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="locationid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadContactByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="LoadContactByIdResult" type="tns:CalendarContact"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveContactToPublicList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="cc" type="tns:CalendarContact"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveContactToPublicListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SaveContactToPublicListResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteContactById">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="contactid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteContactByIdResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="SaveEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ce" type="tns:CalendarEvent"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CalendarEvent">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="CalendarId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="RecurrenceId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FederationId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Status" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="OwnerId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ModifiedByUserId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Rank" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="OwnerName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ModifiedByName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="StrDateCreated" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="StrLastModified" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="OwnerType" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="DateCreated" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="LastModified" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="StartDate" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="EndDate" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Title" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ShortTitle" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Summary" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ExpectedAttendance" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Sponsor" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="AllDay" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="AdvancedHTML" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ContactLastName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ContactFirstName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ContactPhone" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ContactFax" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ContactEmail" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ContactWebsite" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ContactOther" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ContactPublic" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LocationName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LocationAddress" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LocationCity" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LocationState" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LocationZip" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LocationCountry" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LocationPhone" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LocationFax" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LocationEmail" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LocationWebsite" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LocationOther" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Locationpublic" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="HolidayType" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="EventType" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="BEmailAlert" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="SuggestedFName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="SuggestedLName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="SuggestedEmail" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="AlertEmails" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ShowLinkButtonFlag" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LinkButtonText" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LinkTitle" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LinkURL" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="HightLight" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="BackgroundColor" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="OtherNotes" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="CatChanged" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="OrgChanged" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="UIChanged" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="UGChanged" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="IsDateChanged" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Categories" type="tns:ArrayOfCalendarCategory"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Interests" type="tns:ArrayOfCalendarInterests"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Organizations" type="tns:ArrayOfCalendarOrganization"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UserGroups" type="tns:ArrayOfCalendarUserGroups"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCalendarCategory">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="CalendarCategory" nillable="true" type="tns:CalendarCategory"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CalendarCategory">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FedrerationId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Federation" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="OldId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="UserGroupPrivacy" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ShortName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Type" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="UserGroup" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="DateCreated" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ParentId" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCalendarInterests">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="CalendarInterests" nillable="true" type="tns:CalendarInterests"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CalendarInterests">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FederationId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Interest" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ParentId" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCalendarOrganization">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="CalendarOrganization" nillable="true" type="tns:CalendarOrganization"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CalendarOrganization">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FederationId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Organization" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ParentId" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCalendarUserGroups">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="CalendarUserGroups" nillable="true" type="tns:CalendarUserGroups"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CalendarUserGroups">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FederationId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ShortName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Type" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ParentId" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SaveEventResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRecurrence">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="cr" type="tns:CalendarEventRecurrence"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CalendarEventRecurrence">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="EventId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Interval" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="IntervalType" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Month" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="DayOfWeek" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Type" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Date" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="EndDate" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Duration" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FStartDate" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FEndDate" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="IsEdit" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveRecurrenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SaveRecurrenceResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRecurrenceEvents">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ce" type="tns:CalendarEvent"/>
+            <s:element maxOccurs="1" minOccurs="0" name="cr" type="tns:CalendarEventRecurrence"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRecurrenceEventsResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="SaveCats">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ce" type="tns:CalendarEvent"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCatsResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="RemoveRecurrence">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ce" type="tns:CalendarEvent"/>
+            <s:element maxOccurs="1" minOccurs="0" name="cr" type="tns:CalendarEventRecurrence"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveRecurrenceResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetEventById">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="eventid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetEventByIdResult" type="tns:CalendarEvent"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecurrenceEventById">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="RecuEventId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecurrenceEventByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetRecurrenceEventByIdResult" type="tns:CalendarEventRecurrence"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEventById">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="eventid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEventByIdResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="DeleteEventByRecuId">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="recuid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEventByRecuIdResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="DuplicateEventById">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="eventid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DuplicateEventByIdResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="DuplicateEventByRecuId">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="recuid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DuplicateEventByRecuIdResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="CheckAlertDisable">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="calendarid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckAlertDisableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="CheckAlertDisableResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlertEmails">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="calendarid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlertEmailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetAlertEmailsResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendAdminEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ce" type="tns:CalendarEvent"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendAdminEmailResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetPAOrganization">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="userId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPAOrganizationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetPAOrganizationResult" type="tns:CalendarOrganization"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckPAEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="userid" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="eventid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckPAEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="CheckPAEventResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarSuggest">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="filterid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarSuggestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetCalendarSuggestResult" type="tns:CalendarSuggest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CalendarSuggest">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FilteredCalendarId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Instructions" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Title" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ShortName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Category" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="StartDate" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="StartTime" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Location" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ContactInfo" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="RecurringEvent" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="RecurringDuration" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="OtherNotes" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="FirstName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LastName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="EmailAddress" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="TodaysDate" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCalendarSuggestScratch">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="filterid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarSuggestScratchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetCalendarSuggestScratchResult" type="tns:CalendarSuggest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCalendarSuggest">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="cs" type="tns:CalendarSuggest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCalendarSuggestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SaveCalendarSuggestResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCalendarSuggestScratch">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="cs" type="tns:CalendarSuggest"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCalendarSuggestScratchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SaveCalendarSuggestScratchResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarId">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="filterid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetCalendarIdResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="FedID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CalID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetCalendarCategoriesResult" type="tns:ArrayOfCalendarCategory"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarOrganizations">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="FedID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CalID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarOrganizationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetCalendarOrganizationsResult" type="tns:ArrayOfCalendarOrganization"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarInterests">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="FedID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CalID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarInterestsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetCalendarInterestsResult" type="tns:ArrayOfCalendarInterests"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarUserGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="FedID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CalID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalendarUserGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetCalendarUserGroupsResult" type="tns:ArrayOfCalendarUserGroups"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByCalIdCategoryId">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CalID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CategoryId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="OrgIds" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="IntsIds" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="UserGrpsIds" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="displayType" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TypeFlag" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByCalIdCategoryIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetEventsByCalIdCategoryIdResult" type="tns:ArrayOfCalendarEvent"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCalendarEvent">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="CalendarEvent" nillable="true" type="tns:CalendarEvent"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConvertGetEventsByCalIDCategoryId">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CalID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CategoryId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="OrgIds" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="IntsIds" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="UserGrpsIds" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TypeFlag" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertGetEventsByCalIDCategoryIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ConvertGetEventsByCalIDCategoryIdResult" type="tns:ArrayOfComponentListItem"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfComponentListItem">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="ComponentListItem" nillable="true" type="tns:ComponentListItem"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ComponentListItem">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="ComponentID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Date" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Headline" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Position" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LinkUrl" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="LinkTarget" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="IsLibrary" type="s:boolean"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ScratchId" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="IconType" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEventsByCalendarFilterId">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CalID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TypeFlag" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByCalendarFilterIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetEventsByCalendarFilterIdResult" type="tns:ArrayOfCalendarEvent"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertGetAllEventsByCalIDCategoryId">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CalID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TypeFlag" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertGetAllEventsByCalIDCategoryIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ConvertGetAllEventsByCalIDCategoryIdResult" type="tns:ArrayOfComponentListItem"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEventsByCatId">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="fedid" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="catid" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="catname" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="parameters" type="tns:SearchParameters"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SearchParameters">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="PageIndex" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="PageSize" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="SortBy" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="SortDirection" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEventsByCatIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetEventsByCatIdResult" type="tns:CalendarEventResults"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CalendarEventResults">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="PageCount" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="SearchParameters" type="tns:SearchParameters"/>
+          <s:element maxOccurs="1" minOccurs="1" name="FederationID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="CategoryID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="CalendarEventLinks" type="tns:ArrayOfCalendarEventLink"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCalendarEventLink">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="CalendarEventLink" nillable="true" type="tns:CalendarEventLink"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CalendarEventLink">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="StartDate" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ShortTitle" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Category" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Id" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendPAEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ce" type="tns:CalendarEvent"/>
+            <s:element maxOccurs="1" minOccurs="0" name="pending" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="isedit" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendPAEmailResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="SendApproveEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="suggesteremial" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="title" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="createdate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="eventid" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendApproveEmailResponse">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ArrayOfCalendarLocation" nillable="true" type="tns:ArrayOfCalendarLocation"/>
+      <s:element name="CalendarLocation" nillable="true" type="tns:CalendarLocation"/>
+      <s:element name="ArrayOfCalendarContact" nillable="true" type="tns:ArrayOfCalendarContact"/>
+      <s:element name="CalendarContact" nillable="true" type="tns:CalendarContact"/>
+      <s:element name="CalendarEvent" nillable="true" type="tns:CalendarEvent"/>
+      <s:element name="CalendarEventRecurrence" nillable="true" type="tns:CalendarEventRecurrence"/>
+      <s:element name="boolean" type="s:boolean"/>
+      <s:element name="string" nillable="true" type="s:string"/>
+      <s:element name="CalendarOrganization" nillable="true" type="tns:CalendarOrganization"/>
+      <s:element name="CalendarSuggest" nillable="true" type="tns:CalendarSuggest"/>
+      <s:element name="ArrayOfCalendarCategory" nillable="true" type="tns:ArrayOfCalendarCategory"/>
+      <s:element name="ArrayOfCalendarOrganization" nillable="true" type="tns:ArrayOfCalendarOrganization"/>
+      <s:element name="ArrayOfCalendarInterests" nillable="true" type="tns:ArrayOfCalendarInterests"/>
+      <s:element name="ArrayOfCalendarUserGroups" nillable="true" type="tns:ArrayOfCalendarUserGroups"/>
+      <s:element name="ArrayOfCalendarEvent" nillable="true" type="tns:ArrayOfCalendarEvent"/>
+      <s:element name="ArrayOfComponentListItem" nillable="true" type="tns:ArrayOfComponentListItem"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendAdminEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendAdminEmailResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SaveCalendarSuggestSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveCalendarSuggestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCatIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEventsByCatId"/>
+  </wsdl:message>
+  <wsdl:message name="GetContactListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarContact"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetGlobalLocationListHttpGetIn">
+    <wsdl:part name="FedID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestHttpGetIn">
+    <wsdl:part name="filterid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarUserGroupsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarUserGroups"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCalendarCategoriesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestScratchSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCalendarSuggestScratch"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarInterestsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarInterests"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByRecuIdHttpPostIn">
+    <wsdl:part name="recuid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendApproveEmailHttpPostIn">
+    <wsdl:part name="suggesteremial" type="s:string"/>
+    <wsdl:part name="title" type="s:string"/>
+    <wsdl:part name="createdate" type="s:string"/>
+    <wsdl:part name="eventid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CheckPAEventSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckPAEventResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CheckAlertDisableHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarInterestsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCalendarInterestsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalendarFilterIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEventsByCalendarFilterId"/>
+  </wsdl:message>
+  <wsdl:message name="CheckPAEventHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarUserGroupsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarUserGroups"/>
+  </wsdl:message>
+  <wsdl:message name="ConvertGetAllEventsByCalIDCategoryIdHttpGetIn">
+    <wsdl:part name="CalID" type="s:string"/>
+    <wsdl:part name="TypeFlag" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SaveCatsSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveCats"/>
+  </wsdl:message>
+  <wsdl:message name="GetPAOrganizationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPAOrganization"/>
+  </wsdl:message>
+  <wsdl:message name="CheckAlertDisableHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCalendarCategories"/>
+  </wsdl:message>
+  <wsdl:message name="SendApproveEmailHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="SaveRecurrenceEventsSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveRecurrenceEvents"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByIdHttpGetIn">
+    <wsdl:part name="eventid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByRecuIdHttpGetIn">
+    <wsdl:part name="recuid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CheckAlertDisableSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckAlertDisable"/>
+  </wsdl:message>
+  <wsdl:message name="ConvertGetAllEventsByCalIDCategoryIdSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertGetAllEventsByCalIDCategoryId"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCatIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventsByCatIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:CalendarEvent"/>
+  </wsdl:message>
+  <wsdl:message name="SendApproveEmailHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="GetCalendarOrganizationsHttpGetIn">
+    <wsdl:part name="FedID" type="s:string"/>
+    <wsdl:part name="CalID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestHttpGetOut">
+    <wsdl:part name="Body" element="tns:CalendarSuggest"/>
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByIdHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalIdCategoryIdHttpGetIn">
+    <wsdl:part name="CalID" type="s:string"/>
+    <wsdl:part name="CategoryId" type="s:string"/>
+    <wsdl:part name="OrgIds" type="s:string"/>
+    <wsdl:part name="IntsIds" type="s:string"/>
+    <wsdl:part name="UserGrpsIds" type="s:string"/>
+    <wsdl:part name="displayType" type="s:string"/>
+    <wsdl:part name="TypeFlag" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarIdHttpGetIn">
+    <wsdl:part name="filterid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetGlobalLocationListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarLocation"/>
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DuplicateEventById"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalendarFilterIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarEvent"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarIdHttpPostIn">
+    <wsdl:part name="filterid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetContactListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarContact"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:CalendarEvent"/>
+  </wsdl:message>
+  <wsdl:message name="ConvertGetAllEventsByCalIDCategoryIdSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertGetAllEventsByCalIDCategoryIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarInterestsHttpGetIn">
+    <wsdl:part name="FedID" type="s:string"/>
+    <wsdl:part name="CalID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SaveLocationToPublicListSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveLocationToPublicList"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocationListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationList"/>
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByRecuIdHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="ConvertGetEventsByCalIDCategoryIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfComponentListItem"/>
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByIdHttpPostIn">
+    <wsdl:part name="eventid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByIdHttpGetIn">
+    <wsdl:part name="eventid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetGlobalLocationListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGlobalLocationListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventByIdHttpGetIn">
+    <wsdl:part name="eventid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SaveCatsSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveCatsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarOrganizationsHttpPostIn">
+    <wsdl:part name="FedID" type="s:string"/>
+    <wsdl:part name="CalID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="LoadLocationByIdHttpPostIn">
+    <wsdl:part name="locationid" type="s:string"/>
+    <wsdl:part name="flag" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetRecurrenceEventByIdHttpGetIn">
+    <wsdl:part name="RecuEventId" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetPAOrganizationHttpPostOut">
+    <wsdl:part name="Body" element="tns:CalendarOrganization"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarUserGroupsHttpGetIn">
+    <wsdl:part name="FedID" type="s:string"/>
+    <wsdl:part name="CalID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByIdHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="LoadContactByIdHttpGetIn">
+    <wsdl:part name="locationid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DuplicateEventByIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarCategoriesHttpPostIn">
+    <wsdl:part name="FedID" type="s:string"/>
+    <wsdl:part name="CalID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ConvertGetEventsByCalIDCategoryIdHttpGetIn">
+    <wsdl:part name="CalID" type="s:string"/>
+    <wsdl:part name="CategoryId" type="s:string"/>
+    <wsdl:part name="OrgIds" type="s:string"/>
+    <wsdl:part name="IntsIds" type="s:string"/>
+    <wsdl:part name="UserGrpsIds" type="s:string"/>
+    <wsdl:part name="TypeFlag" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByRecuIdHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="LoadLocationByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:CalendarLocation"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarOrganizationsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarOrganization"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocationListHttpPostIn">
+    <wsdl:part name="FedID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CheckPAEventHttpPostIn">
+    <wsdl:part name="userid" type="s:string"/>
+    <wsdl:part name="eventid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetContactListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContactListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarCategoriesHttpGetIn">
+    <wsdl:part name="FedID" type="s:string"/>
+    <wsdl:part name="CalID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CheckAlertDisableHttpPostIn">
+    <wsdl:part name="calendarid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestScratchHttpGetIn">
+    <wsdl:part name="filterid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteEventByIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalendarFilterIdHttpGetIn">
+    <wsdl:part name="CalID" type="s:string"/>
+    <wsdl:part name="TypeFlag" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCalendarId"/>
+  </wsdl:message>
+  <wsdl:message name="ConvertGetEventsByCalIDCategoryIdHttpPostIn">
+    <wsdl:part name="CalID" type="s:string"/>
+    <wsdl:part name="CategoryId" type="s:string"/>
+    <wsdl:part name="OrgIds" type="s:string"/>
+    <wsdl:part name="IntsIds" type="s:string"/>
+    <wsdl:part name="UserGrpsIds" type="s:string"/>
+    <wsdl:part name="TypeFlag" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SaveLocationToPublicListSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveLocationToPublicListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetGlobalLocationListHttpPostIn">
+    <wsdl:part name="FedID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByRecuIdHttpGetIn">
+    <wsdl:part name="recuid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCalendarSuggest"/>
+  </wsdl:message>
+  <wsdl:message name="GetContactListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContactList"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarInterestsHttpPostIn">
+    <wsdl:part name="FedID" type="s:string"/>
+    <wsdl:part name="CalID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByIdHttpPostIn">
+    <wsdl:part name="eventid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="LoadContactByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadContactById"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestHttpPostOut">
+    <wsdl:part name="Body" element="tns:CalendarSuggest"/>
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByRecuIdHttpPostIn">
+    <wsdl:part name="recuid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetAlertEmailsHttpGetIn">
+    <wsdl:part name="calendarid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestScratchHttpPostIn">
+    <wsdl:part name="filterid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalIdCategoryIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarEvent"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByRecuIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteEventByRecuIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LoadLocationByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadLocationById"/>
+  </wsdl:message>
+  <wsdl:message name="GetGlobalLocationListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGlobalLocationList"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestScratchHttpPostOut">
+    <wsdl:part name="Body" element="tns:CalendarSuggest"/>
+  </wsdl:message>
+  <wsdl:message name="CheckPAEventHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByRecuIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DuplicateEventByRecuIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocationListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarLocation"/>
+  </wsdl:message>
+  <wsdl:message name="SaveRecurrenceSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveRecurrence"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalIdCategoryIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarEvent"/>
+  </wsdl:message>
+  <wsdl:message name="GetPAOrganizationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPAOrganizationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestScratchSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCalendarSuggestScratchResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LoadContactByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:CalendarContact"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByIdHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="SaveCalendarSuggestScratchSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveCalendarSuggestScratchResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarOrganizationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCalendarOrganizationsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendPAEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendPAEmail"/>
+  </wsdl:message>
+  <wsdl:message name="GetRecurrenceEventByIdHttpPostIn">
+    <wsdl:part name="RecuEventId" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetPAOrganizationHttpGetIn">
+    <wsdl:part name="userId" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SaveCalendarSuggestSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveCalendarSuggest"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarInterestsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCalendarInterests"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteContactByIdHttpPostIn">
+    <wsdl:part name="contactid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ConvertGetEventsByCalIDCategoryIdSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertGetEventsByCalIDCategoryId"/>
+  </wsdl:message>
+  <wsdl:message name="RemoveRecurrenceSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveRecurrenceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetRecurrenceEventByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:CalendarEventRecurrence"/>
+  </wsdl:message>
+  <wsdl:message name="LoadLocationByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadLocationByIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarUserGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCalendarUserGroups"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalIdCategoryIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEventsByCalIdCategoryId"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestHttpPostIn">
+    <wsdl:part name="filterid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendAdminEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendAdminEmail"/>
+  </wsdl:message>
+  <wsdl:message name="CheckAlertDisableHttpGetIn">
+    <wsdl:part name="calendarid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CheckPAEventSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckPAEvent"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalendarFilterIdHttpPostIn">
+    <wsdl:part name="CalID" type="s:string"/>
+    <wsdl:part name="TypeFlag" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SaveCalendarSuggestScratchSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveCalendarSuggestScratch"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteContactByIdHttpGetIn">
+    <wsdl:part name="contactid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventByIdHttpPostIn">
+    <wsdl:part name="eventid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CheckAlertDisableSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckAlertDisableResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendApproveEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendApproveEmail"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocationListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SaveRecurrenceSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveRecurrenceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalendarFilterIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarEvent"/>
+  </wsdl:message>
+  <wsdl:message name="RemoveRecurrenceSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveRecurrence"/>
+  </wsdl:message>
+  <wsdl:message name="SaveContactToPublicListSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveContactToPublicListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByRecuIdHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="ConvertGetAllEventsByCalIDCategoryIdHttpPostIn">
+    <wsdl:part name="CalID" type="s:string"/>
+    <wsdl:part name="TypeFlag" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetPAOrganizationHttpGetOut">
+    <wsdl:part name="Body" element="tns:CalendarOrganization"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByRecuIdHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalIdCategoryIdHttpPostIn">
+    <wsdl:part name="CalID" type="s:string"/>
+    <wsdl:part name="CategoryId" type="s:string"/>
+    <wsdl:part name="OrgIds" type="s:string"/>
+    <wsdl:part name="IntsIds" type="s:string"/>
+    <wsdl:part name="UserGrpsIds" type="s:string"/>
+    <wsdl:part name="displayType" type="s:string"/>
+    <wsdl:part name="TypeFlag" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SaveRecurrenceEventsSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveRecurrenceEventsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SaveEventSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveEventResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteContactByIdHttpPostOut">
+  </wsdl:message>
+  <wsdl:message name="GetEventByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEventById"/>
+  </wsdl:message>
+  <wsdl:message name="GetGlobalLocationListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarLocation"/>
+  </wsdl:message>
+  <wsdl:message name="SendApproveEmailHttpGetIn">
+    <wsdl:part name="suggesteremial" type="s:string"/>
+    <wsdl:part name="title" type="s:string"/>
+    <wsdl:part name="createdate" type="s:string"/>
+    <wsdl:part name="eventid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocationListHttpGetIn">
+    <wsdl:part name="FedID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetPAOrganizationHttpPostIn">
+    <wsdl:part name="userId" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetAlertEmailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalendarFilterIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventsByCalendarFilterIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConvertGetAllEventsByCalIDCategoryIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfComponentListItem"/>
+  </wsdl:message>
+  <wsdl:message name="GetRecurrenceEventByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:CalendarEventRecurrence"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarOrganizationsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarOrganization"/>
+  </wsdl:message>
+  <wsdl:message name="SendPAEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendPAEmailResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarCategoriesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarCategory"/>
+  </wsdl:message>
+  <wsdl:message name="SaveContactToPublicListSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveContactToPublicList"/>
+  </wsdl:message>
+  <wsdl:message name="LoadContactByIdHttpPostIn">
+    <wsdl:part name="locationid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarOrganizationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCalendarOrganizations"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCalendarSuggestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCalendarIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SaveEventSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveEvent"/>
+  </wsdl:message>
+  <wsdl:message name="GetContactListHttpGetIn">
+    <wsdl:part name="FedID" type="s:string"/>
+    <wsdl:part name="UserID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetRecurrenceEventByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRecurrenceEventByIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarCategoriesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarCategory"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarSuggestScratchHttpGetOut">
+    <wsdl:part name="Body" element="tns:CalendarSuggest"/>
+  </wsdl:message>
+  <wsdl:message name="LoadContactByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:CalendarContact"/>
+  </wsdl:message>
+  <wsdl:message name="GetAlertEmailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetAlertEmailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAlertEmails"/>
+  </wsdl:message>
+  <wsdl:message name="GetAlertEmailsHttpPostIn">
+    <wsdl:part name="calendarid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteContactByIdHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="DeleteContactByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteContactById"/>
+  </wsdl:message>
+  <wsdl:message name="GetAlertEmailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAlertEmailsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocationListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarLocation"/>
+  </wsdl:message>
+  <wsdl:message name="ConvertGetEventsByCalIDCategoryIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfComponentListItem"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventsByCalIdCategoryIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventsByCalIdCategoryIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LoadLocationByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:CalendarLocation"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByRecuIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteEventByRecuId"/>
+  </wsdl:message>
+  <wsdl:message name="ConvertGetAllEventsByCalIDCategoryIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfComponentListItem"/>
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByIdHttpGetOut">
+  </wsdl:message>
+  <wsdl:message name="DuplicateEventByRecuIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DuplicateEventByRecuId"/>
+  </wsdl:message>
+  <wsdl:message name="GetRecurrenceEventByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRecurrenceEventById"/>
+  </wsdl:message>
+  <wsdl:message name="ConvertGetEventsByCalIDCategoryIdSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertGetEventsByCalIDCategoryIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CheckPAEventHttpGetIn">
+    <wsdl:part name="userid" type="s:string"/>
+    <wsdl:part name="eventid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarUserGroupsHttpPostIn">
+    <wsdl:part name="FedID" type="s:string"/>
+    <wsdl:part name="CalID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetEventByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEventByIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LoadContactByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadContactByIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarInterestsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCalendarInterests"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteContactByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteContactByIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCalendarUserGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCalendarUserGroupsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LoadLocationByIdHttpGetIn">
+    <wsdl:part name="locationid" type="s:string"/>
+    <wsdl:part name="flag" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteEventByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteEventById"/>
+  </wsdl:message>
+  <wsdl:message name="SendApproveEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendApproveEmailResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetContactListHttpPostIn">
+    <wsdl:part name="FedID" type="s:string"/>
+    <wsdl:part name="UserID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:portType name="CalendarEventWebServiceSoap">
+    <wsdl:operation name="GetLocationList">
+      <wsdl:input message="tns:GetLocationListSoapIn"/>
+      <wsdl:output message="tns:GetLocationListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalLocationList">
+      <wsdl:input message="tns:GetGlobalLocationListSoapIn"/>
+      <wsdl:output message="tns:GetGlobalLocationListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLocationToPublicList">
+      <wsdl:input message="tns:SaveLocationToPublicListSoapIn"/>
+      <wsdl:output message="tns:SaveLocationToPublicListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoadLocationById">
+      <wsdl:input message="tns:LoadLocationByIdSoapIn"/>
+      <wsdl:output message="tns:LoadLocationByIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactList">
+      <wsdl:input message="tns:GetContactListSoapIn"/>
+      <wsdl:output message="tns:GetContactListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoadContactById">
+      <wsdl:input message="tns:LoadContactByIdSoapIn"/>
+      <wsdl:output message="tns:LoadContactByIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SaveContactToPublicList">
+      <wsdl:input message="tns:SaveContactToPublicListSoapIn"/>
+      <wsdl:output message="tns:SaveContactToPublicListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContactById">
+      <wsdl:input message="tns:DeleteContactByIdSoapIn"/>
+      <wsdl:output message="tns:DeleteContactByIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SaveEvent">
+      <wsdl:input message="tns:SaveEventSoapIn"/>
+      <wsdl:output message="tns:SaveEventSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRecurrence">
+      <wsdl:input message="tns:SaveRecurrenceSoapIn"/>
+      <wsdl:output message="tns:SaveRecurrenceSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRecurrenceEvents">
+      <wsdl:input message="tns:SaveRecurrenceEventsSoapIn"/>
+      <wsdl:output message="tns:SaveRecurrenceEventsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCats">
+      <wsdl:input message="tns:SaveCatsSoapIn"/>
+      <wsdl:output message="tns:SaveCatsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRecurrence">
+      <wsdl:input message="tns:RemoveRecurrenceSoapIn"/>
+      <wsdl:output message="tns:RemoveRecurrenceSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventById">
+      <wsdl:input message="tns:GetEventByIdSoapIn"/>
+      <wsdl:output message="tns:GetEventByIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecurrenceEventById">
+      <wsdl:input message="tns:GetRecurrenceEventByIdSoapIn"/>
+      <wsdl:output message="tns:GetRecurrenceEventByIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventById">
+      <wsdl:input message="tns:DeleteEventByIdSoapIn"/>
+      <wsdl:output message="tns:DeleteEventByIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventByRecuId">
+      <wsdl:input message="tns:DeleteEventByRecuIdSoapIn"/>
+      <wsdl:output message="tns:DeleteEventByRecuIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventById">
+      <wsdl:input message="tns:DuplicateEventByIdSoapIn"/>
+      <wsdl:output message="tns:DuplicateEventByIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventByRecuId">
+      <wsdl:input message="tns:DuplicateEventByRecuIdSoapIn"/>
+      <wsdl:output message="tns:DuplicateEventByRecuIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAlertDisable">
+      <wsdl:input message="tns:CheckAlertDisableSoapIn"/>
+      <wsdl:output message="tns:CheckAlertDisableSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertEmails">
+      <wsdl:input message="tns:GetAlertEmailsSoapIn"/>
+      <wsdl:output message="tns:GetAlertEmailsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendAdminEmail">
+      <wsdl:input message="tns:SendAdminEmailSoapIn"/>
+      <wsdl:output message="tns:SendAdminEmailSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAOrganization">
+      <wsdl:input message="tns:GetPAOrganizationSoapIn"/>
+      <wsdl:output message="tns:GetPAOrganizationSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPAEvent">
+      <wsdl:input message="tns:CheckPAEventSoapIn"/>
+      <wsdl:output message="tns:CheckPAEventSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggest">
+      <wsdl:input message="tns:GetCalendarSuggestSoapIn"/>
+      <wsdl:output message="tns:GetCalendarSuggestSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggestScratch">
+      <wsdl:input message="tns:GetCalendarSuggestScratchSoapIn"/>
+      <wsdl:output message="tns:GetCalendarSuggestScratchSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCalendarSuggest">
+      <wsdl:input message="tns:SaveCalendarSuggestSoapIn"/>
+      <wsdl:output message="tns:SaveCalendarSuggestSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCalendarSuggestScratch">
+      <wsdl:input message="tns:SaveCalendarSuggestScratchSoapIn"/>
+      <wsdl:output message="tns:SaveCalendarSuggestScratchSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarId">
+      <wsdl:input message="tns:GetCalendarIdSoapIn"/>
+      <wsdl:output message="tns:GetCalendarIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarCategories">
+      <wsdl:input message="tns:GetCalendarCategoriesSoapIn"/>
+      <wsdl:output message="tns:GetCalendarCategoriesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarOrganizations">
+      <wsdl:input message="tns:GetCalendarOrganizationsSoapIn"/>
+      <wsdl:output message="tns:GetCalendarOrganizationsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarInterests">
+      <wsdl:input message="tns:GetCalendarInterestsSoapIn"/>
+      <wsdl:output message="tns:GetCalendarInterestsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarUserGroups">
+      <wsdl:input message="tns:GetCalendarUserGroupsSoapIn"/>
+      <wsdl:output message="tns:GetCalendarUserGroupsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalIdCategoryId">
+      <wsdl:input message="tns:GetEventsByCalIdCategoryIdSoapIn"/>
+      <wsdl:output message="tns:GetEventsByCalIdCategoryIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetEventsByCalIDCategoryId">
+      <wsdl:input message="tns:ConvertGetEventsByCalIDCategoryIdSoapIn"/>
+      <wsdl:output message="tns:ConvertGetEventsByCalIDCategoryIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalendarFilterId">
+      <wsdl:input message="tns:GetEventsByCalendarFilterIdSoapIn"/>
+      <wsdl:output message="tns:GetEventsByCalendarFilterIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetAllEventsByCalIDCategoryId">
+      <wsdl:input message="tns:ConvertGetAllEventsByCalIDCategoryIdSoapIn"/>
+      <wsdl:output message="tns:ConvertGetAllEventsByCalIDCategoryIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCatId">
+      <wsdl:input message="tns:GetEventsByCatIdSoapIn"/>
+      <wsdl:output message="tns:GetEventsByCatIdSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendPAEmail">
+      <wsdl:input message="tns:SendPAEmailSoapIn"/>
+      <wsdl:output message="tns:SendPAEmailSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendApproveEmail">
+      <wsdl:input message="tns:SendApproveEmailSoapIn"/>
+      <wsdl:output message="tns:SendApproveEmailSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CalendarEventWebServiceHttpGet">
+    <wsdl:operation name="GetLocationList">
+      <wsdl:input message="tns:GetLocationListHttpGetIn"/>
+      <wsdl:output message="tns:GetLocationListHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalLocationList">
+      <wsdl:input message="tns:GetGlobalLocationListHttpGetIn"/>
+      <wsdl:output message="tns:GetGlobalLocationListHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoadLocationById">
+      <wsdl:input message="tns:LoadLocationByIdHttpGetIn"/>
+      <wsdl:output message="tns:LoadLocationByIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactList">
+      <wsdl:input message="tns:GetContactListHttpGetIn"/>
+      <wsdl:output message="tns:GetContactListHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoadContactById">
+      <wsdl:input message="tns:LoadContactByIdHttpGetIn"/>
+      <wsdl:output message="tns:LoadContactByIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContactById">
+      <wsdl:input message="tns:DeleteContactByIdHttpGetIn"/>
+      <wsdl:output message="tns:DeleteContactByIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventById">
+      <wsdl:input message="tns:GetEventByIdHttpGetIn"/>
+      <wsdl:output message="tns:GetEventByIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecurrenceEventById">
+      <wsdl:input message="tns:GetRecurrenceEventByIdHttpGetIn"/>
+      <wsdl:output message="tns:GetRecurrenceEventByIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventById">
+      <wsdl:input message="tns:DeleteEventByIdHttpGetIn"/>
+      <wsdl:output message="tns:DeleteEventByIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventByRecuId">
+      <wsdl:input message="tns:DeleteEventByRecuIdHttpGetIn"/>
+      <wsdl:output message="tns:DeleteEventByRecuIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventById">
+      <wsdl:input message="tns:DuplicateEventByIdHttpGetIn"/>
+      <wsdl:output message="tns:DuplicateEventByIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventByRecuId">
+      <wsdl:input message="tns:DuplicateEventByRecuIdHttpGetIn"/>
+      <wsdl:output message="tns:DuplicateEventByRecuIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAlertDisable">
+      <wsdl:input message="tns:CheckAlertDisableHttpGetIn"/>
+      <wsdl:output message="tns:CheckAlertDisableHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertEmails">
+      <wsdl:input message="tns:GetAlertEmailsHttpGetIn"/>
+      <wsdl:output message="tns:GetAlertEmailsHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAOrganization">
+      <wsdl:input message="tns:GetPAOrganizationHttpGetIn"/>
+      <wsdl:output message="tns:GetPAOrganizationHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPAEvent">
+      <wsdl:input message="tns:CheckPAEventHttpGetIn"/>
+      <wsdl:output message="tns:CheckPAEventHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggest">
+      <wsdl:input message="tns:GetCalendarSuggestHttpGetIn"/>
+      <wsdl:output message="tns:GetCalendarSuggestHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggestScratch">
+      <wsdl:input message="tns:GetCalendarSuggestScratchHttpGetIn"/>
+      <wsdl:output message="tns:GetCalendarSuggestScratchHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarId">
+      <wsdl:input message="tns:GetCalendarIdHttpGetIn"/>
+      <wsdl:output message="tns:GetCalendarIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarCategories">
+      <wsdl:input message="tns:GetCalendarCategoriesHttpGetIn"/>
+      <wsdl:output message="tns:GetCalendarCategoriesHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarOrganizations">
+      <wsdl:input message="tns:GetCalendarOrganizationsHttpGetIn"/>
+      <wsdl:output message="tns:GetCalendarOrganizationsHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarInterests">
+      <wsdl:input message="tns:GetCalendarInterestsHttpGetIn"/>
+      <wsdl:output message="tns:GetCalendarInterestsHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarUserGroups">
+      <wsdl:input message="tns:GetCalendarUserGroupsHttpGetIn"/>
+      <wsdl:output message="tns:GetCalendarUserGroupsHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalIdCategoryId">
+      <wsdl:input message="tns:GetEventsByCalIdCategoryIdHttpGetIn"/>
+      <wsdl:output message="tns:GetEventsByCalIdCategoryIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetEventsByCalIDCategoryId">
+      <wsdl:input message="tns:ConvertGetEventsByCalIDCategoryIdHttpGetIn"/>
+      <wsdl:output message="tns:ConvertGetEventsByCalIDCategoryIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalendarFilterId">
+      <wsdl:input message="tns:GetEventsByCalendarFilterIdHttpGetIn"/>
+      <wsdl:output message="tns:GetEventsByCalendarFilterIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetAllEventsByCalIDCategoryId">
+      <wsdl:input message="tns:ConvertGetAllEventsByCalIDCategoryIdHttpGetIn"/>
+      <wsdl:output message="tns:ConvertGetAllEventsByCalIDCategoryIdHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendApproveEmail">
+      <wsdl:input message="tns:SendApproveEmailHttpGetIn"/>
+      <wsdl:output message="tns:SendApproveEmailHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CalendarEventWebServiceHttpPost">
+    <wsdl:operation name="GetLocationList">
+      <wsdl:input message="tns:GetLocationListHttpPostIn"/>
+      <wsdl:output message="tns:GetLocationListHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalLocationList">
+      <wsdl:input message="tns:GetGlobalLocationListHttpPostIn"/>
+      <wsdl:output message="tns:GetGlobalLocationListHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoadLocationById">
+      <wsdl:input message="tns:LoadLocationByIdHttpPostIn"/>
+      <wsdl:output message="tns:LoadLocationByIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactList">
+      <wsdl:input message="tns:GetContactListHttpPostIn"/>
+      <wsdl:output message="tns:GetContactListHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoadContactById">
+      <wsdl:input message="tns:LoadContactByIdHttpPostIn"/>
+      <wsdl:output message="tns:LoadContactByIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContactById">
+      <wsdl:input message="tns:DeleteContactByIdHttpPostIn"/>
+      <wsdl:output message="tns:DeleteContactByIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventById">
+      <wsdl:input message="tns:GetEventByIdHttpPostIn"/>
+      <wsdl:output message="tns:GetEventByIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecurrenceEventById">
+      <wsdl:input message="tns:GetRecurrenceEventByIdHttpPostIn"/>
+      <wsdl:output message="tns:GetRecurrenceEventByIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventById">
+      <wsdl:input message="tns:DeleteEventByIdHttpPostIn"/>
+      <wsdl:output message="tns:DeleteEventByIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventByRecuId">
+      <wsdl:input message="tns:DeleteEventByRecuIdHttpPostIn"/>
+      <wsdl:output message="tns:DeleteEventByRecuIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventById">
+      <wsdl:input message="tns:DuplicateEventByIdHttpPostIn"/>
+      <wsdl:output message="tns:DuplicateEventByIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventByRecuId">
+      <wsdl:input message="tns:DuplicateEventByRecuIdHttpPostIn"/>
+      <wsdl:output message="tns:DuplicateEventByRecuIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAlertDisable">
+      <wsdl:input message="tns:CheckAlertDisableHttpPostIn"/>
+      <wsdl:output message="tns:CheckAlertDisableHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertEmails">
+      <wsdl:input message="tns:GetAlertEmailsHttpPostIn"/>
+      <wsdl:output message="tns:GetAlertEmailsHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAOrganization">
+      <wsdl:input message="tns:GetPAOrganizationHttpPostIn"/>
+      <wsdl:output message="tns:GetPAOrganizationHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPAEvent">
+      <wsdl:input message="tns:CheckPAEventHttpPostIn"/>
+      <wsdl:output message="tns:CheckPAEventHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggest">
+      <wsdl:input message="tns:GetCalendarSuggestHttpPostIn"/>
+      <wsdl:output message="tns:GetCalendarSuggestHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggestScratch">
+      <wsdl:input message="tns:GetCalendarSuggestScratchHttpPostIn"/>
+      <wsdl:output message="tns:GetCalendarSuggestScratchHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarId">
+      <wsdl:input message="tns:GetCalendarIdHttpPostIn"/>
+      <wsdl:output message="tns:GetCalendarIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarCategories">
+      <wsdl:input message="tns:GetCalendarCategoriesHttpPostIn"/>
+      <wsdl:output message="tns:GetCalendarCategoriesHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarOrganizations">
+      <wsdl:input message="tns:GetCalendarOrganizationsHttpPostIn"/>
+      <wsdl:output message="tns:GetCalendarOrganizationsHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarInterests">
+      <wsdl:input message="tns:GetCalendarInterestsHttpPostIn"/>
+      <wsdl:output message="tns:GetCalendarInterestsHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarUserGroups">
+      <wsdl:input message="tns:GetCalendarUserGroupsHttpPostIn"/>
+      <wsdl:output message="tns:GetCalendarUserGroupsHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalIdCategoryId">
+      <wsdl:input message="tns:GetEventsByCalIdCategoryIdHttpPostIn"/>
+      <wsdl:output message="tns:GetEventsByCalIdCategoryIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetEventsByCalIDCategoryId">
+      <wsdl:input message="tns:ConvertGetEventsByCalIDCategoryIdHttpPostIn"/>
+      <wsdl:output message="tns:ConvertGetEventsByCalIDCategoryIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalendarFilterId">
+      <wsdl:input message="tns:GetEventsByCalendarFilterIdHttpPostIn"/>
+      <wsdl:output message="tns:GetEventsByCalendarFilterIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetAllEventsByCalIDCategoryId">
+      <wsdl:input message="tns:ConvertGetAllEventsByCalIDCategoryIdHttpPostIn"/>
+      <wsdl:output message="tns:ConvertGetAllEventsByCalIDCategoryIdHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendApproveEmail">
+      <wsdl:input message="tns:SendApproveEmailHttpPostIn"/>
+      <wsdl:output message="tns:SendApproveEmailHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalendarEventWebServiceSoap" type="tns:CalendarEventWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetLocationList">
+      <soap:operation soapAction="http://ujcweb.org/GetLocationList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalLocationList">
+      <soap:operation soapAction="http://ujcweb.org/GetGlobalLocationList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLocationToPublicList">
+      <soap:operation soapAction="http://ujcweb.org/SaveLocationToPublicList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadLocationById">
+      <soap:operation soapAction="http://ujcweb.org/LoadLocationById" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactList">
+      <soap:operation soapAction="http://ujcweb.org/GetContactList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadContactById">
+      <soap:operation soapAction="http://ujcweb.org/LoadContactById" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveContactToPublicList">
+      <soap:operation soapAction="http://ujcweb.org/SaveContactToPublicList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContactById">
+      <soap:operation soapAction="http://ujcweb.org/DeleteContactById" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveEvent">
+      <soap:operation soapAction="http://ujcweb.org/SaveEvent" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRecurrence">
+      <soap:operation soapAction="http://ujcweb.org/SaveRecurrence" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRecurrenceEvents">
+      <soap:operation soapAction="http://ujcweb.org/SaveRecurrenceEvents" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCats">
+      <soap:operation soapAction="http://ujcweb.org/SaveCats" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRecurrence">
+      <soap:operation soapAction="http://ujcweb.org/RemoveRecurrence" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventById">
+      <soap:operation soapAction="http://ujcweb.org/GetEventById" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecurrenceEventById">
+      <soap:operation soapAction="http://ujcweb.org/GetRecurrenceEventById" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventById">
+      <soap:operation soapAction="http://ujcweb.org/DeleteEventById" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventByRecuId">
+      <soap:operation soapAction="http://ujcweb.org/DeleteEventByRecuId" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventById">
+      <soap:operation soapAction="http://ujcweb.org/DuplicateEventById" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventByRecuId">
+      <soap:operation soapAction="http://ujcweb.org/DuplicateEventByRecuId" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAlertDisable">
+      <soap:operation soapAction="http://ujcweb.org/CheckAlertDisable" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertEmails">
+      <soap:operation soapAction="http://ujcweb.org/GetAlertEmails" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendAdminEmail">
+      <soap:operation soapAction="http://ujcweb.org/SendAdminEmail" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAOrganization">
+      <soap:operation soapAction="http://ujcweb.org/GetPAOrganization" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPAEvent">
+      <soap:operation soapAction="http://ujcweb.org/CheckPAEvent" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggest">
+      <soap:operation soapAction="http://ujcweb.org/GetCalendarSuggest" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggestScratch">
+      <soap:operation soapAction="http://ujcweb.org/GetCalendarSuggestScratch" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCalendarSuggest">
+      <soap:operation soapAction="http://ujcweb.org/SaveCalendarSuggest" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCalendarSuggestScratch">
+      <soap:operation soapAction="http://ujcweb.org/SaveCalendarSuggestScratch" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarId">
+      <soap:operation soapAction="http://ujcweb.org/GetCalendarId" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarCategories">
+      <soap:operation soapAction="http://ujcweb.org/GetCalendarCategories" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarOrganizations">
+      <soap:operation soapAction="http://ujcweb.org/GetCalendarOrganizations" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarInterests">
+      <soap:operation soapAction="http://ujcweb.org/GetCalendarInterests" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarUserGroups">
+      <soap:operation soapAction="http://ujcweb.org/GetCalendarUserGroups" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalIdCategoryId">
+      <soap:operation soapAction="http://ujcweb.org/GetEventsByCalIdCategoryId" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetEventsByCalIDCategoryId">
+      <soap:operation soapAction="http://ujcweb.org/ConvertGetEventsByCalIDCategoryId" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalendarFilterId">
+      <soap:operation soapAction="http://ujcweb.org/GetEventsByCalendarFilterId" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetAllEventsByCalIDCategoryId">
+      <soap:operation soapAction="http://ujcweb.org/ConvertGetAllEventsByCalIDCategoryId" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCatId">
+      <soap:operation soapAction="http://ujcweb.org/GetEventsByCatId" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPAEmail">
+      <soap:operation soapAction="http://ujcweb.org/SendPAEmail" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendApproveEmail">
+      <soap:operation soapAction="http://ujcweb.org/SendApproveEmail" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CalendarEventWebServiceHttpGet" type="tns:CalendarEventWebServiceHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="GetLocationList">
+      <http:operation location="/GetLocationList"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalLocationList">
+      <http:operation location="/GetGlobalLocationList"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadLocationById">
+      <http:operation location="/LoadLocationById"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactList">
+      <http:operation location="/GetContactList"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadContactById">
+      <http:operation location="/LoadContactById"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContactById">
+      <http:operation location="/DeleteContactById"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventById">
+      <http:operation location="/GetEventById"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecurrenceEventById">
+      <http:operation location="/GetRecurrenceEventById"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventById">
+      <http:operation location="/DeleteEventById"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventByRecuId">
+      <http:operation location="/DeleteEventByRecuId"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventById">
+      <http:operation location="/DuplicateEventById"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventByRecuId">
+      <http:operation location="/DuplicateEventByRecuId"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAlertDisable">
+      <http:operation location="/CheckAlertDisable"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertEmails">
+      <http:operation location="/GetAlertEmails"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAOrganization">
+      <http:operation location="/GetPAOrganization"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPAEvent">
+      <http:operation location="/CheckPAEvent"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggest">
+      <http:operation location="/GetCalendarSuggest"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggestScratch">
+      <http:operation location="/GetCalendarSuggestScratch"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarId">
+      <http:operation location="/GetCalendarId"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarCategories">
+      <http:operation location="/GetCalendarCategories"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarOrganizations">
+      <http:operation location="/GetCalendarOrganizations"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarInterests">
+      <http:operation location="/GetCalendarInterests"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarUserGroups">
+      <http:operation location="/GetCalendarUserGroups"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalIdCategoryId">
+      <http:operation location="/GetEventsByCalIdCategoryId"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetEventsByCalIDCategoryId">
+      <http:operation location="/ConvertGetEventsByCalIDCategoryId"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalendarFilterId">
+      <http:operation location="/GetEventsByCalendarFilterId"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetAllEventsByCalIDCategoryId">
+      <http:operation location="/ConvertGetAllEventsByCalIDCategoryId"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendApproveEmail">
+      <http:operation location="/SendApproveEmail"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CalendarEventWebServiceSoap12" type="tns:CalendarEventWebServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetLocationList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetLocationList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalLocationList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetGlobalLocationList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLocationToPublicList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/SaveLocationToPublicList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadLocationById">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/LoadLocationById" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetContactList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadContactById">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/LoadContactById" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveContactToPublicList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/SaveContactToPublicList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContactById">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/DeleteContactById" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveEvent">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/SaveEvent" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRecurrence">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/SaveRecurrence" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRecurrenceEvents">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/SaveRecurrenceEvents" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCats">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/SaveCats" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRecurrence">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/RemoveRecurrence" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventById">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetEventById" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecurrenceEventById">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetRecurrenceEventById" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventById">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/DeleteEventById" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventByRecuId">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/DeleteEventByRecuId" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventById">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/DuplicateEventById" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventByRecuId">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/DuplicateEventByRecuId" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAlertDisable">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/CheckAlertDisable" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertEmails">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetAlertEmails" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendAdminEmail">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/SendAdminEmail" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAOrganization">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetPAOrganization" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPAEvent">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/CheckPAEvent" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggest">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetCalendarSuggest" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggestScratch">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetCalendarSuggestScratch" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCalendarSuggest">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/SaveCalendarSuggest" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCalendarSuggestScratch">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/SaveCalendarSuggestScratch" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarId">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetCalendarId" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarCategories">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetCalendarCategories" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarOrganizations">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetCalendarOrganizations" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarInterests">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetCalendarInterests" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarUserGroups">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetCalendarUserGroups" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalIdCategoryId">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetEventsByCalIdCategoryId" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetEventsByCalIDCategoryId">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/ConvertGetEventsByCalIDCategoryId" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalendarFilterId">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetEventsByCalendarFilterId" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetAllEventsByCalIDCategoryId">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/ConvertGetAllEventsByCalIDCategoryId" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCatId">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/GetEventsByCatId" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPAEmail">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/SendPAEmail" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendApproveEmail">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://ujcweb.org/SendApproveEmail" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CalendarEventWebServiceHttpPost" type="tns:CalendarEventWebServiceHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="GetLocationList">
+      <http:operation location="/GetLocationList"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalLocationList">
+      <http:operation location="/GetGlobalLocationList"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadLocationById">
+      <http:operation location="/LoadLocationById"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactList">
+      <http:operation location="/GetContactList"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadContactById">
+      <http:operation location="/LoadContactById"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContactById">
+      <http:operation location="/DeleteContactById"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventById">
+      <http:operation location="/GetEventById"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecurrenceEventById">
+      <http:operation location="/GetRecurrenceEventById"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventById">
+      <http:operation location="/DeleteEventById"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEventByRecuId">
+      <http:operation location="/DeleteEventByRecuId"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventById">
+      <http:operation location="/DuplicateEventById"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DuplicateEventByRecuId">
+      <http:operation location="/DuplicateEventByRecuId"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAlertDisable">
+      <http:operation location="/CheckAlertDisable"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertEmails">
+      <http:operation location="/GetAlertEmails"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAOrganization">
+      <http:operation location="/GetPAOrganization"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPAEvent">
+      <http:operation location="/CheckPAEvent"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggest">
+      <http:operation location="/GetCalendarSuggest"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarSuggestScratch">
+      <http:operation location="/GetCalendarSuggestScratch"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarId">
+      <http:operation location="/GetCalendarId"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarCategories">
+      <http:operation location="/GetCalendarCategories"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarOrganizations">
+      <http:operation location="/GetCalendarOrganizations"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarInterests">
+      <http:operation location="/GetCalendarInterests"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendarUserGroups">
+      <http:operation location="/GetCalendarUserGroups"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalIdCategoryId">
+      <http:operation location="/GetEventsByCalIdCategoryId"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetEventsByCalIDCategoryId">
+      <http:operation location="/ConvertGetEventsByCalIDCategoryId"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventsByCalendarFilterId">
+      <http:operation location="/GetEventsByCalendarFilterId"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertGetAllEventsByCalIDCategoryId">
+      <http:operation location="/ConvertGetAllEventsByCalIDCategoryId"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendApproveEmail">
+      <http:operation location="/SendApproveEmail"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalendarEventWebService">
+    <wsdl:port name="CalendarEventWebServiceSoap12" binding="tns:CalendarEventWebServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.bjela.org/admin/Calendar2/CalendarEventWebService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="CalendarEventWebServiceHttpGet" binding="tns:CalendarEventWebServiceHttpGet">
+      <http:address location="http://www.bjela.org/admin/Calendar2/CalendarEventWebService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="CalendarEventWebServiceHttpPost" binding="tns:CalendarEventWebServiceHttpPost">
+      <http:address location="http://www.bjela.org/admin/Calendar2/CalendarEventWebService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="CalendarEventWebServiceSoap" binding="tns:CalendarEventWebServiceSoap">
+      <soap:address location="http://www.bjela.org/admin/Calendar2/CalendarEventWebService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

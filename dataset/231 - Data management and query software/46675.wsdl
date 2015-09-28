@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="FoodSearch1" targetNamespace="urn:FoodSearch1" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:FoodSearch1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+		This WSDL document describes the CalorieKing Web Service for 
+		searching for foods and retrieving a food's serving sizes and 
+		nutritional information.
+	</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:FoodSearch1">
+
+			<xsd:complexType name="Nutrients">
+				<xsd:annotation>
+					<xsd:documentation>
+						The nutrients associated with a serving.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="calories" nillable="true" type="xsd:float">
+						<xsd:annotation>
+							<xsd:documentation>
+								The amount of calories contained in the serving, if present.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="fat" nillable="true" type="xsd:float">
+						<xsd:annotation>
+							<xsd:documentation>
+								The amount of total fat in grams contained in the serving, if present.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="carbohydrate" nillable="true" type="xsd:float">
+						<xsd:annotation>
+							<xsd:documentation>
+								The amount of total carbohydrate in grams contained in the serving, if present.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="protein" nillable="true" type="xsd:float">
+						<xsd:annotation>
+							<xsd:documentation>
+								The amount of protein in grams contained in the serving, if present.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="fiber" nillable="true" type="xsd:float">
+						<xsd:annotation>
+							<xsd:documentation>
+								The amount of dietary fiber in grams contained in the serving, if present.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="sugar" nillable="true" type="xsd:float">
+						<xsd:annotation>
+							<xsd:documentation>
+								The amount of sugars in grams contained in the serving, if present.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="sodium" nillable="true" type="xsd:float">
+						<xsd:annotation>
+							<xsd:documentation>
+								The amount of sodium in milligrams contained in the serving, if present.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="calcium" nillable="true" type="xsd:float">
+						<xsd:annotation>
+							<xsd:documentation>
+								The amount of calcium in milligrams contained in the serving, if present.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="satfat" nillable="true" type="xsd:float">
+						<xsd:annotation>
+							<xsd:documentation>
+								The amount of saturated fat in grams contained in the serving, if present.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="cholesterol" nillable="true" type="xsd:float">
+						<xsd:annotation>
+							<xsd:documentation>
+								The amount of cholesterol in milligrams contained in the serving, if present.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="Serving">
+				<xsd:annotation>
+					<xsd:documentation>
+						The serving associated with a food.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								The name of the serving.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="nutrients" type="tns:Nutrients">
+						<xsd:annotation>
+							<xsd:documentation>
+								The nutrients associated with this serving.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="Food">
+				<xsd:annotation>
+					<xsd:documentation>
+						The food which fully describes itself, all of its servings, and 
+						respective nutrient information.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="id" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								The unique identity of the food.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								The name of the food.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="servings" type="tns:Serving">
+						<xsd:annotation>
+							<xsd:documentation>
+								A list of servings for the food.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="FoodSearchResult">
+				<xsd:annotation>
+					<xsd:documentation>
+						The matching food found by the search.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="id" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								The unique identity of the matching food.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								The name of the matching food.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="FoodSearchCategory">
+				<xsd:annotation>
+					<xsd:documentation>
+						The category in which searches for matching foods 
+						were found.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="name" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								The name of the category.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="children" type="tns:FoodSearchResult">
+						<xsd:annotation>
+							<xsd:documentation>
+								The list of foods found, of which appear 
+								in this category.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="foodSearch">
+				<xsd:complexType>
+					<xsd:annotation>
+						<xsd:documentation>
+							Represents the inputs to supply to the 
+							foodSearch web method.
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="1" name="devkey" type="xsd:string">
+							<xsd:annotation>
+								<xsd:documentation>
+									Your developer key.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element maxOccurs="1" minOccurs="1" name="terms" type="xsd:string">
+							<xsd:annotation>
+								<xsd:documentation>
+									The search terms with which to find 
+									matching foods.  The search will find 
+									results with all of the words supplied.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="foodSearchResponse">
+				<xsd:complexType>
+					<xsd:annotation>
+						<xsd:documentation>
+							Represents the outputs from the foodSearch 
+							web method.
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:sequence>
+						<xsd:element maxOccurs="unbounded" minOccurs="0" name="categories" type="tns:FoodSearchCategory">
+							<xsd:annotation>
+								<xsd:documentation>
+									The list of categories containing 
+									foods matched by the search.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getFood">
+				<xsd:complexType>
+					<xsd:annotation>
+						<xsd:documentation>
+							Represents the inputs to supply to the getFood
+							web method.
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="1" name="devkey" type="xsd:string">
+							<xsd:annotation>
+								<xsd:documentation>
+									Your developer key.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element maxOccurs="1" minOccurs="1" name="id" type="xsd:string">
+							<xsd:annotation>
+								<xsd:documentation>
+									The unique identity of the food, of 
+									which details are to be fetched.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="getFoodResponse">
+				<xsd:complexType>
+					<xsd:annotation>
+						<xsd:documentation>
+							Represents the outputs from the getFood web 
+							method.
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="1" name="food" type="tns:Food">
+							<xsd:annotation>
+								<xsd:documentation>
+									The details about the requested food 
+									identity, if the identity exists.
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+		</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="FoodSearchSoapResponse">
+    <wsdl:part name="parameters" element="tns:foodSearchResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetFoodSoapResponse">
+    <wsdl:part name="parameters" element="tns:getFoodResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FoodSearchSoapRequest">
+    <wsdl:part name="parameters" element="tns:foodSearch"/>
+  </wsdl:message>
+  <wsdl:message name="GetFoodSoapRequest">
+    <wsdl:part name="parameters" element="tns:getFood"/>
+  </wsdl:message>
+  <wsdl:portType name="FoodSearch1Port">
+    <wsdl:operation name="foodSearch">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+				Performs a search for matching foods containing all the 
+				words in the search terms.  Returns a list of 
+				FoodSearchCategory objects, each containing 
+				FoodSearchResult objects.
+				
+				The foods within a category are ordered by descending rank 
+				of our relevance estimate.  The categories themselves are 
+				ordered descendingly by highest food rank as it appears 
+				within the category.
+
+				An empty list will be returned if the search terms are 
+				invalid or no matches were found.
+			</wsdl:documentation>
+      <wsdl:input message="tns:FoodSearchSoapRequest"/>
+      <wsdl:output message="tns:FoodSearchSoapResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getFood">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+				Fetches and returns the details of the food having the 
+				supplied unique identity.
+
+				The details include the food's servings sizes and the 
+				nutritional information for each serving.
+
+				If the specified food identity does not exist, then a 
+				fault is generated.
+			</wsdl:documentation>
+      <wsdl:input message="tns:GetFoodSoapRequest"/>
+      <wsdl:output message="tns:GetFoodSoapResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FoodSearch1Soap" type="tns:FoodSearch1Port">
+    <soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="foodSearch">
+    <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="urn:FoodSearchAction"/>
+      <wsdl:input>
+    <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFood">
+    <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="urn:GetFoodAction"/>
+      <wsdl:input>
+    <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FoodSearch1Service">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+			CalorieKing.com Food Search Web Service
+		</wsdl:documentation>
+    <wsdl:port name="FoodSearch1Port" binding="tns:FoodSearch1Soap">
+    <soap:address xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://foodsearch1.webservices.calorieking.com/soap/1.2/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

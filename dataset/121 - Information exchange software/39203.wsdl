@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Compete">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="firstName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="lastName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="birthYear" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="zipCode" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="city" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="email" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="mobile" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="acceptEmail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="compId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="answers" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="freetext" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="imageIdParam" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hotStuff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="presentation" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="imageDesc" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="imageName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="searchString" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="XMLimage" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompeteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="CompeteResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VideoCompete">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="firstName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="lastName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="birthDate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="birthYear" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="address" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="zipCode" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="city" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="email" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="mobile" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="acceptEmail" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="compId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="answers" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="freetext" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="imageIdParam" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="country" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hotStuff" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="presentation" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="imageDesc" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="imageName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="searchString" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="XMLimage" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VideoCompeteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="VideoCompeteResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPagingInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="compId" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="pagingType" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPagingInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetPagingInformationResult" type="tns:Variables"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Variables">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ContributionCount" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PageCount" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PageSize" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPagingInformationByCulture">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="culture" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PageSize" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="compId" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="pagingType" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPagingInformationByCultureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetPagingInformationByCultureResult" type="tns:Variables"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImageContribution">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="contributionId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImageContributionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetImageContributionResult" type="tns:VariablesGetImageContr"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VariablesGetImageContr">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="XMLstring" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Header" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="NumberOfVotes" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Culture" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ImageContributionId" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Score" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="DateInserted" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="HasVoted" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Description" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetImageContributionFB">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="contributionId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImageContributionFBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetImageContributionFBResult" type="tns:VariablesGetImageContr"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContributionIDs">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="PageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="sortOrder" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CompetitionId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContributionIDsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetContributionIDsResult" type="tns:ArrayOfInt"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="int" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetContributionIDsByPageSize">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="PageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PageSize" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="sortOrder" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CompetitionId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContributionIDsByPageSizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetContributionIDsByPageSizeResult" type="tns:ArrayOfInt"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContributionIDsByPageSizeAndCulture">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="PageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PageSize" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="sortOrder" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CompetitionId" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Culture" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContributionIDsByPageSizeAndCultureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetContributionIDsByPageSizeAndCultureResult" type="tns:ArrayOfInt"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeekContributionIDs">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="PageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CompetitionId" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Date" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeekContributionIDsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetWeekContributionIDsResult" type="tns:ArrayOfInt"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWinnerIDsByPageSize">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="pageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PageSize" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="competitionID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWinnerIDsByPageSizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetWinnerIDsByPageSizeResult" type="tns:ArrayOfInt"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWinnerIDsByPageSizeByCulture">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="culture" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="pageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PageSize" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="competitionID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWinnerIDsByPageSizeByCultureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetWinnerIDsByPageSizeByCultureResult" type="tns:ArrayOfInt"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWinnerIDs">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="pageNumber" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="competitionID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWinnerIDsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetWinnerIDsResult" type="tns:ArrayOfInt"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetVote">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ContributionID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Vote" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetVoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SetVoteResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SMSphoneNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SMSmessage" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SMSfromName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SMSphoneNumberFrom" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SendSMSResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckIfVoted">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ContributionID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckIfVotedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="CheckIfVotedResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="VideoCompeteSoapIn">
+    <wsdl:part name="parameters" element="tns:VideoCompete"/>
+  </wsdl:message>
+  <wsdl:message name="CompeteSoapOut">
+    <wsdl:part name="parameters" element="tns:CompeteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetContributionIDsByPageSizeAndCultureSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContributionIDsByPageSizeAndCultureResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetPagingInformationByCultureSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPagingInformationByCulture"/>
+  </wsdl:message>
+  <wsdl:message name="GetImageContributionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetImageContributionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetPagingInformationByCultureSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPagingInformationByCultureResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetWeekContributionIDsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWeekContributionIDs"/>
+  </wsdl:message>
+  <wsdl:message name="GetImageContributionFBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetImageContributionFB"/>
+  </wsdl:message>
+  <wsdl:message name="GetImageContributionFBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetImageContributionFBResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CompeteSoapIn">
+    <wsdl:part name="parameters" element="tns:Compete"/>
+  </wsdl:message>
+  <wsdl:message name="GetPagingInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPagingInformationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CheckIfVotedSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckIfVotedResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetWeekContributionIDsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWeekContributionIDsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetWinnerIDsByPageSizeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWinnerIDsByPageSize"/>
+  </wsdl:message>
+  <wsdl:message name="GetContributionIDsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContributionIDs"/>
+  </wsdl:message>
+  <wsdl:message name="GetWinnerIDsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWinnerIDs"/>
+  </wsdl:message>
+  <wsdl:message name="GetPagingInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPagingInformation"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMS"/>
+  </wsdl:message>
+  <wsdl:message name="GetWinnerIDsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWinnerIDsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CheckIfVotedSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckIfVoted"/>
+  </wsdl:message>
+  <wsdl:message name="SetVoteSoapIn">
+    <wsdl:part name="parameters" element="tns:SetVote"/>
+  </wsdl:message>
+  <wsdl:message name="VideoCompeteSoapOut">
+    <wsdl:part name="parameters" element="tns:VideoCompeteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetWinnerIDsByPageSizeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWinnerIDsByPageSizeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetVoteSoapOut">
+    <wsdl:part name="parameters" element="tns:SetVoteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetContributionIDsByPageSizeAndCultureSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContributionIDsByPageSizeAndCulture"/>
+  </wsdl:message>
+  <wsdl:message name="GetWinnerIDsByPageSizeByCultureSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWinnerIDsByPageSizeByCultureResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetContributionIDsByPageSizeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContributionIDsByPageSize"/>
+  </wsdl:message>
+  <wsdl:message name="GetContributionIDsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContributionIDsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetImageContributionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetImageContribution"/>
+  </wsdl:message>
+  <wsdl:message name="GetContributionIDsByPageSizeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContributionIDsByPageSizeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetWinnerIDsByPageSizeByCultureSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWinnerIDsByPageSizeByCulture"/>
+  </wsdl:message>
+  <wsdl:portType name="DesignServiceSoap">
+    <wsdl:operation name="Compete">
+      <wsdl:input message="tns:CompeteSoapIn"/>
+      <wsdl:output message="tns:CompeteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="VideoCompete">
+      <wsdl:input message="tns:VideoCompeteSoapIn"/>
+      <wsdl:output message="tns:VideoCompeteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPagingInformation">
+      <wsdl:input message="tns:GetPagingInformationSoapIn"/>
+      <wsdl:output message="tns:GetPagingInformationSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPagingInformationByCulture">
+      <wsdl:input message="tns:GetPagingInformationByCultureSoapIn"/>
+      <wsdl:output message="tns:GetPagingInformationByCultureSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageContribution">
+      <wsdl:input message="tns:GetImageContributionSoapIn"/>
+      <wsdl:output message="tns:GetImageContributionSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageContributionFB">
+      <wsdl:input message="tns:GetImageContributionFBSoapIn"/>
+      <wsdl:output message="tns:GetImageContributionFBSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetContributionIDs">
+      <wsdl:input message="tns:GetContributionIDsSoapIn"/>
+      <wsdl:output message="tns:GetContributionIDsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetContributionIDsByPageSize">
+      <wsdl:input message="tns:GetContributionIDsByPageSizeSoapIn"/>
+      <wsdl:output message="tns:GetContributionIDsByPageSizeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetContributionIDsByPageSizeAndCulture">
+      <wsdl:input message="tns:GetContributionIDsByPageSizeAndCultureSoapIn"/>
+      <wsdl:output message="tns:GetContributionIDsByPageSizeAndCultureSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetWeekContributionIDs">
+      <wsdl:input message="tns:GetWeekContributionIDsSoapIn"/>
+      <wsdl:output message="tns:GetWeekContributionIDsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetWinnerIDsByPageSize">
+      <wsdl:input message="tns:GetWinnerIDsByPageSizeSoapIn"/>
+      <wsdl:output message="tns:GetWinnerIDsByPageSizeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetWinnerIDsByPageSizeByCulture">
+      <wsdl:input message="tns:GetWinnerIDsByPageSizeByCultureSoapIn"/>
+      <wsdl:output message="tns:GetWinnerIDsByPageSizeByCultureSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetWinnerIDs">
+      <wsdl:input message="tns:GetWinnerIDsSoapIn"/>
+      <wsdl:output message="tns:GetWinnerIDsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetVote">
+      <wsdl:input message="tns:SetVoteSoapIn"/>
+      <wsdl:output message="tns:SetVoteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <wsdl:input message="tns:SendSMSSoapIn"/>
+      <wsdl:output message="tns:SendSMSSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIfVoted">
+      <wsdl:input message="tns:CheckIfVotedSoapIn"/>
+      <wsdl:output message="tns:CheckIfVotedSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DesignServiceSoap" type="tns:DesignServiceSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Compete">
+      <soap:operation soapAction="http://tempuri.org/Compete" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VideoCompete">
+      <soap:operation soapAction="http://tempuri.org/VideoCompete" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPagingInformation">
+      <soap:operation soapAction="http://tempuri.org/GetPagingInformation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPagingInformationByCulture">
+      <soap:operation soapAction="http://tempuri.org/GetPagingInformationByCulture" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageContribution">
+      <soap:operation soapAction="http://tempuri.org/GetImageContribution" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImageContributionFB">
+      <soap:operation soapAction="http://tempuri.org/GetImageContributionFB" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContributionIDs">
+      <soap:operation soapAction="http://tempuri.org/GetContributionIDs" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContributionIDsByPageSize">
+      <soap:operation soapAction="http://tempuri.org/GetContributionIDsByPageSize" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContributionIDsByPageSizeAndCulture">
+      <soap:operation soapAction="http://tempuri.org/GetContributionIDsByPageSizeAndCulture" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWeekContributionIDs">
+      <soap:operation soapAction="http://tempuri.org/GetWeekContributionIDs" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWinnerIDsByPageSize">
+      <soap:operation soapAction="http://tempuri.org/GetWinnerIDsByPageSize" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWinnerIDsByPageSizeByCulture">
+      <soap:operation soapAction="http://tempuri.org/GetWinnerIDsByPageSizeByCulture" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWinnerIDs">
+      <soap:operation soapAction="http://tempuri.org/GetWinnerIDs" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetVote">
+      <soap:operation soapAction="http://tempuri.org/SetVote" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <soap:operation soapAction="http://tempuri.org/SendSMS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIfVoted">
+      <soap:operation soapAction="http://tempuri.org/CheckIfVoted" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DesignService">
+    <wsdl:port name="DesignServiceSoap" binding="tns:DesignServiceSoap">
+      <soap:address location="http://www.libresse.ru/services/campaigns/designservice.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

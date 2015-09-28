@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HandShake">
+        <s:complexType/>
+      </s:element>
+      <s:element name="HandShakeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="HandShakeResult" type="tns:PurinaOneResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurinaOneResponse">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="handshakeid" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="startgame" type="tns:StartGame"/>
+          <s:element maxOccurs="1" minOccurs="0" name="highscores" type="tns:ArrayOfHighScore"/>
+          <s:element maxOccurs="1" minOccurs="0" name="errorresponse" type="tns:Error_Response"/>
+          <s:element maxOccurs="1" minOccurs="1" name="ranking" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StartGame">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="gameID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="handshakeID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfHighScore">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="HighScore" nillable="true" type="tns:HighScore"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HighScore">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="petName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="handshakeID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="gameID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Score" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Email" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="GameHash" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Error_Response">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="ErrorID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ErrorMessage" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Pageview">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="gamePage" type="tns:GamePage"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GamePage">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="pageName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="handshakeID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PageviewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="PageviewResult" type="tns:PurinaOneResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="startGame">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="start" type="tns:StartGame"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="startGameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="startGameResult" type="tns:PurinaOneResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkPoint">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="game" type="tns:Game"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Game">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="Level" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="checkPointID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="handshakeID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="gameID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Score" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="TimePassed" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="GameHash" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="LevelStarted" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="LevelFinished" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="checkPointResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="checkPointResult" type="tns:PurinaOneResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="startLevel">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="game" type="tns:Game"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="startLevelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="startLevelResult" type="tns:PurinaOneResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="finishLevel">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="game" type="tns:Game"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="finishLevelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="finishLevelResult" type="tns:PurinaOneResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="saveInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="highScore" type="tns:HighScore"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="saveInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="saveInfoResult" type="tns:PurinaOneResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getHighScores">
+        <s:complexType/>
+      </s:element>
+      <s:element name="getHighScoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="getHighScoresResult" type="tns:PurinaOneResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tellAFriend">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="tell" type="tns:TellAFriend"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TellAFriend">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Email" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Friends" type="tns:ArrayOfFriend"/>
+          <s:element maxOccurs="1" minOccurs="0" name="handshakeID" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="GameHash" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFriend">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="Friend" nillable="true" type="tns:Friend"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Friend">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="FriendName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="FriendEmail" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="tellAFriendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="tellAFriendResult" type="tns:PurinaOneResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Register">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="regData" type="tns:RegistrationDataReturn"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RegistrationDataReturn">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="primaryData" type="tns:PrimaryData"/>
+          <s:element maxOccurs="1" minOccurs="0" name="secondaryData" type="tns:SecondaryData"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PrimaryData">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="1" name="UserID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Title" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Firstname" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Lastname" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Gender" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="AgeBracket" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Country" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="CampaignID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Emailadress" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="NumberOfCats" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="HasGotKittens" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="NumberOfDogs" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="HasGotPuppies" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="OptIn" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="SiteName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Phone" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SecondaryData">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Address" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Housenumber" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="HousenumberAddition" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Zipcode" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="CountryName" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog1_Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog2_Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog3_Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog4_Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog1_Breed" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog2_Breed" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog3_Breed" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog4_Breed" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Dog1_BreedID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Dog2_BreedID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Dog3_BreedID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Dog4_BreedID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog1_Gender" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog2_Gender" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog3_Gender" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog4_Gender" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Dog1_BD" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Dog2_BD" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Dog3_BD" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Dog4_BD" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog1_Weight" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog2_Weight" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog3_Weight" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog4_Weight" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog1_Height" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog2_Height" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog3_Height" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Dog4_Height" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat1_Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat2_Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat3_Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat4_Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Cat1_BD" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Cat2_BD" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Cat3_BD" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Cat4_BD" type="s:dateTime"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat1_Breed" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat2_Breed" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat3_Breed" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat4_Breed" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Cat1_BreedID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Cat2_BreedID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Cat3_BreedID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="1" name="Cat4_BreedID" type="s:int"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat1_Gender" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat2_Gender" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat3_Gender" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Cat4_Gender" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="RegisterResult" type="tns:PurinaOneResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="password" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="LoginResult" type="tns:PurinaOneResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login"/>
+  </wsdl:message>
+  <wsdl:message name="getHighScoresSoapIn">
+    <wsdl:part name="parameters" element="tns:getHighScores"/>
+  </wsdl:message>
+  <wsdl:message name="checkPointSoapOut">
+    <wsdl:part name="parameters" element="tns:checkPointResponse"/>
+  </wsdl:message>
+  <wsdl:message name="tellAFriendSoapOut">
+    <wsdl:part name="parameters" element="tns:tellAFriendResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterSoapIn">
+    <wsdl:part name="parameters" element="tns:Register"/>
+  </wsdl:message>
+  <wsdl:message name="PageviewSoapIn">
+    <wsdl:part name="parameters" element="tns:Pageview"/>
+  </wsdl:message>
+  <wsdl:message name="saveInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:saveInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="finishLevelSoapIn">
+    <wsdl:part name="parameters" element="tns:finishLevel"/>
+  </wsdl:message>
+  <wsdl:message name="saveInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:saveInfo"/>
+  </wsdl:message>
+  <wsdl:message name="tellAFriendSoapIn">
+    <wsdl:part name="parameters" element="tns:tellAFriend"/>
+  </wsdl:message>
+  <wsdl:message name="HandShakeSoapOut">
+    <wsdl:part name="parameters" element="tns:HandShakeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="PageviewSoapOut">
+    <wsdl:part name="parameters" element="tns:PageviewResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterResponse"/>
+  </wsdl:message>
+  <wsdl:message name="startGameSoapIn">
+    <wsdl:part name="parameters" element="tns:startGame"/>
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getHighScoresSoapOut">
+    <wsdl:part name="parameters" element="tns:getHighScoresResponse"/>
+  </wsdl:message>
+  <wsdl:message name="startLevelSoapOut">
+    <wsdl:part name="parameters" element="tns:startLevelResponse"/>
+  </wsdl:message>
+  <wsdl:message name="finishLevelSoapOut">
+    <wsdl:part name="parameters" element="tns:finishLevelResponse"/>
+  </wsdl:message>
+  <wsdl:message name="checkPointSoapIn">
+    <wsdl:part name="parameters" element="tns:checkPoint"/>
+  </wsdl:message>
+  <wsdl:message name="startGameSoapOut">
+    <wsdl:part name="parameters" element="tns:startGameResponse"/>
+  </wsdl:message>
+  <wsdl:message name="HandShakeSoapIn">
+    <wsdl:part name="parameters" element="tns:HandShake"/>
+  </wsdl:message>
+  <wsdl:message name="startLevelSoapIn">
+    <wsdl:part name="parameters" element="tns:startLevel"/>
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="HandShake">
+      <wsdl:input message="tns:HandShakeSoapIn"/>
+      <wsdl:output message="tns:HandShakeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Pageview">
+      <wsdl:input message="tns:PageviewSoapIn"/>
+      <wsdl:output message="tns:PageviewSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="startGame">
+      <wsdl:input message="tns:startGameSoapIn"/>
+      <wsdl:output message="tns:startGameSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="checkPoint">
+      <wsdl:input message="tns:checkPointSoapIn"/>
+      <wsdl:output message="tns:checkPointSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="startLevel">
+      <wsdl:input message="tns:startLevelSoapIn"/>
+      <wsdl:output message="tns:startLevelSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="finishLevel">
+      <wsdl:input message="tns:finishLevelSoapIn"/>
+      <wsdl:output message="tns:finishLevelSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="saveInfo">
+      <wsdl:input message="tns:saveInfoSoapIn"/>
+      <wsdl:output message="tns:saveInfoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="getHighScores">
+      <wsdl:input message="tns:getHighScoresSoapIn"/>
+      <wsdl:output message="tns:getHighScoresSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="tellAFriend">
+      <wsdl:input message="tns:tellAFriendSoapIn"/>
+      <wsdl:output message="tns:tellAFriendSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:input message="tns:RegisterSoapIn"/>
+      <wsdl:output message="tns:RegisterSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn"/>
+      <wsdl:output message="tns:LoginSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="HandShake">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/HandShake" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Pageview">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/Pageview" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startGame">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/startGame" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkPoint">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/checkPoint" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startLevel">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/startLevel" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="finishLevel">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/finishLevel" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveInfo">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/saveInfo" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHighScores">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/getHighScores" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tellAFriend">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/tellAFriend" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/Register" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/Login" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="HandShake">
+      <soap:operation soapAction="http://tempuri.org/HandShake" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Pageview">
+      <soap:operation soapAction="http://tempuri.org/Pageview" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startGame">
+      <soap:operation soapAction="http://tempuri.org/startGame" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkPoint">
+      <soap:operation soapAction="http://tempuri.org/checkPoint" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="startLevel">
+      <soap:operation soapAction="http://tempuri.org/startLevel" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="finishLevel">
+      <soap:operation soapAction="http://tempuri.org/finishLevel" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveInfo">
+      <soap:operation soapAction="http://tempuri.org/saveInfo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHighScores">
+      <soap:operation soapAction="http://tempuri.org/getHighScores" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tellAFriend">
+      <soap:operation soapAction="http://tempuri.org/tellAFriend" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/Register" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://development.icompany.nl/nestle/purinaone/purinagame/game.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://development.icompany.nl/nestle/purinaone/purinagame/game.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="email" targetNamespace="https://www.spmloans.com/soap/email.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="https://www.spmloans.com/soap/email.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <message name="msgemail_sendmail">
+    <part name="wto" type="xsd:string"/>
+    <part name="wfrom" type="xsd:string"/>
+    <part name="subject" type="xsd:string"/>
+    <part name="msg" type="xsd:string"/>
+  </message>
+  <message name="msgemailaction">
+    <part name="instructions" type="xsd:string"/>
+  </message>
+  <message name="msgstringresponse">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="msgintegerresponse">
+    <part name="return" type="xsd:integer"/>
+  </message>
+  <portType name="emailportType">
+    <operation name="emailaction">
+      <input message="tns:msgemailaction"/>
+      <output message="tns:msgstringresponse"/>
+    </operation>
+    <operation name="email_sendmail">
+      <input message="tns:msgemail_sendmail"/>
+      <output message="tns:msgstringresponse"/>
+    </operation>
+  </portType>
+  <binding name="emailBinding" type="tns:emailportType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="emailaction">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:emailService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:emailService"/>
+      </output>
+    </operation>
+    <operation name="email_sendmail">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:emailService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:emailService"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="emailService">
+<documentation>email functions</documentation>
+    <port name="emailPort" binding="tns:emailBinding">
+      <soap:address location="https://www.spmloans.com/cgi-bin/Soap.cgi"/>
+    </port>
+  </service>
+</definitions>

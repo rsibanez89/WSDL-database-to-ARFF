@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="SoapDB" targetNamespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:hobitDKFZ="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl" xmlns:tns="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/">
+  <types>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hobitDKFZ="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+ </schema>
+  </types>
+  <message name="srsEntryRequest">
+    <part name="query" type="xsd:string"/>
+  </message>
+  <message name="seqret1Request">
+    <part name="usa" type="xsd:string"/>
+    <part name="format" type="xsd:string"/>
+  </message>
+  <message name="srsEntryViewResponse">
+    <part name="entry" type="xsd:string"/>
+  </message>
+  <message name="srsEntryViewRequest">
+    <part name="query" type="xsd:string"/>
+    <part name="view" type="xsd:string"/>
+  </message>
+  <message name="srsEntryFieldsResponse">
+    <part name="entry" type="xsd:string"/>
+  </message>
+  <message name="srsEntryResponse">
+    <part name="entry" type="xsd:string"/>
+  </message>
+  <message name="seqret1Response">
+    <part name="outseq" type="xsd:string"/>
+  </message>
+  <message name="srsEntryXmlResponse">
+    <part name="srs-result" type="xsd:anyType"/>
+  </message>
+  <message name="srsEntryXml">
+    <part name="query" type="xsd:string"/>
+  </message>
+  <message name="srsEntryFieldsRequest">
+    <part name="query" type="xsd:string"/>
+    <part name="fields" type="xsd:string"/>
+  </message>
+  <portType name="SoapDBPortType">
+    <operation name="seqret1">
+<documentation>retrieve single sequence entry from databases</documentation>
+      <input message="hobitDKFZ:seqret1Request"/>
+      <output message="hobitDKFZ:seqret1Response"/>
+    </operation>
+    <operation name="srsEntry">
+<documentation>retrieve entries from SRS datbase system</documentation>
+      <input message="hobitDKFZ:srsEntryRequest"/>
+      <output message="hobitDKFZ:srsEntryResponse"/>
+    </operation>
+    <operation name="srsEntryFields">
+<documentation>retrieve entries from SRS datbase system with fields filter</documentation>
+      <input message="hobitDKFZ:srsEntryFieldsRequest"/>
+      <output message="hobitDKFZ:srsEntryFieldsResponse"/>
+    </operation>
+    <operation name="srsEntryView">
+<documentation>retrieve entries from SRS datbase system in a given View</documentation>
+      <input message="hobitDKFZ:srsEntryViewRequest"/>
+      <output message="hobitDKFZ:srsEntryViewResponse"/>
+    </operation>
+    <operation name="srsEntryXml">
+<documentation>retrieve entries from SRS datbase system in XML format</documentation>
+      <input message="hobitDKFZ:srsEntryXml"/>
+      <output message="hobitDKFZ:srsEntryXmlResponse"/>
+    </operation>
+  </portType>
+  <binding name="SoapDB" type="hobitDKFZ:SoapDBPortType">
+    <SOAP:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="seqret1">
+      <SOAP:operation soapAction="" style="rpc"/>
+      <input>
+        <SOAP:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl"/>
+      </input>
+      <output>
+        <SOAP:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl"/>
+      </output>
+    </operation>
+    <operation name="srsEntry">
+      <SOAP:operation soapAction="" style="rpc"/>
+      <input>
+        <SOAP:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl"/>
+      </input>
+      <output>
+        <SOAP:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl"/>
+      </output>
+    </operation>
+    <operation name="srsEntryFields">
+      <SOAP:operation soapAction="" style="rpc"/>
+      <input>
+        <SOAP:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl"/>
+      </input>
+      <output>
+        <SOAP:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl"/>
+      </output>
+    </operation>
+    <operation name="srsEntryView">
+      <SOAP:operation soapAction="" style="rpc"/>
+      <input>
+        <SOAP:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl"/>
+      </input>
+      <output>
+        <SOAP:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl"/>
+      </output>
+    </operation>
+    <operation name="srsEntryXml">
+      <SOAP:operation soapAction="" style="rpc"/>
+      <input>
+        <SOAP:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl"/>
+      </input>
+      <output>
+        <SOAP:body parts="srs-result" use="literal" namespace="http://www.dkfz-heidelberg.de/menu/hobit/2005/04/SoapDB.wsdl"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="SoapDB">
+<documentation>Soap access to sequence databases at DKFZ</documentation>
+    <port name="SoapDB" binding="hobitDKFZ:SoapDB">
+      <SOAP:address location="http://www.dkfz-heidelberg.de/menu/cgi-bin/hobit/2005/04/soapdb"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://schemas.microsoft.com/sharepoint/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://schemas.microsoft.com/sharepoint/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/sharepoint/soap/">
+      <s:element name="GetSiteTemplates">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="LCID" type="s:unsignedInt"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSiteTemplatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetSiteTemplatesResult" type="s:unsignedInt"/>
+            <s:element maxOccurs="1" minOccurs="0" name="TemplateList" type="tns:ArrayOfTemplate"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTemplate">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="Template" nillable="true" type="tns:Template"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Template">
+        <s:attribute name="ID" type="s:int" use="required"/>
+        <s:attribute name="Title" type="s:string"/>
+        <s:attribute name="Name" type="s:string"/>
+        <s:attribute name="IsUnique" type="s:boolean" use="required"/>
+        <s:attribute name="IsHidden" type="s:boolean" use="required"/>
+        <s:attribute name="Description" type="s:string"/>
+        <s:attribute name="ImageUrl" type="s:string"/>
+        <s:attribute name="IsCustom" type="s:boolean" use="required"/>
+        <s:attribute name="IsSubWebOnly" type="s:boolean" use="required"/>
+        <s:attribute name="IsRootWebOnly" type="s:boolean" use="required"/>
+        <s:attribute name="DisplayCategory" type="s:string"/>
+        <s:attribute name="FilterCategories" type="s:string"/>
+        <s:attribute name="HasProvisionClass" type="s:boolean" use="required"/>
+      </s:complexType>
+      <s:element name="GetUpdatedFormDigest">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetUpdatedFormDigestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetUpdatedFormDigestResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="jobName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="webUrl" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="dataPath" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="includeSubwebs" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="includeUserSecurity" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="overWrite" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="cabSize" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExportWebResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ExportWebResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="jobName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="webUrl" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="dataFiles" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="logPath" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="includeUserSecurity" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="1" name="overWrite" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ImportWebResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ImportWebResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ExportWebSoapOut">
+    <wsdl:part name="parameters" element="tns:ExportWebResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSiteTemplatesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSiteTemplates"/>
+  </wsdl:message>
+  <wsdl:message name="GetUpdatedFormDigestSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdatedFormDigestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetSiteTemplatesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSiteTemplatesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ImportWebSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportWeb"/>
+  </wsdl:message>
+  <wsdl:message name="ExportWebSoapIn">
+    <wsdl:part name="parameters" element="tns:ExportWeb"/>
+  </wsdl:message>
+  <wsdl:message name="GetUpdatedFormDigestSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdatedFormDigest"/>
+  </wsdl:message>
+  <wsdl:message name="ImportWebSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportWebResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="SitesSoap">
+    <wsdl:operation name="GetSiteTemplates">
+      <wsdl:input message="tns:GetSiteTemplatesSoapIn"/>
+      <wsdl:output message="tns:GetSiteTemplatesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdatedFormDigest">
+      <wsdl:input message="tns:GetUpdatedFormDigestSoapIn"/>
+      <wsdl:output message="tns:GetUpdatedFormDigestSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ExportWeb">
+      <wsdl:input message="tns:ExportWebSoapIn"/>
+      <wsdl:output message="tns:ExportWebSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ImportWeb">
+      <wsdl:input message="tns:ImportWebSoapIn"/>
+      <wsdl:output message="tns:ImportWebSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SitesSoap" type="tns:SitesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSiteTemplates">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/GetSiteTemplates" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdatedFormDigest">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/GetUpdatedFormDigest" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportWeb">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ExportWeb" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportWeb">
+      <soap:operation soapAction="http://schemas.microsoft.com/sharepoint/soap/ImportWeb" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SitesSoap12" type="tns:SitesSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetSiteTemplates">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/GetSiteTemplates" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdatedFormDigest">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/GetUpdatedFormDigest" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportWeb">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/ExportWeb" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportWeb">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://schemas.microsoft.com/sharepoint/soap/ImportWeb" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Sites">
+    <wsdl:port name="SitesSoap12" binding="tns:SitesSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.tim.hawaii.edu/_vti_bin/sites.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SitesSoap" binding="tns:SitesSoap">
+      <soap:address location="http://www.tim.hawaii.edu/_vti_bin/sites.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,931 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="InstantMessengerService" targetNamespace="urn:singles:operations" xmlns:ns1="http://cxf.apache.org/bindings/xformat" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:singles:operations" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="urn:singles:operations" version="1.0" xmlns:tns="urn:singles:operations" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="accountCompletionInfo" type="tns:accountCompletionInfo"/>
+<xs:element name="accountOrientation" type="tns:accountOrientation"/>
+<xs:element name="accountRegistrationResult" type="tns:accountRegistrationResult"/>
+<xs:element name="addAccountToHotlist" type="tns:addAccountToHotlist"/>
+<xs:element name="addAccountToHotlistResponse" type="tns:addAccountToHotlistResponse"/>
+<xs:element name="addAccountToHotlistResult" type="tns:addAccountToHotlistResult"/>
+<xs:element name="checkDirectMessages" type="tns:checkDirectMessages"/>
+<xs:element name="checkDirectMessagesResponse" type="tns:checkDirectMessagesResponse"/>
+<xs:element name="checkImVersion" type="tns:checkImVersion"/>
+<xs:element name="checkImVersionResponse" type="tns:checkImVersionResponse"/>
+<xs:element name="checkOnlineStatus" type="tns:checkOnlineStatus"/>
+<xs:element name="checkOnlineStatusResponse" type="tns:checkOnlineStatusResponse"/>
+<xs:element name="confirmMessage" type="tns:confirmMessage"/>
+<xs:element name="confirmMessageResponse" type="tns:confirmMessageResponse"/>
+<xs:element name="directMessage" type="tns:directMessage"/>
+<xs:element name="extendedSearch" type="tns:extendedSearch"/>
+<xs:element name="extendedSearchResponse" type="tns:extendedSearchResponse"/>
+<xs:element name="firstStepRegistrationInfo" type="tns:firstStepRegistrationInfo"/>
+<xs:element name="getContactList" type="tns:getContactList"/>
+<xs:element name="getContactListResponse" type="tns:getContactListResponse"/>
+<xs:element name="getCurrentUserInfo" type="tns:getCurrentUserInfo"/>
+<xs:element name="getCurrentUserInfoResponse" type="tns:getCurrentUserInfoResponse"/>
+<xs:element name="getLabelsList" type="tns:getLabelsList"/>
+<xs:element name="getLabelsListResponse" type="tns:getLabelsListResponse"/>
+<xs:element name="getSupportedLocales" type="tns:getSupportedLocales"/>
+<xs:element name="getSupportedLocalesResponse" type="tns:getSupportedLocalesResponse"/>
+<xs:element name="imExtendedSearchResults" type="tns:imExtendedSearchResults"/>
+<xs:element name="imInitializeInfo" type="tns:imInitializeInfo"/>
+<xs:element name="initRegistration" type="tns:initRegistration"/>
+<xs:element name="initRegistrationResponse" type="tns:initRegistrationResponse"/>
+<xs:element name="initializeInstantMessenger" type="tns:initializeInstantMessenger"/>
+<xs:element name="initializeInstantMessengerResponse" type="tns:initializeInstantMessengerResponse"/>
+<xs:element name="isUserInBlockList" type="tns:isUserInBlockList"/>
+<xs:element name="isUserInBlockListResponse" type="tns:isUserInBlockListResponse"/>
+<xs:element name="litePropertiesList" type="tns:litePropertiesList"/>
+<xs:element name="liteProperty" type="tns:liteProperty"/>
+<xs:element name="logout" type="tns:logout"/>
+<xs:element name="logoutResponse" type="tns:logoutResponse"/>
+<xs:element name="logoutUser" type="tns:logoutUser"/>
+<xs:element name="logoutUserResponse" type="tns:logoutUserResponse"/>
+<xs:element name="lookingForCriteria" type="tns:lookingForCriteria"/>
+<xs:element name="lookingForOrientation" type="tns:lookingForOrientation"/>
+<xs:element name="notifierMessage" type="tns:notifierMessage"/>
+<xs:element name="registerAccount" type="tns:registerAccount"/>
+<xs:element name="registerAccountResponse" type="tns:registerAccountResponse"/>
+<xs:element name="registerAccountSecondStep" type="tns:registerAccountSecondStep"/>
+<xs:element name="registerAccountSecondStepResponse" type="tns:registerAccountSecondStepResponse"/>
+<xs:element name="registrationInitData" type="tns:registrationInitData"/>
+<xs:element name="registrationSecondStepDataBean" type="tns:registrationSecondStepDataBean"/>
+<xs:element name="removeAccountsFromHotlist" type="tns:removeAccountsFromHotlist"/>
+<xs:element name="removeAccountsFromHotlistResponse" type="tns:removeAccountsFromHotlistResponse"/>
+<xs:element name="responseAccountRegistration" type="tns:responseAccountRegistration"/>
+<xs:element name="responseRegistrationInitData" type="tns:responseRegistrationInitData"/>
+<xs:element name="searchByNick" type="tns:searchByNick"/>
+<xs:element name="searchByNickResponse" type="tns:searchByNickResponse"/>
+<xs:element name="sendDirectMessage" type="tns:sendDirectMessage"/>
+<xs:element name="sendDirectMessageResponse" type="tns:sendDirectMessageResponse"/>
+<xs:element name="serviceProperty" type="tns:serviceProperty"/>
+<xs:element name="simpleRegistrationData" type="tns:simpleRegistrationData"/>
+<xs:element name="svcError" type="tns:svcError"/>
+<xs:element name="userInfo" type="tns:userInfo"/>
+<xs:element name="validationError" type="tns:validationError"/>
+<xs:element name="webServiceResponse" type="tns:webServiceResponse"/>
+<xs:complexType name="confirmMessage">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="messageIds" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="confirmMessageResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="EmptyResult" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="extendedSearch">
+<xs:sequence>
+<xs:element form="qualified" name="ageFromId" type="xs:int"/>
+<xs:element form="qualified" name="ageToId" type="xs:int"/>
+<xs:element form="qualified" name="sexId" type="xs:int"/>
+<xs:element form="qualified" name="sexOrientId" type="xs:int"/>
+<xs:element form="qualified" name="countryId" type="xs:int"/>
+<xs:element form="qualified" name="isPhoto" type="xs:boolean"/>
+<xs:element form="qualified" name="isOnline" type="xs:boolean"/>
+<xs:element form="qualified" name="pageNum" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="extendedSearchResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="IMExtendedSearchResults" type="tns:imExtendedSearchResults"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="imExtendedSearchResults">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element name="curPage" type="xs:int"/>
+<xs:element name="pagesAmount" type="xs:int"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="searchResults" type="tns:userInfo"/>
+<xs:element name="totalCount" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="baseDto">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="userInfo">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="age" type="xs:string"/>
+<xs:element name="countryId" type="xs:int"/>
+<xs:element minOccurs="0" name="imAccess" type="xs:string"/>
+<xs:element minOccurs="0" name="nick" type="xs:string"/>
+<xs:element name="online" type="xs:boolean"/>
+<xs:element name="photoStatus" type="xs:int"/>
+<xs:element minOccurs="0" name="photoUri" type="xs:string"/>
+<xs:element name="sexTypeId" type="xs:int"/>
+<xs:element name="userId" type="xs:int"/>
+<xs:element name="zodiacId" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="registerAccount">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="registrationData" type="tns:simpleRegistrationData"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="simpleRegistrationData">
+<xs:complexContent>
+<xs:extension base="tns:registrationSecondStepDataBean">
+<xs:sequence>
+<xs:element name="agreeToTOS" type="xs:boolean"/>
+<xs:element name="countryId" type="xs:int"/>
+<xs:element minOccurs="0" name="email" type="xs:string"/>
+<xs:element minOccurs="0" name="lookingForOrientationAsString" type="xs:string"/>
+<xs:element minOccurs="0" name="lookingForSexAsString" type="xs:string"/>
+<xs:element minOccurs="0" name="nickname" type="xs:string"/>
+<xs:element minOccurs="0" name="password" type="xs:string"/>
+<xs:element name="receiveUpdates" type="xs:boolean"/>
+<xs:element name="regionId" type="xs:int"/>
+<xs:element name="sexId" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="registrationSecondStepDataBean">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element name="birthDateDay1" type="xs:int"/>
+<xs:element name="birthDateDay2" type="xs:int"/>
+<xs:element name="birthDateMonth1" type="xs:int"/>
+<xs:element name="birthDateMonth2" type="xs:int"/>
+<xs:element name="birthDateYear1" type="xs:int"/>
+<xs:element name="birthDateYear2" type="xs:int"/>
+<xs:element name="cityId" type="xs:int"/>
+<xs:element minOccurs="0" name="firstName1" type="xs:string"/>
+<xs:element minOccurs="0" name="firstName2" type="xs:string"/>
+<xs:element minOccurs="0" name="mobilePhoneNumber" type="xs:string"/>
+<xs:element name="orientationId1" type="xs:int"/>
+<xs:element name="orientationId2" type="xs:int"/>
+<xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="registerAccountResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="ResponseAccountRegistration" type="tns:responseAccountRegistration"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="responseAccountRegistration">
+<xs:complexContent>
+<xs:extension base="tns:webServiceResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="accountRegistrationResult" type="tns:accountRegistrationResult"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="webServiceResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="svcError" type="tns:svcError"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="accountRegistrationResult">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="alternateNicksLabels" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="fieldErrors" type="tns:validationError"/>
+<xs:element name="success" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="validationError">
+<xs:sequence>
+<xs:element minOccurs="0" name="errorMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="fieldname" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="svcError">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="description" type="xs:string"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="reference" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="initializeInstantMessenger">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="nick" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="password" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="secureHash" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="maxContacts" type="xs:int"/>
+<xs:element form="qualified" minOccurs="0" name="swfVersion" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="initializeInstantMessengerResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="IMInitializeInfo" type="tns:imInitializeInfo"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="imInitializeInfo">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="accountCompletionInfo" type="tns:accountCompletionInfo"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="agesList" type="tns:liteProperty"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="contactList" type="tns:userInfo"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="countriesList" type="tns:liteProperty"/>
+<xs:element minOccurs="0" name="firstStepRegistrationInfo" type="tns:firstStepRegistrationInfo"/>
+<xs:element name="imVersionStatus" type="xs:int"/>
+<xs:element minOccurs="0" name="lookingForCriteria" type="tns:lookingForCriteria"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="orientationsList" type="tns:lookingForOrientation"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="sexesList" type="tns:liteProperty"/>
+<xs:element minOccurs="0" name="svcError" type="tns:svcError"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="systemInfo" type="tns:serviceProperty"/>
+<xs:element minOccurs="0" name="userInfo" type="tns:userInfo"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="zodiacsList" type="tns:liteProperty"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="accountCompletionInfo">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="description" type="xs:string"/>
+<xs:element minOccurs="0" name="heading" type="xs:string"/>
+<xs:element minOccurs="0" name="photoPreviewUri" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="liteProperty">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="firstStepRegistrationInfo">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element name="choosenCountryId" type="xs:int"/>
+<xs:element name="choosenRegionId" type="xs:int"/>
+<xs:element name="choosenSexId" type="xs:int"/>
+<xs:element minOccurs="0" name="email" type="xs:string"/>
+<xs:element minOccurs="0" name="lookingForSexIds" type="xs:string"/>
+<xs:element minOccurs="0" name="nickname" type="xs:string"/>
+<xs:element minOccurs="0" name="password" type="xs:string"/>
+<xs:element name="receiveNewsUpdate" type="xs:boolean"/>
+<xs:element name="referrerUserId" type="xs:int"/>
+<xs:element name="userId" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="lookingForCriteria">
+<xs:sequence>
+<xs:element name="ageFromId" type="xs:int"/>
+<xs:element name="ageToId" type="xs:int"/>
+<xs:element name="cityId" type="xs:int"/>
+<xs:element name="countryId" type="xs:int"/>
+<xs:element name="orientationId" type="xs:int"/>
+<xs:element name="regionId" type="xs:int"/>
+<xs:element name="sexId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="lookingForOrientation">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element name="sexId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="serviceProperty">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="id" type="xs:int"/>
+<xs:element minOccurs="0" name="label" type="xs:string"/>
+<xs:element minOccurs="0" name="value" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="logoutUser">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="logoutUserResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="UnauthorizedNickname" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="checkOnlineStatus">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="accountIds" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="checkOnlineStatusResponse">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="OnlineAccountsIds" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="removeAccountsFromHotlist">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="accountIds" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="removeAccountsFromHotlistResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="EmptyResult" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="checkImVersion">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="swfVersion" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="checkImVersionResponse">
+<xs:sequence>
+<xs:element form="qualified" name="ImVersionStatus" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="searchByNick">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="nick" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="searchByNickResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="UserInfo" type="tns:userInfo"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="addAccountToHotlist">
+<xs:sequence>
+<xs:element form="qualified" name="accountId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="addAccountToHotlistResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="AddAccountToHotlistResult" type="tns:addAccountToHotlistResult"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="addAccountToHotlistResult">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="svcError" type="tns:svcError"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="getContactList">
+<xs:sequence>
+<xs:element form="qualified" name="maxContacts" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getContactListResponse">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="ContactList" type="tns:userInfo"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="logout">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="logoutResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="UnauthorizedNickname" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getSupportedLocales">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="portalId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getSupportedLocalesResponse">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="LocalesList" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="checkDirectMessages">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="checkDirectMessagesResponse">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="DirectMessagesList" type="tns:directMessage"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="directMessage">
+<xs:complexContent>
+<xs:extension base="tns:notifierMessage">
+<xs:sequence>
+<xs:element minOccurs="0" name="text" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="notifierMessage">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element name="messageId" type="xs:long"/>
+<xs:element name="messageType" type="xs:int"/>
+<xs:element minOccurs="0" name="originationMemberNickName" type="xs:string"/>
+<xs:element minOccurs="0" name="reference" type="xs:string"/>
+<xs:element name="userFromId" type="xs:int"/>
+<xs:element name="userToId" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="isUserInBlockList">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="fromUserId" type="xs:int"/>
+<xs:element form="qualified" minOccurs="0" name="toUserId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="isUserInBlockListResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="isBlockListed" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="initRegistration">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="initRegistrationResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="ResponseRegistrationInitData" type="tns:responseRegistrationInitData"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="responseRegistrationInitData">
+<xs:complexContent>
+<xs:extension base="tns:webServiceResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="initRegistrationData" type="tns:registrationInitData"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="registrationInitData">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="accountOrientationsList" type="tns:accountOrientation"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="countriesList" type="tns:liteProperty"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="daysList" type="tns:liteProperty"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="monthessList" type="tns:liteProperty"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="orientationsLookingForList" type="tns:lookingForOrientation"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="sexesList" type="tns:liteProperty"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="yearsList" type="tns:liteProperty"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="accountOrientation">
+<xs:sequence>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="orientations" type="tns:litePropertiesList"/>
+<xs:element name="sexId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="litePropertiesList">
+<xs:complexContent>
+<xs:extension base="tns:baseDto">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="liteProperties" type="tns:liteProperty"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="getCurrentUserInfo">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getCurrentUserInfoResponse">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="userInfo" type="tns:serviceProperty"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getLabelsList">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="componentName" type="xs:string"/>
+<xs:element form="qualified" minOccurs="0" name="locale" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getLabelsListResponse">
+<xs:sequence>
+<xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="LabelsList" type="tns:serviceProperty"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendDirectMessage">
+<xs:sequence>
+<xs:element form="qualified" name="receiverId" type="xs:int"/>
+<xs:element form="qualified" minOccurs="0" name="text" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendDirectMessageResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="EmptyResult" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerAccountSecondStep">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="registrationData" type="tns:registrationSecondStepDataBean"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerAccountSecondStepResponse">
+<xs:sequence>
+<xs:element form="qualified" minOccurs="0" name="ResponseRegistrationInitData" type="tns:responseAccountRegistration"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="checkDirectMessages">
+    <wsdl:part name="parameters" element="tns:checkDirectMessages"/>
+  </wsdl:message>
+  <wsdl:message name="registerAccount">
+    <wsdl:part name="parameters" element="tns:registerAccount"/>
+  </wsdl:message>
+  <wsdl:message name="removeAccountsFromHotlistResponse">
+    <wsdl:part name="parameters" element="tns:removeAccountsFromHotlistResponse"/>
+  </wsdl:message>
+  <wsdl:message name="addAccountToHotlist">
+    <wsdl:part name="parameters" element="tns:addAccountToHotlist"/>
+  </wsdl:message>
+  <wsdl:message name="confirmMessage">
+    <wsdl:part name="parameters" element="tns:confirmMessage"/>
+  </wsdl:message>
+  <wsdl:message name="logoutResponse">
+    <wsdl:part name="parameters" element="tns:logoutResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getCurrentUserInfoResponse">
+    <wsdl:part name="parameters" element="tns:getCurrentUserInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="isUserInBlockListResponse">
+    <wsdl:part name="parameters" element="tns:isUserInBlockListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="initRegistration">
+    <wsdl:part name="parameters" element="tns:initRegistration"/>
+  </wsdl:message>
+  <wsdl:message name="initRegistrationResponse">
+    <wsdl:part name="parameters" element="tns:initRegistrationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="addAccountToHotlistResponse">
+    <wsdl:part name="parameters" element="tns:addAccountToHotlistResponse"/>
+  </wsdl:message>
+  <wsdl:message name="initializeInstantMessengerResponse">
+    <wsdl:part name="parameters" element="tns:initializeInstantMessengerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="isUserInBlockList">
+    <wsdl:part name="parameters" element="tns:isUserInBlockList"/>
+  </wsdl:message>
+  <wsdl:message name="extendedSearchResponse">
+    <wsdl:part name="parameters" element="tns:extendedSearchResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getSupportedLocales">
+    <wsdl:part name="parameters" element="tns:getSupportedLocales"/>
+  </wsdl:message>
+  <wsdl:message name="checkImVersionResponse">
+    <wsdl:part name="parameters" element="tns:checkImVersionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getContactList">
+    <wsdl:part name="parameters" element="tns:getContactList"/>
+  </wsdl:message>
+  <wsdl:message name="removeAccountsFromHotlist">
+    <wsdl:part name="parameters" element="tns:removeAccountsFromHotlist"/>
+  </wsdl:message>
+  <wsdl:message name="checkOnlineStatus">
+    <wsdl:part name="parameters" element="tns:checkOnlineStatus"/>
+  </wsdl:message>
+  <wsdl:message name="logoutUser">
+    <wsdl:part name="parameters" element="tns:logoutUser"/>
+  </wsdl:message>
+  <wsdl:message name="searchByNick">
+    <wsdl:part name="parameters" element="tns:searchByNick"/>
+  </wsdl:message>
+  <wsdl:message name="initializeInstantMessenger">
+    <wsdl:part name="parameters" element="tns:initializeInstantMessenger"/>
+  </wsdl:message>
+  <wsdl:message name="logoutUserResponse">
+    <wsdl:part name="parameters" element="tns:logoutUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="searchByNickResponse">
+    <wsdl:part name="parameters" element="tns:searchByNickResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getLabelsListResponse">
+    <wsdl:part name="parameters" element="tns:getLabelsListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="logout">
+    <wsdl:part name="parameters" element="tns:logout"/>
+  </wsdl:message>
+  <wsdl:message name="registerAccountResponse">
+    <wsdl:part name="parameters" element="tns:registerAccountResponse"/>
+  </wsdl:message>
+  <wsdl:message name="sendDirectMessageResponse">
+    <wsdl:part name="parameters" element="tns:sendDirectMessageResponse"/>
+  </wsdl:message>
+  <wsdl:message name="extendedSearch">
+    <wsdl:part name="parameters" element="tns:extendedSearch"/>
+  </wsdl:message>
+  <wsdl:message name="getCurrentUserInfo">
+    <wsdl:part name="parameters" element="tns:getCurrentUserInfo"/>
+  </wsdl:message>
+  <wsdl:message name="checkDirectMessagesResponse">
+    <wsdl:part name="parameters" element="tns:checkDirectMessagesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="confirmMessageResponse">
+    <wsdl:part name="parameters" element="tns:confirmMessageResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getContactListResponse">
+    <wsdl:part name="parameters" element="tns:getContactListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getLabelsList">
+    <wsdl:part name="parameters" element="tns:getLabelsList"/>
+  </wsdl:message>
+  <wsdl:message name="getSupportedLocalesResponse">
+    <wsdl:part name="parameters" element="tns:getSupportedLocalesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="checkImVersion">
+    <wsdl:part name="parameters" element="tns:checkImVersion"/>
+  </wsdl:message>
+  <wsdl:message name="registerAccountSecondStep">
+    <wsdl:part name="parameters" element="tns:registerAccountSecondStep"/>
+  </wsdl:message>
+  <wsdl:message name="checkOnlineStatusResponse">
+    <wsdl:part name="parameters" element="tns:checkOnlineStatusResponse"/>
+  </wsdl:message>
+  <wsdl:message name="registerAccountSecondStepResponse">
+    <wsdl:part name="parameters" element="tns:registerAccountSecondStepResponse"/>
+  </wsdl:message>
+  <wsdl:message name="sendDirectMessage">
+    <wsdl:part name="parameters" element="tns:sendDirectMessage"/>
+  </wsdl:message>
+  <wsdl:portType name="IInstantMessengerService">
+    <wsdl:operation name="confirmMessage">
+      <wsdl:input name="confirmMessage" message="tns:confirmMessage"/>
+      <wsdl:output name="confirmMessageResponse" message="tns:confirmMessageResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="extendedSearch">
+      <wsdl:input name="extendedSearch" message="tns:extendedSearch"/>
+      <wsdl:output name="extendedSearchResponse" message="tns:extendedSearchResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="registerAccount">
+      <wsdl:input name="registerAccount" message="tns:registerAccount"/>
+      <wsdl:output name="registerAccountResponse" message="tns:registerAccountResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="initializeInstantMessenger">
+      <wsdl:input name="initializeInstantMessenger" message="tns:initializeInstantMessenger"/>
+      <wsdl:output name="initializeInstantMessengerResponse" message="tns:initializeInstantMessengerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="logoutUser">
+      <wsdl:input name="logoutUser" message="tns:logoutUser"/>
+      <wsdl:output name="logoutUserResponse" message="tns:logoutUserResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="checkOnlineStatus">
+      <wsdl:input name="checkOnlineStatus" message="tns:checkOnlineStatus"/>
+      <wsdl:output name="checkOnlineStatusResponse" message="tns:checkOnlineStatusResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="removeAccountsFromHotlist">
+      <wsdl:input name="removeAccountsFromHotlist" message="tns:removeAccountsFromHotlist"/>
+      <wsdl:output name="removeAccountsFromHotlistResponse" message="tns:removeAccountsFromHotlistResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="checkImVersion">
+      <wsdl:input name="checkImVersion" message="tns:checkImVersion"/>
+      <wsdl:output name="checkImVersionResponse" message="tns:checkImVersionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="searchByNick">
+      <wsdl:input name="searchByNick" message="tns:searchByNick"/>
+      <wsdl:output name="searchByNickResponse" message="tns:searchByNickResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="addAccountToHotlist">
+      <wsdl:input name="addAccountToHotlist" message="tns:addAccountToHotlist"/>
+      <wsdl:output name="addAccountToHotlistResponse" message="tns:addAccountToHotlistResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getContactList">
+      <wsdl:input name="getContactList" message="tns:getContactList"/>
+      <wsdl:output name="getContactListResponse" message="tns:getContactListResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <wsdl:input name="logout" message="tns:logout"/>
+      <wsdl:output name="logoutResponse" message="tns:logoutResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getSupportedLocales">
+      <wsdl:input name="getSupportedLocales" message="tns:getSupportedLocales"/>
+      <wsdl:output name="getSupportedLocalesResponse" message="tns:getSupportedLocalesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="checkDirectMessages">
+      <wsdl:input name="checkDirectMessages" message="tns:checkDirectMessages"/>
+      <wsdl:output name="checkDirectMessagesResponse" message="tns:checkDirectMessagesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="isUserInBlockList">
+      <wsdl:input name="isUserInBlockList" message="tns:isUserInBlockList"/>
+      <wsdl:output name="isUserInBlockListResponse" message="tns:isUserInBlockListResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="initRegistration">
+      <wsdl:input name="initRegistration" message="tns:initRegistration"/>
+      <wsdl:output name="initRegistrationResponse" message="tns:initRegistrationResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCurrentUserInfo">
+      <wsdl:input name="getCurrentUserInfo" message="tns:getCurrentUserInfo"/>
+      <wsdl:output name="getCurrentUserInfoResponse" message="tns:getCurrentUserInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getLabelsList">
+      <wsdl:input name="getLabelsList" message="tns:getLabelsList"/>
+      <wsdl:output name="getLabelsListResponse" message="tns:getLabelsListResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="sendDirectMessage">
+      <wsdl:input name="sendDirectMessage" message="tns:sendDirectMessage"/>
+      <wsdl:output name="sendDirectMessageResponse" message="tns:sendDirectMessageResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="registerAccountSecondStep">
+      <wsdl:input name="registerAccountSecondStep" message="tns:registerAccountSecondStep"/>
+      <wsdl:output name="registerAccountSecondStepResponse" message="tns:registerAccountSecondStepResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InstantMessengerServiceSoapBinding" type="tns:IInstantMessengerService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="confirmMessage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="confirmMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="confirmMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="extendedSearch">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="extendedSearch">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="extendedSearchResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="registerAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="initializeInstantMessenger">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="initializeInstantMessenger">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="initializeInstantMessengerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkOnlineStatus">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkOnlineStatus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkOnlineStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logoutUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="logoutUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="logoutUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeAccountsFromHotlist">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeAccountsFromHotlist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeAccountsFromHotlistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkImVersion">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkImVersion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkImVersionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchByNick">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchByNick">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchByNickResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addAccountToHotlist">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addAccountToHotlist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addAccountToHotlistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContactList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getContactList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContactListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="logout">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="logoutResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkDirectMessages">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkDirectMessages">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkDirectMessagesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupportedLocales">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSupportedLocales">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSupportedLocalesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isUserInBlockList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isUserInBlockList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isUserInBlockListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCurrentUserInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCurrentUserInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCurrentUserInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="initRegistration">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="initRegistration">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="initRegistrationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLabelsList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLabelsList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLabelsListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendDirectMessage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendDirectMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendDirectMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerAccountSecondStep">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="registerAccountSecondStep">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerAccountSecondStepResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InstantMessengerService">
+    <wsdl:port name="InstantMessengerServicePort" binding="tns:InstantMessengerServiceSoapBinding">
+      <soap:address location="http://www.incontri-fitness.com/ws/InstantMessengerService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

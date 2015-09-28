@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://calc.ryantechinc.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://calc.ryantechinc.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://calc.ryantechinc.com/">
+      <s:element name="About">
+        <s:complexType/>
+      </s:element>
+      <s:element name="AboutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AboutResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isAlive">
+        <s:complexType/>
+      </s:element>
+      <s:element name="isAliveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="isAliveResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Loan_Calc_Base">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="User" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GUID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myRate" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myPaymentsPerYear" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myNumberOfPayments" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myLoanAmount" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myDTFP" type="s:double"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Loan_Calc_BaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Loan_Calc_BaseResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Loan_Calc_Roll">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="User" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GUID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myRate" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myPaymentsPerYear" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myNumberOfPayments" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myLoanAmount" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myDTFP" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Desired_Payment" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myIncrement" type="s:double"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Loan_Calc_RollResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Loan_Calc_RollResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lease_Calc_Base">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="User" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GUID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myCapCost" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myFactor" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myResidual" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myTerm" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="myTaxRate" type="s:double"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Lease_Calc_BaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Lease_Calc_BaseResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Loan_Calc_CreditInsurance">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="User" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GUID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CashAdvance" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Term" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="AnnualPercentageRate" type="s:double"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TermOfInsurance" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="StateCode" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="OrganizationId" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ProgramIdCreditLife" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RateStructureIdCreditLife" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ProgramIdAccidentalHealth" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="RateStructureIdAccidentalHealth" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="DaysToFirstPayment" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DOB" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Loan_Calc_CreditInsuranceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Loan_Calc_CreditInsuranceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string"/>
+      <s:element name="boolean" type="s:boolean"/>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema"/>
+            <s:any/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Loan_Calc_CreditInsuranceHttpGetIn">
+    <wsdl:part name="User" type="s:string"/>
+    <wsdl:part name="Password" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="CashAdvance" type="s:string"/>
+    <wsdl:part name="Term" type="s:string"/>
+    <wsdl:part name="AnnualPercentageRate" type="s:string"/>
+    <wsdl:part name="TermOfInsurance" type="s:string"/>
+    <wsdl:part name="StateCode" type="s:string"/>
+    <wsdl:part name="OrganizationId" type="s:string"/>
+    <wsdl:part name="ProgramIdCreditLife" type="s:string"/>
+    <wsdl:part name="RateStructureIdCreditLife" type="s:string"/>
+    <wsdl:part name="ProgramIdAccidentalHealth" type="s:string"/>
+    <wsdl:part name="RateStructureIdAccidentalHealth" type="s:string"/>
+    <wsdl:part name="DaysToFirstPayment" type="s:string"/>
+    <wsdl:part name="DOB" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AboutHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_RollHttpPostIn">
+    <wsdl:part name="User" type="s:string"/>
+    <wsdl:part name="Password" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="myRate" type="s:string"/>
+    <wsdl:part name="myPaymentsPerYear" type="s:string"/>
+    <wsdl:part name="myNumberOfPayments" type="s:string"/>
+    <wsdl:part name="myLoanAmount" type="s:string"/>
+    <wsdl:part name="myDTFP" type="s:string"/>
+    <wsdl:part name="Desired_Payment" type="s:string"/>
+    <wsdl:part name="myIncrement" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="isAliveHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_RollHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_CreditInsuranceHttpPostIn">
+    <wsdl:part name="User" type="s:string"/>
+    <wsdl:part name="Password" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="CashAdvance" type="s:string"/>
+    <wsdl:part name="Term" type="s:string"/>
+    <wsdl:part name="AnnualPercentageRate" type="s:string"/>
+    <wsdl:part name="TermOfInsurance" type="s:string"/>
+    <wsdl:part name="StateCode" type="s:string"/>
+    <wsdl:part name="OrganizationId" type="s:string"/>
+    <wsdl:part name="ProgramIdCreditLife" type="s:string"/>
+    <wsdl:part name="RateStructureIdCreditLife" type="s:string"/>
+    <wsdl:part name="ProgramIdAccidentalHealth" type="s:string"/>
+    <wsdl:part name="RateStructureIdAccidentalHealth" type="s:string"/>
+    <wsdl:part name="DaysToFirstPayment" type="s:string"/>
+    <wsdl:part name="DOB" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_BaseHttpGetIn">
+    <wsdl:part name="User" type="s:string"/>
+    <wsdl:part name="Password" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="myRate" type="s:string"/>
+    <wsdl:part name="myPaymentsPerYear" type="s:string"/>
+    <wsdl:part name="myNumberOfPayments" type="s:string"/>
+    <wsdl:part name="myLoanAmount" type="s:string"/>
+    <wsdl:part name="myDTFP" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="isAliveSoapOut">
+    <wsdl:part name="parameters" element="tns:isAliveResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AboutHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="AboutSoapOut">
+    <wsdl:part name="parameters" element="tns:AboutResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Lease_Calc_BaseHttpPostIn">
+    <wsdl:part name="User" type="s:string"/>
+    <wsdl:part name="Password" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="myCapCost" type="s:string"/>
+    <wsdl:part name="myFactor" type="s:string"/>
+    <wsdl:part name="myResidual" type="s:string"/>
+    <wsdl:part name="myTerm" type="s:string"/>
+    <wsdl:part name="myTaxRate" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="Lease_Calc_BaseSoapIn">
+    <wsdl:part name="parameters" element="tns:Lease_Calc_Base"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_BaseHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="Lease_Calc_BaseHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_CreditInsuranceSoapOut">
+    <wsdl:part name="parameters" element="tns:Loan_Calc_CreditInsuranceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="isAliveSoapIn">
+    <wsdl:part name="parameters" element="tns:isAlive"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_BaseSoapIn">
+    <wsdl:part name="parameters" element="tns:Loan_Calc_Base"/>
+  </wsdl:message>
+  <wsdl:message name="isAliveHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="AboutHttpPostIn">
+  </wsdl:message>
+  <wsdl:message name="isAliveHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_BaseHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_RollSoapOut">
+    <wsdl:part name="parameters" element="tns:Loan_Calc_RollResponse"/>
+  </wsdl:message>
+  <wsdl:message name="isAliveHttpGetIn">
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_BaseHttpPostIn">
+    <wsdl:part name="User" type="s:string"/>
+    <wsdl:part name="Password" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="myRate" type="s:string"/>
+    <wsdl:part name="myPaymentsPerYear" type="s:string"/>
+    <wsdl:part name="myNumberOfPayments" type="s:string"/>
+    <wsdl:part name="myLoanAmount" type="s:string"/>
+    <wsdl:part name="myDTFP" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AboutHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_BaseSoapOut">
+    <wsdl:part name="parameters" element="tns:Loan_Calc_BaseResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Lease_Calc_BaseHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_RollHttpGetIn">
+    <wsdl:part name="User" type="s:string"/>
+    <wsdl:part name="Password" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="myRate" type="s:string"/>
+    <wsdl:part name="myPaymentsPerYear" type="s:string"/>
+    <wsdl:part name="myNumberOfPayments" type="s:string"/>
+    <wsdl:part name="myLoanAmount" type="s:string"/>
+    <wsdl:part name="myDTFP" type="s:string"/>
+    <wsdl:part name="Desired_Payment" type="s:string"/>
+    <wsdl:part name="myIncrement" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="Lease_Calc_BaseSoapOut">
+    <wsdl:part name="parameters" element="tns:Lease_Calc_BaseResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_RollSoapIn">
+    <wsdl:part name="parameters" element="tns:Loan_Calc_Roll"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_CreditInsuranceHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_RollHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="Lease_Calc_BaseHttpGetIn">
+    <wsdl:part name="User" type="s:string"/>
+    <wsdl:part name="Password" type="s:string"/>
+    <wsdl:part name="GUID" type="s:string"/>
+    <wsdl:part name="myCapCost" type="s:string"/>
+    <wsdl:part name="myFactor" type="s:string"/>
+    <wsdl:part name="myResidual" type="s:string"/>
+    <wsdl:part name="myTerm" type="s:string"/>
+    <wsdl:part name="myTaxRate" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AboutSoapIn">
+    <wsdl:part name="parameters" element="tns:About"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_CreditInsuranceSoapIn">
+    <wsdl:part name="parameters" element="tns:Loan_Calc_CreditInsurance"/>
+  </wsdl:message>
+  <wsdl:message name="Loan_Calc_CreditInsuranceHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="About">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">See copyright and owner information on this service... powered by RyanTech</wsdl:documentation>
+      <wsdl:input message="tns:AboutSoapIn"/>
+      <wsdl:output message="tns:AboutSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="isAlive">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to confirm that the webservice is reponding as requested and available for calculations.  If anything but a true is received from this webmethod, calculations will not be performed.</wsdl:documentation>
+      <wsdl:input message="tns:isAliveSoapIn"/>
+      <wsdl:output message="tns:isAliveSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Base">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Loan Calculations where the intended result is a monthly payment with no future value.  Typically used in standard conventional loans.</wsdl:documentation>
+      <wsdl:input message="tns:Loan_Calc_BaseSoapIn"/>
+      <wsdl:output message="tns:Loan_Calc_BaseSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Roll">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Rolling Loan Calculations where the intended result is how to arrive at a particular monthly payment desired by the requestor.  Typically used in conventional loans.</wsdl:documentation>
+      <wsdl:input message="tns:Loan_Calc_RollSoapIn"/>
+      <wsdl:output message="tns:Loan_Calc_RollSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Lease_Calc_Base">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Lease Calculations in order to arrive at the true lease payment on a vehicle where the Capitalized Cost, Residual, Tax and Money Factor are known.</wsdl:documentation>
+      <wsdl:input message="tns:Lease_Calc_BaseSoapIn"/>
+      <wsdl:output message="tns:Lease_Calc_BaseSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_CreditInsurance">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Loan Calculations where the intended result is a monthly payment with no future value.  Typically used in standard conventional loans.</wsdl:documentation>
+      <wsdl:input message="tns:Loan_Calc_CreditInsuranceSoapIn"/>
+      <wsdl:output message="tns:Loan_Calc_CreditInsuranceSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpPost">
+    <wsdl:operation name="About">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">See copyright and owner information on this service... powered by RyanTech</wsdl:documentation>
+      <wsdl:input message="tns:AboutHttpPostIn"/>
+      <wsdl:output message="tns:AboutHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="isAlive">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to confirm that the webservice is reponding as requested and available for calculations.  If anything but a true is received from this webmethod, calculations will not be performed.</wsdl:documentation>
+      <wsdl:input message="tns:isAliveHttpPostIn"/>
+      <wsdl:output message="tns:isAliveHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Base">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Loan Calculations where the intended result is a monthly payment with no future value.  Typically used in standard conventional loans.</wsdl:documentation>
+      <wsdl:input message="tns:Loan_Calc_BaseHttpPostIn"/>
+      <wsdl:output message="tns:Loan_Calc_BaseHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Roll">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Rolling Loan Calculations where the intended result is how to arrive at a particular monthly payment desired by the requestor.  Typically used in conventional loans.</wsdl:documentation>
+      <wsdl:input message="tns:Loan_Calc_RollHttpPostIn"/>
+      <wsdl:output message="tns:Loan_Calc_RollHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Lease_Calc_Base">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Lease Calculations in order to arrive at the true lease payment on a vehicle where the Capitalized Cost, Residual, Tax and Money Factor are known.</wsdl:documentation>
+      <wsdl:input message="tns:Lease_Calc_BaseHttpPostIn"/>
+      <wsdl:output message="tns:Lease_Calc_BaseHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_CreditInsurance">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Loan Calculations where the intended result is a monthly payment with no future value.  Typically used in standard conventional loans.</wsdl:documentation>
+      <wsdl:input message="tns:Loan_Calc_CreditInsuranceHttpPostIn"/>
+      <wsdl:output message="tns:Loan_Calc_CreditInsuranceHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpGet">
+    <wsdl:operation name="About">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">See copyright and owner information on this service... powered by RyanTech</wsdl:documentation>
+      <wsdl:input message="tns:AboutHttpGetIn"/>
+      <wsdl:output message="tns:AboutHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="isAlive">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to confirm that the webservice is reponding as requested and available for calculations.  If anything but a true is received from this webmethod, calculations will not be performed.</wsdl:documentation>
+      <wsdl:input message="tns:isAliveHttpGetIn"/>
+      <wsdl:output message="tns:isAliveHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Base">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Loan Calculations where the intended result is a monthly payment with no future value.  Typically used in standard conventional loans.</wsdl:documentation>
+      <wsdl:input message="tns:Loan_Calc_BaseHttpGetIn"/>
+      <wsdl:output message="tns:Loan_Calc_BaseHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Roll">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Rolling Loan Calculations where the intended result is how to arrive at a particular monthly payment desired by the requestor.  Typically used in conventional loans.</wsdl:documentation>
+      <wsdl:input message="tns:Loan_Calc_RollHttpGetIn"/>
+      <wsdl:output message="tns:Loan_Calc_RollHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Lease_Calc_Base">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Lease Calculations in order to arrive at the true lease payment on a vehicle where the Capitalized Cost, Residual, Tax and Money Factor are known.</wsdl:documentation>
+      <wsdl:input message="tns:Lease_Calc_BaseHttpGetIn"/>
+      <wsdl:output message="tns:Lease_Calc_BaseHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_CreditInsurance">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to perform Loan Calculations where the intended result is a monthly payment with no future value.  Typically used in standard conventional loans.</wsdl:documentation>
+      <wsdl:input message="tns:Loan_Calc_CreditInsuranceHttpGetIn"/>
+      <wsdl:output message="tns:Loan_Calc_CreditInsuranceHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="About">
+      <soap:operation soapAction="http://calc.ryantechinc.com/About" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAlive">
+      <soap:operation soapAction="http://calc.ryantechinc.com/isAlive" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Base">
+      <soap:operation soapAction="http://calc.ryantechinc.com/Loan_Calc_Base" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Roll">
+      <soap:operation soapAction="http://calc.ryantechinc.com/Loan_Calc_Roll" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lease_Calc_Base">
+      <soap:operation soapAction="http://calc.ryantechinc.com/Lease_Calc_Base" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_CreditInsurance">
+      <soap:operation soapAction="http://calc.ryantechinc.com/Loan_Calc_CreditInsurance" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="About">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://calc.ryantechinc.com/About" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAlive">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://calc.ryantechinc.com/isAlive" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Base">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://calc.ryantechinc.com/Loan_Calc_Base" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Roll">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://calc.ryantechinc.com/Loan_Calc_Roll" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lease_Calc_Base">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://calc.ryantechinc.com/Lease_Calc_Base" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_CreditInsurance">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://calc.ryantechinc.com/Loan_Calc_CreditInsurance" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpPost" type="tns:ServiceHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="About">
+      <http:operation location="/About"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAlive">
+      <http:operation location="/isAlive"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Base">
+      <http:operation location="/Loan_Calc_Base"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Roll">
+      <http:operation location="/Loan_Calc_Roll"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lease_Calc_Base">
+      <http:operation location="/Lease_Calc_Base"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_CreditInsurance">
+      <http:operation location="/Loan_Calc_CreditInsurance"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpGet" type="tns:ServiceHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="About">
+      <http:operation location="/About"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAlive">
+      <http:operation location="/isAlive"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Base">
+      <http:operation location="/Loan_Calc_Base"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_Roll">
+      <http:operation location="/Loan_Calc_Roll"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lease_Calc_Base">
+      <http:operation location="/Lease_Calc_Base"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Loan_Calc_CreditInsurance">
+      <http:operation location="/Loan_Calc_CreditInsurance"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://calc.ryantechinc.com/service.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpPost" binding="tns:ServiceHttpPost">
+      <http:address location="http://calc.ryantechinc.com/service.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://calc.ryantechinc.com/service.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpGet" binding="tns:ServiceHttpGet">
+      <http:address location="http://calc.ryantechinc.com/service.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

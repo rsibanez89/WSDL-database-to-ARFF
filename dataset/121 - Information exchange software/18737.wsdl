@@ -1,0 +1,1277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://delivra.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://delivra.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://delivra.com/">
+      <s:import namespace="http://tempuri.org/MailDataset.xsd"/>
+      <s:import namespace="http://tempuri.org/ListDataset.xsd"/>
+      <s:import namespace="http://tempuri.org/ApprovalMailDataset.xsd"/>
+      <s:import namespace="http://tempuri.org/SentMailDataset.xsd"/>
+      <s:import namespace="http://tempuri.org/MailDeliveredDataset.xsd"/>
+      <s:import namespace="http://tempuri.org/InProgressRecipientDataset.xsd"/>
+      <s:import namespace="http://tempuri.org/MailingStatisticsDataset.xsd"/>
+      <s:import namespace="http://tempuri.org/MailingStatisticsDataset.xsd" schemaLocation="http://integration.delivra.com/DelivraServices/MailingService.asmx?schema=MailingStatisticsDataset"/>
+      <s:import namespace="http://tempuri.org/InProgressRecipientDataset.xsd" schemaLocation="http://integration.delivra.com/DelivraServices/MailingService.asmx?schema=InProgressRecipientDataset"/>
+      <s:import namespace="http://tempuri.org/SentMailDataset.xsd" schemaLocation="http://integration.delivra.com/DelivraServices/MailingService.asmx?schema=SentMailDataset"/>
+      <s:import namespace="http://tempuri.org/MailDataset.xsd" schemaLocation="http://integration.delivra.com/DelivraServices/MailingService.asmx?schema=MailDataset"/>
+      <s:import namespace="http://tempuri.org/ApprovalMailDataset.xsd" schemaLocation="http://integration.delivra.com/DelivraServices/MailingService.asmx?schema=ApprovalMailDataset"/>
+      <s:import namespace="http://tempuri.org/ListDataset.xsd" schemaLocation="http://integration.delivra.com/DelivraServices/MailingService.asmx?schema=ListDataset"/>
+      <s:import namespace="http://tempuri.org/MailDeliveredDataset.xsd" schemaLocation="http://integration.delivra.com/DelivraServices/MailingService.asmx?schema=MailDeliveredDataset"/>
+      <s:element name="Send">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MessageID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SendResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Header" type="tns:Header"/>
+      <s:complexType name="Header">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="List" type="s:string"/>
+        </s:sequence>
+        <s:anyAttribute/>
+      </s:complexType>
+      <s:element name="ScheduleSend">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MessageID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="SendTime" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ScheduleSendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ScheduleSendResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTest">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MessageID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ToAddress" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SendTestResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSpamTest">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MessageID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ToAddress" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSpamTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SendSpamTestResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="NewMail">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/MailDataset.xsd" name="namespace"/>
+                <s:attribute fixed="MailDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/MailDataset.xsd" name="namespace"/>
+                <s:attribute fixed="MailDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToSendNow">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="NewMail">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/MailDataset.xsd" name="namespace"/>
+                <s:attribute fixed="MailDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToSendNowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddToSendNowResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/MailDataset.xsd" name="namespace"/>
+                <s:attribute fixed="MailDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToSendLater">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="NewMail">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/MailDataset.xsd" name="namespace"/>
+                <s:attribute fixed="MailDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+            <s:element maxOccurs="1" minOccurs="1" name="SendDate" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToSendLaterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddToSendLaterResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/MailDataset.xsd" name="namespace"/>
+                <s:attribute fixed="MailDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMemberToOutgoingMailing">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MailingID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EmailAddress" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMemberToOutgoingMailingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddMemberToOutgoingMailingResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/ListDataset.xsd" name="namespace"/>
+                <s:attribute fixed="ListDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApprovalMailExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MailingID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApprovalMailExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ApprovalMailExistsResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SentMailExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MailingID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SentMailExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SentMailExistsResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListMailingsForApproval">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ListMailingsForApprovalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ListMailingsForApprovalResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/ApprovalMailDataset.xsd" name="namespace"/>
+                <s:attribute fixed="ApprovalMailDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListScheduledMailings">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ListScheduledMailingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ListScheduledMailingsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/ApprovalMailDataset.xsd" name="namespace"/>
+                <s:attribute fixed="ApprovalMailDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListSentMailings">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="StartDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="EndDate" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListSentMailingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ListSentMailingsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/SentMailDataset.xsd" name="namespace"/>
+                <s:attribute fixed="SentMailDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListDeliveredMailings">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MailingID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListDeliveredMailingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ListDeliveredMailingsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/MailDeliveredDataset.xsd" name="namespace"/>
+                <s:attribute fixed="MailDeliveredDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListInProgressRecipients">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MailingID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListInProgressRecipientsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ListInProgressRecipientsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/InProgressRecipientDataset.xsd" name="namespace"/>
+                <s:attribute fixed="ListInProgressRecipientsDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListMailingStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MessageID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListMailingStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ListMailingStatisticsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/MailingStatisticsDataset.xsd" name="namespace"/>
+                <s:attribute fixed="MailingStatisticsDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListSentMailingsSummary">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="StartDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="EndDate" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListSentMailingsSummaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ListSentMailingsSummaryResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/MailingStatisticsDataset.xsd" name="namespace"/>
+                <s:attribute fixed="SentMailingSummaryDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListTrackingSummary">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="StartDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="EndDate" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListTrackingSummaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ListTrackingSummaryResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/MailingStatisticsDataset.xsd" name="namespace"/>
+                <s:attribute fixed="TrackingSummaryDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadMailingForApproval">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MessageID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadMailingForApprovalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="LoadMailingForApprovalResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/ApprovalMailDataset.xsd" name="namespace"/>
+                <s:attribute fixed="ApprovalMailDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadSentMailing">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MessageID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadSentMailingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="LoadSentMailingResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/SentMailDataset.xsd" name="namespace"/>
+                <s:attribute fixed="SentMailDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteApprovalMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MessageID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteApprovalMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="DeleteApprovalMailResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSentMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="MessageID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSentMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="DeleteSentMailResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DeleteSentMailHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="LoadMailingForApprovalSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadMailingForApproval"/>
+  </wsdl:message>
+  <wsdl:message name="SendTestSoapIn">
+    <wsdl:part name="parameters" element="tns:SendTest"/>
+  </wsdl:message>
+  <wsdl:message name="ListTrackingSummarySoapOut">
+    <wsdl:part name="parameters" element="tns:ListTrackingSummaryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LoadSentMailingSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadSentMailing"/>
+  </wsdl:message>
+  <wsdl:message name="ListMailingStatisticsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListMailingStatistics"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteApprovalMailHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ScheduleSendSoapIn">
+    <wsdl:part name="parameters" element="tns:ScheduleSend"/>
+  </wsdl:message>
+  <wsdl:message name="ListDeliveredMailingsHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ListScheduledMailingsHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="AddMemberToOutgoingMailingSoapOut">
+    <wsdl:part name="parameters" element="tns:AddMemberToOutgoingMailingResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ScheduleSendSoapOut">
+    <wsdl:part name="parameters" element="tns:ScheduleSendResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddMemberToOutgoingMailingSoapIn">
+    <wsdl:part name="parameters" element="tns:AddMemberToOutgoingMailing"/>
+  </wsdl:message>
+  <wsdl:message name="SendSpamTestSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSpamTest"/>
+  </wsdl:message>
+  <wsdl:message name="LoadMailingForApprovalHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ListInProgressRecipientsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListInProgressRecipients"/>
+  </wsdl:message>
+  <wsdl:message name="ListSentMailingsHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="SendHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="SendTestHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ApprovalMailExistsHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ListMailingsForApprovalSoapOut">
+    <wsdl:part name="parameters" element="tns:ListMailingsForApprovalResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddToSendLaterSoapIn">
+    <wsdl:part name="parameters" element="tns:AddToSendLater"/>
+  </wsdl:message>
+  <wsdl:message name="LoadSentMailingSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadSentMailingResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ListInProgressRecipientsHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="LoadMailingForApprovalSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadMailingForApprovalResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddToSendNowHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ScheduleSendHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Add"/>
+  </wsdl:message>
+  <wsdl:message name="SendSpamTestSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSpamTestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSoapOut">
+    <wsdl:part name="parameters" element="tns:SendResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSoapIn">
+    <wsdl:part name="parameters" element="tns:Send"/>
+  </wsdl:message>
+  <wsdl:message name="AddToSendNowSoapOut">
+    <wsdl:part name="parameters" element="tns:AddToSendNowResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ApprovalMailExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:ApprovalMailExistsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ListMailingStatisticsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListMailingStatisticsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ListSentMailingsSummarySoapIn">
+    <wsdl:part name="parameters" element="tns:ListSentMailingsSummary"/>
+  </wsdl:message>
+  <wsdl:message name="AddToSendLaterSoapOut">
+    <wsdl:part name="parameters" element="tns:AddToSendLaterResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SentMailExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:SentMailExistsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ListScheduledMailingsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListScheduledMailingsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ListSentMailingsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListSentMailingsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ListSentMailingsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListSentMailings"/>
+  </wsdl:message>
+  <wsdl:message name="SendTestSoapOut">
+    <wsdl:part name="parameters" element="tns:SendTestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddToSendLaterHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ListSentMailingsSummaryHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteSentMailSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteSentMailResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ListTrackingSummaryHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="SentMailExistsHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ListDeliveredMailingsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListDeliveredMailingsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ListSentMailingsSummarySoapOut">
+    <wsdl:part name="parameters" element="tns:ListSentMailingsSummaryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ApprovalMailExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:ApprovalMailExists"/>
+  </wsdl:message>
+  <wsdl:message name="ListInProgressRecipientsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListInProgressRecipientsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteApprovalMailSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteApprovalMail"/>
+  </wsdl:message>
+  <wsdl:message name="AddToSendNowSoapIn">
+    <wsdl:part name="parameters" element="tns:AddToSendNow"/>
+  </wsdl:message>
+  <wsdl:message name="ListMailingStatisticsHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="ListDeliveredMailingsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListDeliveredMailings"/>
+  </wsdl:message>
+  <wsdl:message name="SendSpamTestHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="AddMemberToOutgoingMailingHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteSentMailSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteSentMail"/>
+  </wsdl:message>
+  <wsdl:message name="AddSoapOut">
+    <wsdl:part name="parameters" element="tns:AddResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SentMailExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:SentMailExists"/>
+  </wsdl:message>
+  <wsdl:message name="ListScheduledMailingsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListScheduledMailings"/>
+  </wsdl:message>
+  <wsdl:message name="LoadSentMailingHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteApprovalMailSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteApprovalMailResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ListMailingsForApprovalSoapIn">
+    <wsdl:part name="parameters" element="tns:ListMailingsForApproval"/>
+  </wsdl:message>
+  <wsdl:message name="ListTrackingSummarySoapIn">
+    <wsdl:part name="parameters" element="tns:ListTrackingSummary"/>
+  </wsdl:message>
+  <wsdl:message name="ListMailingsForApprovalHeader">
+    <wsdl:part name="Header" element="tns:Header"/>
+  </wsdl:message>
+  <wsdl:portType name="MailingServiceSoap">
+    <wsdl:operation name="Send">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send an existing mailing now.</wsdl:documentation>
+      <wsdl:input message="tns:SendSoapIn"/>
+      <wsdl:output message="tns:SendSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ScheduleSend">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Schedule an existing mailing to send at a later date.</wsdl:documentation>
+      <wsdl:input message="tns:ScheduleSendSoapIn"/>
+      <wsdl:output message="tns:ScheduleSendSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendTest">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send a test mailing to a reciepient. Returns the ModerateID for the new test mailing.</wsdl:documentation>
+      <wsdl:input message="tns:SendTestSoapIn"/>
+      <wsdl:output message="tns:SendTestSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSpamTest">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send a spam test mailing to a reciepient. Returns the ModerateID for the new test mailing.</wsdl:documentation>
+      <wsdl:input message="tns:SendSpamTestSoapIn"/>
+      <wsdl:output message="tns:SendSpamTestSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add a new mailing to send at an undetermined date.  Returns MessageID as Integer.  Note: Must call Send(MessageID) function to send mailing.</wsdl:documentation>
+      <wsdl:input message="tns:AddSoapIn"/>
+      <wsdl:output message="tns:AddSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSendNow">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add a new mailing to send now.  Returns MessageID as Integer.</wsdl:documentation>
+      <wsdl:input message="tns:AddToSendNowSoapIn"/>
+      <wsdl:output message="tns:AddToSendNowSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSendLater">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add a new mailing to send later.  Returns MessageID as Integer.</wsdl:documentation>
+      <wsdl:input message="tns:AddToSendLaterSoapIn"/>
+      <wsdl:output message="tns:AddToSendLaterSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddMemberToOutgoingMailing">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add an existing member to a mailing that is already created.</wsdl:documentation>
+      <wsdl:input message="tns:AddMemberToOutgoingMailingSoapIn"/>
+      <wsdl:output message="tns:AddMemberToOutgoingMailingSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ApprovalMailExists">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check if a mailing for approval exists.</wsdl:documentation>
+      <wsdl:input message="tns:ApprovalMailExistsSoapIn"/>
+      <wsdl:output message="tns:ApprovalMailExistsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SentMailExists">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check if a sent mailing exists.</wsdl:documentation>
+      <wsdl:input message="tns:SentMailExistsSoapIn"/>
+      <wsdl:output message="tns:SentMailExistsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListMailingsForApproval">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">List mailings that need approval.</wsdl:documentation>
+      <wsdl:input message="tns:ListMailingsForApprovalSoapIn"/>
+      <wsdl:output message="tns:ListMailingsForApprovalSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListScheduledMailings">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">List mailings that are scheduled to send at a later date.</wsdl:documentation>
+      <wsdl:input message="tns:ListScheduledMailingsSoapIn"/>
+      <wsdl:output message="tns:ListScheduledMailingsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListSentMailings">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">List mailings that have been sent.</wsdl:documentation>
+      <wsdl:input message="tns:ListSentMailingsSoapIn"/>
+      <wsdl:output message="tns:ListSentMailingsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListDeliveredMailings">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">List delivered mail recipients for a mailing.&lt;br /&gt;CompletionStatusID value descriptions:&lt;br /&gt;300 - The mail was sent successfully.&lt;br /&gt;301 - The destination mail server reported a temporary failure error code (between 400 - 499).&lt;br /&gt;302 - The destination mail server reported a permanent failure error code (500+).&lt;br /&gt;303 - A temporary DNS failure occurred.&lt;br /&gt;304 - The domain is reported to be bad via DNS.&lt;br /&gt;305 - A bounce was received for this recipient.&lt;br /&gt;306 - An attempt was made to send to an email address (rather than a member ID) and that address is not syntactically valid.&lt;br /&gt;307 - The message to send for this recipient was deleted from the database.&lt;br /&gt;308 - The expiration date to send the mailing was reached before all attempts were completed.&lt;br /&gt;309 - The recipient was not sent to because the mailing was stopped by an administrator.&lt;br /&gt;310 - The recipient was not processed due to the skip command in mailmerge.&lt;br /&gt;311 - The recipient was not sent to because the mailing was stopped during mail merging by the 'abort' command.</wsdl:documentation>
+      <wsdl:input message="tns:ListDeliveredMailingsSoapIn"/>
+      <wsdl:output message="tns:ListDeliveredMailingsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListInProgressRecipients">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">List in progress mail recipients for a mailing.&lt;br /&gt;StatusID value descriptions:&lt;br /&gt;0 - Recipient has not been attempted.&lt;br /&gt;301 - The destination mail server reported a temporary failure error code (between 400 - 499).&lt;br /&gt;303 - A temporary DNS failure occurred.</wsdl:documentation>
+      <wsdl:input message="tns:ListInProgressRecipientsSoapIn"/>
+      <wsdl:output message="tns:ListInProgressRecipientsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListMailingStatistics">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return statistics for a MailingID. Table of codes:&lt;br&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;300&lt;/td&gt;&lt;td&gt;The mail was sent successfully.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;301&lt;/td&gt;&lt;td&gt;The destination mail server reported a temporary failure error code (between 400 - 499).&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;302&lt;/td&gt;&lt;td&gt;The destination mail server reported a permanent failure error code (500+).&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;303&lt;/td&gt;&lt;td&gt;A temporary DNS failure occurred.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;304&lt;/td&gt;&lt;td&gt;The domain is reported to be bad via DNS.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;305&lt;/td&gt;&lt;td&gt;A bounce was received for this recipient.&lt;/td&gt;&lt;/tr&gt;	&lt;tr&gt;&lt;td&gt;306&lt;/td&gt;&lt;td&gt;An attempt was made to send to an email address (rather than a member ID) and that address is not syntactically valid.&lt;/td&gt;&lt;/tr&gt;	&lt;tr&gt;&lt;td&gt;307&lt;/td&gt;&lt;td&gt;The message to send for this recipient was deleted from the database.&lt;/td&gt;&lt;/tr&gt;	&lt;tr&gt;&lt;td&gt;308&lt;/td&gt;&lt;td&gt;The expiration date to send the mailing was reached before all attempts were completed.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;309&lt;/td&gt;&lt;td&gt;The recipient was not sent to because the mailing was stopped by an administrator.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;310&lt;/td&gt;&lt;td&gt;The recipient was not processed due to the skip command in mailmerge.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;311&lt;/td&gt;&lt;td&gt;The recipient was not sent to because the mailing was stopped during mail merging by the 'abort' command.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</wsdl:documentation>
+      <wsdl:input message="tns:ListMailingStatisticsSoapIn"/>
+      <wsdl:output message="tns:ListMailingStatisticsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListSentMailingsSummary">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a summary of all mailings and their completion status in a given date range.</wsdl:documentation>
+      <wsdl:input message="tns:ListSentMailingsSummarySoapIn"/>
+      <wsdl:output message="tns:ListSentMailingsSummarySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListTrackingSummary">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Return a summary of open and clicktracking for all mailings in a given date range.</wsdl:documentation>
+      <wsdl:input message="tns:ListTrackingSummarySoapIn"/>
+      <wsdl:output message="tns:ListTrackingSummarySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoadMailingForApproval">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Load one mailing that needs approval.</wsdl:documentation>
+      <wsdl:input message="tns:LoadMailingForApprovalSoapIn"/>
+      <wsdl:output message="tns:LoadMailingForApprovalSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="LoadSentMailing">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Load one mailing that needs approval.</wsdl:documentation>
+      <wsdl:input message="tns:LoadSentMailingSoapIn"/>
+      <wsdl:output message="tns:LoadSentMailingSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteApprovalMail">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete mailing in approval queue.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteApprovalMailSoapIn"/>
+      <wsdl:output message="tns:DeleteApprovalMailSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSentMail">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete email that has already been sent.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteSentMailSoapIn"/>
+      <wsdl:output message="tns:DeleteSentMailSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MailingServiceSoap12" type="tns:MailingServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Send">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/Send" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SendHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ScheduleSend">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/ScheduleSend" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ScheduleSendHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTest">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/SendTest" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SendTestHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSpamTest">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/SendSpamTest" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SendSpamTestHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/Add" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:AddHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSendNow">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/AddToSendNow" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:AddToSendNowHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSendLater">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/AddToSendLater" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:AddToSendLaterHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMemberToOutgoingMailing">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/AddMemberToOutgoingMailing" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:AddMemberToOutgoingMailingHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApprovalMailExists">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/ApprovalMailExists" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ApprovalMailExistsHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SentMailExists">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/SentMailExists" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:SentMailExistsHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListMailingsForApproval">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/ListMailingsForApproval" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ListMailingsForApprovalHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListScheduledMailings">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/ListScheduledMailings" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ListScheduledMailingsHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSentMailings">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/ListSentMailings" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ListSentMailingsHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListDeliveredMailings">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/ListDeliveredMailings" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ListDeliveredMailingsHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListInProgressRecipients">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/ListInProgressRecipients" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ListInProgressRecipientsHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListMailingStatistics">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/ListMailingStatistics" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ListMailingStatisticsHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSentMailingsSummary">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/ListSentMailingsSummary" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ListSentMailingsSummaryHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListTrackingSummary">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/ListTrackingSummary" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:ListTrackingSummaryHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadMailingForApproval">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/LoadMailingForApproval" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:LoadMailingForApprovalHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadSentMailing">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/LoadSentMailing" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:LoadSentMailingHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteApprovalMail">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/DeleteApprovalMail" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:DeleteApprovalMailHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSentMail">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://delivra.com/DeleteSentMail" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+    <soap12:header xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" message="tns:DeleteSentMailHeader" part="Header" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MailingServiceSoap" type="tns:MailingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Send">
+      <soap:operation soapAction="http://delivra.com/Send" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SendHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ScheduleSend">
+      <soap:operation soapAction="http://delivra.com/ScheduleSend" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ScheduleSendHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTest">
+      <soap:operation soapAction="http://delivra.com/SendTest" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SendTestHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSpamTest">
+      <soap:operation soapAction="http://delivra.com/SendSpamTest" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SendSpamTestHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://delivra.com/Add" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:AddHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSendNow">
+      <soap:operation soapAction="http://delivra.com/AddToSendNow" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:AddToSendNowHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSendLater">
+      <soap:operation soapAction="http://delivra.com/AddToSendLater" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:AddToSendLaterHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMemberToOutgoingMailing">
+      <soap:operation soapAction="http://delivra.com/AddMemberToOutgoingMailing" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:AddMemberToOutgoingMailingHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApprovalMailExists">
+      <soap:operation soapAction="http://delivra.com/ApprovalMailExists" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ApprovalMailExistsHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SentMailExists">
+      <soap:operation soapAction="http://delivra.com/SentMailExists" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SentMailExistsHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListMailingsForApproval">
+      <soap:operation soapAction="http://delivra.com/ListMailingsForApproval" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ListMailingsForApprovalHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListScheduledMailings">
+      <soap:operation soapAction="http://delivra.com/ListScheduledMailings" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ListScheduledMailingsHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSentMailings">
+      <soap:operation soapAction="http://delivra.com/ListSentMailings" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ListSentMailingsHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListDeliveredMailings">
+      <soap:operation soapAction="http://delivra.com/ListDeliveredMailings" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ListDeliveredMailingsHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListInProgressRecipients">
+      <soap:operation soapAction="http://delivra.com/ListInProgressRecipients" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ListInProgressRecipientsHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListMailingStatistics">
+      <soap:operation soapAction="http://delivra.com/ListMailingStatistics" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ListMailingStatisticsHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListSentMailingsSummary">
+      <soap:operation soapAction="http://delivra.com/ListSentMailingsSummary" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ListSentMailingsSummaryHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListTrackingSummary">
+      <soap:operation soapAction="http://delivra.com/ListTrackingSummary" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:ListTrackingSummaryHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadMailingForApproval">
+      <soap:operation soapAction="http://delivra.com/LoadMailingForApproval" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:LoadMailingForApprovalHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadSentMailing">
+      <soap:operation soapAction="http://delivra.com/LoadSentMailing" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:LoadSentMailingHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteApprovalMail">
+      <soap:operation soapAction="http://delivra.com/DeleteApprovalMail" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:DeleteApprovalMailHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSentMail">
+      <soap:operation soapAction="http://delivra.com/DeleteSentMail" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:DeleteSentMailHeader" part="Header" use="literal">
+        </soap:header>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MailingService">
+    <wsdl:port name="MailingServiceSoap" binding="tns:MailingServiceSoap">
+      <soap:address location="http://integration.delivra.com/DelivraServices/MailingService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="MailingServiceSoap12" binding="tns:MailingServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://integration.delivra.com/DelivraServices/MailingService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType/>
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="HelloWorldResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportToTop">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="iInfo_ID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="strBT" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="strWH" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="iQuxianCode" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportToTopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportToTopResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TopBack">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="iInfo_ID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TopBackResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="TopBackResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="iFlag" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="iInfo_ID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="0" name="iQX_Code" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ChangeStatusResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TopBackSoapIn">
+    <wsdl:part name="parameters" element="tns:TopBack"/>
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld"/>
+  </wsdl:message>
+  <wsdl:message name="ReportToTopSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportToTop"/>
+  </wsdl:message>
+  <wsdl:message name="ReportToTopSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportToTopResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ChangeStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeStatusResponse"/>
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse"/>
+  </wsdl:message>
+  <wsdl:message name="TopBackSoapOut">
+    <wsdl:part name="parameters" element="tns:TopBackResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ChangeStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeStatus"/>
+  </wsdl:message>
+  <wsdl:portType name="TopReportSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn"/>
+      <wsdl:output message="tns:HelloWorldSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReportToTop">
+      <wsdl:input message="tns:ReportToTopSoapIn"/>
+      <wsdl:output message="tns:ReportToTopSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="TopBack">
+      <wsdl:input message="tns:TopBackSoapIn"/>
+      <wsdl:output message="tns:TopBackSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStatus">
+      <wsdl:input message="tns:ChangeStatusSoapIn"/>
+      <wsdl:output message="tns:ChangeStatusSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TopReportSoap" type="tns:TopReportSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportToTop">
+      <soap:operation soapAction="http://tempuri.org/ReportToTop" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopBack">
+      <soap:operation soapAction="http://tempuri.org/TopBack" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStatus">
+      <soap:operation soapAction="http://tempuri.org/ChangeStatus" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TopReport">
+    <wsdl:port name="TopReportSoap" binding="tns:TopReportSoap">
+      <soap:address location="http://www.bsfgw.gov.cn/SISYSTEM/Web/Service/TopReport.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

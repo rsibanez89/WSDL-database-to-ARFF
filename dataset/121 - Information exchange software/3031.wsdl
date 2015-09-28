@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="gridlab_mobile_viz_service" targetNamespace="urn:gridlab_mobile_viz_service" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="urn:gridlab_mobile_viz_service" xmlns:tns="urn:gridlab_mobile_viz_service" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/">
+  <types>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:gridlab_mobile_viz_service" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="urn:gridlab_mobile_viz_service" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <!-- operation request element -->
+  <element name="image-transform">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="sourceURL" nillable="true" type="xsd:string"/>
+     <element maxOccurs="1" minOccurs="1" name="x1" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="y1" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="x2" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="y2" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="width" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="height" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="depth" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="return-struct">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="output-URL" nillable="true" type="xsd:string"/>
+     <element maxOccurs="1" minOccurs="1" name="error-code" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="image-transform-p">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="sourceURL" nillable="true" type="xsd:string"/>
+     <element maxOccurs="1" minOccurs="1" name="x1" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="y1" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="x2" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="y2" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="width" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="height" type="xsd:int"/>
+     <element maxOccurs="1" minOccurs="1" name="depth" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="deleteURL">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="sourceURL" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="deleteURLResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="response" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="getServiceDescription">
+   <complexType>
+    <sequence>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="getServiceDescriptionResponse">
+   <complexType>
+    <sequence>
+     <element maxOccurs="1" minOccurs="0" name="description" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+  </types>
+  <message name="image-transform-pRequest">
+    <part name="parameters" element="ns:image-transform-p"/>
+  </message>
+  <message name="deleteURLRequest">
+    <part name="parameters" element="ns:deleteURL"/>
+  </message>
+  <message name="image-transformRequest">
+    <part name="parameters" element="ns:image-transform"/>
+  </message>
+  <message name="getServiceDescriptionRequest">
+    <part name="parameters" element="ns:getServiceDescription"/>
+  </message>
+  <message name="getServiceDescriptionResponse">
+    <part name="parameters" element="ns:getServiceDescriptionResponse"/>
+  </message>
+  <message name="deleteURLResponse">
+    <part name="parameters" element="ns:deleteURLResponse"/>
+  </message>
+  <message name="return-struct">
+    <part name="parameters" element="ns:return-struct"/>
+  </message>
+  <portType name="gridlab_mobile_viz_servicePortType">
+    <operation name="image-transform">
+<documentation>Service definition of function ns__image_transform</documentation>
+      <input message="ns:image-transformRequest"/>
+      <output message="ns:return-struct"/>
+    </operation>
+    <operation name="image-transform-p">
+<documentation>Service definition of function ns__image_transform_p</documentation>
+      <input message="ns:image-transform-pRequest"/>
+      <output message="ns:return-struct"/>
+    </operation>
+    <operation name="deleteURL">
+<documentation>Service definition of function ns__deleteURL</documentation>
+      <input message="ns:deleteURLRequest"/>
+      <output message="ns:deleteURLResponse"/>
+    </operation>
+    <operation name="getServiceDescription">
+<documentation>Service definition of function ns__getServiceDescription</documentation>
+      <input message="ns:getServiceDescriptionRequest"/>
+      <output message="ns:getServiceDescriptionResponse"/>
+    </operation>
+  </portType>
+  <binding name="gridlab_mobile_viz_service" type="ns:gridlab_mobile_viz_servicePortType">
+    <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="image-transform">
+      <SOAP:operation soapAction=""/>
+      <input>
+        <SOAP:body use="literal"/>
+      </input>
+      <output>
+        <SOAP:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="image-transform-p">
+      <SOAP:operation soapAction=""/>
+      <input>
+        <SOAP:body use="literal"/>
+      </input>
+      <output>
+        <SOAP:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="deleteURL">
+      <SOAP:operation soapAction=""/>
+      <input>
+        <SOAP:body use="literal"/>
+      </input>
+      <output>
+        <SOAP:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getServiceDescription">
+      <SOAP:operation soapAction=""/>
+      <input>
+        <SOAP:body use="literal"/>
+      </input>
+      <output>
+        <SOAP:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="gridlab_mobile_viz_service">
+<documentation>gSOAP 2.7.0c generated service definition</documentation>
+    <port name="gridlab_mobile_viz_service" binding="ns:gridlab_mobile_viz_service">
+      <SOAP:address location="http://cluster3.zib.de:17996/"/>
+    </port>
+  </service>
+</definitions>

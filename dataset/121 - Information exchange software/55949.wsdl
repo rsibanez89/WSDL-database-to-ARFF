@@ -1,0 +1,2118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.2sms.com/WebServices/1.4/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.2sms.com/WebServices/1.4/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">2sms Messaging Web Service</wsdl:documentation>
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.2sms.com/WebServices/1.4/">
+      <s:element name="AddressBookList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookAddEntry">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FirstName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="LastName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="MobilePhone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EmailAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookAddEntryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookAddEntryResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookRemoveEntry">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PersonNumbers" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddressBookRemoveEntryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookRemoveEntryResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookRemoveEntryByList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PersonNumbers" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookRemoveEntryByListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookRemoveEntryByListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookGroupListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupCreate">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PersonNumbers" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupCreateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookGroupCreateResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupCreateByList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PersonNumbers" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupCreateByListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookGroupCreateByListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupRemoveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookGroupRemoveResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupAddEntry">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PersonNumbers" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupAddEntryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookGroupAddEntryResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupAddEntryByList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PersonNumbers" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupAddEntryByListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookGroupAddEntryByListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupRemoveEntry">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PersonNumbers" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupRemoveEntryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookGroupRemoveEntryResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupRemoveEntryByList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PersonNumbers" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddressBookGroupRemoveEntryByListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AddressBookGroupRemoveEntryByListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportStandard">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportStandardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportStandardResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportStandardReference">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Reference" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportStandardReferenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportStandardReferenceResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportStandardBetweenDates">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="StartDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="EndDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportStandardBetweenDatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportStandardBetweenDatesResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportStandardBetweenDatesByDateString">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="StartDate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EndDate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportStandardBetweenDatesByDateStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportStandardBetweenDatesByDateStringResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Report2way">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="StartDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="EndDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Report2wayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Report2wayResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Report2wayByDateString">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="StartDate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EndDate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Report2wayByDateStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Report2wayByDateStringResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportFindNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Shared" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="InboundNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="StartDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportFindNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportFindNumberResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportFindNumberByDateString">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Shared" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="InboundNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="StartDate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportFindNumberByDateStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportFindNumberByDateStringResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportFindContacts">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Shared" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportScope" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupType" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Group" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportFindContactsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportFindContactsResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportFindContactsBetweenDates">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Shared" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupType" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Group" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="StartDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="1" name="EndDate" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportFindContactsBetweenDatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportFindContactsBetweenDatesResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportFindContactsBetweenDatesByDateString">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Shared" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupType" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Group" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="StartDate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EndDate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportFindContactsBetweenDatesByDateStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="ReportFindContactsBetweenDatesByDateStringResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendIndividualMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Destination" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="DateToSend" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Reference" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SoftwareVersion" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendIndividualMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendIndividualMessageResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendIndividualMessageByList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Destination" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="DateToSend" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Reference" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SoftwareVersion" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendIndividualMessageByListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendIndividualMessageByListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendIndividualMessageByDateString">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Destination" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateToSend" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Reference" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SoftwareVersion" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendIndividualMessageByDateStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendIndividualMessageByDateStringResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendIndividualMessageByListByDateString">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Destination" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateToSend" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Reference" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SoftwareVersion" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendIndividualMessageByListByDateStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendIndividualMessageByListByDateStringResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupID" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="DateToSend" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Reference" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SoftwareVersion" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendGroupMessageResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupMessageByList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="DateToSend" type="s:dateTime"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Reference" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SoftwareVersion" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupMessageByListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendGroupMessageByListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupMessageByDateString">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupID" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateToSend" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Reference" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SoftwareVersion" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupMessageByDateStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendGroupMessageByDateStringResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupMessageByListByDateString">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="GroupID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DateToSend" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Reference" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SoftwareVersion" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendGroupMessageByListByDateStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendGroupMessageByListByDateStringResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AccountBalanceResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountVerify">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountVerifyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AccountVerifyResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountOpen">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="FirstName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="LastName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="MobilePhone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EmailAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Company" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Phone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountOpenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AccountOpenResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountModify">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FirstName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="LastName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="MobilePhone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="EmailAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Company" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Phone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="NewPassword" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountModifyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AccountModifyResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountValidate">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="VerificationKey" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AccountValidateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="AccountValidateResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixedMessageAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixedMessageAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="FixedMessageAddResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixedMessageAddByList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixedMessageAddByListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="FixedMessageAddByListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixedMessageList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixedMessageListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="FixedMessageListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixedMessageRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ID" type="tns:ArrayOfString"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixedMessageRemoveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="FixedMessageRemoveResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixedMessageRemoveByList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FixedMessageRemoveByListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="FixedMessageRemoveByListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubAccountList">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubAccountListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SubAccountListResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubAccountGiveCredits">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="Username" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Password" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="SubAccount" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CurrentBalance" type="s:float"/>
+            <s:element maxOccurs="1" minOccurs="1" name="OffPeakBalance" type="s:float"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubAccountGiveCreditsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SubAccountGiveCreditsResult" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="ResultText" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FixedMessageAddByListSoapIn">
+    <wsdl:part name="parameters" element="tns:FixedMessageAddByList"/>
+  </wsdl:message>
+  <wsdl:message name="ReportFindContactsBetweenDatesSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportFindContactsBetweenDatesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FixedMessageListSoapIn">
+    <wsdl:part name="parameters" element="tns:FixedMessageList"/>
+  </wsdl:message>
+  <wsdl:message name="SendGroupMessageByDateStringSoapIn">
+    <wsdl:part name="parameters" element="tns:SendGroupMessageByDateString"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookRemoveEntrySoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookRemoveEntry"/>
+  </wsdl:message>
+  <wsdl:message name="SendIndividualMessageByListByDateStringSoapOut">
+    <wsdl:part name="parameters" element="tns:SendIndividualMessageByListByDateStringResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupRemoveEntrySoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupRemoveEntry"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookListSoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ReportFindNumberByDateStringSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportFindNumberByDateStringResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendGroupMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendGroupMessageResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ReportStandardBetweenDatesByDateStringSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportStandardBetweenDatesByDateStringResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AccountOpenSoapOut">
+    <wsdl:part name="parameters" element="tns:AccountOpenResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendGroupMessageByListSoapOut">
+    <wsdl:part name="parameters" element="tns:SendGroupMessageByListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupListSoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FixedMessageListSoapOut">
+    <wsdl:part name="parameters" element="tns:FixedMessageListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AccountBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:AccountBalance"/>
+  </wsdl:message>
+  <wsdl:message name="ReportFindNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportFindNumberResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Report2waySoapIn">
+    <wsdl:part name="parameters" element="tns:Report2way"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupRemoveEntrySoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupRemoveEntryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ReportFindContactsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportFindContactsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendGroupMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendGroupMessage"/>
+  </wsdl:message>
+  <wsdl:message name="AccountBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:AccountBalanceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AccountVerifySoapIn">
+    <wsdl:part name="parameters" element="tns:AccountVerify"/>
+  </wsdl:message>
+  <wsdl:message name="SendIndividualMessageByDateStringSoapOut">
+    <wsdl:part name="parameters" element="tns:SendIndividualMessageByDateStringResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AccountModifySoapOut">
+    <wsdl:part name="parameters" element="tns:AccountModifyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FixedMessageAddSoapOut">
+    <wsdl:part name="parameters" element="tns:FixedMessageAddResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupAddEntryByListSoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupAddEntryByListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SubAccountListSoapOut">
+    <wsdl:part name="parameters" element="tns:SubAccountListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupCreateByListSoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupCreateByListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AccountModifySoapIn">
+    <wsdl:part name="parameters" element="tns:AccountModify"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupCreateSoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupCreateResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendIndividualMessageByListSoapOut">
+    <wsdl:part name="parameters" element="tns:SendIndividualMessageByListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupRemoveEntryByListSoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupRemoveEntryByList"/>
+  </wsdl:message>
+  <wsdl:message name="SubAccountListSoapIn">
+    <wsdl:part name="parameters" element="tns:SubAccountList"/>
+  </wsdl:message>
+  <wsdl:message name="ReportFindContactsBetweenDatesSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportFindContactsBetweenDates"/>
+  </wsdl:message>
+  <wsdl:message name="Report2wayByDateStringSoapOut">
+    <wsdl:part name="parameters" element="tns:Report2wayByDateStringResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SubAccountGiveCreditsSoapOut">
+    <wsdl:part name="parameters" element="tns:SubAccountGiveCreditsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupCreateByListSoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupCreateByList"/>
+  </wsdl:message>
+  <wsdl:message name="FixedMessageRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:FixedMessageRemove"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookRemoveEntryByListSoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookRemoveEntryByListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ReportFindContactsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportFindContacts"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookAddEntrySoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookAddEntry"/>
+  </wsdl:message>
+  <wsdl:message name="SendIndividualMessageByListByDateStringSoapIn">
+    <wsdl:part name="parameters" element="tns:SendIndividualMessageByListByDateString"/>
+  </wsdl:message>
+  <wsdl:message name="FixedMessageRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:FixedMessageRemoveResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendGroupMessageByListByDateStringSoapOut">
+    <wsdl:part name="parameters" element="tns:SendGroupMessageByListByDateStringResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ReportFindNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportFindNumber"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupRemove"/>
+  </wsdl:message>
+  <wsdl:message name="Report2waySoapOut">
+    <wsdl:part name="parameters" element="tns:Report2wayResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ReportStandardReferenceSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportStandardReferenceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendIndividualMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendIndividualMessageResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendGroupMessageByListSoapIn">
+    <wsdl:part name="parameters" element="tns:SendGroupMessageByList"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupRemoveResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupListSoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupList"/>
+  </wsdl:message>
+  <wsdl:message name="FixedMessageRemoveByListSoapIn">
+    <wsdl:part name="parameters" element="tns:FixedMessageRemoveByList"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupAddEntrySoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupAddEntryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendGroupMessageByListByDateStringSoapIn">
+    <wsdl:part name="parameters" element="tns:SendGroupMessageByListByDateString"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookRemoveEntrySoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookRemoveEntryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupCreateSoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupCreate"/>
+  </wsdl:message>
+  <wsdl:message name="ReportFindContactsBetweenDatesByDateStringSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportFindContactsBetweenDatesByDateString"/>
+  </wsdl:message>
+  <wsdl:message name="AccountValidateSoapIn">
+    <wsdl:part name="parameters" element="tns:AccountValidate"/>
+  </wsdl:message>
+  <wsdl:message name="ReportStandardSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportStandardResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookListSoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookList"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupRemoveEntryByListSoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupRemoveEntryByListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookRemoveEntryByListSoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookRemoveEntryByList"/>
+  </wsdl:message>
+  <wsdl:message name="ReportStandardBetweenDatesSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportStandardBetweenDatesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FixedMessageAddByListSoapOut">
+    <wsdl:part name="parameters" element="tns:FixedMessageAddByListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ReportStandardReferenceSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportStandardReference"/>
+  </wsdl:message>
+  <wsdl:message name="Report2wayByDateStringSoapIn">
+    <wsdl:part name="parameters" element="tns:Report2wayByDateString"/>
+  </wsdl:message>
+  <wsdl:message name="ReportStandardBetweenDatesSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportStandardBetweenDates"/>
+  </wsdl:message>
+  <wsdl:message name="FixedMessageRemoveByListSoapOut">
+    <wsdl:part name="parameters" element="tns:FixedMessageRemoveByListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ReportStandardBetweenDatesByDateStringSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportStandardBetweenDatesByDateString"/>
+  </wsdl:message>
+  <wsdl:message name="ReportFindNumberByDateStringSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportFindNumberByDateString"/>
+  </wsdl:message>
+  <wsdl:message name="SendIndividualMessageByListSoapIn">
+    <wsdl:part name="parameters" element="tns:SendIndividualMessageByList"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookAddEntrySoapOut">
+    <wsdl:part name="parameters" element="tns:AddressBookAddEntryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SubAccountGiveCreditsSoapIn">
+    <wsdl:part name="parameters" element="tns:SubAccountGiveCredits"/>
+  </wsdl:message>
+  <wsdl:message name="SendGroupMessageByDateStringSoapOut">
+    <wsdl:part name="parameters" element="tns:SendGroupMessageByDateStringResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupAddEntryByListSoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupAddEntryByList"/>
+  </wsdl:message>
+  <wsdl:message name="AccountValidateSoapOut">
+    <wsdl:part name="parameters" element="tns:AccountValidateResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AccountVerifySoapOut">
+    <wsdl:part name="parameters" element="tns:AccountVerifyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ReportStandardSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportStandard"/>
+  </wsdl:message>
+  <wsdl:message name="AddressBookGroupAddEntrySoapIn">
+    <wsdl:part name="parameters" element="tns:AddressBookGroupAddEntry"/>
+  </wsdl:message>
+  <wsdl:message name="SendIndividualMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendIndividualMessage"/>
+  </wsdl:message>
+  <wsdl:message name="FixedMessageAddSoapIn">
+    <wsdl:part name="parameters" element="tns:FixedMessageAdd"/>
+  </wsdl:message>
+  <wsdl:message name="ReportFindContactsBetweenDatesByDateStringSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportFindContactsBetweenDatesByDateStringResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendIndividualMessageByDateStringSoapIn">
+    <wsdl:part name="parameters" element="tns:SendIndividualMessageByDateString"/>
+  </wsdl:message>
+  <wsdl:message name="AccountOpenSoapIn">
+    <wsdl:part name="parameters" element="tns:AccountOpen"/>
+  </wsdl:message>
+  <wsdl:portType name="SMSServiceSoap">
+    <wsdl:operation name="AddressBookList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lists a users contacts</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookListSoapIn"/>
+      <wsdl:output message="tns:AddressBookListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookAddEntry">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds a new contact</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookAddEntrySoapIn"/>
+      <wsdl:output message="tns:AddressBookAddEntrySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookRemoveEntry">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes contacts (given an array of contact numbers)</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookRemoveEntrySoapIn"/>
+      <wsdl:output message="tns:AddressBookRemoveEntrySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookRemoveEntryByList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes contacts (given a semicolon-delimited list of contact numbers)</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookRemoveEntryByListSoapIn"/>
+      <wsdl:output message="tns:AddressBookRemoveEntryByListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lists a users groups</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookGroupListSoapIn"/>
+      <wsdl:output message="tns:AddressBookGroupListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupCreate">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a group (given an array of contact numbers)</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookGroupCreateSoapIn"/>
+      <wsdl:output message="tns:AddressBookGroupCreateSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupCreateByList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a group (given a semicolon-delimited list of contact numbers)</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookGroupCreateByListSoapIn"/>
+      <wsdl:output message="tns:AddressBookGroupCreateByListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupRemove">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes a group</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookGroupRemoveSoapIn"/>
+      <wsdl:output message="tns:AddressBookGroupRemoveSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupAddEntry">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds contacts to a specified group (given an array of contact numbers)</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookGroupAddEntrySoapIn"/>
+      <wsdl:output message="tns:AddressBookGroupAddEntrySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupAddEntryByList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds contacts to a specified group (given a semicolon-delimited list of contact numbers)</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookGroupAddEntryByListSoapIn"/>
+      <wsdl:output message="tns:AddressBookGroupAddEntryByListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupRemoveEntry">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes contacts from a group (given an array of contact numbers)</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookGroupRemoveEntrySoapIn"/>
+      <wsdl:output message="tns:AddressBookGroupRemoveEntrySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupRemoveEntryByList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes contacts from a group (given a semicolon-delimited list of contact numbers)</wsdl:documentation>
+      <wsdl:input message="tns:AddressBookGroupRemoveEntryByListSoapIn"/>
+      <wsdl:output message="tns:AddressBookGroupRemoveEntryByListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandard">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports messages sent using a predefined template</wsdl:documentation>
+      <wsdl:input message="tns:ReportStandardSoapIn"/>
+      <wsdl:output message="tns:ReportStandardSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandardReference">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports messages sent with a certain reference field</wsdl:documentation>
+      <wsdl:input message="tns:ReportStandardReferenceSoapIn"/>
+      <wsdl:output message="tns:ReportStandardReferenceSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandardBetweenDates">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports messages sent between specified dates</wsdl:documentation>
+      <wsdl:input message="tns:ReportStandardBetweenDatesSoapIn"/>
+      <wsdl:output message="tns:ReportStandardBetweenDatesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandardBetweenDatesByDateString">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports messages sent between specified date strings in MM/dd/yyyy HH:mm:ss format</wsdl:documentation>
+      <wsdl:input message="tns:ReportStandardBetweenDatesByDateStringSoapIn"/>
+      <wsdl:output message="tns:ReportStandardBetweenDatesByDateStringSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Report2way">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports messages received between specified dates</wsdl:documentation>
+      <wsdl:input message="tns:Report2waySoapIn"/>
+      <wsdl:output message="tns:Report2waySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Report2wayByDateString">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports messages received between specified date strings in MM/dd/yyyy HH:mm:ss format</wsdl:documentation>
+      <wsdl:input message="tns:Report2wayByDateStringSoapIn"/>
+      <wsdl:output message="tns:Report2wayByDateStringSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindNumber">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports messages received from a specified number since a specified date</wsdl:documentation>
+      <wsdl:input message="tns:ReportFindNumberSoapIn"/>
+      <wsdl:output message="tns:ReportFindNumberSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindNumberByDateString">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports messages received from a specified number since a specified date string in MM/dd/yyyy HH:mm:ss format</wsdl:documentation>
+      <wsdl:input message="tns:ReportFindNumberByDateStringSoapIn"/>
+      <wsdl:output message="tns:ReportFindNumberByDateStringSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindContacts">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports messages received from address book contacts, optionally by 'GroupName' or 'GroupID'</wsdl:documentation>
+      <wsdl:input message="tns:ReportFindContactsSoapIn"/>
+      <wsdl:output message="tns:ReportFindContactsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindContactsBetweenDates">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports messages received from address book contacts, optionally by 'GroupName' or 'GroupID', between specified dates</wsdl:documentation>
+      <wsdl:input message="tns:ReportFindContactsBetweenDatesSoapIn"/>
+      <wsdl:output message="tns:ReportFindContactsBetweenDatesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindContactsBetweenDatesByDateString">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Reports messages received from address book contacts, optionally by 'GroupName' or 'GroupID', between specified date strings in MM/dd/yyyy HH:mm:ss format</wsdl:documentation>
+      <wsdl:input message="tns:ReportFindContactsBetweenDatesByDateStringSoapIn"/>
+      <wsdl:output message="tns:ReportFindContactsBetweenDatesByDateStringSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessage">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a text message to an array of destinations at a specified date and/or time, or immediately if the date is before Jan 1, 1900</wsdl:documentation>
+      <wsdl:input message="tns:SendIndividualMessageSoapIn"/>
+      <wsdl:output message="tns:SendIndividualMessageSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessageByList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a text message to a semicolon-delimited list of destinations at a specified date and/or time, or immediately if the date is before Jan 1, 1900</wsdl:documentation>
+      <wsdl:input message="tns:SendIndividualMessageByListSoapIn"/>
+      <wsdl:output message="tns:SendIndividualMessageByListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessageByDateString">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a text message to an array of destinations, optionally at a date and/or time specified by a string in MM/dd/yyyy HH:mm:ss format</wsdl:documentation>
+      <wsdl:input message="tns:SendIndividualMessageByDateStringSoapIn"/>
+      <wsdl:output message="tns:SendIndividualMessageByDateStringSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessageByListByDateString">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a text message to a semicolon-delimited list of destinations, optionally at a date and/or time specified by a string in MM/dd/yyyy HH:mm:ss format</wsdl:documentation>
+      <wsdl:input message="tns:SendIndividualMessageByListByDateStringSoapIn"/>
+      <wsdl:output message="tns:SendIndividualMessageByListByDateStringSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessage">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a text message to an array of groups at a specified date and/or time, or immediately if the date is before Jan 1, 1900</wsdl:documentation>
+      <wsdl:input message="tns:SendGroupMessageSoapIn"/>
+      <wsdl:output message="tns:SendGroupMessageSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessageByList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a text message to a semicolon-delimited list of groups at a specified date and/or time, or immediately if the date is before Jan 1, 1900</wsdl:documentation>
+      <wsdl:input message="tns:SendGroupMessageByListSoapIn"/>
+      <wsdl:output message="tns:SendGroupMessageByListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessageByDateString">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a text message to an array of groups, optionally at a date and/or time specified by a string in MM/dd/yyyy HH:mm:ss format</wsdl:documentation>
+      <wsdl:input message="tns:SendGroupMessageByDateStringSoapIn"/>
+      <wsdl:output message="tns:SendGroupMessageByDateStringSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessageByListByDateString">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sends a text message to a semicolon-delimited list of groups, optionally at a date and/or time specified by a string in MM/dd/yyyy HH:mm:ss format</wsdl:documentation>
+      <wsdl:input message="tns:SendGroupMessageByListByDateStringSoapIn"/>
+      <wsdl:output message="tns:SendGroupMessageByListByDateStringSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AccountBalance">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns account balance</wsdl:documentation>
+      <wsdl:input message="tns:AccountBalanceSoapIn"/>
+      <wsdl:output message="tns:AccountBalanceSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AccountVerify">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Verifies that an account exists</wsdl:documentation>
+      <wsdl:input message="tns:AccountVerifySoapIn"/>
+      <wsdl:output message="tns:AccountVerifySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AccountOpen">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Opens a new account</wsdl:documentation>
+      <wsdl:input message="tns:AccountOpenSoapIn"/>
+      <wsdl:output message="tns:AccountOpenSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AccountModify">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Modifies account details</wsdl:documentation>
+      <wsdl:input message="tns:AccountModifySoapIn"/>
+      <wsdl:output message="tns:AccountModifySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AccountValidate">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Validates account using code sent after registering</wsdl:documentation>
+      <wsdl:input message="tns:AccountValidateSoapIn"/>
+      <wsdl:output message="tns:AccountValidateSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageAdd">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds an array of fixed messages</wsdl:documentation>
+      <wsdl:input message="tns:FixedMessageAddSoapIn"/>
+      <wsdl:output message="tns:FixedMessageAddSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageAddByList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds a semicolon-delimited list of fixed messages</wsdl:documentation>
+      <wsdl:input message="tns:FixedMessageAddByListSoapIn"/>
+      <wsdl:output message="tns:FixedMessageAddByListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lists a customer's fixed messages</wsdl:documentation>
+      <wsdl:input message="tns:FixedMessageListSoapIn"/>
+      <wsdl:output message="tns:FixedMessageListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageRemove">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes an array of fixed messages</wsdl:documentation>
+      <wsdl:input message="tns:FixedMessageRemoveSoapIn"/>
+      <wsdl:output message="tns:FixedMessageRemoveSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageRemoveByList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes a semicolon-delimited list of fixed messages</wsdl:documentation>
+      <wsdl:input message="tns:FixedMessageRemoveByListSoapIn"/>
+      <wsdl:output message="tns:FixedMessageRemoveByListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SubAccountList">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lists a users subaccounts</wsdl:documentation>
+      <wsdl:input message="tns:SubAccountListSoapIn"/>
+      <wsdl:output message="tns:SubAccountListSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SubAccountGiveCredits">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Transfers credits to a sub-account</wsdl:documentation>
+      <wsdl:input message="tns:SubAccountGiveCreditsSoapIn"/>
+      <wsdl:output message="tns:SubAccountGiveCreditsSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SMSServiceSoap12" type="tns:SMSServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AddressBookList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookAddEntry">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookAddEntry" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookRemoveEntry">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookRemoveEntry" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookRemoveEntryByList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookRemoveEntryByList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupCreate">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupCreate" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupCreateByList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupCreateByList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupRemove">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupRemove" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupAddEntry">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupAddEntry" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupAddEntryByList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupAddEntryByList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupRemoveEntry">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupRemoveEntry" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupRemoveEntryByList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupRemoveEntryByList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandard">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/ReportStandard" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandardReference">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/ReportStandardReference" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandardBetweenDates">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/ReportStandardBetweenDates" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandardBetweenDatesByDateString">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/ReportStandardBetweenDatesByDateString" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Report2way">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/Report2way" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Report2wayByDateString">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/Report2wayByDateString" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindNumber">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/ReportFindNumber" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindNumberByDateString">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/ReportFindNumberByDateString" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindContacts">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/ReportFindContacts" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindContactsBetweenDates">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/ReportFindContactsBetweenDates" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindContactsBetweenDatesByDateString">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/ReportFindContactsBetweenDatesByDateString" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessage">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/SendIndividualMessage" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessageByList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/SendIndividualMessageByList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessageByDateString">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/SendIndividualMessageByDateString" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessageByListByDateString">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/SendIndividualMessageByListByDateString" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessage">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/SendGroupMessage" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessageByList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/SendGroupMessageByList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessageByDateString">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/SendGroupMessageByDateString" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessageByListByDateString">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/SendGroupMessageByListByDateString" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountBalance">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AccountBalance" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountVerify">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AccountVerify" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountOpen">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AccountOpen" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountModify">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AccountModify" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountValidate">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/AccountValidate" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageAdd">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/FixedMessageAdd" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageAddByList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/FixedMessageAddByList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/FixedMessageList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageRemove">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/FixedMessageRemove" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageRemoveByList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/FixedMessageRemoveByList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubAccountList">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/SubAccountList" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubAccountGiveCredits">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://www.2sms.com/WebServices/1.4/SubAccountGiveCredits" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SMSServiceSoap" type="tns:SMSServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AddressBookList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookAddEntry">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookAddEntry" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookRemoveEntry">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookRemoveEntry" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookRemoveEntryByList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookRemoveEntryByList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupCreate">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupCreate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupCreateByList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupCreateByList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupRemove">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupRemove" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupAddEntry">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupAddEntry" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupAddEntryByList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupAddEntryByList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupRemoveEntry">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupRemoveEntry" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddressBookGroupRemoveEntryByList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AddressBookGroupRemoveEntryByList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandard">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/ReportStandard" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandardReference">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/ReportStandardReference" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandardBetweenDates">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/ReportStandardBetweenDates" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportStandardBetweenDatesByDateString">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/ReportStandardBetweenDatesByDateString" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Report2way">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/Report2way" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Report2wayByDateString">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/Report2wayByDateString" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindNumber">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/ReportFindNumber" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindNumberByDateString">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/ReportFindNumberByDateString" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindContacts">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/ReportFindContacts" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindContactsBetweenDates">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/ReportFindContactsBetweenDates" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportFindContactsBetweenDatesByDateString">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/ReportFindContactsBetweenDatesByDateString" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessage">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/SendIndividualMessage" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessageByList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/SendIndividualMessageByList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessageByDateString">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/SendIndividualMessageByDateString" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendIndividualMessageByListByDateString">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/SendIndividualMessageByListByDateString" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessage">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/SendGroupMessage" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessageByList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/SendGroupMessageByList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessageByDateString">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/SendGroupMessageByDateString" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendGroupMessageByListByDateString">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/SendGroupMessageByListByDateString" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountBalance">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AccountBalance" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountVerify">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AccountVerify" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountOpen">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AccountOpen" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountModify">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AccountModify" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AccountValidate">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/AccountValidate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageAdd">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/FixedMessageAdd" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageAddByList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/FixedMessageAddByList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/FixedMessageList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageRemove">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/FixedMessageRemove" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FixedMessageRemoveByList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/FixedMessageRemoveByList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubAccountList">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/SubAccountList" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubAccountGiveCredits">
+      <soap:operation soapAction="http://www.2sms.com/WebServices/1.4/SubAccountGiveCredits" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SMSService">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">2sms Messaging Web Service</wsdl:documentation>
+    <wsdl:port name="SMSServiceSoap12" binding="tns:SMSServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://findourfolks.2sms.com/WebServices/1.4/SMSService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SMSServiceSoap" binding="tns:SMSServiceSoap">
+      <soap:address location="http://findourfolks.2sms.com/WebServices/1.4/SMSService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

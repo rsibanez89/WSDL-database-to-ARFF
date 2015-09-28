@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices.serverside.no" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservices.serverside.no" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://webservices.serverside.no">
+      <s:element name="GetCompanyInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="organisationNumber" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompanyInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetCompanyInfoResult" type="tns:Company"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Company">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CompanySmall">
+            <s:sequence>
+              <s:element maxOccurs="1" minOccurs="0" name="CompanyType" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Email" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Fax" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Homepage" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Mobile" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="Phone" type="s:string"/>
+              <s:element maxOccurs="1" minOccurs="0" name="PostalAddress" type="tns:Address"/>
+              <s:element maxOccurs="1" minOccurs="0" name="VisitingAddress" type="tns:Address"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CompanySmall">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="Name" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="OrganisationNumber" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Address">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="AddressLine1" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="AddressLine2" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="ZipCode" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="Country" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="City" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Search">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="query" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SearchResult" type="tns:ArrayOfCompanySmall"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCompanySmall">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="CompanySmall" nillable="true" type="tns:CompanySmall"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Company" nillable="true" type="tns:Company"/>
+      <s:element name="ArrayOfCompanySmall" nillable="true" type="tns:ArrayOfCompanySmall"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCompanyInfoHttpGetIn">
+    <wsdl:part name="organisationNumber" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SearchHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCompanySmall"/>
+  </wsdl:message>
+  <wsdl:message name="SearchSoapIn">
+    <wsdl:part name="parameters" element="tns:Search"/>
+  </wsdl:message>
+  <wsdl:message name="GetCompanyInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyInfo"/>
+  </wsdl:message>
+  <wsdl:message name="GetCompanyInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:Company"/>
+  </wsdl:message>
+  <wsdl:message name="GetCompanyInfoHttpPostIn">
+    <wsdl:part name="organisationNumber" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SearchHttpPostIn">
+    <wsdl:part name="query" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCompanyInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SearchSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetCompanyInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:Company"/>
+  </wsdl:message>
+  <wsdl:message name="SearchHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCompanySmall"/>
+  </wsdl:message>
+  <wsdl:message name="SearchHttpGetIn">
+    <wsdl:part name="query" type="s:string"/>
+  </wsdl:message>
+  <wsdl:portType name="BrRegSoap">
+    <wsdl:operation name="GetCompanyInfo">
+      <wsdl:input message="tns:GetCompanyInfoSoapIn"/>
+      <wsdl:output message="tns:GetCompanyInfoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:input message="tns:SearchSoapIn"/>
+      <wsdl:output message="tns:SearchSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="BrRegHttpGet">
+    <wsdl:operation name="GetCompanyInfo">
+      <wsdl:input message="tns:GetCompanyInfoHttpGetIn"/>
+      <wsdl:output message="tns:GetCompanyInfoHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:input message="tns:SearchHttpGetIn"/>
+      <wsdl:output message="tns:SearchHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="BrRegHttpPost">
+    <wsdl:operation name="GetCompanyInfo">
+      <wsdl:input message="tns:GetCompanyInfoHttpPostIn"/>
+      <wsdl:output message="tns:GetCompanyInfoHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:input message="tns:SearchHttpPostIn"/>
+      <wsdl:output message="tns:SearchHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BrRegSoap" type="tns:BrRegSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetCompanyInfo">
+      <soap:operation soapAction="http://webservices.serverside.no/GetCompanyInfo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap:operation soapAction="http://webservices.serverside.no/Search" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BrRegSoap12" type="tns:BrRegSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetCompanyInfo">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://webservices.serverside.no/GetCompanyInfo" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://webservices.serverside.no/Search" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BrRegHttpGet" type="tns:BrRegHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="GetCompanyInfo">
+      <http:operation location="/GetCompanyInfo"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <http:operation location="/Search"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BrRegHttpPost" type="tns:BrRegHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="GetCompanyInfo">
+      <http:operation location="/GetCompanyInfo"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <http:operation location="/Search"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BrReg">
+    <wsdl:port name="BrRegSoap" binding="tns:BrRegSoap">
+      <soap:address location="http://webservices.serverside.no/webservices/BrReg/BrReg.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="BrRegHttpGet" binding="tns:BrRegHttpGet">
+      <http:address location="http://webservices.serverside.no/webservices/BrReg/BrReg.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="BrRegSoap12" binding="tns:BrRegSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://webservices.serverside.no/webservices/BrReg/BrReg.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="BrRegHttpPost" binding="tns:BrRegHttpPost">
+      <http:address location="http://webservices.serverside.no/webservices/BrReg/BrReg.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

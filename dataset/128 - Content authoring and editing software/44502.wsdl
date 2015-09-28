@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://localhost/sogc_update/Sogc_Video_Streams.xslt" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/sogc_update/Sogc_Video_Streams.xslt" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://localhost/sogc_update/Sogc_Video_Streams.xslt">
+      <s:element name="GetTopicsPerSubject">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strSubject" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicsPerSubjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetTopicsPerSubjectResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideoByUniqueID">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strID" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideoByUniqueIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetVideoByUniqueIDResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuestionsPerTopic">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="strTopic" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuestionsPerTopicResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetQuestionsPerTopicResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTopicsPerSubjectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTopicsPerSubjectResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetQuestionsPerTopicSoapOut">
+    <wsdl:part name="parameters" element="tns:GetQuestionsPerTopicResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetTopicsPerSubjectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTopicsPerSubject"/>
+  </wsdl:message>
+  <wsdl:message name="GetQuestionsPerTopicSoapIn">
+    <wsdl:part name="parameters" element="tns:GetQuestionsPerTopic"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideoByUniqueIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVideoByUniqueIDResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetVideoByUniqueIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVideoByUniqueID"/>
+  </wsdl:message>
+  <wsdl:portType name="sogc_video_streamsSoap">
+    <wsdl:operation name="GetTopicsPerSubject">
+      <wsdl:input message="tns:GetTopicsPerSubjectSoapIn"/>
+      <wsdl:output message="tns:GetTopicsPerSubjectSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoByUniqueID">
+      <wsdl:input message="tns:GetVideoByUniqueIDSoapIn"/>
+      <wsdl:output message="tns:GetVideoByUniqueIDSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionsPerTopic">
+      <wsdl:input message="tns:GetQuestionsPerTopicSoapIn"/>
+      <wsdl:output message="tns:GetQuestionsPerTopicSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="sogc_video_streamsSoap12" type="tns:sogc_video_streamsSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetTopicsPerSubject">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://localhost/sogc_update/Sogc_Video_Streams.xslt/GetTopicsPerSubject" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoByUniqueID">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://localhost/sogc_update/Sogc_Video_Streams.xslt/GetVideoByUniqueID" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionsPerTopic">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://localhost/sogc_update/Sogc_Video_Streams.xslt/GetQuestionsPerTopic" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="sogc_video_streamsSoap" type="tns:sogc_video_streamsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetTopicsPerSubject">
+      <soap:operation soapAction="http://localhost/sogc_update/Sogc_Video_Streams.xslt/GetTopicsPerSubject" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoByUniqueID">
+      <soap:operation soapAction="http://localhost/sogc_update/Sogc_Video_Streams.xslt/GetVideoByUniqueID" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionsPerTopic">
+      <soap:operation soapAction="http://localhost/sogc_update/Sogc_Video_Streams.xslt/GetQuestionsPerTopic" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="sogc_video_streams">
+    <wsdl:port name="sogc_video_streamsSoap" binding="tns:sogc_video_streamsSoap">
+      <soap:address location="http://secure.sogc.org/videoplayer/sogc_video_streams.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="sogc_video_streamsSoap12" binding="tns:sogc_video_streamsSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://secure.sogc.org/videoplayer/sogc_video_streams.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

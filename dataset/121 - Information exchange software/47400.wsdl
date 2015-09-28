@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InviteBuddy">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="requestMemberId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="buddyType" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InviteBuddyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="InviteBuddyResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ignoreBuddy">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="_buddyObjects" type="tns:ArrayOfBuddyObject"/>
+            <s:element maxOccurs="1" minOccurs="1" name="doIgnore" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBuddyObject">
+        <s:sequence>
+          <s:element maxOccurs="unbounded" minOccurs="0" name="buddyObject" nillable="true" type="tns:buddyObject"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="buddyObject">
+        <s:sequence>
+          <s:element maxOccurs="1" minOccurs="0" name="RequestMember" type="s:string"/>
+          <s:element maxOccurs="1" minOccurs="0" name="PM_ID" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ignoreBuddyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="ignoreBuddyResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="withdrawRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="_buddyObjects" type="tns:ArrayOfBuddyObject"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="withdrawRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="withdrawRequestResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBuddy">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="_buddyObjects" type="tns:ArrayOfBuddyObject"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBuddyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="DeleteBuddyResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcceptBuddy">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="_buddyObjects" type="tns:ArrayOfBuddyObject"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcceptBuddyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="AcceptBuddyResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DenyBuddy">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="_buddyObjects" type="tns:ArrayOfBuddyObject"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DenyBuddyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="DenyBuddyResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SeBuddyType">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="buddy" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="type_id" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SeBuddyTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="SeBuddyTypeResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="withdrawRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:withdrawRequestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SeBuddyTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:SeBuddyType"/>
+  </wsdl:message>
+  <wsdl:message name="withdrawRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:withdrawRequest"/>
+  </wsdl:message>
+  <wsdl:message name="AcceptBuddySoapOut">
+    <wsdl:part name="parameters" element="tns:AcceptBuddyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteBuddySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBuddyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SeBuddyTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:SeBuddyTypeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ignoreBuddySoapOut">
+    <wsdl:part name="parameters" element="tns:ignoreBuddyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DenyBuddySoapOut">
+    <wsdl:part name="parameters" element="tns:DenyBuddyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="InviteBuddySoapOut">
+    <wsdl:part name="parameters" element="tns:InviteBuddyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteBuddySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBuddy"/>
+  </wsdl:message>
+  <wsdl:message name="AcceptBuddySoapIn">
+    <wsdl:part name="parameters" element="tns:AcceptBuddy"/>
+  </wsdl:message>
+  <wsdl:message name="InviteBuddySoapIn">
+    <wsdl:part name="parameters" element="tns:InviteBuddy"/>
+  </wsdl:message>
+  <wsdl:message name="ignoreBuddySoapIn">
+    <wsdl:part name="parameters" element="tns:ignoreBuddy"/>
+  </wsdl:message>
+  <wsdl:message name="DenyBuddySoapIn">
+    <wsdl:part name="parameters" element="tns:DenyBuddy"/>
+  </wsdl:message>
+  <wsdl:portType name="BuddyServiceSoap">
+    <wsdl:operation name="InviteBuddy">
+      <wsdl:input message="tns:InviteBuddySoapIn"/>
+      <wsdl:output message="tns:InviteBuddySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ignoreBuddy">
+      <wsdl:input message="tns:ignoreBuddySoapIn"/>
+      <wsdl:output message="tns:ignoreBuddySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="withdrawRequest">
+      <wsdl:input message="tns:withdrawRequestSoapIn"/>
+      <wsdl:output message="tns:withdrawRequestSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBuddy">
+      <wsdl:input message="tns:DeleteBuddySoapIn"/>
+      <wsdl:output message="tns:DeleteBuddySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptBuddy">
+      <wsdl:input message="tns:AcceptBuddySoapIn"/>
+      <wsdl:output message="tns:AcceptBuddySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DenyBuddy">
+      <wsdl:input message="tns:DenyBuddySoapIn"/>
+      <wsdl:output message="tns:DenyBuddySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SeBuddyType">
+      <wsdl:input message="tns:SeBuddyTypeSoapIn"/>
+      <wsdl:output message="tns:SeBuddyTypeSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BuddyServiceSoap12" type="tns:BuddyServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="InviteBuddy">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/InviteBuddy" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ignoreBuddy">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/ignoreBuddy" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="withdrawRequest">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/withdrawRequest" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBuddy">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/DeleteBuddy" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptBuddy">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/AcceptBuddy" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DenyBuddy">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/DenyBuddy" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeBuddyType">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://tempuri.org/SeBuddyType" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BuddyServiceSoap" type="tns:BuddyServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="InviteBuddy">
+      <soap:operation soapAction="http://tempuri.org/InviteBuddy" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ignoreBuddy">
+      <soap:operation soapAction="http://tempuri.org/ignoreBuddy" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="withdrawRequest">
+      <soap:operation soapAction="http://tempuri.org/withdrawRequest" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBuddy">
+      <soap:operation soapAction="http://tempuri.org/DeleteBuddy" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptBuddy">
+      <soap:operation soapAction="http://tempuri.org/AcceptBuddy" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DenyBuddy">
+      <soap:operation soapAction="http://tempuri.org/DenyBuddy" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeBuddyType">
+      <soap:operation soapAction="http://tempuri.org/SeBuddyType" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BuddyService">
+    <wsdl:port name="BuddyServiceSoap12" binding="tns:BuddyServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.coloradogasprices.com/BuddyService.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="BuddyServiceSoap" binding="tns:BuddyServiceSoap">
+      <soap:address location="http://www.coloradogasprices.com/BuddyService.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

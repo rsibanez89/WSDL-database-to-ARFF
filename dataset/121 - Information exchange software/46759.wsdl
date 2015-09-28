@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.tongkni.co.kr/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.tongkni.co.kr/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://webservice.tongkni.co.kr/">
+      <s:element name="SendSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="smsID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hashValue" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="senderPhone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="receivePhone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="smsContent" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSMSResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSReserve">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="smsID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hashValue" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="senderPhone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="receivePhone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="smsContent" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="reserveDate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="reserveTime" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSReserveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSMSReserveResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSCallBack">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="smsID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hashValue" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="senderPhone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="receivePhone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="callbackUrl" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="smsContent" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSCallBackResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSMSCallBackResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSCallBackReserve">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="smsID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hashValue" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="senderPhone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="receivePhone" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="callbackUrl" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="smsContent" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="reserveDate" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="reserveTime" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSCallBackReserveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSMSCallBackReserveResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRemainCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="smsID" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hashValue" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRemainCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="GetRemainCountResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendSMSCallBackSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSCallBackResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSCallBackReserveSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSCallBackReserveResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetRemainCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRemainCount"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMS"/>
+  </wsdl:message>
+  <wsdl:message name="GetRemainCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRemainCountResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSCallBackSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMSCallBack"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSCallBackReserveSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMSCallBackReserve"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSReserveSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMSReserve"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMSReserveSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSReserveResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ServiceSMSSoap">
+    <wsdl:operation name="SendSMS">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">SMS? ?? ?? ?????. SendSMS (???,??,???? ??,??? ??,????)</wsdl:documentation>
+      <wsdl:input message="tns:SendSMSSoapIn"/>
+      <wsdl:output message="tns:SendSMSSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSReserve">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">SMS? ????? ?????. SendSMSReserve (???,??,???? ??,??? ??,????,????,????)</wsdl:documentation>
+      <wsdl:input message="tns:SendSMSReserveSoapIn"/>
+      <wsdl:output message="tns:SendSMSReserveSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSCallBack">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">URL CALLBACK? ?? ?? ?????. SendSMSCallBack(???,??,???? ??,??? ??,URL??,????)</wsdl:documentation>
+      <wsdl:input message="tns:SendSMSCallBackSoapIn"/>
+      <wsdl:output message="tns:SendSMSCallBackSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSCallBackReserve">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">URL CALLBACK? ????? ?????. SendSMSCallBackReserve(???,??,???? ??,??? ??,URL??,????,????,????)</wsdl:documentation>
+      <wsdl:input message="tns:SendSMSCallBackReserveSoapIn"/>
+      <wsdl:output message="tns:SendSMSCallBackReserveSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemainCount">
+<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">?? ?? ?????.(???,??)</wsdl:documentation>
+      <wsdl:input message="tns:GetRemainCountSoapIn"/>
+      <wsdl:output message="tns:GetRemainCountSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSMSSoap" type="tns:ServiceSMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendSMS">
+      <soap:operation soapAction="http://webservice.tongkni.co.kr/SendSMS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSReserve">
+      <soap:operation soapAction="http://webservice.tongkni.co.kr/SendSMSReserve" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSCallBack">
+      <soap:operation soapAction="http://webservice.tongkni.co.kr/SendSMSCallBack" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSCallBackReserve">
+      <soap:operation soapAction="http://webservice.tongkni.co.kr/SendSMSCallBackReserve" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemainCount">
+      <soap:operation soapAction="http://webservice.tongkni.co.kr/GetRemainCount" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSMSSoap12" type="tns:ServiceSMSSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendSMS">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://webservice.tongkni.co.kr/SendSMS" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSReserve">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://webservice.tongkni.co.kr/SendSMSReserve" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSCallBack">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://webservice.tongkni.co.kr/SendSMSCallBack" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSCallBackReserve">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://webservice.tongkni.co.kr/SendSMSCallBackReserve" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemainCount">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://webservice.tongkni.co.kr/GetRemainCount" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceSMS">
+    <wsdl:port name="ServiceSMSSoap" binding="tns:ServiceSMSSoap">
+      <soap:address location="http://webservice.tongkni.co.kr/sms.1/ServiceSMS.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="ServiceSMSSoap12" binding="tns:ServiceSMSSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://webservice.tongkni.co.kr/sms.1/ServiceSMS.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

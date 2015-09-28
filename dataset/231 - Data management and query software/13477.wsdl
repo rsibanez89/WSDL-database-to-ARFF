@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:impl="http://webservice" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://webservice">
+  <wsdl:types>
+    <schema targetNamespace="http://rpc.xml.coldfusion" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://webservice"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="CFCInvocationException">
+    <sequence/>
+   </complexType>
+   <complexType name="QueryBean">
+    <sequence>
+     <element name="columnList" nillable="true" type="impl:ArrayOf_xsd_string"/>
+     <element name="data" nillable="true" type="impl:ArrayOfArrayOf_xsd_anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://webservice"/>
+   <import namespace="http://rpc.xml.coldfusion"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="mapItem">
+    <sequence>
+     <element name="key" nillable="true" type="xsd:anyType"/>
+     <element name="value" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <complexType name="Map">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="apachesoap:mapItem"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema targetNamespace="http://webservice" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://rpc.xml.coldfusion"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_xsd_anyType">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:anyType[]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_xsd_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfArrayOf_xsd_anyType">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:anyType[][]" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  </wsdl:types>
+  <wsdl:message name="ReturnQueryResponse">
+    <wsdl:part name="ReturnQueryReturn" type="tns1:QueryBean"/>
+  </wsdl:message>
+  <wsdl:message name="EchoQueryRequest">
+    <wsdl:part name="Input" type="tns1:QueryBean"/>
+  </wsdl:message>
+  <wsdl:message name="EchoArrayResponse">
+    <wsdl:part name="EchoArrayReturn" type="impl:ArrayOf_xsd_anyType"/>
+  </wsdl:message>
+  <wsdl:message name="EchoQueryResponse">
+    <wsdl:part name="EchoQueryReturn" type="tns1:QueryBean"/>
+  </wsdl:message>
+  <wsdl:message name="LoginResponse">
+    <wsdl:part name="LoginReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="EchoStringRequest">
+    <wsdl:part name="Input" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="ReturnQueryRequest">
+  </wsdl:message>
+  <wsdl:message name="EchoStringResponse">
+    <wsdl:part name="EchoStringReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="ReturnArrayResponse">
+    <wsdl:part name="ReturnArrayReturn" type="impl:ArrayOf_xsd_anyType"/>
+  </wsdl:message>
+  <wsdl:message name="LoginRequest">
+    <wsdl:part name="LoginCompany" type="xsd:double"/>
+    <wsdl:part name="LoginDealer" type="xsd:string"/>
+    <wsdl:part name="LoginUsername" type="xsd:string"/>
+    <wsdl:part name="LoginPassword" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="CFCInvocationException">
+    <wsdl:part name="fault" type="tns1:CFCInvocationException"/>
+  </wsdl:message>
+  <wsdl:message name="EchoStructResponse">
+    <wsdl:part name="EchoStructReturn" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="ReturnStructResponse">
+    <wsdl:part name="ReturnStructReturn" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="CreateContractRequest">
+    <wsdl:part name="LoginCompany" type="xsd:double"/>
+    <wsdl:part name="LoginDealer" type="xsd:string"/>
+    <wsdl:part name="LoginUsername" type="xsd:string"/>
+    <wsdl:part name="LoginPassword" type="xsd:string"/>
+    <wsdl:part name="ContractProperties" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="EchoAnyRequest">
+    <wsdl:part name="Input" type="xsd:anyType"/>
+  </wsdl:message>
+  <wsdl:message name="EchoStructRequest">
+    <wsdl:part name="Input" type="apachesoap:Map"/>
+  </wsdl:message>
+  <wsdl:message name="ReturnStructRequest">
+  </wsdl:message>
+  <wsdl:message name="ReturnStringResponse">
+    <wsdl:part name="ReturnStringReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="CreateContractResponse">
+    <wsdl:part name="CreateContractReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="ReturnArrayRequest">
+  </wsdl:message>
+  <wsdl:message name="ReturnStringRequest">
+  </wsdl:message>
+  <wsdl:message name="EchoArrayRequest">
+    <wsdl:part name="Input" type="impl:ArrayOf_xsd_anyType"/>
+  </wsdl:message>
+  <wsdl:message name="EchoAnyResponse">
+    <wsdl:part name="EchoAnyReturn" type="xsd:anyType"/>
+  </wsdl:message>
+  <wsdl:portType name="Dbconnector">
+    <wsdl:operation name="Login" parameterOrder="LoginCompany LoginDealer LoginUsername LoginPassword">
+      <wsdl:input name="LoginRequest" message="impl:LoginRequest"/>
+      <wsdl:output name="LoginResponse" message="impl:LoginResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="EchoAny" parameterOrder="Input">
+      <wsdl:input name="EchoAnyRequest" message="impl:EchoAnyRequest"/>
+      <wsdl:output name="EchoAnyResponse" message="impl:EchoAnyResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="CreateContract" parameterOrder="LoginCompany LoginDealer LoginUsername LoginPassword ContractProperties">
+      <wsdl:input name="CreateContractRequest" message="impl:CreateContractRequest"/>
+      <wsdl:output name="CreateContractResponse" message="impl:CreateContractResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="EchoArray" parameterOrder="Input">
+      <wsdl:input name="EchoArrayRequest" message="impl:EchoArrayRequest"/>
+      <wsdl:output name="EchoArrayResponse" message="impl:EchoArrayResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="EchoStruct" parameterOrder="Input">
+      <wsdl:input name="EchoStructRequest" message="impl:EchoStructRequest"/>
+      <wsdl:output name="EchoStructResponse" message="impl:EchoStructResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="EchoQuery" parameterOrder="Input">
+      <wsdl:input name="EchoQueryRequest" message="impl:EchoQueryRequest"/>
+      <wsdl:output name="EchoQueryResponse" message="impl:EchoQueryResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnStruct">
+      <wsdl:input name="ReturnStructRequest" message="impl:ReturnStructRequest"/>
+      <wsdl:output name="ReturnStructResponse" message="impl:ReturnStructResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="EchoString" parameterOrder="Input">
+      <wsdl:input name="EchoStringRequest" message="impl:EchoStringRequest"/>
+      <wsdl:output name="EchoStringResponse" message="impl:EchoStringResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnString">
+      <wsdl:input name="ReturnStringRequest" message="impl:ReturnStringRequest"/>
+      <wsdl:output name="ReturnStringResponse" message="impl:ReturnStringResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnArray">
+      <wsdl:input name="ReturnArrayRequest" message="impl:ReturnArrayRequest"/>
+      <wsdl:output name="ReturnArrayResponse" message="impl:ReturnArrayResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnQuery">
+      <wsdl:input name="ReturnQueryRequest" message="impl:ReturnQueryRequest"/>
+      <wsdl:output name="ReturnQueryResponse" message="impl:ReturnQueryResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="dbconnector.cfcSoapBinding" type="impl:Dbconnector">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Login">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="LoginRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:input>
+      <wsdl:output name="LoginResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EchoAny">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="EchoAnyRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:input>
+      <wsdl:output name="EchoAnyResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateContract">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="CreateContractRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:input>
+      <wsdl:output name="CreateContractResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EchoArray">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="EchoArrayRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:input>
+      <wsdl:output name="EchoArrayResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EchoStruct">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="EchoStructRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:input>
+      <wsdl:output name="EchoStructResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EchoQuery">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="EchoQueryRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:input>
+      <wsdl:output name="EchoQueryResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnStruct">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="ReturnStructRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:input>
+      <wsdl:output name="ReturnStructResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EchoString">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="EchoStringRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:input>
+      <wsdl:output name="EchoStringResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnString">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="ReturnStringRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:input>
+      <wsdl:output name="ReturnStringResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnArray">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="ReturnArrayRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:input>
+      <wsdl:output name="ReturnArrayResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnQuery">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="ReturnQueryRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:input>
+      <wsdl:output name="ReturnQueryResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault name="CFCInvocationException" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DbconnectorService">
+    <wsdl:port name="dbconnector.cfc" binding="impl:dbconnector.cfcSoapBinding">
+      <wsdlsoap:address location="https://gms.givit.de/webservice/dbconnector.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

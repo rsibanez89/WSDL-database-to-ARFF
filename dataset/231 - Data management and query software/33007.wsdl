@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="urn:Microsoft.Search" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:Microsoft.Search">
+      <s:element name="Query">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="queryXml" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="QueryResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Registration">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="registrationXml" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="RegistrationResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Status">
+        <s:complexType/>
+      </s:element>
+      <s:element name="StatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="StatusResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema"/>
+      <s:element name="GetPortalSearchInfo">
+        <s:complexType/>
+      </s:element>
+      <s:element name="GetPortalSearchInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="GetPortalSearchInfoResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="queryXml" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="QueryExResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="QueryExSoapOut">
+    <part name="parameters" element="s1:QueryExResponse"/>
+  </message>
+  <message name="GetPortalSearchInfoSoapOut">
+    <part name="parameters" element="s1:GetPortalSearchInfoResponse"/>
+  </message>
+  <message name="GetPortalSearchInfoSoapIn">
+    <part name="parameters" element="s1:GetPortalSearchInfo"/>
+  </message>
+  <message name="StatusSoapOut">
+    <part name="parameters" element="s0:StatusResponse"/>
+  </message>
+  <message name="QuerySoapOut">
+    <part name="parameters" element="s0:QueryResponse"/>
+  </message>
+  <message name="RegistrationSoapIn">
+    <part name="parameters" element="s0:Registration"/>
+  </message>
+  <message name="RegistrationSoapOut">
+    <part name="parameters" element="s0:RegistrationResponse"/>
+  </message>
+  <message name="StatusSoapIn">
+    <part name="parameters" element="s0:Status"/>
+  </message>
+  <message name="QuerySoapIn">
+    <part name="parameters" element="s0:Query"/>
+  </message>
+  <message name="QueryExSoapIn">
+    <part name="parameters" element="s1:QueryEx"/>
+  </message>
+  <portType name="QueryServiceSoap">
+    <operation name="Query">
+      <input message="s1:QuerySoapIn"/>
+      <output message="s1:QuerySoapOut"/>
+    </operation>
+    <operation name="Registration">
+      <input message="s1:RegistrationSoapIn"/>
+      <output message="s1:RegistrationSoapOut"/>
+    </operation>
+    <operation name="Status">
+      <input message="s1:StatusSoapIn"/>
+      <output message="s1:StatusSoapOut"/>
+    </operation>
+    <operation name="GetPortalSearchInfo">
+      <input message="s1:GetPortalSearchInfoSoapIn"/>
+      <output message="s1:GetPortalSearchInfoSoapOut"/>
+    </operation>
+    <operation name="QueryEx">
+      <input message="s1:QueryExSoapIn"/>
+      <output message="s1:QueryExSoapOut"/>
+    </operation>
+  </portType>
+  <binding name="QueryServiceSoap" type="s1:QueryServiceSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Query">
+      <soap:operation soapAction="urn:Microsoft.Search/Query" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Registration">
+      <soap:operation soapAction="urn:Microsoft.Search/Registration" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Status">
+      <soap:operation soapAction="urn:Microsoft.Search/Status" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetPortalSearchInfo">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/GetPortalSearchInfo" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="QueryEx">
+      <soap:operation soapAction="http://microsoft.com/webservices/SharePointPortalServer/WebQueryService/QueryEx" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="QueryService">
+<documentation>SharePointPortalServer Query service</documentation>
+    <port name="QueryServiceSoap" binding="s1:QueryServiceSoap">
+      <soap:address location="http://www.agrotrace.coop/_vti_bin/search.asmx"/>
+    </port>
+  </service>
+</definitions>

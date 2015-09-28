@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://external.payex.com/PxSms/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://external.payex.com/PxSms/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://external.payex.com/PxSms/">
+      <s:element name="SendCpa">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="accountNumber" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="orderId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="productNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="description" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="originatingAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="destination" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="userData" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="dataHeader" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="price" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="dcs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="validityTime" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="deliveryTime" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCpaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendCpaResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendLa">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="accountNumber" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="orderId" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="productNumber" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="description" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="originatingAddress" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="addressAlpha" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="destination" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="userData" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="dataHeader" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="dcs" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="validityTime" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="deliveryTime" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendLaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendLaResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Check">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="1" name="accountNumber" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="transactionRef" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="hash" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="CheckResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendLaSoapOut">
+    <wsdl:part name="parameters" element="tns:SendLaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendCpaSoapOut">
+    <wsdl:part name="parameters" element="tns:SendCpaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CheckSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CheckSoapIn">
+    <wsdl:part name="parameters" element="tns:Check"/>
+  </wsdl:message>
+  <wsdl:message name="SendLaSoapIn">
+    <wsdl:part name="parameters" element="tns:SendLa"/>
+  </wsdl:message>
+  <wsdl:message name="SendCpaSoapIn">
+    <wsdl:part name="parameters" element="tns:SendCpa"/>
+  </wsdl:message>
+  <wsdl:portType name="PxSmsSoap">
+    <wsdl:operation name="SendCpa">
+      <wsdl:input message="tns:SendCpaSoapIn"/>
+      <wsdl:output message="tns:SendCpaSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendLa">
+      <wsdl:input message="tns:SendLaSoapIn"/>
+      <wsdl:output message="tns:SendLaSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="Check">
+      <wsdl:input message="tns:CheckSoapIn"/>
+      <wsdl:output message="tns:CheckSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PxSmsSoap12" type="tns:PxSmsSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendCpa">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://external.payex.com/PxSms/SendCpa" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendLa">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://external.payex.com/PxSms/SendLa" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Check">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://external.payex.com/PxSms/Check" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PxSmsSoap" type="tns:PxSmsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendCpa">
+      <soap:operation soapAction="http://external.payex.com/PxSms/SendCpa" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendLa">
+      <soap:operation soapAction="http://external.payex.com/PxSms/SendLa" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Check">
+      <soap:operation soapAction="http://external.payex.com/PxSms/Check" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PxSms">
+    <wsdl:port name="PxSmsSoap" binding="tns:PxSmsSoap">
+      <soap:address location="https://external.payex.com/pxsms/pxsms.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="PxSmsSoap12" binding="tns:PxSmsSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="https://external.payex.com/pxsms/pxsms.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

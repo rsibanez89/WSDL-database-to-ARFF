@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="EBISearchService" targetNamespace="http://www.ebi.ac.uk/EBISearchService" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.ebi.ac.uk/EBISearchService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.ebi.ac.uk/EBISearchService" version="1.0" xmlns:ns1="http://webservice.ebinocle.ebi.ac.uk" xmlns:tns="http://www.ebi.ac.uk/EBISearchService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:import namespace="http://webservice.ebinocle.ebi.ac.uk"/>
+<xs:element name="getAllResultsIds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="query" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getAllResultsIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfIds" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getDetailledNumberOfResults">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="query" nillable="true" type="xs:string"/>
+        <xs:element name="flat" type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getDetailledNumberOfResultsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="detailledNumberOfResults" nillable="true" type="ns1:DomainResult"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getDomainsHierarchy">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getDomainsHierarchyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="rootDomain" nillable="true" type="ns1:DomainDescription"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getDomainsReferencedInDomain">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getDomainsReferencedInDomainResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfDomainNames" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getDomainsReferencedInEntry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="entry" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getDomainsReferencedInEntryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfDomainNames" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getEntries">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="entries" nillable="true" type="tns:ArrayOfString"/>
+        <xs:element name="fields" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getEntriesFieldUrls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="entries" nillable="true" type="tns:ArrayOfString"/>
+        <xs:element name="fields" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getEntriesFieldUrlsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfEntryUrlsValues" nillable="true" type="tns:ArrayOfArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getEntriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfEntryValues" nillable="true" type="tns:ArrayOfArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getEntry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="entry" nillable="true" type="xs:string"/>
+        <xs:element name="fields" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getEntryFieldUrls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="entry" nillable="true" type="xs:string"/>
+        <xs:element name="fields" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getEntryFieldUrlsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="entryUrlsValues" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getEntryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="entryValues" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getNumberOfResults">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="query" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getNumberOfResultsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numberOfResults" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getReferencedEntries">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="entry" nillable="true" type="xs:string"/>
+        <xs:element name="referencedDomain" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getReferencedEntriesFlatSet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="entries" nillable="true" type="tns:ArrayOfString"/>
+        <xs:element name="referencedDomain" nillable="true" type="xs:string"/>
+        <xs:element name="fields" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getReferencedEntriesFlatSetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfEntryValues" nillable="true" type="tns:ArrayOfArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getReferencedEntriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfEntryIds" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getReferencedEntriesSet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="entries" nillable="true" type="tns:ArrayOfString"/>
+        <xs:element name="referencedDomain" nillable="true" type="xs:string"/>
+        <xs:element name="fields" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getReferencedEntriesSetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfEntryValues" nillable="true" type="ns1:ArrayOfEntryReferences"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getResults">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="query" nillable="true" type="xs:string"/>
+        <xs:element name="fields" nillable="true" type="tns:ArrayOfString"/>
+        <xs:element name="start" type="xs:int"/>
+        <xs:element name="size" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getResultsIds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+        <xs:element name="query" nillable="true" type="xs:string"/>
+        <xs:element name="start" type="xs:int"/>
+        <xs:element name="size" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getResultsIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfIds" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="getResultsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfEntryValues" nillable="true" type="tns:ArrayOfArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="listAdditionalReferenceFields">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="listAdditionalReferenceFieldsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfFieldNames" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="listDomains">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="listDomainsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfDomainNames" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="listFields">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="listFieldsInformation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="domain" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="listFieldsInformationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfFieldInformation" nillable="true" type="ns1:ArrayOfFieldInfo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:element name="listFieldsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="arrayOfFieldNames" nillable="true" type="tns:ArrayOfString"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+<xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfArrayOfString">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ArrayOfString" nillable="true" type="tns:ArrayOfString"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="anyType2anyType2anyTypeMapMap">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="entry" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="key" type="xs:anyType"/>
+            <xs:element minOccurs="0" name="value" type="tns:anyType2anyTypeMap"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="anyType2anyTypeMap">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="entry" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="key" type="xs:anyType"/>
+            <xs:element minOccurs="0" name="value" type="xs:anyType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+    <xs:schema targetNamespace="http://webservice.ebinocle.ebi.ac.uk" version="1.0" xmlns:ns1="http://www.ebi.ac.uk/EBISearchService" xmlns:tns="http://webservice.ebinocle.ebi.ac.uk" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:import namespace="http://www.ebi.ac.uk/EBISearchService"/>
+<xs:complexType name="ArrayOfFieldInfo">
+    <xs:sequence>
+      <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="FieldInfo" nillable="true" type="tns:FieldInfo"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="FieldInfo">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="description" nillable="true" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="id" nillable="true" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="name" nillable="true" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="retrievable" type="xs:boolean"/>
+      <xs:element form="qualified" minOccurs="0" name="searchable" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DomainResult">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="domainId" nillable="true" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="numberOfResults" type="xs:int"/>
+      <xs:element form="qualified" minOccurs="0" name="subDomainsResults" nillable="true" type="tns:ArrayOfDomainResult"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfDomainResult">
+    <xs:sequence>
+      <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="DomainResult" nillable="true" type="tns:DomainResult"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfEntryReferences">
+    <xs:sequence>
+      <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="EntryReferences" nillable="true" type="tns:EntryReferences"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="EntryReferences">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="entry" nillable="true" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="references" nillable="true" type="ns1:ArrayOfArrayOfString"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="DomainDescription">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="description" nillable="true" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="id" nillable="true" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="name" nillable="true" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="properties" nillable="true" type="ns1:anyType2anyType2anyTypeMapMap"/>
+      <xs:element form="qualified" minOccurs="0" name="subDomains" nillable="true" type="tns:ArrayOfDomainDescription"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="ArrayOfDomainDescription">
+    <xs:sequence>
+      <xs:element form="qualified" maxOccurs="unbounded" minOccurs="0" name="DomainDescription" nillable="true" type="tns:DomainDescription"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getDomainsReferencedInDomainResponse">
+    <wsdl:part name="parameters" element="tns:getDomainsReferencedInDomainResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getResultsIdsResponse">
+    <wsdl:part name="parameters" element="tns:getResultsIdsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfResultsResponse">
+    <wsdl:part name="parameters" element="tns:getNumberOfResultsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getDetailledNumberOfResults">
+    <wsdl:part name="parameters" element="tns:getDetailledNumberOfResults"/>
+  </wsdl:message>
+  <wsdl:message name="getResultsResponse">
+    <wsdl:part name="parameters" element="tns:getResultsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getEntry">
+    <wsdl:part name="parameters" element="tns:getEntry"/>
+  </wsdl:message>
+  <wsdl:message name="getReferencedEntries">
+    <wsdl:part name="parameters" element="tns:getReferencedEntries"/>
+  </wsdl:message>
+  <wsdl:message name="listFields">
+    <wsdl:part name="parameters" element="tns:listFields"/>
+  </wsdl:message>
+  <wsdl:message name="getReferencedEntriesSet">
+    <wsdl:part name="parameters" element="tns:getReferencedEntriesSet"/>
+  </wsdl:message>
+  <wsdl:message name="listDomainsResponse">
+    <wsdl:part name="parameters" element="tns:listDomainsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getAllResultsIdsResponse">
+    <wsdl:part name="parameters" element="tns:getAllResultsIdsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getDomainsReferencedInDomain">
+    <wsdl:part name="parameters" element="tns:getDomainsReferencedInDomain"/>
+  </wsdl:message>
+  <wsdl:message name="getEntriesFieldUrls">
+    <wsdl:part name="parameters" element="tns:getEntriesFieldUrls"/>
+  </wsdl:message>
+  <wsdl:message name="getEntryResponse">
+    <wsdl:part name="parameters" element="tns:getEntryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getResults">
+    <wsdl:part name="parameters" element="tns:getResults"/>
+  </wsdl:message>
+  <wsdl:message name="listFieldsInformation">
+    <wsdl:part name="parameters" element="tns:listFieldsInformation"/>
+  </wsdl:message>
+  <wsdl:message name="getResultsIds">
+    <wsdl:part name="parameters" element="tns:getResultsIds"/>
+  </wsdl:message>
+  <wsdl:message name="listAdditionalReferenceFieldsResponse">
+    <wsdl:part name="parameters" element="tns:listAdditionalReferenceFieldsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getDomainsHierarchy">
+    <wsdl:part name="parameters" element="tns:getDomainsHierarchy"/>
+  </wsdl:message>
+  <wsdl:message name="getReferencedEntriesFlatSet">
+    <wsdl:part name="parameters" element="tns:getReferencedEntriesFlatSet"/>
+  </wsdl:message>
+  <wsdl:message name="getNumberOfResults">
+    <wsdl:part name="parameters" element="tns:getNumberOfResults"/>
+  </wsdl:message>
+  <wsdl:message name="getDomainsReferencedInEntryResponse">
+    <wsdl:part name="parameters" element="tns:getDomainsReferencedInEntryResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getEntriesResponse">
+    <wsdl:part name="parameters" element="tns:getEntriesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getDomainsHierarchyResponse">
+    <wsdl:part name="parameters" element="tns:getDomainsHierarchyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getDomainsReferencedInEntry">
+    <wsdl:part name="parameters" element="tns:getDomainsReferencedInEntry"/>
+  </wsdl:message>
+  <wsdl:message name="getEntryFieldUrls">
+    <wsdl:part name="parameters" element="tns:getEntryFieldUrls"/>
+  </wsdl:message>
+  <wsdl:message name="getEntries">
+    <wsdl:part name="parameters" element="tns:getEntries"/>
+  </wsdl:message>
+  <wsdl:message name="getReferencedEntriesFlatSetResponse">
+    <wsdl:part name="parameters" element="tns:getReferencedEntriesFlatSetResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listFieldsResponse">
+    <wsdl:part name="parameters" element="tns:listFieldsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listDomains">
+    <wsdl:part name="parameters" element="tns:listDomains"/>
+  </wsdl:message>
+  <wsdl:message name="getReferencedEntriesResponse">
+    <wsdl:part name="parameters" element="tns:getReferencedEntriesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getEntriesFieldUrlsResponse">
+    <wsdl:part name="parameters" element="tns:getEntriesFieldUrlsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getEntryFieldUrlsResponse">
+    <wsdl:part name="parameters" element="tns:getEntryFieldUrlsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getAllResultsIds">
+    <wsdl:part name="parameters" element="tns:getAllResultsIds"/>
+  </wsdl:message>
+  <wsdl:message name="getDetailledNumberOfResultsResponse">
+    <wsdl:part name="parameters" element="tns:getDetailledNumberOfResultsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listAdditionalReferenceFields">
+    <wsdl:part name="parameters" element="tns:listAdditionalReferenceFields"/>
+  </wsdl:message>
+  <wsdl:message name="getReferencedEntriesSetResponse">
+    <wsdl:part name="parameters" element="tns:getReferencedEntriesSetResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listFieldsInformationResponse">
+    <wsdl:part name="parameters" element="tns:listFieldsInformationResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="EBISearchService">
+    <wsdl:operation name="getDomainsReferencedInDomain">
+      <wsdl:input name="getDomainsReferencedInDomain" message="tns:getDomainsReferencedInDomain"/>
+      <wsdl:output name="getDomainsReferencedInDomainResponse" message="tns:getDomainsReferencedInDomainResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getEntries">
+      <wsdl:input name="getEntries" message="tns:getEntries"/>
+      <wsdl:output name="getEntriesResponse" message="tns:getEntriesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getEntryFieldUrls">
+      <wsdl:input name="getEntryFieldUrls" message="tns:getEntryFieldUrls"/>
+      <wsdl:output name="getEntryFieldUrlsResponse" message="tns:getEntryFieldUrlsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listFields">
+      <wsdl:input name="listFields" message="tns:listFields"/>
+      <wsdl:output name="listFieldsResponse" message="tns:listFieldsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listFieldsInformation">
+      <wsdl:input name="listFieldsInformation" message="tns:listFieldsInformation"/>
+      <wsdl:output name="listFieldsInformationResponse" message="tns:listFieldsInformationResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getDetailledNumberOfResults">
+      <wsdl:input name="getDetailledNumberOfResults" message="tns:getDetailledNumberOfResults"/>
+      <wsdl:output name="getDetailledNumberOfResultsResponse" message="tns:getDetailledNumberOfResultsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getNumberOfResults">
+      <wsdl:input name="getNumberOfResults" message="tns:getNumberOfResults"/>
+      <wsdl:output name="getNumberOfResultsResponse" message="tns:getNumberOfResultsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getEntry">
+      <wsdl:input name="getEntry" message="tns:getEntry"/>
+      <wsdl:output name="getEntryResponse" message="tns:getEntryResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listAdditionalReferenceFields">
+      <wsdl:input name="listAdditionalReferenceFields" message="tns:listAdditionalReferenceFields"/>
+      <wsdl:output name="listAdditionalReferenceFieldsResponse" message="tns:listAdditionalReferenceFieldsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getReferencedEntries">
+      <wsdl:input name="getReferencedEntries" message="tns:getReferencedEntries"/>
+      <wsdl:output name="getReferencedEntriesResponse" message="tns:getReferencedEntriesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getEntriesFieldUrls">
+      <wsdl:input name="getEntriesFieldUrls" message="tns:getEntriesFieldUrls"/>
+      <wsdl:output name="getEntriesFieldUrlsResponse" message="tns:getEntriesFieldUrlsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getDomainsReferencedInEntry">
+      <wsdl:input name="getDomainsReferencedInEntry" message="tns:getDomainsReferencedInEntry"/>
+      <wsdl:output name="getDomainsReferencedInEntryResponse" message="tns:getDomainsReferencedInEntryResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getReferencedEntriesFlatSet">
+      <wsdl:input name="getReferencedEntriesFlatSet" message="tns:getReferencedEntriesFlatSet"/>
+      <wsdl:output name="getReferencedEntriesFlatSetResponse" message="tns:getReferencedEntriesFlatSetResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getResultsIds">
+      <wsdl:input name="getResultsIds" message="tns:getResultsIds"/>
+      <wsdl:output name="getResultsIdsResponse" message="tns:getResultsIdsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="listDomains">
+      <wsdl:input name="listDomains" message="tns:listDomains"/>
+      <wsdl:output name="listDomainsResponse" message="tns:listDomainsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getReferencedEntriesSet">
+      <wsdl:input name="getReferencedEntriesSet" message="tns:getReferencedEntriesSet"/>
+      <wsdl:output name="getReferencedEntriesSetResponse" message="tns:getReferencedEntriesSetResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getDomainsHierarchy">
+      <wsdl:input name="getDomainsHierarchy" message="tns:getDomainsHierarchy"/>
+      <wsdl:output name="getDomainsHierarchyResponse" message="tns:getDomainsHierarchyResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getAllResultsIds">
+      <wsdl:input name="getAllResultsIds" message="tns:getAllResultsIds"/>
+      <wsdl:output name="getAllResultsIdsResponse" message="tns:getAllResultsIdsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getResults">
+      <wsdl:input name="getResults" message="tns:getResults"/>
+      <wsdl:output name="getResultsResponse" message="tns:getResultsResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EBISearchServiceSoapBinding" type="tns:EBISearchService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getDomainsReferencedInDomain">
+      <soap:operation soapAction="urn:GetDomainsReferencedInDomain" style="document"/>
+      <wsdl:input name="getDomainsReferencedInDomain">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDomainsReferencedInDomainResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEntries">
+      <soap:operation soapAction="urn:GetEntries" style="document"/>
+      <wsdl:input name="getEntries">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEntriesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEntryFieldUrls">
+      <soap:operation soapAction="urn:GetEntryFieldUrls" style="document"/>
+      <wsdl:input name="getEntryFieldUrls">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEntryFieldUrlsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listFields">
+      <soap:operation soapAction="urn:ListFields" style="document"/>
+      <wsdl:input name="listFields">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listFieldsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDetailledNumberOfResults">
+      <soap:operation soapAction="urn:GetDetailledNumberOfResults" style="document"/>
+      <wsdl:input name="getDetailledNumberOfResults">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDetailledNumberOfResultsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listFieldsInformation">
+      <soap:operation soapAction="urn:ListFieldsInformation" style="document"/>
+      <wsdl:input name="listFieldsInformation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listFieldsInformationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEntry">
+      <soap:operation soapAction="urn:GetEntry" style="document"/>
+      <wsdl:input name="getEntry">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEntryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumberOfResults">
+      <soap:operation soapAction="urn:GetNumberOfResults" style="document"/>
+      <wsdl:input name="getNumberOfResults">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNumberOfResultsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReferencedEntries">
+      <soap:operation soapAction="urn:GetReferencedEntries" style="document"/>
+      <wsdl:input name="getReferencedEntries">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getReferencedEntriesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAdditionalReferenceFields">
+      <soap:operation soapAction="urn:ListAdditionalReferenceFields" style="document"/>
+      <wsdl:input name="listAdditionalReferenceFields">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listAdditionalReferenceFieldsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEntriesFieldUrls">
+      <soap:operation soapAction="urn:GetEntriesFieldUrls" style="document"/>
+      <wsdl:input name="getEntriesFieldUrls">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEntriesFieldUrlsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomainsReferencedInEntry">
+      <soap:operation soapAction="urn:GetDomainsReferencedInEntry" style="document"/>
+      <wsdl:input name="getDomainsReferencedInEntry">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDomainsReferencedInEntryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReferencedEntriesFlatSet">
+      <soap:operation soapAction="urn:GetReferencedEntriesFlatSet" style="document"/>
+      <wsdl:input name="getReferencedEntriesFlatSet">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getReferencedEntriesFlatSetResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getResultsIds">
+      <soap:operation soapAction="urn:GetResultsIds" style="document"/>
+      <wsdl:input name="getResultsIds">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getResultsIdsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReferencedEntriesSet">
+      <soap:operation soapAction="urn:GetReferencedEntriesSet" style="document"/>
+      <wsdl:input name="getReferencedEntriesSet">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getReferencedEntriesSetResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listDomains">
+      <soap:operation soapAction="urn:ListDomains" style="document"/>
+      <wsdl:input name="listDomains">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listDomainsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomainsHierarchy">
+      <soap:operation soapAction="urn:GetDomainsHierarchy" style="document"/>
+      <wsdl:input name="getDomainsHierarchy">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDomainsHierarchyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllResultsIds">
+      <soap:operation soapAction="urn:GetAllResultsIds" style="document"/>
+      <wsdl:input name="getAllResultsIds">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllResultsIdsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getResults">
+      <soap:operation soapAction="urn:GetResults" style="document"/>
+      <wsdl:input name="getResults">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getResultsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EBISearchService">
+    <wsdl:port name="EBISearchServiceHttpPort" binding="tns:EBISearchServiceSoapBinding">
+      <soap:address location="http://www.ebi.ac.uk/ebisearch/service.ebi/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

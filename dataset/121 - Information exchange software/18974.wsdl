@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=">
+      <s:element name="checkPrefix">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="AccessNumber" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CountryID" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Prefix" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkPrefixResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="checkPrefixResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createPrefix">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="AccessNumber" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CountryID" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CampaignID" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TypeID" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Prefix" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createPrefixResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="createPrefixResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="CampaignName" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="createCampaignResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="bindCampaignToConnection">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="ConnectionID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CampaignID" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="bindCampaignToConnectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="bindCampaignToConnectionResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS_Advanced1">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="MsgID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="FromNr" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FromAlpha" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Tel" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Msg" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PriceGroup" type="s:short"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CampaignID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TeleOp" type="s:short"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Nrq" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS_Advanced1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSMS_Advanced1Result" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS_Advanced2">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="MsgID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="FromNr" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="FromAlpha" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Tel" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Msg" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="PriceGroup" type="s:short"/>
+            <s:element maxOccurs="1" minOccurs="1" name="CampaignID" type="s:int"/>
+            <s:element maxOccurs="1" minOccurs="1" name="TeleOp" type="s:short"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Nrq" type="s:boolean"/>
+            <s:element maxOccurs="1" minOccurs="0" name="DeliveryEmailAddress" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS_Advanced2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSMS_Advanced2Result" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS_Simple1">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="UserName" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="0" name="PassWord" type="s:string"/>
+            <s:element maxOccurs="1" minOccurs="1" name="Tel" type="s:long"/>
+            <s:element maxOccurs="1" minOccurs="0" name="Msg" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS_Simple1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element maxOccurs="1" minOccurs="0" name="SendSMS_Simple1Result" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendSMS_Simple1HttpPostIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="Tel" type="s:string"/>
+    <wsdl:part name="Msg" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="checkPrefixSoapOut">
+    <wsdl:part name="parameters" element="tns:checkPrefixResponse"/>
+  </wsdl:message>
+  <wsdl:message name="bindCampaignToConnectionSoapIn">
+    <wsdl:part name="parameters" element="tns:bindCampaignToConnection"/>
+  </wsdl:message>
+  <wsdl:message name="createPrefixSoapIn">
+    <wsdl:part name="parameters" element="tns:createPrefix"/>
+  </wsdl:message>
+  <wsdl:message name="checkPrefixHttpPostIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="AccessNumber" type="s:string"/>
+    <wsdl:part name="CountryID" type="s:string"/>
+    <wsdl:part name="Prefix" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Simple1HttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Simple1HttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="createPrefixHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced2HttpPostIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="MsgID" type="s:string"/>
+    <wsdl:part name="FromNr" type="s:string"/>
+    <wsdl:part name="FromAlpha" type="s:string"/>
+    <wsdl:part name="Tel" type="s:string"/>
+    <wsdl:part name="Msg" type="s:string"/>
+    <wsdl:part name="PriceGroup" type="s:string"/>
+    <wsdl:part name="CampaignID" type="s:string"/>
+    <wsdl:part name="TeleOp" type="s:string"/>
+    <wsdl:part name="Nrq" type="s:string"/>
+    <wsdl:part name="DeliveryEmailAddress" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced1HttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Simple1SoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMS_Simple1"/>
+  </wsdl:message>
+  <wsdl:message name="createPrefixHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="bindCampaignToConnectionHttpGetIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="ConnectionID" type="s:string"/>
+    <wsdl:part name="CampaignID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="createCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:createCampaignResponse"/>
+  </wsdl:message>
+  <wsdl:message name="createPrefixHttpGetIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="AccessNumber" type="s:string"/>
+    <wsdl:part name="CountryID" type="s:string"/>
+    <wsdl:part name="CampaignID" type="s:string"/>
+    <wsdl:part name="TypeID" type="s:string"/>
+    <wsdl:part name="Prefix" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="createCampaignHttpGetIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="CampaignName" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="checkPrefixHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="bindCampaignToConnectionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced1HttpGetIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="MsgID" type="s:string"/>
+    <wsdl:part name="FromNr" type="s:string"/>
+    <wsdl:part name="FromAlpha" type="s:string"/>
+    <wsdl:part name="Tel" type="s:string"/>
+    <wsdl:part name="Msg" type="s:string"/>
+    <wsdl:part name="PriceGroup" type="s:string"/>
+    <wsdl:part name="CampaignID" type="s:string"/>
+    <wsdl:part name="TeleOp" type="s:string"/>
+    <wsdl:part name="Nrq" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced2HttpGetIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="MsgID" type="s:string"/>
+    <wsdl:part name="FromNr" type="s:string"/>
+    <wsdl:part name="FromAlpha" type="s:string"/>
+    <wsdl:part name="Tel" type="s:string"/>
+    <wsdl:part name="Msg" type="s:string"/>
+    <wsdl:part name="PriceGroup" type="s:string"/>
+    <wsdl:part name="CampaignID" type="s:string"/>
+    <wsdl:part name="TeleOp" type="s:string"/>
+    <wsdl:part name="Nrq" type="s:string"/>
+    <wsdl:part name="DeliveryEmailAddress" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced1SoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMS_Advanced1Response"/>
+  </wsdl:message>
+  <wsdl:message name="checkPrefixHttpGetIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="AccessNumber" type="s:string"/>
+    <wsdl:part name="CountryID" type="s:string"/>
+    <wsdl:part name="Prefix" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="createCampaignHttpPostIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="CampaignName" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="checkPrefixSoapIn">
+    <wsdl:part name="parameters" element="tns:checkPrefix"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced2HttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced1SoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMS_Advanced1"/>
+  </wsdl:message>
+  <wsdl:message name="createPrefixHttpPostIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="AccessNumber" type="s:string"/>
+    <wsdl:part name="CountryID" type="s:string"/>
+    <wsdl:part name="CampaignID" type="s:string"/>
+    <wsdl:part name="TypeID" type="s:string"/>
+    <wsdl:part name="Prefix" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="createPrefixSoapOut">
+    <wsdl:part name="parameters" element="tns:createPrefixResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced2SoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMS_Advanced2Response"/>
+  </wsdl:message>
+  <wsdl:message name="bindCampaignToConnectionHttpPostIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="ConnectionID" type="s:string"/>
+    <wsdl:part name="CampaignID" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="bindCampaignToConnectionSoapOut">
+    <wsdl:part name="parameters" element="tns:bindCampaignToConnectionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="bindCampaignToConnectionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="createCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:createCampaign"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced1HttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced2HttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced2SoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMS_Advanced2"/>
+  </wsdl:message>
+  <wsdl:message name="checkPrefixHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="createCampaignHttpGetOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="createCampaignHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Simple1SoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMS_Simple1Response"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Advanced1HttpPostIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="MsgID" type="s:string"/>
+    <wsdl:part name="FromNr" type="s:string"/>
+    <wsdl:part name="FromAlpha" type="s:string"/>
+    <wsdl:part name="Tel" type="s:string"/>
+    <wsdl:part name="Msg" type="s:string"/>
+    <wsdl:part name="PriceGroup" type="s:string"/>
+    <wsdl:part name="CampaignID" type="s:string"/>
+    <wsdl:part name="TeleOp" type="s:string"/>
+    <wsdl:part name="Nrq" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendSMS_Simple1HttpGetIn">
+    <wsdl:part name="UserName" type="s:string"/>
+    <wsdl:part name="PassWord" type="s:string"/>
+    <wsdl:part name="Tel" type="s:string"/>
+    <wsdl:part name="Msg" type="s:string"/>
+  </wsdl:message>
+  <wsdl:portType name="SMS_ServiceHttpPost">
+    <wsdl:operation name="checkPrefix">
+      <wsdl:input message="tns:checkPrefixHttpPostIn"/>
+      <wsdl:output message="tns:checkPrefixHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="createPrefix">
+      <wsdl:input message="tns:createPrefixHttpPostIn"/>
+      <wsdl:output message="tns:createPrefixHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="createCampaign">
+      <wsdl:input message="tns:createCampaignHttpPostIn"/>
+      <wsdl:output message="tns:createCampaignHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="bindCampaignToConnection">
+      <wsdl:input message="tns:bindCampaignToConnectionHttpPostIn"/>
+      <wsdl:output message="tns:bindCampaignToConnectionHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced1">
+      <wsdl:input message="tns:SendSMS_Advanced1HttpPostIn"/>
+      <wsdl:output message="tns:SendSMS_Advanced1HttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced2">
+      <wsdl:input message="tns:SendSMS_Advanced2HttpPostIn"/>
+      <wsdl:output message="tns:SendSMS_Advanced2HttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Simple1">
+      <wsdl:input message="tns:SendSMS_Simple1HttpPostIn"/>
+      <wsdl:output message="tns:SendSMS_Simple1HttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SMS_ServiceHttpGet">
+    <wsdl:operation name="checkPrefix">
+      <wsdl:input message="tns:checkPrefixHttpGetIn"/>
+      <wsdl:output message="tns:checkPrefixHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="createPrefix">
+      <wsdl:input message="tns:createPrefixHttpGetIn"/>
+      <wsdl:output message="tns:createPrefixHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="createCampaign">
+      <wsdl:input message="tns:createCampaignHttpGetIn"/>
+      <wsdl:output message="tns:createCampaignHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="bindCampaignToConnection">
+      <wsdl:input message="tns:bindCampaignToConnectionHttpGetIn"/>
+      <wsdl:output message="tns:bindCampaignToConnectionHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced1">
+      <wsdl:input message="tns:SendSMS_Advanced1HttpGetIn"/>
+      <wsdl:output message="tns:SendSMS_Advanced1HttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced2">
+      <wsdl:input message="tns:SendSMS_Advanced2HttpGetIn"/>
+      <wsdl:output message="tns:SendSMS_Advanced2HttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Simple1">
+      <wsdl:input message="tns:SendSMS_Simple1HttpGetIn"/>
+      <wsdl:output message="tns:SendSMS_Simple1HttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SMS_ServiceSoap">
+    <wsdl:operation name="checkPrefix">
+      <wsdl:input message="tns:checkPrefixSoapIn"/>
+      <wsdl:output message="tns:checkPrefixSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="createPrefix">
+      <wsdl:input message="tns:createPrefixSoapIn"/>
+      <wsdl:output message="tns:createPrefixSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="createCampaign">
+      <wsdl:input message="tns:createCampaignSoapIn"/>
+      <wsdl:output message="tns:createCampaignSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="bindCampaignToConnection">
+      <wsdl:input message="tns:bindCampaignToConnectionSoapIn"/>
+      <wsdl:output message="tns:bindCampaignToConnectionSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced1">
+      <wsdl:input message="tns:SendSMS_Advanced1SoapIn"/>
+      <wsdl:output message="tns:SendSMS_Advanced1SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced2">
+      <wsdl:input message="tns:SendSMS_Advanced2SoapIn"/>
+      <wsdl:output message="tns:SendSMS_Advanced2SoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Simple1">
+      <wsdl:input message="tns:SendSMS_Simple1SoapIn"/>
+      <wsdl:output message="tns:SendSMS_Simple1SoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SMS_ServiceHttpPost" type="tns:SMS_ServiceHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="checkPrefix">
+      <http:operation location="/checkPrefix"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createPrefix">
+      <http:operation location="/createPrefix"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCampaign">
+      <http:operation location="/createCampaign"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bindCampaignToConnection">
+      <http:operation location="/bindCampaignToConnection"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced1">
+      <http:operation location="/SendSMS_Advanced1"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced2">
+      <http:operation location="/SendSMS_Advanced2"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Simple1">
+      <http:operation location="/SendSMS_Simple1"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SMS_ServiceHttpGet" type="tns:SMS_ServiceHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="checkPrefix">
+      <http:operation location="/checkPrefix"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createPrefix">
+      <http:operation location="/createPrefix"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCampaign">
+      <http:operation location="/createCampaign"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bindCampaignToConnection">
+      <http:operation location="/bindCampaignToConnection"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced1">
+      <http:operation location="/SendSMS_Advanced1"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced2">
+      <http:operation location="/SendSMS_Advanced2"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Simple1">
+      <http:operation location="/SendSMS_Simple1"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SMS_ServiceSoap12" type="tns:SMS_ServiceSoap">
+    <soap12:binding xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="checkPrefix">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/checkPrefix" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createPrefix">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/createPrefix" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCampaign">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/createCampaign" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bindCampaignToConnection">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/bindCampaignToConnection" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced1">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/SendSMS_Advanced1" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced2">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/SendSMS_Advanced2" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Simple1">
+    <soap12:operation xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/SendSMS_Simple1" style="document"/>
+      <wsdl:input>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+    <soap12:body xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SMS_ServiceSoap" type="tns:SMS_ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="checkPrefix">
+      <soap:operation soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/checkPrefix" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createPrefix">
+      <soap:operation soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/createPrefix" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCampaign">
+      <soap:operation soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/createCampaign" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bindCampaignToConnection">
+      <soap:operation soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/bindCampaignToConnection" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced1">
+      <soap:operation soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/SendSMS_Advanced1" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Advanced2">
+      <soap:operation soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/SendSMS_Advanced2" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS_Simple1">
+      <soap:operation soapAction="http://extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx?op=/SendSMS_Simple1" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SMS_Service">
+    <wsdl:port name="SMS_ServiceHttpPost" binding="tns:SMS_ServiceHttpPost">
+      <http:address location="http://www.extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SMS_ServiceHttpGet" binding="tns:SMS_ServiceHttpGet">
+      <http:address location="http://www.extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SMS_ServiceSoap12" binding="tns:SMS_ServiceSoap12">
+    <soap12:address xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" location="http://www.extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="SMS_ServiceSoap" binding="tns:SMS_ServiceSoap">
+      <soap:address location="http://www.extra.vianett.no/webservices/vianett_sms_service/SMS_Service.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
